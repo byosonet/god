@@ -7,6 +7,7 @@ import java.math.BigDecimal;
  * @author emartinez
  */
 public interface BanxicoTipoCambioAdapter {
+    //Comentario GOD
     BigDecimal getTipoCambio(Moneda moneda);
     String xmlResponseBanxico();
     public static enum Moneda{ 

@@ -10,5 +10,6 @@ package com.rest.services.batch;
  * @author User
  */
 public interface MonitorAdapter {
+    //Comentario GOD
     public void responseWSBANXICO(); 
 }
