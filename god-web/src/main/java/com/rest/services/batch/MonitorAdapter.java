@@ -10,5 +10,5 @@ package com.rest.services.batch;
  * @author User
  */
 public interface MonitorAdapter {
-    public void responseWSBANXICO();
+    public void responseWSBANXICO(); 
 }

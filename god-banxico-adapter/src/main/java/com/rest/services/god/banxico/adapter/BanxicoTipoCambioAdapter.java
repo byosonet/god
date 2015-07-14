@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public interface BanxicoTipoCambioAdapter {
     BigDecimal getTipoCambio(Moneda moneda);
     String xmlResponseBanxico();
-    public static enum Moneda{
+    public static enum Moneda{ 
         DOLAR("SF60653"),
         DOLAR_FIX("SF43718"),
         EURO("SF46410"),
