@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="principal" template="/WEB-INF/views/layout/principal.jsp">
+		<put-attribute name="title" value="Bienvenido HP"/>
+	</definition>
+	
+	<definition name="example" extends="principal">
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/example.jsp"/>
+	</definition>
+        
+        <definition name="empleados" extends="principal">
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/empleados.jsp"/>
+	</definition>
+    
+</tiles-definitions>
