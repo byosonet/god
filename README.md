@@ -10,3 +10,5 @@ Ulysses M@c
 
 En fase de desarrollo.
 
+## Version 1.0
+
