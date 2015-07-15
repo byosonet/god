@@ -154,7 +154,7 @@
         <!-- Dependencies Externas -->
          <dependency>
             <groupId>com.rest.services</groupId>
-            <artifactId>god-banxico-adapter</artifactId>
+            <artifactId>god-adapter</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>    
     </dependencies>
