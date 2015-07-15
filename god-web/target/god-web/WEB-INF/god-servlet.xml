@@ -21,8 +21,8 @@
         <property name="suffix" value=".jsp" />
    </bean>
    
-    
-    
+
+        
     <!-- Configures Handler Interceptors -->
     <mvc:interceptors>
             <!-- Changes the locale when a 'locale' request parameter is sent -->

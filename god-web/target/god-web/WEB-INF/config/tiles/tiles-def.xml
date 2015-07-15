@@ -14,5 +14,13 @@
         <definition name="empleados" extends="principal">
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/empleados.jsp"/>
 	</definition>
+        
+        <definition name="520" extends="principal">
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/coro/520.jsp"/>
+	</definition>
+        
+        <definition name="ingresar" extends="principal">
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/listaHimnario.jsp"/>
+	</definition>
     
 </tiles-definitions>

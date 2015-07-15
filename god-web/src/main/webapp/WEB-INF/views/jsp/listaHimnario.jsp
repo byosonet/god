@@ -53,7 +53,7 @@
         } );
     </script>
     </head>
-    <body style="background:ButtonFace;">
+    <body style="background:powderblue;">
         <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -71,14 +71,14 @@
                 <td>Bendice, ¡ oh, alma mía!</td>
                 <td>Robert Lopez</td>
                 <td>23/07/2010</td>
-                <td><a href="http://localhost:8084/god-web/">Ver detalle</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>525</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://localhost:8084/god-web/">Ver detalle</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/1">Ver detalle</a></td>
             </tr>
             
             <tr>
@@ -86,56 +86,56 @@
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://localhost:8084/god-web/">Ver detalle</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/2">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://localhost:8084/god-web/">Ver detalle</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/2">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://localhost:8084/god-web/">Ver detalle</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/4">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://localhost:8084/god-web/">Ver detalle</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/5">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://localhost:8084/god-web/">Ver detalle</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/6">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://localhost:8084/god-web/">Ver detalle</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/7">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://localhost:8084/god-web/">Ver detalle</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/8">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://localhost:8084/god-web/">Ver detalle</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/3">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>

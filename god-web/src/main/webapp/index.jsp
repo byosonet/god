@@ -20,6 +20,25 @@
   <script type="text/javascript">
       $(function(){
           $('input#login').focus();
+          
+          $('input#acceder').click(function(){
+              console.log(' -- Accediendo al servidor');
+              
+              $.ajax({
+	              type: 'POST',
+	              url: '${contextpath}'+'/validar/usuario',
+	              data: $('form#ingresar').serialize(),
+	                  success: function (data) {
+                              console.log(' -- status '+data.status);
+                              $('form#ingresar').submit();
+	              },
+                         error: function(err){
+                              console.log(' -- status: '+err.status);
+                          }
+	        });
+              
+              
+          });
       });
   </script>
   
@@ -28,10 +47,10 @@
     <section class="container" style="margin-top: 185px;">
     <div class="login">
       <h1>¡Solo a Dios la gloria!</h1>
-      <form method="post" action="index.html">
-        <p><input type="text" name="login" id="login" value="" placeholder="Usuario"></p>
+      <form id="ingresar" method="post" action="${contextpath}/ingresar">
+        <p><input type="text" name="user" id="login" value="" placeholder="Usuario"></p>
         <p><input type="password" name="password" value="" placeholder="Password"></p>
-        <p class="submit"><input type="submit" name="commit" value="Acceder"></p>
+        <p class="submit"><input id="acceder" type="button" name="commit" value="Acceder"></p>
       </form>
     </div>
     <div class="login-help">
