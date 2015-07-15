@@ -53,7 +53,7 @@
         } );
     </script>
     </head>
-    <body>
+    <body style="background:ButtonFace;">
         <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
