@@ -4,7 +4,7 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
 	<definition name="principal" template="/WEB-INF/views/layout/principal.jsp">
-		<put-attribute name="title" value="Bienvenido HP"/>
+		<put-attribute name="title" value="Bienvenido a God"/>
 	</definition>
 	
 	<definition name="example" extends="principal">

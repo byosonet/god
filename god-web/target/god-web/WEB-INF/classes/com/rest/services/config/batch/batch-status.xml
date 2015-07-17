@@ -21,6 +21,6 @@
         <property name="jobDetail" 
                   ref="monitorStatusJobDetail" />
         <property name="cronExpression" 
-                  value="0/1 * * * * ?"/>
+                  value="0 0/1 * * * ?"/>
     </bean>
 </beans>
