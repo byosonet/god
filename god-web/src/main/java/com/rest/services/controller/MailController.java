@@ -28,7 +28,9 @@ public class MailController {
         try{
             sample.sendEmail();
             vista = "yesemail";
+            this.log.info(" -- mail enviado");
         }catch(Exception ex){
+            ex.printStackTrace();
             throw new RuntimeException();
         }
         return vista;
