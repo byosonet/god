@@ -1,13 +1,24 @@
+<%@ include file="taglibs.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Coro 520</title>
+        <title>Coro #520</title>
+        
+        <link rel="shortcut icon" href="${contextpath}/static/resources/img/favicon.ico">
+        <link rel="stylesheet" href="${contextpath}/static/resources/css/style.css">
     </head>
-    <body style="background: powderblue;">
-        <div style="text-align: center;"><h2>Coro 520</h2></div>
-        <div style="width: 24%;text-align: left; margin-top:50px;margin-left: 40%">
+    <body style="background: white;">
+        <div style="text-align: center;">
+            
+            <br><p style="font-size: 20px">Coro #520</p><br>
+            <form id="ingresar" method="get" action="${contextpath}/lista/obtener">
+                <p style="text-align: center;"><input id="button" type="submit" value="REGRESAR AL MENU"></p>
+            </form>
+        
+        <div style="width: 100%;text-align: left; margin-top:50px;">
             <font size="3" face="Verdana" color="black">
             <strong>
             1.- ¡Santo! ¡Santo! ¡Santo! Señor omnipotente,

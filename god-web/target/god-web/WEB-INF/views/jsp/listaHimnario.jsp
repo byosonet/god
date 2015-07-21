@@ -20,12 +20,13 @@
                     {
                     "searching": true,
                     "sPaginationType": "full_numbers",
+                    "paging": false,
                     "oLanguage" : {
                             "sProcessing":    "Procesando...",
                     "sLengthMenu":    "Mostrar _MENU_ registros",
-                    "sZeroRecords":   "No se encontraron resultados",
+                    "sZeroRecords":   "No se encontro ningún resultado con el criterio de Busqueda.",
                     "sEmptyTable":    "Ningún dato disponible en esta tabla",
-                    "sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfo":          "Mostrando registros de _START_ a _END_ de un total _TOTAL_ registros",
                     "sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
                     "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
                     "sInfoPostFix":   "",
@@ -53,32 +54,32 @@
         } );
     </script>
     </head>
-    <body style="background:powderblue;">
-        <table id="example" class="display" cellspacing="0" width="100%">
+    <body>
+        <table id="example" class="display" cellspacing="0" width="20%">
         <thead>
             <tr>
                 <th>N° Coro</th>
                 <th>Nombre</th>
                 <th>Autor</th>
-                <th>Ultima Fecha de Actualización</th>
+                <th>Fecha de Actualización</th>
                 <th>Descripción</th>
             </tr>
         </thead>
  
-        <tbody>
+        <tbody style="text-align: center;">
             <tr>
                 <td>520</td>
                 <td>Bendice, ¡ oh, alma mía!</td>
                 <td>Robert Lopez</td>
                 <td>23/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/coro/520">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>525</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/coro/1">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/1">Ver detalle</a></td>
             </tr>
             
             <tr>
@@ -86,84 +87,84 @@
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/coro/2">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/2">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/coro/2">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/2">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/coro/4">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/4">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/coro/5">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/5">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/coro/6">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/6">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/coro/7">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/7">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/coro/8">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/8">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/coro/3">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/3">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/">Ver detalle</a></td>
             </tr>
             <tr>
                 <td>527</td>
                 <td>Feliz, Feliz Cumpleaños</td>
                 <td>Nery Lopez</td>
                 <td>10/07/2010</td>
-                <td><a href="http://tomcat-byosonet.rhcloud.com/god-web/">Ver detalle</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/">Ver detalle</a></td>
             </tr>
         </tbody>
     </table>

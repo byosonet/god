@@ -27,7 +27,7 @@ public class LoginController {
           String user = request.getParameter("user");
           String password = request.getParameter("password");
           
-          if(user.equals("gtrejo") && password.equals("gtrejo")){
+          if(user.toLowerCase().trim().equals("gtrejo") && password.toLowerCase().trim().equals("gtrejo")){
               this.log.info(" -- Usuario correcto");
               return "ingresar";
           }else{
@@ -42,7 +42,7 @@ public class LoginController {
    @RequestMapping(value="/validar/usuario",method = RequestMethod.POST)
    public ResponseEntity<Data> validar(Model model, HttpServletRequest request) {
       this.log.info(" -- Ingresando al sistema");
-      this.log.info(" -- Request: "+request);
+      this.log.info(" -- Request: "+request.toString());
       this.log.info(" -- User: "+request.getParameter("user"));
       this.log.info(" -- Password: "+request.getParameter("password"));
       
@@ -50,7 +50,7 @@ public class LoginController {
           String user = request.getParameter("user");
           String password = request.getParameter("password");
           
-          if(user.equals("gtrejo") && password.equals("gtrejo")){
+          if(user.toLowerCase().trim().equals("gtrejo") && password.toLowerCase().trim().equals("gtrejo")){
               this.log.info(" -- Usuario correcto");
               Data data = new Data();
               data.setStatus("200");
