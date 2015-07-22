@@ -13,13 +13,11 @@
     <body style="background: white;">
         <div style="text-align: center;">
             
-            <br><p style="font-size: 20px">Coro #520</p><br>
-            <form id="ingresar" method="get" action="${contextpath}/lista/obtener">
-                <p style="text-align: center;"><input id="button" type="submit" value="REGRESAR AL MENU"></p>
-            </form>
+            <br><div style="font-size: 18px">Coro #520</div>
+            
         
-        <div style="width: 100%;text-align: left; margin-top:50px;">
-            <font size="3" face="Verdana" color="black">
+        <div style="width: 100%;text-align: justify; margin-top:50px;">
+            <font size="2" face="Verdana" color="black">
             <strong>
             1.- ¡Santo! ¡Santo! ¡Santo! Señor omnipotente,
           Siempre el labio mío loores Te dará.
@@ -30,7 +28,7 @@
           Santos escogidos Te adoran sin cesar,
           De alegría llenos y sus coronas de oro,
           Rinden ante el trono y el cristalino mar.<br><br>
-          <font size="3" face="Verdana" color="blue">
+          <font size="2" face="Verdana" color="blue">
              <center>Coro</center>
              <br>
 
@@ -50,6 +48,12 @@
           ¡Santo! ¡Santo! ¡Santo! Te adorará todo hombre,
           Dios en tres personas, bendita Trinidad.<br><br>
             </strong></font>
+            
+            <br>
+            <form id="ingresar" method="get" action="${contextpath}/lista/obtener">
+                <p style="text-align: center;"><input id="button" type="submit" value="REGRESAR AL MENU"></p>
+            </form>
+        </div>
   </div>
     </body>
 </html>

@@ -44,7 +44,8 @@
   
 </head>
 <body>
-    <section class="container" style="margin-top: 185px;">
+    <div>
+    
     <div class="login">
       <h1>¡Solo a Dios la gloria!</h1>
       <form id="ingresar" method="post" action="${contextpath}/ingresar">
@@ -56,6 +57,7 @@
     <div class="login-help">
       <p>¿Olvide mi contraseña? <a href="${contextpath}/password/recuperar">Recuperar contraseña</a>.</p>
     </div>
-  </section>
+  
+    </div>
 </body>
 </html>
