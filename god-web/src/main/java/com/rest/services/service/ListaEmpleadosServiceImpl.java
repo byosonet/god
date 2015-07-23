@@ -1,11 +1,14 @@
 package com.rest.services.service;
 
+import com.rest.services.god.persistence.dao.ProductoDao;
 import com.rest.services.model.Empleado;
 import com.rest.services.model.ErrorService;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -15,6 +18,7 @@ import org.springframework.stereotype.Component;
 public class ListaEmpleadosServiceImpl implements ListaEmpleadosService{
 private final Logger log = Logger.getLogger(ListaEmpleadosServiceImpl.class);
     
+    @Transactional
     public List<Empleado> getEmpleados() {
         /*Implementacion para obtener la lista*/
         this.log.info(" -- Accediendo al controller para obtener los empledos.");
@@ -42,6 +46,14 @@ private final Logger log = Logger.getLogger(ListaEmpleadosServiceImpl.class);
         response.add(gustavo);
         response.add(eduardo);
         
+        /*PROCESAR CONSULTA A LA BASE DE DATOS DE POSTGRESQL*/
+        
+        try{
+            this.log.info(" -- Buscnado en BASE DE DATOS POSTGRESQL");
+            this.productoDao.getAllProducts(2);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
         
         this.log.info(" -- Regresa lista de empleados: "+response.toString());
         return response;
@@ -91,4 +103,6 @@ private final Logger log = Logger.getLogger(ListaEmpleadosServiceImpl.class);
         return empleado;
     }
     
+@Autowired
+private ProductoDao productoDao;
 }
