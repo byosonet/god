@@ -1,9 +1,11 @@
 package com.rest.services.service;
 
 import com.rest.services.god.persistence.dao.ProductoDao;
+import com.rest.services.god.persistence.hbm.Producto;
 import com.rest.services.model.Empleado;
 import com.rest.services.model.ErrorService;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,10 +49,25 @@ private final Logger log = Logger.getLogger(ListaEmpleadosServiceImpl.class);
         response.add(eduardo);
         
         /*PROCESAR CONSULTA A LA BASE DE DATOS DE POSTGRESQL*/
+        try{
+            this.log.info(" -- Agrenado un nuevo producto:::: ");
+            Producto item = new Producto();
+            item.setIdProducto(0L);
+            item.setDescripcion("PRODUCTO NUEVO CON FECHA: "+new Date());
+            item.setPrecio(1234);
+            Producto prod = this.productoDao.saveByEntity(item);
+            this.log.info(" -- IdProducto: "+prod.getIdProducto()+" Descripcion: "+prod.getDescripcion()+" Precio: "+prod.getPrecio());
+            this.log.info(" -- Producto Agregado:::: con idProducto: "+prod.getIdProducto());
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
         
         try{
-            this.log.info(" -- Buscnado en BASE DE DATOS POSTGRESQL");
-            this.productoDao.getAllProducts(2);
+            this.log.info(" -- Buscando en BASE DE DATOS MYSQL");
+            List<Producto> list = this.productoDao.getAllProducts(1000);
+            for(Producto p : list){
+                this.log.info(" -- IdProducto: "+p.getIdProducto()+" Descripcion: "+p.getDescripcion()+" Precio: "+p.getPrecio());
+            }
         }catch(Exception ex){
             ex.printStackTrace();
         }

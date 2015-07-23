@@ -11,17 +11,18 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">    
+    
     <import resource="classpath:com/rest/services/god/persistence/config/dao-defs.xml"/>
+    
     <bean id="sessionFactory" 
           class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
-          p:configLocation="classpath:com/rest/services/god/persistence/config/hibernate-development.cfg.xml"/>          
-    <bean id="transactionManager" 
+          p:configLocation="classpath:com/rest/services/god/persistence/config/hibernate.cfg.xml"/>          
+    
+          <bean id="transactionManager" 
           class="org.springframework.orm.hibernate3.HibernateTransactionManager"
           p:sessionFactory-ref="sessionFactory"/>
-    <bean id="productoDao"
-        class="com.rest.services.god.persistence.dao.ProductoDaoImpl"
-        p:sessionFactory-ref="sessionFactory"/>
-   
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    
+    
+          <tx:annotation-driven transaction-manager="transactionManager"/>
     <context:annotation-config/>
 </beans>

@@ -9,8 +9,8 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">           
     
-    <!--<bean id="metodoPagoUsuarioDao" 
-          class="com.yapp.persistence.dao.MetodoPagoUsuarioDaoImpl"
-          p:sessionFactory-ref="sessionFactory"/>-->
+    <bean id="productoDao"
+        class="com.rest.services.god.persistence.dao.ProductoDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
 
 </beans>
