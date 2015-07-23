@@ -48,77 +48,77 @@
         <tbody style="text-align: center;">
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>521</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Feliz Cumpleaños</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Feliz Cumpleaños</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://11.254.13.76:8084/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
         </tbody>

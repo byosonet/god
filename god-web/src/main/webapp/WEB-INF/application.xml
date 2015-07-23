@@ -15,6 +15,7 @@
        xmlns:context="http://www.springframework.org/schema/context">    
     <context:annotation-config/>
     
+    <import resource="classpath:com/rest/services/god/persistence/config/dao-config.xml"/>
     <import resource="classpath:com/rest/services/config/xml/service-config.xml"/>
     <import resource="classpath:com/rest/services/config/batch/batch-config.xml"/>
 </beans>

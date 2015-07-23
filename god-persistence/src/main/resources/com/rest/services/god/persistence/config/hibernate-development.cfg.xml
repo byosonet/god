@@ -5,7 +5,7 @@
     <property name="org.hibernate.transaction">true</property>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://127.5.213.1:5432/goddev</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://127.5.213.2:5432/goddev</property>
     <property name="hibernate.connection.username">admingyvaeet</property>
     <property name="hibernate.connection.password">lSL67bIZ1zry</property>
     <property name="hibernate.connection.provider_class">
@@ -27,7 +27,7 @@
     <property name="hibernate.cache.use_second_level_cache">true</property>
     <property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
 
-    <mapping resource="com/rest/services/god/persistence/hbm/development/Producto.hbm.xml"/>
+    <mapping resource="com/rest/services/god/persistence/hbm/Producto.hbm.xml"/>
     
   </session-factory>
 </hibernate-configuration>
