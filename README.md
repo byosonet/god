@@ -12,5 +12,3 @@ En fase de desarrollo.
 
 ## Version 1.0
 
-## Realizando Pruebas Today
-
