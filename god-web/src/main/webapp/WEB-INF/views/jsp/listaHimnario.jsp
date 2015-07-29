@@ -5,13 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lista Himnario</title>
-        
-        <link rel="shortcut icon" href="${contextpath}/static/resources/img/favicon.ico">
-        
-        <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/dataTables.css">
-        <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/jquery-1.11.1.min.js"></script>
-        <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/dataTables.min.js"></script>
-        
+        <jsp:include page="../layout/staticResources.jsp"></jsp:include>
     
         <script type="text/javascript">
       $(document).ready(function() {

@@ -1,8 +1,6 @@
 <html>
     <head>
         <title>Lista de Empleados</title>
-        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript">
          $(document).ready(function() {
                 $("input#generar").click(function(){

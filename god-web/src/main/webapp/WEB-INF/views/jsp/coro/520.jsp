@@ -6,9 +6,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Coro #520</title>
-        
-        <link rel="shortcut icon" href="${contextpath}/static/resources/img/favicon.ico">
-        <link rel="stylesheet" href="${contextpath}/static/resources/css/style.css">
     </head>
     <body style="background: white;">
         <div style="text-align: center;">

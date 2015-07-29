@@ -19,8 +19,13 @@
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/coro/520.jsp"/>
 	</definition>
         
-        <definition name="ingresar" extends="principal">
+        <!--
+        <definition name="ingresar">
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/listaHimnario.jsp"/>
 	</definition>
-    
+        -->
+        
+        <definition name="ingresar" template="/WEB-INF/views/jsp/listaHimnario.jsp">
+	</definition>
+        
 </tiles-definitions>
