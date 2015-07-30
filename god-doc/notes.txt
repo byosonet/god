@@ -1,0 +1,15 @@
+1.- Clasificar los Himnos por rangos 1-50, 51, 100.
+2.- Agregar configuracion/formato en BD tiempo real de tamaño de fuente, color de fuente y color  de fondo.
+3.- Reproductor de audio (mp3, mp4, etc)
+4.- Buscar por numero de Himnario, o por letras de las iniciales de los coros.
+5.- Mostrar historial de consulta
+6.- Marcar como favoritos los coros.
+7.- Repo de documentos a compartir
+8.- Compartir pagina/coro en facebook
+9.- Diseño de pantallas: Como Icon App, Fondos, Header, Footer.
+10.- Bitacora de ultimos himnos cristianos registrados/actualizados.
+
+
+IDEAS CREATIVAS CREAR UN APP:
+- APP ESPEJO PARA LAS DAMAS.
+- CREAR UN FACEBOOK SOLO PARA CRISTIANOS.
