@@ -1,6 +1,5 @@
-<%@ include file="../taglibs.jsp"%>
+<%@ include file="../layout/taglibs.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -42,77 +41,77 @@
         <tbody style="text-align: center;">
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>521</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Feliz Cumpleaños</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Feliz Cumpleaños</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
             <tr>
                 <td>520</td>
-                <td><a href="http://goddev-byosonet.rhcloud.com/god-web/coro/520">Hay Momentos</a></td>
+                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
             </tr>
             
         </tbody>

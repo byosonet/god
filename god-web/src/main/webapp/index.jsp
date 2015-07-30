@@ -1,4 +1,4 @@
-<%@ include file="./WEB-INF/views/taglibs.jsp"%>
+<%@ include file="./WEB-INF/views/layout/taglibs.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <!DOCTYPE html>

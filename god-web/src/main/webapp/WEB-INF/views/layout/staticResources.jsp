@@ -1,4 +1,4 @@
-<%@ include file="../taglibs.jsp"%>
+<%@ include file="../layout/taglibs.jsp"%>
 <c:set var="contextpath" value="<%=request.getContextPath()%>"/>
 
 <link rel="shortcut icon" href="${contextpath}/static/resources/img/favicon.ico">

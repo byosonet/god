@@ -1,4 +1,4 @@
-<%@ include file="../taglibs.jsp"%>
+<%@ include file="../layout/taglibs.jsp"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>

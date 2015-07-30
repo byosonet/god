@@ -1,7 +1,7 @@
-<%@ include file="taglibs.jsp"%>
+<%@ include file="../../layout/taglibs.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<c:set var="contextpath" value="<%=request.getContextPath()%>"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-<c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
