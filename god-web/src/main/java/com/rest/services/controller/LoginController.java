@@ -1,5 +1,6 @@
 package com.rest.services.controller;
 
+import com.rest.services.model.ErrorService;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -40,7 +41,7 @@ public class LoginController {
    
    
    @RequestMapping(value="/validar/usuario",method = RequestMethod.POST)
-   public ResponseEntity<Data> validar(Model model, HttpServletRequest request) {
+   public ResponseEntity<ErrorService> validar(Model model, HttpServletRequest request) {
       this.log.info(" -- Ingresando al sistema");
       this.log.info(" -- Request: "+request.toString());
       this.log.info(" -- User: "+request.getParameter("user"));
@@ -52,30 +53,21 @@ public class LoginController {
           
           if(user.toLowerCase().trim().equals("gtrejo") && password.toLowerCase().trim().equals("gtrejo")){
               this.log.info(" -- Usuario correcto");
-              Data data = new Data();
-              data.setStatus("200");
-              return new ResponseEntity<Data>(data, HttpStatus.OK);
+              ErrorService data = new ErrorService();
+              data.setCodigo("200");
+              data.setMensaje("Hola Bienvenido Gustavo");
+              return new ResponseEntity<ErrorService>(data, HttpStatus.OK);
               
           }
       }
     this.log.info(" -- Usuario incorrecto");
-    Data data = new Data();
-    data.setStatus("404");
-    return new ResponseEntity<Data>(data, HttpStatus.NOT_FOUND);
+    ErrorService data = new ErrorService();
+    data.setCodigo("404");
+    data.setMensaje("No Registrado");
+    return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
    }
    
-   public static class Data{
-       private String status;
 
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-       
-   }
     
     
 }
