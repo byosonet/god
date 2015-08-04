@@ -2,6 +2,8 @@ package com.rest.services.god.persistence.dao;
 
 import com.rest.services.god.persistence.cp.HibernateUtil;
 import com.rest.services.god.persistence.hbm.Usuario;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -72,6 +74,27 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
                 .setParameter("email", email)
                 .setParameter("password", password)
                 .uniqueResult();
+    }
+
+    public void actualizarConexionUsuario(Usuario usuario) {
+         try {
+            iniciaOperacion();
+            if(usuario!=null){
+                Timestamp stamp = new Timestamp(System.currentTimeMillis());
+                this.log.info("-- Datetime::: "+stamp);
+                Date date = new Date(stamp.getTime());
+                this.log.info("-- Date::: "+date);
+                usuario.setUltConexion(date);
+                this.sesion.saveOrUpdate(usuario);
+                this.sesion.flush();
+                 tx.commit();
+            }
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+            throw he;
+        } finally {
+            sesion.close();
+        }
     }
     
 }

@@ -15,4 +15,5 @@ import java.util.List;
 public interface UsuarioService {
     List<Usuario> getListaUsuarios();
     Usuario validaUsuario(String email, String password);
+    void actulizarConexionUsuario(Usuario usuario);
 }

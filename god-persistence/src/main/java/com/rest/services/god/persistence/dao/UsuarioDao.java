@@ -15,4 +15,5 @@ import java.util.List;
 public interface UsuarioDao extends Dao<Object, Object>{
     List<Usuario> getUser();
     Usuario validaUsuario(String email, String password);
+    void actualizarConexionUsuario(Usuario usuario);
 }

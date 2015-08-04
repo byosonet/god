@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.rest.services.service;
 
 import com.rest.services.god.persistence.dao.UsuarioDao;
 import com.rest.services.god.persistence.hbm.Usuario;
-import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +42,13 @@ private UsuarioDao usuarioDao;
             this.log.info(" -- Usuario no fue localizado by: "+email);
         }
         return usuario;
+    }
+
+    @Transactional
+    public void actulizarConexionUsuario(Usuario usuario) {
+        this.log.info(" -- Actulizando la ult conexion del usuario: "+usuario.getNombre());
+        this.usuarioDao.actualizarConexionUsuario(usuario);
+        this.log.info(" -- Actualizacion correcta");
     }
     
 }

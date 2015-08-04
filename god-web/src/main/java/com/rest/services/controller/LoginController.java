@@ -57,6 +57,11 @@ public class LoginController {
               ErrorService data = new ErrorService();
               data.setCodigo("200");
               data.setMensaje("Hola Bienvenido: "+usuario.getNombre());
+              try {
+                  this.usuarioService.actulizarConexionUsuario(usuario);
+              } catch (Exception ex) {
+                  ex.printStackTrace();
+              }
               return new ResponseEntity<ErrorService>(data, HttpStatus.OK);
           }
       }
