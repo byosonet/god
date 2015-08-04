@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 27, 2012 8:58:30 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.rest.services.god.persistence.hbm.Usuario" table="USUARIO" schema="goddev">
+        <id name="idUsuario" type="integer">
+            <column name="ID_USUARIO" precision="15" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="200" />
+        </property>
+       
+        <property name="sexo" type="character">
+            <column name="SEXO"/>
+        </property>
+        
+        <property name="fechaAlta" type="timestamp">
+            <column name="FECHA_ALTA"/>
+        </property>
+        
+        <property name="ultConexion" type="timestamp">
+            <column name="ULT_CONEXION"/>
+        </property>
+        
+        <property name="notificaciones" type="string">
+            <column name="NOTIFICACIONES" length="2"/>
+        </property>
+        
+        <property name="email" type="string">
+            <column name="EMAIL" length="100"/>
+        </property>
+        
+        <property name="password" type="string">
+            <column name="PASSWORD" length="50"/>
+        </property>
+
+    </class>
+</hibernate-mapping>

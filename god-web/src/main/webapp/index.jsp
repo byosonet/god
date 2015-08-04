@@ -19,6 +19,18 @@
           var status;
           $('input#login').focus();
           $('input#acceder').click(function(){
+              
+              var email = $('input#login');
+              var password = $('input#password');
+              if(email.val() === ""){
+                  muestraMsjSistemaError('El email es requerido.');
+                  return false;
+              }else if(password.val() === ""){
+                  muestraMsjSistemaError('El password es requerido.');
+                  return false;
+              }
+              
+              
               $.ajax({
 	              type: 'POST',
 	              url: '${contextpath}'+'/validar/usuario',
@@ -53,7 +65,7 @@
         function muestraMsjSistemaError(msjStatus){
            BootstrapDialog.show({
             title: 'Mensaje del Sistema:',
-            message: 'Estado: '+msjStatus,
+            message: msjStatus,
             cssClass: 'login-dialog',
             buttons: [{
                 label: 'OK',
@@ -68,7 +80,7 @@
         function muestraMsjSistemaSuccess(msjStatus){
            BootstrapDialog.show({
             title: 'Mensaje del Sistema:',
-            message: 'Estado: '+msjStatus,
+            message: msjStatus,
             cssClass: 'login-dialog',
             buttons: [{
                 label: 'CONTINUAR',
@@ -90,7 +102,7 @@
       <h1>¡Solo a Dios la gloria!</h1>
       <form id="ingresar" method="post" action="${contextpath}/ingresar">
         <p><input type="text" name="user" id="login" value="" placeholder="email"></p>
-        <p><input type="password" name="password" value="" placeholder="password"></p>
+        <p><input type="password" name="password" id="password" value="" placeholder="password"></p>
         <p class="submit">
             <input id="registrar" type="button" name="registrar" value="Registrar">
             <input id="acceder" type="button" name="acceder" value="Acceder">

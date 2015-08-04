@@ -12,5 +12,9 @@
     <bean id="productoDao"
         class="com.rest.services.god.persistence.dao.ProductoDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
+    
+    <bean id="usuarioDao"
+        class="com.rest.services.god.persistence.dao.UsuarioDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
 
 </beans>

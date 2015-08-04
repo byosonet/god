@@ -18,6 +18,9 @@
     <bean id="listaEmpleadosService" 
           class="com.rest.services.service.ListaEmpleadosServiceImpl"/>
     
+    <bean id="usuarioService" 
+          class="com.rest.services.service.UsuarioServiceImpl"/>
+    
     <bean id="demoService" 
           class="com.rest.services.service.DemoServiceImpl"/>
     

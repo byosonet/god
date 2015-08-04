@@ -1,8 +1,11 @@
 package com.rest.services.controller;
 
+import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.model.ErrorService;
+import com.rest.services.service.UsuarioService;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,14 +30,11 @@ public class LoginController {
       if(request.getParameter("user")!=null && request.getParameter("password")!=null){
           String user = request.getParameter("user");
           String password = request.getParameter("password");
-          
-          if(user.toLowerCase().trim().equals("gtrejo") && password.toLowerCase().trim().equals("gtrejo")){
-              this.log.info(" -- Usuario correcto");
+          Usuario usuario = this.usuarioService.validaUsuario(user, password);
+          if(usuario!=null){
+              this.log.info(" -- Ingresando al sistema como: "+usuario.getNombre());
               return "ingresar";
-          }else{
-              this.log.info(" -- Usuario incorrecto");
           }
-          
       }
    return "invalido";
    }
@@ -51,23 +51,25 @@ public class LoginController {
           String user = request.getParameter("user");
           String password = request.getParameter("password");
           
-          if(user.toLowerCase().trim().equals("gtrejo") && password.toLowerCase().trim().equals("gtrejo")){
+          Usuario usuario = this.usuarioService.validaUsuario(user, password);
+          if(usuario!=null){
               this.log.info(" -- Usuario correcto");
               ErrorService data = new ErrorService();
               data.setCodigo("200");
-              data.setMensaje("Hola Bienvenido Gustavo");
+              data.setMensaje("Hola Bienvenido: "+usuario.getNombre());
               return new ResponseEntity<ErrorService>(data, HttpStatus.OK);
-              
           }
       }
+      
     this.log.info(" -- Usuario incorrecto");
     ErrorService data = new ErrorService();
     data.setCodigo("404");
-    data.setMensaje("No Registrado");
+    data.setMensaje("Usuario No Registrado");
     return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
    }
    
 
-    
+    @Autowired
+    UsuarioService usuarioService;
     
 }
