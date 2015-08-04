@@ -46,20 +46,10 @@
           });
           
           $('input#registrar').click(function(){
-          console.log('--Registrar');
-          /*
-              $.ajax({
-	              type: 'POST',
-	              url: '${contextpath}'+'/validar/usuario',
-	              data: $('form#ingresar').serialize(),
-	                  success: function (data) {
-                              $('form#ingresar').submit();
-	              },
-                         error: function(err){
-                              alert(" ¡Cuenta no válida!");
-                          }
-	        });
-                */
+                var urlAction = '${contextpath}' + '/registrar/usuario';
+		document.getElementById('ingresar').action = urlAction;
+                document.getElementById('ingresar').method = 'GET';
+		document.getElementById('ingresar').submit();
           });
 
         function muestraMsjSistemaError(msjStatus){

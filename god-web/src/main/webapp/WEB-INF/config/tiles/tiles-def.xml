@@ -24,7 +24,7 @@
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/listaHimnario.jsp"/>
 	</definition>
         -->
-        
+              
         <definition name="ingresar" template="/WEB-INF/views/jsp/listaHimnario.jsp">
 	</definition>
         

@@ -73,6 +73,10 @@ public class LoginController {
     return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
    }
    
+    @RequestMapping(value="/registrar/usuario", method = RequestMethod.GET)
+    public String registrarUsuario(){
+        return "registrar";
+    }
 
     @Autowired
     UsuarioService usuarioService;
