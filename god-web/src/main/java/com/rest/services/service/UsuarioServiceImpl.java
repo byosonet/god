@@ -50,5 +50,12 @@ private UsuarioDao usuarioDao;
         this.usuarioDao.actualizarConexionUsuario(usuario);
         this.log.info(" -- Actualizacion correcta");
     }
+
+    @Transactional
+    public int agregaUsuarioNuevo(Usuario usuario) {
+        this.log.info(" -- Agregar usuario a la BD");
+        int id = this.usuarioDao.agregarUsuario(usuario);
+        return id;
+    }
     
 }

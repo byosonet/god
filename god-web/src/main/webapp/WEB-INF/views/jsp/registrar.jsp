@@ -54,7 +54,10 @@
 			  return false;
 		}
 		$.blockUI();
-                console.log('--ok');
+                var urlAction = '${contextpath}' + '/usuario/nuevo';
+                    document.getElementById('formRegistrar').action = urlAction;
+                    document.getElementById('formRegistrar').method = 'POST';
+                    document.getElementById('formRegistrar').submit();
         });
         
         
@@ -91,12 +94,12 @@
         
         <p style="text-align: center;"> 
             Sexo: 
-            <input value="m" type="radio" name="masculino" id="masculino"> Masculino
-            <input value="f" type="radio" name="femenino" id="femenino"> Femenino
+            <input value="M" type="radio" name="sexo" id="masculino"> Masculino
+            <input value="F" type="radio" name="sexo" id="femenino"> Femenino
         </p>
         
         <p style="text-align: center;"> 
-            Deseo Recibir Notificaciones: <input type="checkbox" id="notificar" name="notificar">
+            Deseo Recibir Notificaciones: <input type="checkbox" id="notificar" name="notificar" value="SI">
         </p>
         
         <p class="submit">

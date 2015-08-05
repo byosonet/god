@@ -96,5 +96,28 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
             sesion.close();
         }
     }
+
+    public int agregarUsuario(Usuario usuario) {
+        try {
+            iniciaOperacion();
+            Number maximo = (Number) this.getSession().createQuery(
+                    "SELECT COUNT(*) "
+                    + "FROM Usuario")
+                    .uniqueResult();
+
+            long id = maximo == null ? 1 : maximo.longValue() + 1;
+            usuario.setIdUsuario(Integer.parseInt(String.valueOf(id)));
+            this.sesion.save(usuario);
+            this.sesion.flush();
+
+            tx.commit();
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+            throw he;
+        } finally {
+            sesion.close();
+        }
+        return usuario.getIdUsuario();
+    }
     
 }

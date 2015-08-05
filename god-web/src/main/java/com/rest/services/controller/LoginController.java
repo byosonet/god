@@ -3,6 +3,8 @@ package com.rest.services.controller;
 import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.model.ErrorService;
 import com.rest.services.service.UsuarioService;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +78,41 @@ public class LoginController {
     @RequestMapping(value="/registrar/usuario", method = RequestMethod.GET)
     public String registrarUsuario(){
         return "registrar";
+    }
+    
+    
+    @RequestMapping(value="/usuario/nuevo", method = RequestMethod.POST)
+    public String registrarUsuarionNuevo(HttpServletRequest request){
+        
+        String notificar = request.getParameter("notificar")!=null?request.getParameter("notificar"):"NO";
+        String nombre = request.getParameter("nombre");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        char sexo = request.getParameter("sexo").toCharArray()[0];
+        
+        this.log.info(" -- Agregand nuevo usuario:");
+        this.log.info(" -- Nombre: "+nombre);
+        this.log.info(" -- Email: "+email);
+        this.log.info(" -- Password: "+password);
+        this.log.info(" -- Sexo: "+sexo);
+        this.log.info(" -- Notificar: "+notificar);
+        
+        Timestamp stamp = new Timestamp(System.currentTimeMillis());
+        this.log.info("-- Fecha de Alta::: "+stamp);
+        Date fechaAlta = new Date(stamp.getTime());
+
+        Usuario usuario = new Usuario();
+        usuario.setNombre(nombre);
+        usuario.setEmail(email);
+        usuario.setSexo(sexo);
+        usuario.setPassword(password);
+        usuario.setFechaAlta(fechaAlta);
+        usuario.setUltConexion(fechaAlta);
+        usuario.setNotificaciones(notificar);
+
+        int id = this.usuarioService.agregaUsuarioNuevo(usuario);
+        this.log.info(" -- El usuario se agrego correctamente con el id: "+id);
+        return "ingresar";
     }
 
     @Autowired
