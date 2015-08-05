@@ -7,51 +7,75 @@
         <title>Registrar Usuario</title>
          <jsp:include page="../layout/staticResources.jsp"></jsp:include>
     <style>
-      .login-dialog .modal-dialog {
-          width: 350px;
-          margin-top: 175px;
-          margin-left: 490px;
-        }
+        .login-dialog .modal-dialog {
+            width: 350px;
+            margin-top: 175px;
+            margin-left: 490px;
+            margin-left: 525px;
+          }
     </style>
   
   <script type="text/javascript">
       $(function(){
-          $('input#nombre').focus();
-          /*
-           $("input#option").removeAttr('checked');
-	$('input#rfc').removeAttr('disabled');
-	$('input#numeroRegistroPatronal').removeAttr('disabled');
-	
-	$('#siguientePaso').click(function() {
-		var valor = $('input#option').filter(":checked").val();
-		if(valor == undefined){
-			  muestraMsgError();
+        $('input#masculino').click(function(){
+            $('input#femenino').attr('checked',false);
+        });
+
+        $('input#femenino').click(function(){
+            $('input#masculino').attr('checked',false);
+        });
+          
+          
+        $('input#nombre').focus();
+        $('input#registrar').click(function(){
+            
+                var nombre = $('input#nombre');
+                var email = $('input#email');
+                var passw = $('input#password');
+                var confPassword = $('input#confPassword');
+                if(nombre.val() === ""){
+                    nombre.focus();
+                    muestraMsjSistemaError('El nombre es requerido.');
+                    return false;
+                }else if(email.val() === ""){
+                    muestraMsjSistemaError('El email es requerido.');
+                    return false;
+                }else if(passw.val() === "" || confPassword.val() === ""){
+                    muestraMsjSistemaError('El password es requerido.');
+                    return false;
+                }else if(passw.val() != confPassword.val()){
+                    muestraMsjSistemaError('El password no coincide.');
+                    return false; 
+                }
+                var m = $('input#masculino').filter(":checked").val();
+                var f = $('input#femenino').filter(":checked").val();
+		if(m === undefined && f === undefined){
+			  muestraMsjSistemaError('El sexo es un campo requerido.');
 			  return false;
-		}else if(valor=='rfc'){
-			$rfc = $('input#rfc');
-			if ($rfc.val() == "") {
-				$rfc.focus();
-				$('span#errorDatoRFC').css('color','red');
-				$('span#errorDatoRFC').text('El rfc es requerido.');
-				return false;
-			}
-		}else if(valor=='nrp'){
-			$nrp = $('input#numeroRegistroPatronal');
-			if ($nrp.val() == "") {
-				$nrp.focus();
-				$('span#errorDatoNRP').css('color','red');
-				$('span#errorDatoNRP').text('Número registro patronal es requerido.');
-				return false;
-			}
 		}
-		$('span#errorDatoRFC').text('');
-		$('span#errorDatoNRP').text('');
 		$.blockUI();
-		var periodo = $('#anioPeriodo').val() + $('#mesPeriodo').val();
-		$('#periodo').val(periodo);
-		document.getElementById('busquedaComprobanteFiscalForm').submit();
-	});
-           */
+                console.log('--ok');
+        });
+        
+        
+        
+        function muestraMsjSistemaError(msjStatus){
+           BootstrapDialog.show({
+            title: 'Mensaje del Sistema:',
+            message: msjStatus,
+            cssClass: 'login-dialog',
+            buttons: [{
+                label: 'OK',
+                cssClass: 'btn-primary',
+                action: function(dialog) {
+                    dialog.close();
+                }
+            }]
+        });
+        }
+        
+        
+        
       });
   </script>
     </head>
@@ -67,8 +91,8 @@
         
         <p style="text-align: center;"> 
             Sexo: 
-            <input type="radio" name="masculino" id="masculino"> Masculino
-            <input type="radio" name="femenino" id="femenino"> Femenino
+            <input value="m" type="radio" name="masculino" id="masculino"> Masculino
+            <input value="f" type="radio" name="femenino" id="femenino"> Femenino
         </p>
         
         <p style="text-align: center;"> 

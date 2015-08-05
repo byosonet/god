@@ -12,6 +12,7 @@
           width: 350px;
           margin-top: 175px;
           margin-left: 490px;
+          margin-left: 525px;
         }
   </style>
   
@@ -31,22 +32,25 @@
                   return false;
               }
               
-              
+              $.blockUI();
               $.ajax({
 	              type: 'POST',
 	              url: '${contextpath}'+'/validar/usuario',
 	              data: $('form#ingresar').serialize(),
 	                  success: function (data) {
+                             $.unblockUI();
                              muestraMsjSistemaSuccess(data.mensaje);
 	              },
                          error: function(msj){
                              status = JSON.parse(msj.responseText);
+                             $.unblockUI();
                              muestraMsjSistemaError(status.mensaje);
                           }
 	        });
           });
           
           $('input#registrar').click(function(){
+                $.blockUI();
                 var urlAction = '${contextpath}' + '/registrar/usuario';
 		document.getElementById('ingresar').action = urlAction;
                 document.getElementById('ingresar').method = 'GET';
@@ -78,7 +82,11 @@
                 cssClass: 'btn-primary',
                 action: function(dialog) {
                     dialog.close();
-                    $('form#ingresar').submit();
+                    $.blockUI();
+                    var urlAction = '${contextpath}' + '/ingresar';
+                    document.getElementById('ingresar').action = urlAction;
+                    document.getElementById('ingresar').method = 'POST';
+                    document.getElementById('ingresar').submit();
                 }
             }]
         });
