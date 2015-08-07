@@ -23,9 +23,9 @@
     
     <bean id="demoService" 
           class="com.rest.services.service.DemoServiceImpl"/>
-    
+
     <!-- Adapters Externos-->
     <bean id="banxicoTipoCambioAdapter" 
           class="com.rest.services.god.banxico.adapter.BanxicoTipoCambioAdapterImpl"/>
-
+    
 </beans>

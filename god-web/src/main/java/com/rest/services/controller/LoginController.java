@@ -2,15 +2,18 @@ package com.rest.services.controller;
 
 import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.model.ErrorService;
+import com.rest.services.service.EmailSendService;
 import com.rest.services.service.UsuarioService;
 import java.sql.Timestamp;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -112,10 +115,20 @@ public class LoginController {
 
         int id = this.usuarioService.agregaUsuarioNuevo(usuario);
         this.log.info(" -- El usuario se agrego correctamente con el id: "+id);
+       try {
+           this.emailSendService.sendEmailRegister(usuario.getEmail(), "gtrejo.armenta@gmail.com", usuario.getNombre(), null);
+           this.log.info(" -- Enviado");
+       } catch (Exception ex) {
+           this.log.info(" -- No se puedo enviar el correo: "+ex);
+           ex.printStackTrace();
+       }
         return "ingresar";
     }
 
     @Autowired
     UsuarioService usuarioService;
+    
+    @Autowired
+    EmailSendService emailSendService;
     
 }
