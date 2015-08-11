@@ -95,7 +95,7 @@
   </script>
   
 </head>
-<body style="background: lightslategrey;">
+<body style="background-image: url(/god-web/static/resources/img/fondo.gif)">
     <div>
     <div class="login" style="margin-top: 150px;">
       <h1>¡Solo a Dios la gloria!</h1>

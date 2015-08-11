@@ -29,7 +29,7 @@
             );
     </script>
     </head>
-    <body>
+    <body style="background-image: url(/god-web/static/resources/img/fondo.gif)">
         <table id="example" class="display" cellspacing="0" width="40%" style="font-size: 12px;">
         <thead>
             <tr>
