@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface CoroDao extends Dao<Object, Object>{
     List<Coro> obtenerListaCoro();
+    Coro obtenerCoro(String idCoro);
 }

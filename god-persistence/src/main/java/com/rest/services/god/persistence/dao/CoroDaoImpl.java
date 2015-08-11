@@ -27,6 +27,16 @@ public class CoroDaoImpl extends HibernateDaoSupport implements CoroDao{
                 .createQuery("FROM Coro c " + "ORDER BY c.idCoro ASC").list();
     }
 
+    public Coro obtenerCoro(String idCoro) {
+        this.log.info(" -- Buscando por coro por id ::"+idCoro);
+        int coro = Integer.valueOf(idCoro);
+        return (Coro) this
+                .getSession()
+                .createQuery("FROM Coro c WHERE c.idCoro = :id")
+                .setParameter("id", coro)
+                .uniqueResult();
+    }
+    
     public Object findByKey(Object llave) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

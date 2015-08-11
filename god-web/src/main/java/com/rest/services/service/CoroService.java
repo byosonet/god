@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface CoroService {
     List<Coro> obtenerListaCoro();
+    Coro obtenerCoro(String idCoro);
 }

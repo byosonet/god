@@ -1,6 +1,8 @@
 package com.rest.services.controller;
 
+import com.rest.services.god.persistence.hbm.Coro;
 import com.rest.services.service.CoroService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +20,10 @@ public class ListaHimnarioController {
    public String obtenerListaHimnario(Model model) {
        
        try{
-           this.coroService.obtenerListaCoro();
+           List<Coro> coros = this.coroService.obtenerListaCoro();
+           if(coros!=null && coros.size()>0){
+               model.addAttribute("coros", coros);
+           }
        }catch(Exception ex){
            ex.printStackTrace();
        }

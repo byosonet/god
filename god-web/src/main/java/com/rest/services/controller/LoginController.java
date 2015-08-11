@@ -1,11 +1,14 @@
 package com.rest.services.controller;
 
+import com.rest.services.god.persistence.hbm.Coro;
 import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.model.ErrorService;
+import com.rest.services.service.CoroService;
 import com.rest.services.service.EmailSendService;
 import com.rest.services.service.UsuarioService;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +41,16 @@ public class LoginController {
           Usuario usuario = this.usuarioService.validaUsuario(user, password);
           if(usuario!=null){
               this.log.info(" -- Ingresando al sistema como: "+usuario.getNombre());
-              return "ingresar";
+              //return "ingresar";
+              try {
+                  List<Coro> coros = this.coroService.obtenerListaCoro();
+                  if (coros != null && coros.size() > 0) {
+                      model.addAttribute("coros", coros);
+                  }
+              } catch (Exception ex) {
+                  ex.printStackTrace();
+              }
+              return "listaHimnario";
           }
       }
    return "invalido";
@@ -85,7 +97,7 @@ public class LoginController {
     
     
     @RequestMapping(value="/usuario/nuevo", method = RequestMethod.POST)
-    public String registrarUsuarionNuevo(HttpServletRequest request){
+    public String registrarUsuarionNuevo(HttpServletRequest request, Model model){
         
         String notificar = request.getParameter("notificar")!=null?request.getParameter("notificar"):"NO";
         String nombre = request.getParameter("nombre").toUpperCase();
@@ -122,7 +134,16 @@ public class LoginController {
            this.log.info(" -- No se puedo enviar el correo: "+ex);
            ex.printStackTrace();
        }
-        return "ingresar";
+        //return "ingresar";
+        try {
+            List<Coro> coros = this.coroService.obtenerListaCoro();
+            if (coros != null && coros.size() > 0) {
+                model.addAttribute("coros", coros);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+      return "listaHimnario";
     }
 
     @Autowired
@@ -130,5 +151,8 @@ public class LoginController {
     
     @Autowired
     EmailSendService emailSendService;
+    
+    @Autowired
+    private CoroService coroService;
     
 }

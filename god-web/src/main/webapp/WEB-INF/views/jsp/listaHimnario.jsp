@@ -30,90 +30,25 @@
     </script>
     </head>
     <body style="background-image: url(/god-web/static/resources/img/fondo.gif)">
-        <table id="example" class="display" cellspacing="0" width="40%" style="font-size: 12px;">
+        <table id="example" class="display" cellspacing="0" width="100%" style="font-size: 12px;">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Coro</th>
+                <th style="text-align: center">ID</th>
+                <th style="text-align: center">NOMBRE</th>
+                <th style="text-align: center">AUTOR</th>
+                <th style="text-align: center">FECHA ACT.</th>
             </tr>
         </thead>
  
         <tbody style="text-align: center;">
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
-            <tr>
-                <td>521</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Feliz Cumpleaños</a></td>
-            </tr>
-            
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
-            <tr>
-                <td>520</td>
-                <td><a href="http://localhost:8084/god-web/coro/520">Hay Momentos</a></td>
-            </tr>
-            
+            <c:forEach items="${coros}" var="coro" varStatus="indice">
+               <tr>
+                <td>${coro.idCoro}</td>
+                <td><a href="http://localhost:8084/god-web/coro/${coro.idCoro}">${coro.nombre}</a></td>
+                <td>${coro.autor}</td>
+                <td>${coro.fechaAct}</td>
+                </tr>    
+            </c:forEach>
         </tbody>
     </table>
     </body>

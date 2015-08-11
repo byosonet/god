@@ -32,26 +32,27 @@ public class CoroServiceImpl implements CoroService{
        if(coros!=null && coros.size()>0){
            for(Coro c : coros){
                try {
-                   this.log.info(" -- idCoro: "+c.getIdCoro()+" Nombre: "+c.getNombre()+" Descripcion: "+this.readClob(c.getDescripcion()));
+                   this.log.info(" -- idCoro: "+c.getIdCoro()+" Nombre: "+c.getNombre()+" Descripcion: "+c.getDataClob(c.getDescripcion()));
                } catch (Exception ex) {
                    ex.printStackTrace();
                }
            }
        }
-       
        return coros;
     }
-    
-    public String readClob(Clob clob) throws SQLException, IOException {
-    StringBuilder sb = new StringBuilder((int) clob.length());
-    Reader r = clob.getCharacterStream();
-    char[] cbuf = new char[2048];
-    int n;
-    while ((n = r.read(cbuf, 0, cbuf.length)) != -1) {
-        sb.append(cbuf, 0, n);
+
+    @Transactional
+    public Coro obtenerCoro(String idCoro) {
+        this.log.info(" -- Obteniendo Coro");
+        Coro coro = this.coroDao.obtenerCoro(idCoro);
+        if(coro!=null){
+            this.log.info(" -- Coro encontrado: "+coro.getNombre());
+            return coro;
+        }
+        return coro;
     }
-    return sb.toString();
-}
+    
+    
     
     @Autowired
     private CoroDao coroDao;
