@@ -88,7 +88,7 @@ public class LoginController {
     public String registrarUsuarionNuevo(HttpServletRequest request){
         
         String notificar = request.getParameter("notificar")!=null?request.getParameter("notificar"):"NO";
-        String nombre = request.getParameter("nombre");
+        String nombre = request.getParameter("nombre").toUpperCase();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         char sexo = request.getParameter("sexo").toCharArray()[0];
