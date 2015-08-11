@@ -23,6 +23,9 @@
     
     <bean id="demoService" 
           class="com.rest.services.service.DemoServiceImpl"/>
+    
+    <bean id="coroService" 
+          class="com.rest.services.service.CoroServiceImpl"/>
 
     <!-- Adapters Externos-->
     <bean id="banxicoTipoCambioAdapter" 

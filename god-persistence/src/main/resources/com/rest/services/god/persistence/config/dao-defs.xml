@@ -16,5 +16,9 @@
     <bean id="usuarioDao"
         class="com.rest.services.god.persistence.dao.UsuarioDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
+    
+    <bean id="coroDao"
+        class="com.rest.services.god.persistence.dao.CoroDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
 
 </beans>
