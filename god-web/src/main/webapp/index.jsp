@@ -54,6 +54,7 @@
 
         function muestraMsjSistemaError(msjStatus){
            BootstrapDialog.show({
+            size: BootstrapDialog.SIZE_LARGE,
             title: 'Mensaje del Sistema:',
             message: msjStatus,
             type: BootstrapDialog.TYPE_DANGER,
@@ -70,6 +71,7 @@
         
         function muestraMsjSistemaSuccess(msjStatus){
            BootstrapDialog.show({
+            size: BootstrapDialog.SIZE_LARGE,
             title: 'Mensaje del Sistema:',
             message: msjStatus,
             type: BootstrapDialog.TYPE_SUCCESS,
