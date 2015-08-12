@@ -41,7 +41,6 @@ public class LoginController {
           Usuario usuario = this.usuarioService.validaUsuario(user, password);
           if(usuario!=null){
               this.log.info(" -- Ingresando al sistema como: "+usuario.getNombre());
-              //return "ingresar";
               try {
                   List<Coro> coros = this.coroService.obtenerListaCoro();
                   if (coros != null && coros.size() > 0) {

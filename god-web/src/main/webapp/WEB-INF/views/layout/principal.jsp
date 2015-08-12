@@ -6,8 +6,17 @@
 <jsp:include page="staticResources.jsp"></jsp:include>
 </head>
 <body style="background-image: url(/god-web/static/resources/img/fondo.gif)">
+    
     <div id="cuerpo">
-	<tiles:insertAttribute name="contenido" />
+        <div id="header">
+            <tiles:insertAttribute name="header" />
+        </div>
+        <div id="contenido">
+            <tiles:insertAttribute name="contenido" />
+        </div>
+        <div id="footer">
+            <tiles:insertAttribute name="footer" />
+        </div>
     </div>
 </body>
 </html>

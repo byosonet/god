@@ -4,7 +4,9 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
 	<definition name="principal" template="/WEB-INF/views/layout/principal.jsp">
-		<put-attribute name="title" value="Bienvenido a God"/>
+            <put-attribute name="title" value="Bienvenido a God"/>
+            <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+            <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
 	</definition>
 	
 	<definition name="example" extends="principal">
@@ -16,16 +18,11 @@
 	</definition>
         
         <definition name="detalle" extends="principal">
-		<put-attribute name="contenido" value="/WEB-INF/views/jsp/coro/detalle.jsp"/>
+            <put-attribute name="contenido" value="/WEB-INF/views/jsp/coro/detalle.jsp"/>
 	</definition>
         
-        <!--
-        <definition name="ingresar">
+        <definition name="listaHimnario" extends="principal">
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/listaHimnario.jsp"/>
-	</definition>
-        -->
-              
-        <definition name="ingresar" template="/WEB-INF/views/jsp/listaHimnario.jsp">
 	</definition>
         
 </tiles-definitions>
