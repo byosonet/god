@@ -44,9 +44,11 @@
             <c:forEach items="${coros}" var="coro" varStatus="indice">
                <tr>
                 <td>${coro.idCoro}</td>
-                <td><a href="http://localhost:8084/god-web/coro/${coro.idCoro}">${coro.nombre}</a></td>
+                <td><a href="http://<spring:message code="url.href.server"/>/god-web/coro/${coro.idCoro}">${coro.nombre}</a></td>
                 <td>${coro.autor}</td>
-                <td>${coro.fechaAct}</td>
+                <td>
+                    <fmt:formatDate value="${coro.fechaAct}" pattern="dd/MM/yyyy HH:mm:ss" />
+                </td>
                 </tr>    
             </c:forEach>
         </tbody>

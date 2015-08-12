@@ -7,12 +7,7 @@
         <title>Registrar Usuario</title>
          <jsp:include page="../layout/staticResources.jsp"></jsp:include>
     <style>
-        .login-dialog .modal-dialog {
-            width: 350px;
-            margin-top: 175px;
-            margin-left: 490px;
-            margin-left: 525px;
-          }
+
     </style>
   
   <script type="text/javascript">
@@ -84,7 +79,7 @@
     </head>
     <body style="background-image: url(/god-web/static/resources/img/fondo.gif)">
         <div>
-    <div class="login" style="margin-top: 150px;">
+    <div class="login" style="margin-top: 50px;">
       <h1>Registro de Usuario</h1>
       <form id="formRegistrar" method="post" action="${contextpath}/registrar">
         <p><input type="text" name="nombre" id="nombre" value="" placeholder="Nombre Completo" style="margin-left: -3px;"></p>

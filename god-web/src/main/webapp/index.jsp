@@ -8,12 +8,7 @@
   <title>Bienvenido</title>
   <jsp:include page="./WEB-INF/views/layout/staticResources.jsp"></jsp:include>
   <style>
-      .login-dialog .modal-dialog {
-          width: 350px;
-          margin-top: 175px;
-          margin-left: 490px;
-          margin-left: 525px;
-        }
+      
   </style>
   
   <script type="text/javascript">
@@ -97,7 +92,7 @@
 </head>
 <body style="background-image: url(/god-web/static/resources/img/fondo.gif)">
     <div>
-    <div class="login" style="margin-top: 150px;">
+    <div class="login" style="margin-top: 50px;">
       <h1>¡Solo a Dios la gloria!</h1>
       <form id="ingresar" method="post" action="${contextpath}/ingresar">
         <p><input type="text" name="user" id="login" value="" placeholder="email" style="margin-left: -3px;"></p>
