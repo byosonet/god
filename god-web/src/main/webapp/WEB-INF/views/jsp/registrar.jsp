@@ -12,6 +12,7 @@
   
   <script type="text/javascript">
       $(function(){
+        var status;
         $('input#masculino').click(function(){
             $('input#femenino').attr('checked',false);
         });
@@ -49,10 +50,20 @@
 			  return false;
 		}
 		$.blockUI();
-                var urlAction = '${contextpath}' + '/usuario/nuevo';
-                    document.getElementById('formRegistrar').action = urlAction;
-                    document.getElementById('formRegistrar').method = 'POST';
-                    document.getElementById('formRegistrar').submit();
+                $.ajax({
+	              type: 'POST',
+	              url: '${contextpath}'+'/usuario/nuevo',
+	              data: $('form#formRegistrar').serialize(),
+	                  success: function (data) {
+                             $.unblockUI();
+                             muestraMsjSistemaSuccess(data.mensaje);
+	              },
+                         error: function(msj){
+                             status = JSON.parse(msj.responseText);
+                             $.unblockUI();
+                             muestraMsjSistemaError(status.mensaje);
+                          }
+	        });
         });
         
         
@@ -60,13 +71,35 @@
         function muestraMsjSistemaError(msjStatus){
            BootstrapDialog.show({
             title: 'Mensaje del Sistema:',
-            message: msjStatus,
+            message: '<strong>'+msjStatus+'</strong>',
+            type: BootstrapDialog.TYPE_DANGER,
             cssClass: 'login-dialog',
             buttons: [{
                 label: 'OK',
                 cssClass: 'btn-primary',
                 action: function(dialog) {
                     dialog.close();
+                }
+            }]
+        });
+        }
+        
+        function muestraMsjSistemaSuccess(msjStatus){
+           BootstrapDialog.show({
+            title: 'Mensaje del Sistema:',
+            message: '<strong>'+msjStatus+'</strong>',
+            type: BootstrapDialog.TYPE_SUCCESS,
+            cssClass: 'login-dialog',
+            buttons: [{
+                label: 'CONTINUAR',
+                cssClass: 'btn-primary',
+                action: function(dialog) {
+                    dialog.close();
+                    $.blockUI();
+                    var urlAction = '${contextpath}' + '/lista/obtener';
+                    document.getElementById('ingresar').action = urlAction;
+                    document.getElementById('ingresar').method = 'GET';
+                    document.getElementById('ingresar').submit();
                 }
             }]
         });
@@ -102,6 +135,8 @@
             <input id="registrar" type="button" name="registrar" value="Registrar">
         </p>
       </form>
+        
+        <form id="ingresar"></form>
     </div>
     </div>
     </body>

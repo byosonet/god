@@ -86,7 +86,7 @@ public class LoginController {
     this.log.info(" -- Usuario incorrecto");
     ErrorService data = new ErrorService();
     data.setCodigo("404");
-    data.setMensaje("Usuario No Registrado");
+    data.setMensaje("Esta email y password no ha sido registrado: "+request.getParameter("user"));
     return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
    }
    
@@ -97,53 +97,57 @@ public class LoginController {
     
     
     @RequestMapping(value="/usuario/nuevo", method = RequestMethod.POST)
-    public String registrarUsuarionNuevo(HttpServletRequest request, Model model){
+    public ResponseEntity<ErrorService> registrarUsuarionNuevo(HttpServletRequest request, Model model){
         
         String notificar = request.getParameter("notificar")!=null?request.getParameter("notificar"):"NO";
         String nombre = request.getParameter("nombre").toUpperCase();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         char sexo = request.getParameter("sexo").toCharArray()[0];
-        
-        this.log.info(" -- Agregand nuevo usuario:");
-        this.log.info(" -- Nombre: "+nombre);
-        this.log.info(" -- Email: "+email);
-        this.log.info(" -- Password: "+password);
-        this.log.info(" -- Sexo: "+sexo);
-        this.log.info(" -- Notificar: "+notificar);
-        
-        Timestamp stamp = new Timestamp(System.currentTimeMillis());
-        this.log.info("-- Fecha de Alta::: "+stamp);
-        Date fechaAlta = new Date(stamp.getTime());
+        Usuario user = this.usuarioService.validaEmailSistema(email);
+        if(user == null){
+            this.log.info(" -- Agregand nuevo usuario:");
+            this.log.info(" -- Nombre: "+nombre);
+            this.log.info(" -- Email: "+email);
+            this.log.info(" -- Password: "+password);
+            this.log.info(" -- Sexo: "+sexo);
+            this.log.info(" -- Notificar: "+notificar);
 
-        Usuario usuario = new Usuario();
-        usuario.setNombre(nombre);
-        usuario.setEmail(email);
-        usuario.setSexo(sexo);
-        usuario.setPassword(password);
-        usuario.setFechaAlta(fechaAlta);
-        usuario.setUltConexion(fechaAlta);
-        usuario.setNotificaciones(notificar);
+            Timestamp stamp = new Timestamp(System.currentTimeMillis());
+            this.log.info("-- Fecha de Alta::: "+stamp);
+            Date fechaAlta = new Date(stamp.getTime());
 
-        int id = this.usuarioService.agregaUsuarioNuevo(usuario);
-        this.log.info(" -- El usuario se agrego correctamente con el id: "+id);
-       try {
-           this.emailSendService.sendEmailRegister(usuario.getEmail(), "gtrejo.armenta@gmail.com", usuario.getNombre(), null);
-           this.log.info(" -- Enviado");
-       } catch (Exception ex) {
-           this.log.info(" -- No se puedo enviar el correo: "+ex);
-           ex.printStackTrace();
-       }
-        //return "ingresar";
-        try {
-            List<Coro> coros = this.coroService.obtenerListaCoro();
-            if (coros != null && coros.size() > 0) {
-                model.addAttribute("coros", coros);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            Usuario usuario = new Usuario();
+            usuario.setNombre(nombre);
+            usuario.setEmail(email);
+            usuario.setSexo(sexo);
+            usuario.setPassword(password);
+            usuario.setFechaAlta(fechaAlta);
+            usuario.setUltConexion(fechaAlta);
+            usuario.setNotificaciones(notificar);
+
+            int id = this.usuarioService.agregaUsuarioNuevo(usuario);
+            this.log.info(" -- El usuario se agrego correctamente con el id: "+id);
+           try {
+               this.emailSendService.sendEmailRegister(usuario.getEmail(), "gtrejo.armenta@gmail.com", usuario.getNombre(), null);
+               this.log.info(" -- Enviado");
+               
+                this.log.info(" -- Usuario correcto");
+                ErrorService data = new ErrorService();
+                data.setCodigo("200");
+                data.setMensaje("El email: "+usuario.getEmail()+" ha sido registrado.");
+                return new ResponseEntity<ErrorService>(data, HttpStatus.OK);
+               
+           } catch (Exception ex) {
+               this.log.info(" -- No se puedo enviar el correo: "+ex);
+               ex.printStackTrace();
+           }
         }
-      return "listaHimnario";
+        this.log.info(" -- Usuario ya se encuentra en sistema registrado");
+        ErrorService data = new ErrorService();
+        data.setCodigo("404");
+        data.setMensaje("Este email ya ha sido registrado con anterioridad: "+email);
+        return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
     }
 
     @Autowired

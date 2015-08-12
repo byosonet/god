@@ -17,4 +17,5 @@ public interface UsuarioDao extends Dao<Object, Object>{
     Usuario validaUsuario(String email, String password);
     void actualizarConexionUsuario(Usuario usuario);
     int agregarUsuario(Usuario usuario);
+    Usuario validaEmailSistema(String email);
 }

@@ -56,6 +56,7 @@
            BootstrapDialog.show({
             title: 'Mensaje del Sistema:',
             message: msjStatus,
+            type: BootstrapDialog.TYPE_DANGER,
             cssClass: 'login-dialog',
             buttons: [{
                 label: 'OK',
@@ -71,6 +72,7 @@
            BootstrapDialog.show({
             title: 'Mensaje del Sistema:',
             message: msjStatus,
+            type: BootstrapDialog.TYPE_SUCCESS,
             cssClass: 'login-dialog',
             buttons: [{
                 label: 'CONTINUAR',

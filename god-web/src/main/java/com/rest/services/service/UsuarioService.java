@@ -17,4 +17,5 @@ public interface UsuarioService {
     Usuario validaUsuario(String email, String password);
     void actulizarConexionUsuario(Usuario usuario);
     int agregaUsuarioNuevo(Usuario usuario);
+    Usuario validaEmailSistema(String email);
 }

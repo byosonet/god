@@ -57,5 +57,12 @@ private UsuarioDao usuarioDao;
         int id = this.usuarioDao.agregarUsuario(usuario);
         return id;
     }
-    
+
+    @Transactional
+    public Usuario validaEmailSistema(String email) {
+        this.log.info(" -- Validando email en sistema: "+email);
+        Usuario user = this.usuarioDao.validaEmailSistema(email);
+        return user;
+    }
+
 }
