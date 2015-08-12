@@ -5,6 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registrar Usuario</title>
+        <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/style.css">
          <jsp:include page="../layout/staticResources.jsp"></jsp:include>
     <style>
 

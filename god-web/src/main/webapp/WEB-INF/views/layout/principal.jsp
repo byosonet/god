@@ -5,8 +5,7 @@
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 <jsp:include page="staticResources.jsp"></jsp:include>
 </head>
-<body style="background-image: url(/god-web/static/resources/img/fondo.gif)">
-    
+<body>
     <div id="cuerpo">
         <div id="header">
             <tiles:insertAttribute name="header" />

@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Bienvenido</title>
+  <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/style.css">
   <jsp:include page="./WEB-INF/views/layout/staticResources.jsp"></jsp:include>
   <style>
       
