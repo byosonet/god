@@ -60,6 +60,7 @@
             type: BootstrapDialog.TYPE_DANGER,
             cssClass: 'login-dialog',
             buttons: [{
+                icon: 'glyphicon glyphicon-check',
                 label: 'OK',
                 cssClass: 'btn-primary',
                 action: function(dialog) {
@@ -77,6 +78,7 @@
             type: BootstrapDialog.TYPE_SUCCESS,
             cssClass: 'login-dialog',
             buttons: [{
+                icon: 'glyphicon glyphicon-check',
                 label: 'CONTINUAR',
                 cssClass: 'btn-primary',
                 action: function(dialog) {
