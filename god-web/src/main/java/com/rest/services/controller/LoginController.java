@@ -42,9 +42,12 @@ public class LoginController {
           if(usuario!=null){
               this.log.info(" -- Ingresando al sistema como: "+usuario.getNombre());
               try {
-                  List<Coro> coros = this.coroService.obtenerListaCoro();
-                  if (coros != null && coros.size() > 0) {
-                      model.addAttribute("coros", coros);
+                  List<Coro> corosActualizados = this.coroService.obtenerListaCoroActualizada();
+                  List<Coro> corosCompletos = this.coroService.obtenerListaCoroCompleta();
+                  if (corosActualizados != null && corosActualizados.size() > 0) {
+                      model.addAttribute("coros", corosActualizados);
+                      model.addAttribute("corosCompletos", corosCompletos);
+                      model.addAttribute("usuario", usuario.getNombre());
                   }
               } catch (Exception ex) {
                   ex.printStackTrace();

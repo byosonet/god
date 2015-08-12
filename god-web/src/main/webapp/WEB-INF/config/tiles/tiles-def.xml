@@ -21,6 +21,10 @@
             <put-attribute name="contenido" value="/WEB-INF/views/jsp/coro/detalle.jsp"/>
 	</definition>
         
+        <definition name="registrar" extends="principal">
+            <put-attribute name="contenido" value="/WEB-INF/views/jsp/registrar.jsp"/>
+	</definition>
+        
         <definition name="listaHimnario" extends="principal">
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/listaHimnario.jsp"/>
 	</definition>

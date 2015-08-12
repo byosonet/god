@@ -13,6 +13,8 @@
         <div id="contenido">
             <tiles:insertAttribute name="contenido" />
         </div>
+        <br>
+        <br>
         <div id="footer">
             <tiles:insertAttribute name="footer" />
         </div>

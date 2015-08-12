@@ -25,10 +25,10 @@ public class CoroServiceImpl implements CoroService{
     private final Logger log = Logger.getLogger(CoroServiceImpl.class);
 
     @Transactional
-    public List<Coro> obtenerListaCoro() {
-       this.log.info(" -- Obteniendo Lista de Coros:::");
+    public List<Coro> obtenerListaCoroActualizada() {
+       this.log.info(" -- Obteniendo Lista de Coros por fechas:::");
        
-       List<Coro> coros = this.coroDao.obtenerListaCoro();
+       List<Coro> coros = this.coroDao.obtenerListaCoroActualizada();
        if(coros!=null && coros.size()>0){
            for(Coro c : coros){
                try {
@@ -40,6 +40,25 @@ public class CoroServiceImpl implements CoroService{
        }
        return coros;
     }
+
+    @Transactional
+    public List<Coro> obtenerListaCoroCompleta() {
+       this.log.info(" -- Obteniendo Lista de Coros completa :::");
+       
+       List<Coro> coros = this.coroDao.obtenerListacCompletaCoro();
+       if(coros!=null && coros.size()>0){
+           for(Coro c : coros){
+               try {
+                   this.log.info(" -- idCoro: "+c.getIdCoro()+" Nombre: "+c.getNombre()+" Descripcion: "+c.getDataClob(c.getDescripcion()));
+               } catch (Exception ex) {
+                   ex.printStackTrace();
+               }
+           }
+       }
+       return coros;
+    }
+    
+    
 
     @Transactional
     public Coro obtenerCoro(String idCoro) {

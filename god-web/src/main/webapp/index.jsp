@@ -98,6 +98,13 @@
   
 </head>
 <body style="background-image: url(/god-web/static/resources/img/fondo.gif)">
+     <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">GOD WEB</a>
+            </div>
+          </div>
+        </nav>
     <div>
     <div class="login" style="margin-top: 50px;">
       <h1>¡Solo a Dios la gloria!</h1>
@@ -114,5 +121,12 @@
       <p>¿Olvide mi contraseña? <a href="${contextpath}/password/recuperar">Recuperar contraseña</a>.</p>
     </div>
     </div>
+ <nav class="navbar navbar-inverse navbar-fixed-bottom">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#"></a>
+            </div>
+          </div>
+</nav>
 </body>
 </html>

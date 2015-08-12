@@ -50,6 +50,8 @@
 			  muestraMsjSistemaError('El sexo es un campo requerido.');
 			  return false;
 		}
+                $('input#idEmail').val(email.val());
+                $('input#idPassword').val(passw.val());
 		$.blockUI();
                 $.ajax({
 	              type: 'POST',
@@ -103,7 +105,7 @@
                     $.blockUI();
                     var urlAction = '${contextpath}' + '/lista/obtener';
                     document.getElementById('ingresar').action = urlAction;
-                    document.getElementById('ingresar').method = 'GET';
+                    document.getElementById('ingresar').method = 'POST';
                     document.getElementById('ingresar').submit();
                 }
             }]
@@ -141,7 +143,10 @@
         </p>
       </form>
         
-        <form id="ingresar"></form>
+        <form id="ingresar">
+            <input type="hidden" id="idEmail" name="idEmail" value=""/>
+            <input type="hidden" id="idPassword" name="idPassword" value=""/>
+        </form>
     </div>
     </div>
     </body>

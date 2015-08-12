@@ -13,6 +13,7 @@ import java.util.List;
  * @author User
  */
 public interface CoroService {
-    List<Coro> obtenerListaCoro();
+    List<Coro> obtenerListaCoroActualizada();
+    List<Coro> obtenerListaCoroCompleta();
     Coro obtenerCoro(String idCoro);
 }

@@ -13,6 +13,7 @@ import java.util.List;
  * @author User
  */
 public interface CoroDao extends Dao<Object, Object>{
-    List<Coro> obtenerListaCoro();
+    List<Coro> obtenerListaCoroActualizada();
+    List<Coro> obtenerListacCompletaCoro();
     Coro obtenerCoro(String idCoro);
 }

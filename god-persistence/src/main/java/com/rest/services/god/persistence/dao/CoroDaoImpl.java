@@ -20,13 +20,23 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  */
 public class CoroDaoImpl extends HibernateDaoSupport implements CoroDao{
     private final Logger log = Logger.getLogger(CoroDaoImpl.class);
-    public List<Coro> obtenerListaCoro() {
+    public List<Coro> obtenerListaCoroActualizada() {
+        this.log.info(" -- Buscando por lista de coros por fecha::");
+        return (List<Coro>) this
+                .getSession()
+                .createQuery("FROM Coro c " + "ORDER BY c.fechaAct DESC")
+                .setMaxResults(2)
+                .list();
+    }
+
+    public List<Coro> obtenerListacCompletaCoro() {
         this.log.info(" -- Buscando por lista de coros::");
         return (List<Coro>) this
                 .getSession()
-                .createQuery("FROM Coro c " + "ORDER BY c.idCoro ASC").list();
+                .createQuery("FROM Coro c " + "ORDER BY c.nombre ASC")
+                .list();
     }
-
+    
     public Coro obtenerCoro(String idCoro) {
         this.log.info(" -- Buscando por coro por id ::"+idCoro);
         int coro = Integer.valueOf(idCoro);
