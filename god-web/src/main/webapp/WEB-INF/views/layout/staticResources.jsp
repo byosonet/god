@@ -2,6 +2,7 @@
 <c:set var="contextpath" value="<%=request.getContextPath()%>"/>
 
 <link rel="shortcut icon" href="${contextpath}/static/resources/img/favicon.ico">
+<!--<link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/demo_table_jui.css">-->
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/dashboard.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/bootstrap-dialog.css">

@@ -58,6 +58,11 @@ public class LoginController {
    return "invalido";
    }
    
+   @RequestMapping(value="/ingresar",method = RequestMethod.GET)
+   public String ingresarGET(Model model, HttpServletRequest request) {
+      return "forbidden";
+   }
+   
    
    @RequestMapping(value="/validar/usuario",method = RequestMethod.POST)
    public ResponseEntity<ErrorService> validar(Model model, HttpServletRequest request) {

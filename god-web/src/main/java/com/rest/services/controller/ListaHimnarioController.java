@@ -45,6 +45,10 @@ public class ListaHimnarioController {
       return "listaHimnario";
    }
    
+   @RequestMapping(value="/obtener",method = RequestMethod.GET)
+   public String ingresarGET(Model model, HttpServletRequest request) {
+      return "forbidden";
+   }
    
    @Autowired
    private CoroService coroService;

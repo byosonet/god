@@ -101,7 +101,7 @@
      <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#">GOD WEB</a>
+              <a class="navbar-brand" href="#" style="color:white;">GOD WEB</a>
             </div>
           </div>
         </nav>
@@ -121,10 +121,10 @@
       <p>¿Olvide mi contraseña? <a href="${contextpath}/password/recuperar">Recuperar contraseña</a>.</p>
     </div>
     </div>
- <nav class="navbar navbar-inverse navbar-fixed-bottom">
+  <nav class="navbar navbar-inverse navbar-fixed-bottom">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#"></a>
+              <a class="navbar-brand" href="#" style="font-size: 0.75em;color:white;">Developer: by Ulysses Mac</a>
             </div>
           </div>
 </nav>

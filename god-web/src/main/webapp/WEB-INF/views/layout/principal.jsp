@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title><tiles:insertAttribute name="title" ignore="true" /></title>
+<title><tiles:insertAttribute name="title"/></title>
 <jsp:include page="staticResources.jsp"></jsp:include>
 </head>
 <body>
