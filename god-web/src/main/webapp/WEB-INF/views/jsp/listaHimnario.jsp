@@ -18,28 +18,9 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-          </ul>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Bienvenido: <c:out value="${usuario}"/></h1>
+        
+        <div class="col-sm-12 col-sm-offset-3 col-md-8 col-md-offset-2 main">
+          <center><h2 class="page-header">HOLA BIENVENIDO: <c:out value="${usuario}"/></h2></center>
 
           <div class="row placeholders">
             <div class="col-xs-12 col-sm-3 placeholder">
@@ -64,7 +45,7 @@
             </div>
           </div>
 
-          <h2 class="sub-header">Ultimas actualizaciones</h2>
+          <h3 class="sub-header">Ultimas actualizaciones</h3>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -92,7 +73,7 @@
             </table>
           </div>
           
-          <h2 class="sub-header">Lista del Himnario</h2>
+          <h3 class="sub-header">Lista del Himnario</h3>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
