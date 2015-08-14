@@ -15,7 +15,12 @@
    </properties>
 
     <dependencies>
-    
+        <dependency>
+            <groupId>org.codehaus.jettison</groupId>
+            <artifactId>jettison</artifactId>
+            <version>1.2</version>
+            <type>jar</type>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -253,7 +258,9 @@
                                 WEB-INF/lib/commons-dbcp-1.4.jar,	       
                                 WEB-INF/lib/jackson-annotations-2.4.0.jar,		   
                                 WEB-INF/lib/mail-1.4.jar,			
-                                WEB-INF/lib/spring-js-2.0.9.RELEASE.jar
+                                WEB-INF/lib/spring-js-2.0.9.RELEASE.jar,
+                                WEB-INF/lib/jettison-1.2.jar,
+                                WEB-INF/lib/stax-api-1.0.1.jar
                             </packagingExcludes>
                             
                         </configuration>

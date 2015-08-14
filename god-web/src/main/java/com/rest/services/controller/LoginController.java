@@ -6,11 +6,15 @@ import com.rest.services.model.ErrorService;
 import com.rest.services.service.CoroService;
 import com.rest.services.service.EmailSendService;
 import com.rest.services.service.UsuarioService;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -20,6 +24,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.HttpStatusCodeException;
 
 /**
  *
@@ -155,6 +160,30 @@ public class LoginController {
         data.setCodigo("404");
         data.setMensaje("Este email ya ha sido registrado con anterioridad: "+email);
         return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
+    }
+    
+    
+    @RequestMapping(value = "/localizar/email", method = RequestMethod.POST)
+    public ResponseEntity<ErrorService> localizarPorEmail(HttpServletRequest request) throws IOException, JSONException {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader br = request.getReader();
+        String str;
+        while( (str = br.readLine()) != null ){
+            sb.append(str);
+        }    
+        JSONObject jObj = new JSONObject(sb.toString());
+        this.log.info(" -- JSON: "+jObj.toString());
+        
+        ErrorService response = new ErrorService();
+        String email = jObj.getString("email");
+        Usuario user = this.usuarioService.validaEmailSistema(email);
+        if(user!=null){
+            this.log.info(" -- Usuario encontrado: "+user.getEmail());
+            response.setMensaje(user.getNombre());
+        }else{
+            response.setMensaje("NO LOCALIZADO");
+        }
+        return new ResponseEntity<ErrorService>(response, HttpStatus.OK);
     }
 
     @Autowired
