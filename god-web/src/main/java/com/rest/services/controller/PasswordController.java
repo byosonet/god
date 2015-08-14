@@ -44,7 +44,7 @@ public class PasswordController {
             response.setMensaje("Hola "+user.getNombre()+", tu password ha sido enviado a: "+user.getEmail());
             status = HttpStatus.OK;
             
-            this.emailSendService.recuperarPassword(email, "gtrejo.armenta@gmail.com", user.getPassword());
+            this.emailSendService.recuperarPassword(email, user.getPassword(),"gtrejo.armenta@gmail.com");
             this.log.info(" -- El correo fue enviado con tu password a: " + email);
             
         }else{

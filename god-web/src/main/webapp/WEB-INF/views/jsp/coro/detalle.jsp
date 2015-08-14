@@ -16,7 +16,7 @@
     </head>
     <body style="background: white;">
     <div class="row">
-        <div class="col-sm-12 col-sm-offset-4 col-md-8 col-md-offset-2 main">
+        <div class="col-sm-12 col-sm-offset-0 col-md-8 col-md-offset-2 main">
             <br>
             <center><h4 class="page-header"><c:out value="${nombre}"/></h4></center>
             <br>

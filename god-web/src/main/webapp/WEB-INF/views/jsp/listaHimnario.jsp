@@ -53,7 +53,7 @@
     <div class="container-fluid">
       <div class="row">
         
-        <div class="col-sm-12 col-sm-offset-3 col-md-8 col-md-offset-2 main">
+        <div class="col-sm-12 col-sm-offset-0 col-md-8 col-md-offset-2 main">
           <center><h4 class="page-header">Hola, <c:out value="${usuario}"/></h4></center>
 
           <div class="row placeholders">
