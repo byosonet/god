@@ -39,8 +39,19 @@
                                   "sInfoFiltered":  "",
                               }
 
-                              });
-                  } 
+                              });     
+        $('a#ref').click(function(){
+            $.blockUI();
+            var a_href = $(this).attr('href');
+            var idCoro = a_href.split("#")[1]; 
+            $('input#idCoro').val(idCoro);
+            
+            var urlAction = '${contextpath}' + '/coro';
+            document.getElementById('enviarCoro').action = urlAction;
+            document.getElementById('enviarCoro').method = 'POST';
+	    document.getElementById('enviarCoro').submit();
+        });          
+                  }          
             );
         </script>
          <style>
@@ -106,7 +117,7 @@
                 <c:forEach items="${coros}" var="coro" varStatus="indice">
                <tr>
                 
-                <td><a href="http://<spring:message code="url.href.server"/>/god-web/coro/${coro.idCoro}">${coro.nombre}</a></td>
+                <td><a id="ref" href="#${coro.idCoro}">${coro.nombre}</a></td>
                 <td>${coro.autor}</td>
                 <td style="text-align: center">
                     <fmt:formatDate value="${coro.fechaAct}" pattern="dd/MM/yyyy HH:mm:ss" />
@@ -135,7 +146,7 @@
                 <c:forEach items="${corosCompletos}" var="coroc" varStatus="indice">
                <tr>
                 
-                <td><a href="http://<spring:message code="url.href.server"/>/god-web/coro/${coroc.idCoro}">${coroc.nombre}</a></td>
+                <td><a id="ref" href="#${coroc.idCoro}">${coroc.nombre}</a></td>
                 <td>${coroc.autor}</td>
                 <td style="text-align: center">
                     <fmt:formatDate value="${coroc.fechaAct}" pattern="dd/MM/yyyy HH:mm:ss" />
@@ -149,20 +160,10 @@
         </div>
       </div>
     </div>
-    <div style="text-align: center">
-    <form id="localiza">
-    <p>INGRESA TU EMAIL: <input id="email" data-bind="value: email"/></p>
-    <p>NOMBRE DEVUELTO:  <input data-bind="value: nombre" disabled/></p>
-    
-    
-    
-    <p>Datos Agregados: <select data-bind="foreach: tasks, visible: tasks().length > 0">
-        <option data-bind="value: title,text:title"></option>
-        </select></p>
-    
-    
-    <button data-bind="click: recuperar">CONSULTAR EMAIL</button>
+    <form id="enviarCoro">
+        <input type="hidden" id="idCoro" name="idCoro"/>
+        <input type="hidden" id="userEmail" name="userEmail" value="${userEmail}">
+        <input type="hidden" id="userPassword" name="userPassword" value="${userPassword}">
     </form>
-</div>
     </body>
 </html>

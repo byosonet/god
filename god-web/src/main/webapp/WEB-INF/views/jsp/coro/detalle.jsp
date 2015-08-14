@@ -9,7 +9,11 @@
     <script type="text/javascript">
       $(function(){
           $('a#back').click(function(){
-              console.log(' -- Regresar');
+              $.blockUI();
+                var urlAction = '${contextpath}' + '/ingresar';
+                document.getElementById('regresar').action = urlAction;
+                document.getElementById('regresar').method = 'POST';
+                document.getElementById('regresar').submit();
           });
       });
   </script>
@@ -33,8 +37,12 @@
         </div>
         </center>
         <br>
-        <center><h4 class="page-header"><a id="back">REGRESAR</a></h4></center>
+        <center><h4 class="page-header"><a href="#" id="back">REGRESAR</a></h4></center>
     </div>
   </div>
+    <form id="regresar">
+        <input type="hidden" id="user" name="user" value="${userEmail}">
+        <input type="hidden" id="password" name="password" value="${userPassword}">
+    </form>
     </body>
 </html>

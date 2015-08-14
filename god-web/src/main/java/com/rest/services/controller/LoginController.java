@@ -53,6 +53,8 @@ public class LoginController {
                       model.addAttribute("coros", corosActualizados);
                       model.addAttribute("corosCompletos", corosCompletos);
                       model.addAttribute("usuario", usuario.getNombre());
+                      model.addAttribute("userEmail", usuario.getEmail());
+                      model.addAttribute("userPassword", usuario.getPassword());
                   }
               } catch (Exception ex) {
                   ex.printStackTrace();

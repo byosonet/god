@@ -38,6 +38,8 @@ public class ListaHimnarioController {
                model.addAttribute("coros", corosActualizados);
                model.addAttribute("corosCompletos", corosCompletos);
                model.addAttribute("usuario", user.getNombre());
+               model.addAttribute("userEmail", user.getEmail());
+               model.addAttribute("userPassword", user.getPassword());
            }
        }catch(Exception ex){
            ex.printStackTrace();
