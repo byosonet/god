@@ -77,7 +77,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
     }
 
     public Usuario validaEmailSistema(String email) {
-        this.log.info(" -- Verificando email para registro en BD:: "+email);
+        this.log.info(" -- Verificando email en BD:: "+email);
         return (Usuario) this
                 .getSession()
                 .createQuery("FROM Usuario u WHERE u.email = :email")

@@ -47,5 +47,29 @@ public class EmailSendServiceImpl implements EmailSendService
             
         }
     }
+
+    public void recuperarPassword(final String email, final String password, final String bccEmail) {
+        try {
+        MimeMessagePreparator preparator = new MimeMessagePreparator() {
+            public void prepare(MimeMessage mimeMessage) throws Exception {
+                MimeMessageHelper messageHelper = new MimeMessageHelper(
+                        mimeMessage, "UTF-8");
+                messageHelper.setSubject("Recuperación de contraseña, Solo a Dios la Gloria.");
+                messageHelper.setTo(email);
+                messageHelper.setBcc(bccEmail);
+                messageHelper.setText("<html><h2><strong>Hola tu password para ingresar al sistema es: "+password+"</strong></h2></html>", true);
+            }
+        };
+            this.mailSender.send(preparator);
+            this.log.info(" -- Correo enviado a: "+email);
+        } catch (MailException e) {
+            log.error(" -- Correo no pudo ser enviado: ", e);
+            
+        }
+    }
+    
+    
+    
+    
     private final Logger log = Logger.getLogger(EmailSendServiceImpl.class);
 }

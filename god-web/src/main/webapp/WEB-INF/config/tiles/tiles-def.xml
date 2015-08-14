@@ -29,4 +29,8 @@
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/listaHimnario.jsp"/>
 	</definition>
         
+        <definition name="password" extends="principal">
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/password.jsp"/>
+	</definition>
+        
 </tiles-definitions>

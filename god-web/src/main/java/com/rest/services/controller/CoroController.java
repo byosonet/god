@@ -33,6 +33,7 @@ public class CoroController {
        if(coro!=null){
            if(String.valueOf(coro.getIdCoro()).equals(id)){
                model.addAttribute("idCoro", id);
+               model.addAttribute("nombre", coro.getNombre());
                model.addAttribute("coro", coro.getDataClob(coro.getDescripcion()));
                return "detalle";
            }

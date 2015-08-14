@@ -15,6 +15,7 @@
         </div>
         <br>
         <br>
+        <br>
         <div id="footer">
             <tiles:insertAttribute name="footer" />
         </div>

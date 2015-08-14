@@ -106,7 +106,7 @@
           </div>
         </nav>
     <div>
-    <div class="login" style="margin-top: 50px;">
+    <div class="login" style="margin-top: 100px;">
       <h1>¡Solo a Dios la gloria!</h1>
       <form id="ingresar" method="post" action="${contextpath}/ingresar">
         <p><input type="text" name="user" id="login" value="" placeholder="email" style="margin-left: -3px;"></p>
