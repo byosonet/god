@@ -149,5 +149,20 @@
         </div>
       </div>
     </div>
+    <div style="text-align: center">
+    <form id="localiza">
+    <p>INGRESA TU EMAIL: <input id="email" data-bind="value: email"/></p>
+    <p>NOMBRE DEVUELTO:  <input data-bind="value: nombre" disabled/></p>
+    
+    
+    
+    <p>Datos Agregados: <select data-bind="foreach: tasks, visible: tasks().length > 0">
+        <option data-bind="value: title,text:title"></option>
+        </select></p>
+    
+    
+    <button data-bind="click: recuperar">CONSULTAR EMAIL</button>
+    </form>
+</div>
     </body>
 </html>
