@@ -21,17 +21,19 @@ public class Coro {
     private String autor;
     private Date fechaAct;
     private Clob descripcion;
+    private String numCoro;
     
     public Coro(){
         
     }
     
-    public Coro(int idcoro, String nombre, String autor, Date fechaAct, Clob descripcion){
+    public Coro(int idcoro, String nombre, String autor, Date fechaAct, Clob descripcion, String numCoro){
         this.idCoro = idcoro;
         this.nombre = nombre;
         this.autor = autor;
         this.fechaAct = fechaAct;
         this.descripcion = descripcion;
+        this.numCoro = numCoro;
     }
 
     public int getIdCoro() {
@@ -78,6 +80,14 @@ public class Coro {
     public String getDataClob(Clob descripcion) throws SQLException, IOException{
         return this.readClob(descripcion);
     }
+
+    public String getNumCoro() {
+        return numCoro;
+    }
+
+    public void setNumCoro(String numCoro) {
+        this.numCoro = numCoro;
+    }
     
     public String readClob(Clob clob) throws SQLException, IOException {
         StringBuilder sb = new StringBuilder((int) clob.length());
@@ -89,10 +99,10 @@ public class Coro {
         }
         return sb.toString();
     }
-    
+
     @Override
     public String toString() {
-        return "Coro{" + "idCoro=" + idCoro + ", nombre=" + nombre + ", autor=" + autor + ", fechaAct=" + fechaAct + ", descripcion=" + descripcion + '}';
+        return "Coro{" + "idCoro=" + idCoro + ", nombre=" + nombre + ", autor=" + autor + ", fechaAct=" + fechaAct + ", descripcion=" + descripcion + ", numCoro=" + numCoro + '}';
     }
-
+    
 }

@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.rest.services.service;
 
 import com.rest.services.god.persistence.dao.CoroDao;
 import com.rest.services.god.persistence.hbm.Coro;
-import java.io.IOException;
-import java.io.Reader;
-import java.sql.Clob;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,7 +39,7 @@ public class CoroServiceImpl implements CoroService{
        if(coros!=null && coros.size()>0){
            for(Coro c : coros){
                try {
-                   this.log.info(" -- idCoro: "+c.getIdCoro()+" Nombre: "+c.getNombre()+" Descripcion: "+c.getDataClob(c.getDescripcion()));
+                   this.log.info(" -- idCoro: "+c.getIdCoro()+" Nombre del Coro: "+c.getNombre());
                } catch (Exception ex) {
                    ex.printStackTrace();
                }

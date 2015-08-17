@@ -23,6 +23,10 @@
         <property name="descripcion" type="clob">
             <column name="DESCRIPCION"/>
         </property>
+        
+        <property name="numCoro" type="string">
+            <column name="NUM_CORO" length="20" />
+        </property>
 
     </class>
 </hibernate-mapping>

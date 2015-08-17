@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-8 col-md-offset-2 main">
             <br>
-            <center><h4 class="page-header"><c:out value="${nombre}"/></h4></center>
+            <center><h4 class="page-header">"<c:out value="${nombre}"/>"<br><u>(CORO <c:out value="${numCoro}"/>)</u></h4></center>
             <br>
         <center>
         <div style="width: 100%;text-align: justify;">

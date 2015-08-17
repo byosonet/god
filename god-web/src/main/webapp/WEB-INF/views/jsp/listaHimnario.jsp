@@ -40,17 +40,30 @@
                               }
 
                               });     
-        $('a#ref').click(function(){
-            $.blockUI();
-            var a_href = $(this).attr('href');
-            var idCoro = a_href.split("#")[1]; 
-            $('input#idCoro').val(idCoro);
-            
-            var urlAction = '${contextpath}' + '/coro';
-            document.getElementById('enviarCoro').action = urlAction;
-            document.getElementById('enviarCoro').method = 'POST';
-	    document.getElementById('enviarCoro').submit();
-        });          
+                    $('a#ref').click(function(){
+                        $.blockUI();
+                        var a_href = $(this).attr('href');
+                        var idCoro = a_href.split("#")[1]; 
+                        $('input#idCoro').val(idCoro);
+
+                        var urlAction = '${contextpath}' + '/coro';
+                        document.getElementById('enviarCoro').action = urlAction;
+                        document.getElementById('enviarCoro').method = 'POST';
+                        document.getElementById('enviarCoro').submit();
+                    });
+                    
+                    $('a#contacto').click(function(){
+                            if ($('div#contenidoDinamico').is(':visible')){
+                                console.log(' --mostrando DIV');
+                                $('div#contenidoDinamico').hide();
+                            }else{
+                                console.log(' --ocultando DIV');
+                                $('div#contenidoDinamico').show();
+                            }
+                    });
+                    
+                    
+                    
                   }          
             );
         </script>
@@ -95,12 +108,12 @@
               <span class="text-muted">Lo más visto de esta semana</span>
             </div>  
             <div class="col-xs-6 col-sm-2 placeholder">
-              <img src="${contextpath}/static/resources/img/mail.png" data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
+                <a id="contacto" href="#"><img src="${contextpath}/static/resources/img/mail.png" data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail"></a>
               <h4>Contacto</h4>
-              <span class="text-muted">Acerca de nosotros</span>
+              <span class="text-muted"><a id="contacto" href="#">Acerca de nosotros</a></span>
             </div>
           </div>
-
+          <div id="contenidoDinamico">
           <h4 class="sub-header" style="text-align: center;">Lo más recientes</h4>
           <div class="table-responsive">
             <table class="table table-striped" id="listaCoroActualizada">
@@ -136,9 +149,11 @@
               <thead>
                 <tr>
                   
+                  <th style="text-align: center">NÚMERO DE CORO</th>
                   <th style="text-align: center">NOMBRE</th>
                   <th style="text-align: center">AUTOR</th>
                   <th style="text-align: center">FECHA ACTUALIZACIÓN</th>
+                  
                 </tr>
               </thead>
               <tbody>
@@ -146,16 +161,19 @@
                 <c:forEach items="${corosCompletos}" var="coroc" varStatus="indice">
                <tr>
                 
+                <td style="text-align: center;"><a id="ref" href="#${coroc.idCoro}">${coroc.numCoro}</a></td>
                 <td><a id="ref" href="#${coroc.idCoro}">${coroc.nombre}</a></td>
                 <td>${coroc.autor}</td>
                 <td style="text-align: center">
                     <fmt:formatDate value="${coroc.fechaAct}" pattern="dd/MM/yyyy HH:mm:ss" />
                 </td>
+                
                 </tr>    
                 </c:forEach>
                 
               </tbody>
             </table>
+          </div>
           </div>
         </div>
       </div>

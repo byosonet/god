@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.rest.services.controller;
 
-import com.rest.services.god.persistence.dao.CoroDao;
+
 import com.rest.services.god.persistence.hbm.Coro;
 import com.rest.services.service.CoroService;
 import java.io.IOException;
@@ -15,7 +10,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -41,6 +35,7 @@ public class CoroController {
                model.addAttribute("idCoro", id);
                model.addAttribute("nombre", coro.getNombre());
                model.addAttribute("coro", coro.getDataClob(coro.getDescripcion()));
+               model.addAttribute("numCoro", coro.getNumCoro());
                model.addAttribute("userEmail", userEmail);
                model.addAttribute("userPassword", userPassword);
                return "detalle";
