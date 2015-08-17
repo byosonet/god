@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.rest.services.god.persistence.dao;
 
-import com.rest.services.god.persistence.cp.HibernateUtil;
 import com.rest.services.god.persistence.hbm.Coro;
 import java.util.List;
 import org.apache.log4j.Logger;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 /**
@@ -20,6 +11,8 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  */
 public class CoroDaoImpl extends HibernateDaoSupport implements CoroDao{
     private final Logger log = Logger.getLogger(CoroDaoImpl.class);
+    TransacctionMySQL mysql = new TransacctionMySQL();
+    
     public List<Coro> obtenerListaCoroActualizada() {
         this.log.info(" -- Buscando por lista de coros por fecha::");
         return (List<Coro>) this
@@ -46,46 +39,5 @@ public class CoroDaoImpl extends HibernateDaoSupport implements CoroDao{
                 .setParameter("id", coro)
                 .uniqueResult();
     }
-    
-    public Object findByKey(Object llave) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    public Object saveByEntityReturnID(Object entidad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Object saveByEntity(Object entidad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public List<Object> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void updateByEntity(Object entidad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void deleteByKey(Object llave) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void deleteByEntity(Object entidad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    private Session sesion;
-    private Transaction tx;
-    
-    private void iniciaOperacion() throws HibernateException {
-        sesion = HibernateUtil.getSessionFactory().openSession();
-        tx = sesion.beginTransaction();
-    }
-
-    private void manejaExcepcion(HibernateException he) throws HibernateException {
-        tx.rollback();
-        throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);
-    }
-    
 }

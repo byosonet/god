@@ -7,6 +7,8 @@ import java.util.List;
  *
  * @author emartinez
  */
-public interface ProductoDao extends Dao<Producto, Long> {
+public interface ProductoDao {
     List<Producto> getAllProducts(int x);
+    Producto saveByEntity(Producto producto);
+    Producto findByKey(Long llave);
 }

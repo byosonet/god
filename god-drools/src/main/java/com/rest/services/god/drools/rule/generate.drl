@@ -37,10 +37,20 @@ end
 // rule values at B13, header at B4
 rule "PuestosInformaticos_13"
 	when
-		empleado: Empleado(edad > 1, edad < 50)
+		empleado: Empleado(edad > 100, edad < 110)
 	then
 		empleado.setEdad(15);
 		empleado.setNombre("Priscila");
 		empleado.setActivity("Arquitecto"); System.out.println("nombre: " + empleado.getNombre());
+end
+
+// rule values at B14, header at B4
+rule "PuestosInformaticos_14"
+	when
+		empleado: Empleado(edad > 1, edad < 50)
+	then
+		empleado.setEdad(10);
+		empleado.setNombre("marco");
+		empleado.setActivity("prueba"); System.out.println("nombre: " + empleado.getNombre());
 end
 
