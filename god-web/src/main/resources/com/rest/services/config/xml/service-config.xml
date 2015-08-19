@@ -14,15 +14,9 @@
         http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">  
-
-    <bean id="listaEmpleadosService" 
-          class="com.rest.services.service.ListaEmpleadosServiceImpl"/>
-    
+  
     <bean id="usuarioService" 
           class="com.rest.services.service.UsuarioServiceImpl"/>
-    
-    <bean id="demoService" 
-          class="com.rest.services.service.DemoServiceImpl"/>
     
     <bean id="coroService" 
           class="com.rest.services.service.CoroServiceImpl"/>

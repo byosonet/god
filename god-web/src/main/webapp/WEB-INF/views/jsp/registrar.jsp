@@ -152,7 +152,7 @@
         </p>
         
         <p style="text-align: center;"> 
-            Deseo Recibir Notificaciones: Sí<input type="checkbox" id="notificar" name="notificar" value="SI">
+            Deseo Recibir Notificaciones: Sí <input type="checkbox" id="notificar" name="notificar" value="SI">
         </p>
         
         <p class="submit">

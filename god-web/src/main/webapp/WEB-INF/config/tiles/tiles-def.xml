@@ -8,14 +8,6 @@
             <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
             <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
 	</definition>
-	
-	<definition name="example" extends="principal">
-		<put-attribute name="contenido" value="/WEB-INF/views/jsp/example.jsp"/>
-	</definition>
-        
-        <definition name="empleados" extends="principal">
-		<put-attribute name="contenido" value="/WEB-INF/views/jsp/empleados.jsp"/>
-	</definition>
         
         <definition name="detalle" extends="principal">
             <put-attribute name="contenido" value="/WEB-INF/views/jsp/coro/detalle.jsp"/>
