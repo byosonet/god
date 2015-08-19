@@ -1,7 +1,12 @@
 package com.rest.services.util;
 
 import java.security.MessageDigest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -58,4 +63,31 @@ public class UtilService {
         }
         return base64EncryptedString;
 }
+    public static int calcularEdad(String fecha) {
+        String datetext = fecha;
+        try {
+            Calendar birth = new GregorianCalendar();
+            Calendar today = new GregorianCalendar();
+            int age = 0;
+            int factor = 0;
+            Date birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(datetext);
+            Date currentDate = new Date(); //current date
+            birth.setTime(birthDate);
+            today.setTime(currentDate);
+            if (today.get(Calendar.MONTH) <= birth.get(Calendar.MONTH)) {
+                if (today.get(Calendar.MONTH) == birth.get(Calendar.MONTH)) {
+                    if (today.get(Calendar.DATE) > birth.get(Calendar.DATE)) {
+                        factor = -1; //Aun no celebra su cumpleaÃ±os
+                    }
+                } else {
+                    factor = -1; //Aun no celebra su cumpleaÃ±os
+                }
+            }
+            age = (today.get(Calendar.YEAR) - birth.get(Calendar.YEAR)) + factor;
+            return age;
+        } catch (ParseException e) {
+            System.err.println(" -- No se puede calcular la edad");
+            return -1;
+        }
+    }
 }

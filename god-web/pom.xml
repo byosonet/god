@@ -187,9 +187,14 @@
         </dependency>
         
         <!-- Dependencies Externas -->
-         <dependency>
+        <dependency>
             <groupId>com.rest.services</groupId>
             <artifactId>god-adapter</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.rest.services</groupId>
+            <artifactId>god-drools</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -267,7 +272,23 @@
                                 WEB-INF/lib/spring-js-2.0.9.RELEASE.jar,
                                 WEB-INF/lib/jettison-1.2.jar,
                                 WEB-INF/lib/stax-api-1.0.1.jar,
-                                WEB-INF/lib/commons-codec-1.2.jar
+                                WEB-INF/lib/commons-codec-1.2.jar,
+                                WEB-INF/lib/xstream-1.3.1.jar,
+                                WEB-INF/lib/xpp3_min-1.1.4c.jar,
+                                WEB-INF/lib/stringtemplate-3.2.1.jar,
+                                WEB-INF/lib/mvel2-2.1.0.drools16.jar,
+                                WEB-INF/lib/knowledge-internal-api-5.4.0.Final.jar,
+                                WEB-INF/lib/knowledge-api-5.4.0.Final.jar,
+                                WEB-INF/lib/jxl-2.6.10.jar,
+                                WEB-INF/lib/ecj-3.5.1.jar,
+                                WEB-INF/lib/drools-templates-5.4.0.Final.jar,
+                                WEB-INF/lib/drools-decisiontables-5.4.0.Final.jar,
+                                WEB-INF/lib/drools-core-5.4.0.Final.jar,
+                                WEB-INF/lib/drools-compiler-5.4.0.Final.jar,
+                                WEB-INF/lib/antlr-runtime-3.3.jar,
+                                WEB-INF/lib/antlr-3.3.jar,
+                                WEB-INF/lib/antlr-2.7.7.jar
+                                
                             </packagingExcludes>
                             
                         </configuration>

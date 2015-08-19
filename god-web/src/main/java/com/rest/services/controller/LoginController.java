@@ -1,5 +1,7 @@
 package com.rest.services.controller;
 
+import com.rest.services.god.drools.DroolRuleAge;
+import com.rest.services.god.drools.vo.UserTemp;
 import com.rest.services.god.persistence.hbm.Coro;
 import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.model.ErrorService;
@@ -168,11 +170,35 @@ public class LoginController {
                     usuario.setFechaNacimiento(date);
                 } else {
                     this.log.info(" -- Fecha Invalida: " + dateInString);
-                    usuario.setFechaNacimiento(null);
+                    ErrorService data = new ErrorService();
+                    data.setCodigo("404");
+                    data.setMensaje("La fecha de nacimiento es inválida: "+dateInString);
+                    return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
                 }
             } catch (ParseException e) {
                 this.log.error(" -- Error al crear la fecha de nacimiento: " + e.getMessage());
             }
+            
+            int edad = UtilService.calcularEdad(dateInString);
+            this.log.info(" -- La edad del usuario a registrar es de: "+edad);
+            
+            this.log.info(" -- Disparando las reglas con Drools");
+            UserTemp userTemp = new UserTemp();
+            userTemp.setEdad(edad);
+            userTemp.setEmail(email);
+            userTemp.setNombre(nombre);
+            userTemp = this.droolRuleAgeAdapter.validarReglasAge(userTemp);
+            if(userTemp.isValidado()){
+                this.log.info(" -- El usuario ha validado todas las reglas");
+            }else{
+                this.log.info(" -- El usuario no ha cumplido las reglas del sistema");
+                ErrorService data = new ErrorService();
+                data.setCodigo("404");
+                data.setMensaje(userTemp.getMensaje());
+                return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
+            }
+            
+            
 
             int id = this.usuarioService.agregaUsuarioNuevo(usuario);
             this.log.info(" -- El usuario se agrego correctamente con el id: "+id);
@@ -242,5 +268,8 @@ public class LoginController {
     
     @Autowired
     private CoroService coroService;
+    
+    @Autowired
+    private DroolRuleAge droolRuleAgeAdapter;
     
 }

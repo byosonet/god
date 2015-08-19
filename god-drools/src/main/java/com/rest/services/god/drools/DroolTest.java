@@ -100,7 +100,7 @@ public class DroolTest {
             SpreadsheetCompiler sc = new SpreadsheetCompiler();
             StringBuffer drl2 = new StringBuffer(sc.compile(is, InputType.XLS));
             System.out.println(drl2);
-            BufferedWriter out = new BufferedWriter(new FileWriter("C:\\temporal\\god\\god-drools\\src\\main\\java\\com\\rest\\services\\god\\drools\\rule\\generate.drl"));
+            BufferedWriter out = new BufferedWriter(new FileWriter("C:\\temporal\\god\\god-drools\\src\\main\\java\\com\\rest\\services\\god\\drools\\rule\\testRule.drl"));
             out.write(drl2.toString().replace("“", "\"").replace("”", "\""));
             out.close();
 

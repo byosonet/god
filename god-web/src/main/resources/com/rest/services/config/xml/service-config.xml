@@ -25,4 +25,7 @@
     <bean id="banxicoTipoCambioAdapter" 
           class="com.rest.services.god.banxico.adapter.BanxicoTipoCambioAdapterImpl"/>
     
+    <bean id="droolRuleAge" 
+          class="com.rest.services.god.drools.DroolRuleAgeImpl"/>
+    
 </beans>
