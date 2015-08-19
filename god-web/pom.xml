@@ -98,6 +98,12 @@
                 <artifactId>tiles-servlet</artifactId>
                 <version>2.2.1</version>
         </dependency>
+        
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.2</version>
+        </dependency>
 
         <!-- Spring MVC support -->
 
@@ -260,7 +266,8 @@
                                 WEB-INF/lib/mail-1.4.jar,			
                                 WEB-INF/lib/spring-js-2.0.9.RELEASE.jar,
                                 WEB-INF/lib/jettison-1.2.jar,
-                                WEB-INF/lib/stax-api-1.0.1.jar
+                                WEB-INF/lib/stax-api-1.0.1.jar,
+                                WEB-INF/lib/commons-codec-1.2.jar
                             </packagingExcludes>
                             
                         </configuration>

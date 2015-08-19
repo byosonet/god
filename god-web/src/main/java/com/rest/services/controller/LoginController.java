@@ -6,6 +6,7 @@ import com.rest.services.model.ErrorService;
 import com.rest.services.service.CoroService;
 import com.rest.services.service.EmailSendService;
 import com.rest.services.service.UsuarioService;
+import com.rest.services.util.UtilService;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -43,7 +44,8 @@ public class LoginController {
       if(request.getParameter("user")!=null && request.getParameter("password")!=null){
           String user = request.getParameter("user");
           String password = request.getParameter("password");
-          Usuario usuario = this.usuarioService.validaUsuario(user, password);
+          String encriptarPassword = UtilService.Encriptar(password);
+          Usuario usuario = this.usuarioService.validaUsuario(user, encriptarPassword);
           if(usuario!=null){
               this.log.info(" -- Ingresando al sistema como: "+usuario.getNombre());
               try {
@@ -54,7 +56,7 @@ public class LoginController {
                       model.addAttribute("corosCompletos", corosCompletos);
                       model.addAttribute("usuario", usuario.getNombre());
                       model.addAttribute("userEmail", usuario.getEmail());
-                      model.addAttribute("userPassword", usuario.getPassword());
+                      model.addAttribute("userPassword", password);
                   }
               } catch (Exception ex) {
                   ex.printStackTrace();
@@ -82,7 +84,8 @@ public class LoginController {
           String user = request.getParameter("user");
           String password = request.getParameter("password");
           
-          Usuario usuario = this.usuarioService.validaUsuario(user, password);
+          String encriptarPassword = UtilService.Encriptar(password);
+          Usuario usuario = this.usuarioService.validaUsuario(user, encriptarPassword);
           if(usuario!=null){
               this.log.info(" -- Usuario correcto");
               ErrorService data = new ErrorService();
@@ -148,7 +151,8 @@ public class LoginController {
             usuario.setNombre(nombre);
             usuario.setEmail(email);
             usuario.setSexo(sexo);
-            usuario.setPassword(password);
+            String encriptado = UtilService.Encriptar(password);
+            usuario.setPassword(encriptado);
             usuario.setFechaAlta(fechaAlta);
             usuario.setUltConexion(fechaAlta);
             usuario.setNotificaciones(notificar);

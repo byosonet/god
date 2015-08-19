@@ -4,6 +4,7 @@ import com.rest.services.god.persistence.hbm.Coro;
 import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.service.CoroService;
 import com.rest.services.service.UsuarioService;
+import com.rest.services.util.UtilService;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
@@ -29,7 +30,8 @@ public class ListaHimnarioController {
        this.log.info(" -- email: "+email);
        this.log.info(" -- password: "+pass);
        
-       Usuario user = this.usuarioService.validaUsuario(email, pass);
+       String encriptarPassword = UtilService.Encriptar(pass);
+       Usuario user = this.usuarioService.validaUsuario(email, encriptarPassword);
        
        try{
            List<Coro> corosActualizados = this.coroService.obtenerListaCoroActualizada();
@@ -39,7 +41,7 @@ public class ListaHimnarioController {
                model.addAttribute("corosCompletos", corosCompletos);
                model.addAttribute("usuario", user.getNombre());
                model.addAttribute("userEmail", user.getEmail());
-               model.addAttribute("userPassword", user.getPassword());
+               model.addAttribute("userPassword", pass);
            }
        }catch(Exception ex){
            ex.printStackTrace();
