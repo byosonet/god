@@ -20,12 +20,14 @@ public class Usuario implements java.io.Serializable{
     private String notificaciones;
     private String email;
     private String password;
+    private Date fechaNacimiento;
+    private String actividad;
     
     public Usuario(){
     }
     
     public Usuario(int idUsuario, String nommbre, char sexo, Date fechaAlta, Date ultConexion, String notificaciones,
-            String email, String password){
+            String email, String password, Date fechaNacimiento, String actividad){
         this.idUsuario = idUsuario;
         this.nombre = nommbre;
         this.sexo = sexo;
@@ -34,6 +36,8 @@ public class Usuario implements java.io.Serializable{
         this.notificaciones = notificaciones;
         this.email = email;
         this.password = password;
+        this.fechaNacimiento = fechaNacimiento;
+        this.actividad = actividad;
     }
 
     public int getIdUsuario() {
@@ -100,10 +104,25 @@ public class Usuario implements java.io.Serializable{
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", sexo=" + sexo + ", fechaAlta=" + fechaAlta + ", ultConexion=" + ultConexion + ", notificaciones=" + notificaciones + ", email=" + email + ", password=" + password + '}';
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getActividad() {
+        return actividad;
+    }
+
+    public void setActividad(String actividad) {
+        this.actividad = actividad;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", sexo=" + sexo + ", fechaAlta=" + fechaAlta + ", ultConexion=" + ultConexion + ", notificaciones=" + notificaciones + ", email=" + email + ", password=" + password + ", fechaNacimiento=" + fechaNacimiento + ", actividad=" + actividad + '}';
+    }
+
 }

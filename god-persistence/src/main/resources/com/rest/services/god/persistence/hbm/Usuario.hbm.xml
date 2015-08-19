@@ -35,6 +35,14 @@
         <property name="password" type="string">
             <column name="PASSWORD" length="50"/>
         </property>
+        
+        <property name="fechaNacimiento" type="date">
+            <column name="NACIMIENTO"/>
+        </property>
+        
+        <property name="actividad" type="string">
+            <column name="ACTIVIDAD" length="50"/>
+        </property>
 
     </class>
 </hibernate-mapping>

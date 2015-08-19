@@ -7,6 +7,7 @@
         <title>Registrar Usuario</title>
         <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/style.css">
          <jsp:include page="../layout/staticResources.jsp"></jsp:include>
+         <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/model/ModelNacimiento.js"></script>
     <style>
 
     </style>
@@ -127,6 +128,23 @@
         <p><input type="password" name="password" id="password" value="" placeholder="Password" style="margin-left: -3px;"></p>
         <p><input type="password" name="confPassword" id="confPassword" value="" placeholder="Confirmar Password" style="margin-left: -3px;"></p>
         
+        <br><br>
+        <div style="text-align: center;"><h1>Información Personal</h1></div> 
+        <p style="text-align: center;">
+            Día:<select id="dia" name="dia" data-bind="foreach: days, visible: days().length > 0">
+            <option data-bind="value: id,text:day"></option></select>
+            <br><br>
+            Mes:<select id="mes" name="mes" data-bind="foreach: months, visible: months().length > 0">
+            <option data-bind="value: id,text:mes"></option></select>
+            <br><br>
+            Año:<select id="anio" name="anio" data-bind="foreach: years, visible: years().length > 0">
+            <option data-bind="value: year,text:year"></option></select>
+            <br><br>
+            Actividad:<select id="actividad" name="actividad" data-bind="foreach: activities, visible: activities().length > 0">
+            <option data-bind="value: activity,text:activity"></option></select>
+        </p>
+        
+        
         <p style="text-align: center;"> 
             Sexo: 
             <input value="M" type="radio" name="sexo" id="masculino"> Masculino
@@ -134,7 +152,7 @@
         </p>
         
         <p style="text-align: center;"> 
-            Deseo Recibir Notificaciones: <input type="checkbox" id="notificar" name="notificar" value="SI">
+            Deseo Recibir Notificaciones: Sí<input type="checkbox" id="notificar" name="notificar" value="SI">
         </p>
         
         <p class="submit">

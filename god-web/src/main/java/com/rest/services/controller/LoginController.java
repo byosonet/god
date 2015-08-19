@@ -9,8 +9,11 @@ import com.rest.services.service.UsuarioService;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.codehaus.jettison.json.JSONException;
@@ -115,6 +118,14 @@ public class LoginController {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         char sexo = request.getParameter("sexo").toCharArray()[0];
+        
+        String dia = request.getParameter("dia");
+        String mes = request.getParameter("mes");
+        String anio = request.getParameter("anio");
+        String actividad = request.getParameter("actividad");
+        
+        
+        
         Usuario user = this.usuarioService.validaEmailSistema(email);
         if(user == null){
             this.log.info(" -- Agregand nuevo usuario:");
@@ -123,9 +134,14 @@ public class LoginController {
             this.log.info(" -- Password: "+password);
             this.log.info(" -- Sexo: "+sexo);
             this.log.info(" -- Notificar: "+notificar);
+            
+            this.log.info(" -- Dia: "+dia);
+            this.log.info(" -- Mes: "+mes);
+            this.log.info(" -- Anio: "+anio);
+            this.log.info(" -- Actividad: "+actividad);
 
             Timestamp stamp = new Timestamp(System.currentTimeMillis());
-            this.log.info("-- Fecha de Alta::: "+stamp);
+            this.log.info(" -- Fecha de Alta::: "+stamp);
             Date fechaAlta = new Date(stamp.getTime());
 
             Usuario usuario = new Usuario();
@@ -136,6 +152,23 @@ public class LoginController {
             usuario.setFechaAlta(fechaAlta);
             usuario.setUltConexion(fechaAlta);
             usuario.setNotificaciones(notificar);
+            usuario.setActividad(actividad);
+            
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            String dateInString = dia+"/"+mes+"/"+anio;
+            try {
+                Date date = formatter.parse(dateInString);
+                this.log.info(" -- Año de Nacimiento: " + date);
+                if (LoginController.validaFecha(dateInString)) {
+                    this.log.info(" -- Fecha es Valida: " + date);
+                    usuario.setFechaNacimiento(date);
+                } else {
+                    this.log.info(" -- Fecha Invalida: " + dateInString);
+                    usuario.setFechaNacimiento(null);
+                }
+            } catch (ParseException e) {
+                this.log.error(" -- Error al crear la fecha de nacimiento: " + e.getMessage());
+            }
 
             int id = this.usuarioService.agregaUsuarioNuevo(usuario);
             this.log.info(" -- El usuario se agrego correctamente con el id: "+id);
@@ -185,6 +218,18 @@ public class LoginController {
         return new ResponseEntity<ErrorService>(response, HttpStatus.OK);
     }
 
+    public static boolean validaFecha(String fecha) {
+        try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            formatoFecha.setLenient(false);
+            formatoFecha.parse(fecha);
+        } catch (ParseException e) {
+            System.out.println(" -- Fecha Invalida: "+fecha);
+            return false;
+        }
+        return true;
+    }
+    
     @Autowired
     UsuarioService usuarioService;
     
