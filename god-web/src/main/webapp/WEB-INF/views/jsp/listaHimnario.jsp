@@ -9,6 +9,9 @@
         <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/model/ModelUser.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
+                //OCULTANDO LOS DIVS DE LOS JSP
+                $('div#contactoJSP').hide();
+                
                       var listaCoroCompleta = $('#listaCoroCompleta')
                           .dataTable(
                               {
@@ -53,18 +56,15 @@
                     });
                     
                     $('a#contacto').click(function(){
-                            if ($('div#contenidoDinamico').is(':visible')){
-                                console.log(' --mostrando DIV');
-                                $('div#contenidoDinamico').hide();
-                            }else{
-                                console.log(' --ocultando DIV');
-                                $('div#contenidoDinamico').show();
-                            }
-                    });
+                            $('div#contenidoDinamico').hide();
+                            $('div#contactoJSP').show();
+                    });  
                     
-                    
-                    
-                  }          
+                    $('a#consultar').click(function(){
+                           $('div#contenidoDinamico').show();
+                           $('div#contactoJSP').hide();  
+                    });  
+                }          
             );
         </script>
          <style>
@@ -93,9 +93,9 @@
               <span class="text-muted">Agregar nuevos Himnos</span>
             </div>
             <div class="col-xs-6 col-sm-2 placeholder">
-              <img src="${contextpath}/static/resources/img/consultar.png" data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
+                <a id="consultar" href="#"><img src="${contextpath}/static/resources/img/consultar.png" data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"></a>
               <h4>Consultar</h4>
-              <span class="text-muted">Estado de las Solicitudes</span>
+              <span class="text-muted"><a id="consultar" href="#">Himnario Presbiteriano</a></span>
             </div>
             <div class="col-xs-6 col-sm-2 placeholder">
               <img src="${contextpath}/static/resources/img/descargar.png" data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
@@ -113,8 +113,11 @@
               <span class="text-muted"><a id="contacto" href="#">Acerca de nosotros</a></span>
             </div>
           </div>
+             
+          <div id="contactoJSP"><jsp:include page="contacto.jsp"></jsp:include></div>    
+              
           <div id="contenidoDinamico">
-          <h4 class="sub-header" style="text-align: center;">Lo más recientes</h4>
+          <h3 class="sub-header" style="text-align: center;">Lo más recientes</h3>
           <div class="table-responsive">
             <table class="table table-striped" id="listaCoroActualizada">
               <thead>
