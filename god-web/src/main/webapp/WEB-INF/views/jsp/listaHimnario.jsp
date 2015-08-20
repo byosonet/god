@@ -15,16 +15,16 @@
                       var listaCoroCompleta = $('#listaCoroCompleta')
                           .dataTable(
                               {
+                              "aoColumns": [ {"bSearchable": true}, {"bSearchable": false}, {"bSearchable": false},{"bSearchable": false}],
                               "sPaginationType": "full_numbers",
                               "bPaginate": false,
                               "oLanguage" : {
                                   "sZeroRecords":   "No se encontro ningún resultado con el criterio de Busqueda.",
-                                  "sSearch":        "Buscar:",
+                                  "sSearch":        "Coro #:",
                                   "sInfo":          "",
                                   "sInfoEmpty":     "",
                                   "sInfoFiltered":  "",
                               }
-
                               });
                               
                      var listaCoroActualizada = $('#listaCoroActualizada')
@@ -117,7 +117,9 @@
           <div id="contactoJSP"><jsp:include page="contacto.jsp"></jsp:include></div>    
               
           <div id="contenidoDinamico">
-          <h3 class="sub-header" style="text-align: center;">Lo más recientes</h3>
+          <h3 style="text-align: center;" class="sub-header alert alert-info">Consultar</h3>
+          <br>
+          <h4 class="sub-header" style="text-align: center;">Lo más recientes</h4>
           <div class="table-responsive">
             <table class="table table-striped" id="listaCoroActualizada">
               <thead>
