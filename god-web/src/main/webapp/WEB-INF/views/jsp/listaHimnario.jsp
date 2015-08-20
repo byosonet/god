@@ -69,8 +69,8 @@
         </script>
          <style>
              body{
-                font: bold 130% tahoma,verdana,arial;
-                color: #000;
+                font:  150% comic sans ms;
+                color: gray;
              }
          </style>
     </head>
@@ -78,39 +78,44 @@
     <div class="container-fluid">
       <div class="row">
         
-        <div class="col-sm-12 col-sm-offset-0 col-md-8 col-md-offset-2 main">
+        <div class="col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1 main">
           <center><h4 class="page-header">Hola, <c:out value="${usuario}"/></h4></center>
 
           <div class="row placeholders">
-            <div class="col-xs-6 col-sm-2 placeholder">
-              <img src="${contextpath}/static/resources/img/user.png" data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Perfil</h4>
-              <span class="text-muted">Información de Usuario</span>
+            <div class="col-xs-4 col-sm-1">
+              <img src="${contextpath}/static/resources/img/user.png" data-src="holder.js/50x50/auto/sky" class="img-responsive">
+              <h5>Perfil</h5>
+              
             </div>
-            <div class="col-xs-6 col-sm-2 placeholder">
-              <img src="${contextpath}/static/resources/img/add.png" data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Registrar</h4>
-              <span class="text-muted">Agregar nuevos Himnos</span>
+            <div class="col-xs-4 col-sm-1">
+              <img src="${contextpath}/static/resources/img/add.png" data-src="holder.js/50x50/auto/vine" class="img-responsive">
+              <h5>Registrar</h5>
+              
             </div>
-            <div class="col-xs-6 col-sm-2 placeholder">
-                <a id="consultar" href="#"><img src="${contextpath}/static/resources/img/consultar.png" data-src="holder.js/100x100/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"></a>
-              <h4>Consultar</h4>
-              <span class="text-muted"><a id="consultar" href="#">Himnario Presbiteriano</a></span>
+            <div class="col-xs-4 col-sm-1">
+                <a id="consultar" href="#"><img src="${contextpath}/static/resources/img/consultar.png" data-src="holder.js/50x50/auto/sky" class="img-responsive"></a>
+              <h5>Consultar</h5>
+              
             </div>
-            <div class="col-xs-6 col-sm-2 placeholder">
-              <img src="${contextpath}/static/resources/img/descargar.png" data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Descargar</h4>
-              <span class="text-muted">Impresión Documentos</span>
+            <div class="col-xs-4 col-sm-1">
+              <img src="${contextpath}/static/resources/img/descargar.png" data-src="holder.js/50x50/auto/vine" class="img-responsive">
+              <h5>Descargar</h5>
+              
             </div>
-            <div class="col-xs-6 col-sm-2 placeholder">
-              <img src="${contextpath}/static/resources/img/historial.png" data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Favoritos</h4>
-              <span class="text-muted">Lo más visto de esta semana</span>
+            <div class="col-xs-4 col-sm-1">
+              <img src="${contextpath}/static/resources/img/historial.png" data-src="holder.js/50x50/auto/vine" class="img-responsive">
+              <h5>Favoritos</h5>
+              
             </div>  
-            <div class="col-xs-6 col-sm-2 placeholder">
-                <a id="contacto" href="#"><img src="${contextpath}/static/resources/img/mail.png" data-src="holder.js/100x100/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail"></a>
-              <h4>Contacto</h4>
-              <span class="text-muted"><a id="contacto" href="#">Acerca de nosotros</a></span>
+            <div class="col-xs-4 col-sm-1">
+                <a id="contacto" href="#"><img src="${contextpath}/static/resources/img/mail.png" data-src="holder.js/50x50/auto/vine" class="img-responsive"></a>
+              <h5>Contacto</h5>
+              
+            </div>
+              
+            <div class="col-xs-12 col-sm-6">
+                <h4>Avisos</h4>  
+                <h5 style="text-align: justify">El día 9 de agosto de 2015 se llevo a cabo el culto especial de acción de gracias por el VIII aniversario de la Iglesia Nacional Presbiteriana ¡SIDON TIAKIL! del municipio de Oschuc, Chiapas. <a href="#">Seguir leyendo <span class="glyphicon glyphicon-arrow-right"/></a></h5>  
             </div>
           </div>
              
@@ -118,7 +123,7 @@
               
           <div id="contenidoDinamico">
           <h3 style="text-align: center;" class="sub-header alert alert-info">Consultar</h3>
-          <br>
+          
           <h4 class="sub-header" style="text-align: center;">Lo más recientes</h4>
           <div class="table-responsive">
             <table class="table table-striped" id="listaCoroActualizada">
