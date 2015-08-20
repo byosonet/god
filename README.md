@@ -3,8 +3,7 @@
 Proyecto Himnario Presbiteriano, sólo para la gloria de Dios.
 
 ## Desarrollador:
-
-Ulysses M@c
+<a href="#">Ulysses M@c</a>
 
 ## Etapa del proyecto:
 
