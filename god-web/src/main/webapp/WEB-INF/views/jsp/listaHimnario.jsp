@@ -10,6 +10,7 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 //OCULTANDO LOS DIVS DE LOS JSP
+                var status;
                 $('div#contactoJSP').hide();
                 
                       var listaCoroCompleta = $('#listaCoroCompleta')
@@ -64,6 +65,81 @@
                            $('div#contenidoDinamico').show();
                            $('div#contactoJSP').hide();  
                     });  
+                    
+                    
+                    $('button#bcontacto').click(function(){
+                        var asunto = $('input#asunto');
+                        var nombre = $('input#nombre');
+                        var email = $('input#emailContacto');
+                        var text = $('textArea#textarea');
+                        if(asunto.val() === ""){
+                            muestraMsjSistemaError('El asunto es requerido.');
+                            return false;
+                        }else if(nombre.val() === ""){
+                            muestraMsjSistemaError('Tu nombre es requerido.');
+                            return false;
+                        }else if(email.val() === ""){
+                            muestraMsjSistemaError('Tu email es requerido.');
+                            return false;
+                        }else if(text.val() === ""){
+                            muestraMsjSistemaError('No puedes enviar tus comentarios en blanco.');
+                            return false;
+                        }
+                        
+                        $.blockUI();
+                        $.ajax({
+                                type: 'POST',
+                                url: 'http://localhost:8084/god-web'+'/contacto/sistema',
+                                data: $('form#formContacto').serialize(),
+                                    success: function (data) {
+                                       $.unblockUI();
+                                       muestraMsjSistemaSuccess(data.mensaje);
+                                },
+                                   error: function(msj){
+                                       status = JSON.parse(msj.responseText);
+                                       $.unblockUI();
+                                       muestraMsjSistemaError(status.mensaje);
+                                    }
+                          });
+                    });
+                    
+                    
+                    //FUNCIONES DE DIALOGS DE SUCCESS Y ERROR
+                            function muestraMsjSistemaError(msjStatus){
+                            BootstrapDialog.show({
+                             size: BootstrapDialog.SIZE_LARGE,
+                             title: 'Mensaje del Sistema:',
+                             message: msjStatus,
+                             type: BootstrapDialog.TYPE_DANGER,
+                             cssClass: 'login-dialog',
+                             buttons: [{
+                                 icon: 'glyphicon glyphicon-check',
+                                 label: 'OK',
+                                 cssClass: 'btn-primary',
+                                 action: function(dialog) {
+                                     dialog.close();
+                                 }
+                             }]
+                         });
+                         }
+
+                         function muestraMsjSistemaSuccess(msjStatus){
+                            BootstrapDialog.show({
+                             size: BootstrapDialog.SIZE_LARGE,
+                             title: 'Mensaje del Sistema:',
+                             message: msjStatus,
+                             type: BootstrapDialog.TYPE_SUCCESS,
+                             cssClass: 'login-dialog',
+                             buttons: [{
+                                 icon: 'glyphicon glyphicon-check',
+                                 label: 'OK',
+                                 cssClass: 'btn-primary',
+                                 action: function(dialog) {
+                                     dialog.close();
+                                 }
+                             }]
+                         });
+                         }
                 }          
             );
         </script>

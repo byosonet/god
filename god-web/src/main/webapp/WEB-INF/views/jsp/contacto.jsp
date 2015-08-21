@@ -19,7 +19,7 @@
         </center>
                 
         <br>
-        <form class="form-horizontal" role="form">
+        <form id="formContacto" class="form-horizontal" method="POST">
             
              <div class="form-group">
               <label class="control-label col-sm-1" for="asunto">Asunto:</label>
@@ -36,7 +36,7 @@
               
               <label class="control-label col-sm-1" for="email">Email:</label>
               <div class="col-sm-5">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Ingesa tu email">
+                <input type="email" class="form-control" id="emailContacto" name="emailContacto" placeholder="Ingesa tu email">
               </div>
               
             </div>
@@ -50,16 +50,15 @@
                   <textArea class="form-control" id="textarea" name="textarea" placeholder="Gracias por ponerte en contacto." style="height: 200px;"></textarea>
               </div>
             </div>
-            
-           
-
-            <div class="form-group">
+        </form>
+        
+        
+        <div class="row">
               <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
                   <button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
-                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ENVIAR</button>
+                  <button id="bcontacto" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ENVIAR</button>
               </div>
-            </div>
-        </form>
+        </div>
         
         
     </div>

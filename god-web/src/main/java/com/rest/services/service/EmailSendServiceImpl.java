@@ -67,9 +67,28 @@ public class EmailSendServiceImpl implements EmailSendService
             
         }
     }
-    
-    
-    
+
+    public void contactoSistema(final String emailSistema, final String asunto, final String nombre, final String emailCliente, final String boydAsunto) {
+       try {
+        MimeMessagePreparator preparator = new MimeMessagePreparator() {
+            public void prepare(MimeMessage mimeMessage) throws Exception {
+                MimeMessageHelper messageHelper = new MimeMessageHelper(
+                        mimeMessage, "UTF-8");
+                messageHelper.setSubject(asunto);
+                messageHelper.setTo(emailSistema);
+                messageHelper.setText("<html><h2><strong>Email de Usuario: "+emailCliente+"<br>"
+                        + "Nombre: "+nombre+"<br>"
+                        + "Asunto: "+boydAsunto+"<br>"
+                        + "</strong></h2></html>", true);
+            }
+        };
+            this.mailSender.send(preparator);
+            this.log.info(" -- Correo enviado a: "+emailSistema);
+        } catch (MailException e) {
+            log.error(" -- Correo no pudo ser enviado: ", e);
+            throw new RuntimeException("No se pudo enviar mensaje");
+        }
+    }
     
     private final Logger log = Logger.getLogger(EmailSendServiceImpl.class);
 }
