@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.rest.services.god.persistence.hbm;
 
 import java.io.IOException;
@@ -22,18 +17,20 @@ public class Coro {
     private Date fechaAct;
     private Clob descripcion;
     private String numCoro;
+    private int activo;
     
     public Coro(){
         
     }
     
-    public Coro(int idcoro, String nombre, String autor, Date fechaAct, Clob descripcion, String numCoro){
+    public Coro(int idcoro, String nombre, String autor, Date fechaAct, Clob descripcion, String numCoro, int activo){
         this.idCoro = idcoro;
         this.nombre = nombre;
         this.autor = autor;
         this.fechaAct = fechaAct;
         this.descripcion = descripcion;
         this.numCoro = numCoro;
+        this.activo = activo;
     }
 
     public int getIdCoro() {
@@ -87,6 +84,14 @@ public class Coro {
 
     public void setNumCoro(String numCoro) {
         this.numCoro = numCoro;
+    }
+
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
     }
     
     public String readClob(Clob clob) throws SQLException, IOException {

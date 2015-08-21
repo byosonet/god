@@ -17,6 +17,12 @@
           });
       });
   </script>
+    <style>
+        body{
+           font:  150% comic sans ms;
+           color: gray;
+        }
+    </style>
     </head>
     <body style="background: white;">
     <div class="row">
@@ -25,16 +31,28 @@
             <center><h4 class="page-header">"<c:out value="${nombre}"/>"<br><u>(CORO <c:out value="${numCoro}"/>)</u></h4></center>
             <br>
         <center>
-        <div style="width: 100%;text-align: justify;">
-            <font size="3" face="Verdana" color="black">
-            <strong>
+        
+        <c:choose>
+            <c:when test="${statusDescripcion}">
+               <div style="width: 100%;text-align: justify;">
+                    <font size="3" face="Verdana" color="black">
+                    <strong>
+
+                        <c:out value="${coro}" escapeXml="false"/>
+
+                        <br><br>
+                    </strong>
+                    </font>
+                </div>
+            </c:when>
+            <c:otherwise>
+               <div class="row alert alert-danger" style="width: 100%;text-align: center;">
+                   <strong><c:out value="${coro}" escapeXml="false"/></strong>
+                </div>
+            </c:otherwise>
+        </c:choose>
+        
                 
-                <c:out value="${coro}" escapeXml="false"/>
-                
-                <br><br>
-            </strong>
-            </font>
-        </div>
         </center>
         <br>
         <center><h4 class="page-header"><a href="#" id="back">REGRESAR</a></h4></center>

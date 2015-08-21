@@ -12,6 +12,7 @@
                 //OCULTANDO LOS DIVS DE LOS JSP
                 var status;
                 $('div#contactoJSP').hide();
+                $('div#agregarCoroJSP').hide();
                 
                       var listaCoroCompleta = $('#listaCoroCompleta')
                           .dataTable(
@@ -58,15 +59,28 @@
                     
                     $('a#contacto').click(function(){
                             $('div#contenidoDinamico').hide();
+                             $('div#agregarCoroJSP').hide();
                             $('div#contactoJSP').show();
+                    }); 
+                    
+                    $('a#registrar').click(function(){
+                            $('div#contenidoDinamico').hide();
+                             $('div#agregarCoroJSP').show();
+                            $('div#contactoJSP').hide();
                     });  
                     
                     $('a#consultar').click(function(){
                            $('div#contenidoDinamico').show();
-                           $('div#contactoJSP').hide();  
+                           $('div#contactoJSP').hide();
+                           $('div#agregarCoroJSP').hide();
                     });  
                     
+                    $('button#limpiar').click(function(){
+                        $('#formContacto')[0].reset();
+                        $('#formRegistrar')[0].reset();
+                    });
                     
+                    //OPCION CONTACTO
                     $('button#bcontacto').click(function(){
                         var asunto = $('input#asunto');
                         var nombre = $('input#nombre');
@@ -91,6 +105,44 @@
                                 type: 'POST',
                                 url:  '${contextpath}'+'/contacto/sistema',
                                 data: $('form#formContacto').serialize(),
+                                    success: function (data) {
+                                       $.unblockUI();
+                                       muestraMsjSistemaSuccess(data.mensaje);
+                                },
+                                   error: function(msj){
+                                       status = JSON.parse(msj.responseText);
+                                       $.unblockUI();
+                                       muestraMsjSistemaError(status.mensaje);
+                                    }
+                          });
+                    });
+                    
+                    
+                        //OPCION REGISTRAR
+                        $('button#bregistrar').click(function(){
+                        var nombreCoro = $('input#nombreCoro');
+                        var autor = $('input#autor');
+                        var numCoro = $('input#numCoro');
+                        var desccoro = $('textArea#desccoro');
+                        if(nombreCoro.val() === ""){
+                            muestraMsjSistemaError('El nombre del coro es requerido.');
+                            return false;
+                        }else if(autor.val() === ""){
+                            muestraMsjSistemaError('El nombre del autor es requerido.');
+                            return false;
+                        }else if(numCoro.val() === ""){
+                            muestraMsjSistemaError('El número del coro es requerido.');
+                            return false;
+                        }else if(desccoro.val() === ""){
+                            muestraMsjSistemaError('Debes agregar el contenido del coro.');
+                            return false;
+                        }
+                        
+                        $.blockUI();
+                        $.ajax({
+                                type: 'POST',
+                                url:  '${contextpath}'+'/agregar/coro',
+                                data: $('form#formRegistrar').serialize(),
                                     success: function (data) {
                                        $.unblockUI();
                                        muestraMsjSistemaSuccess(data.mensaje);
@@ -166,8 +218,8 @@
               
             </div>
             <div class="col-xs-4 col-sm-1">
-              <img src="${contextpath}/static/resources/img/add.png" data-src="holder.js/50x50/auto/vine" class="img-responsive">
-              <h5>Registrar</h5>
+              <a id="registrar" href="#"><img src="${contextpath}/static/resources/img/add.png" data-src="holder.js/50x50/auto/vine" class="img-responsive"></a>
+            <h5>Registrar</h5>
               
             </div>
             <div class="col-xs-4 col-sm-1">
@@ -197,7 +249,8 @@
             </div>
           </div>
              
-          <div id="contactoJSP"><jsp:include page="contacto.jsp"></jsp:include></div>    
+          <div id="contactoJSP"><jsp:include page="contacto.jsp"></jsp:include></div>
+          <div id="agregarCoroJSP"><jsp:include page="agregarCoro.jsp"></jsp:include></div>
               
           <div id="contenidoDinamico">
           <h3 style="text-align: center;" class="sub-header alert alert-info">Consultar</h3>

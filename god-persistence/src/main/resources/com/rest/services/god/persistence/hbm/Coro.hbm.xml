@@ -27,6 +27,10 @@
         <property name="numCoro" type="string">
             <column name="NUM_CORO" length="20" />
         </property>
+        
+        <property name="activo" type="integer">
+            <column name="ACTIVO" length="1" />
+        </property>
 
     </class>
 </hibernate-mapping>

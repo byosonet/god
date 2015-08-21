@@ -11,4 +11,5 @@ public interface CoroDao {
     List<Coro> obtenerListaCoroActualizada();
     List<Coro> obtenerListacCompletaCoro();
     Coro obtenerCoro(String idCoro);
+    int agregarCoro(Coro coro);
 }

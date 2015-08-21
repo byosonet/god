@@ -5,7 +5,6 @@
 <body>
     <div>
         <h3 class="alert alert-info" style="text-align: center;">Contacto</h3>
-        <br>
         
         <center>
         <div style="width: 100%;text-align: justify;">
@@ -55,7 +54,7 @@
         
         <div class="row">
               <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
-                  <button type="reset" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
+                  <button id="limpiar" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
                   <button id="bcontacto" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ENVIAR</button>
               </div>
         </div>

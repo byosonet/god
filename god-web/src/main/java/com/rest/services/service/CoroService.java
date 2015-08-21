@@ -16,4 +16,5 @@ public interface CoroService {
     List<Coro> obtenerListaCoroActualizada();
     List<Coro> obtenerListaCoroCompleta();
     Coro obtenerCoro(String idCoro);
+    int agregarCoro(Coro coro);
 }

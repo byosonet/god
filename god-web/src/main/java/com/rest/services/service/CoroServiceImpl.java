@@ -60,8 +60,18 @@ public class CoroServiceImpl implements CoroService{
         }
         return coro;
     }
-    
-    
+
+    @Transactional
+    public int agregarCoro(Coro coro) {
+        int idCoro = 0;
+        this.log.info(" -- Agregando coro al sistema: " + coro.toString());
+        try {
+            idCoro = this.coroDao.agregarCoro(coro);
+        } catch (Exception ex) {
+            this.log.error(" -- El coro no se ha podido dar de alta en el sistema: " + ex.getMessage());
+        }
+        return idCoro;
+    }
     
     @Autowired
     private CoroDao coroDao;
