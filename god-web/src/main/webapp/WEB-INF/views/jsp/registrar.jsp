@@ -74,8 +74,9 @@
         
         function muestraMsjSistemaError(msjStatus){
            BootstrapDialog.show({
-            size: BootstrapDialog.SIZE_LARGE,
+            size: BootstrapDialog.SIZE_SMALL,
             title: 'Mensaje del Sistema:',
+            closable: false,
             message: '<strong>'+msjStatus+'</strong>',
             type: BootstrapDialog.TYPE_DANGER,
             cssClass: 'login-dialog',
@@ -92,8 +93,9 @@
         
         function muestraMsjSistemaSuccess(msjStatus){
            BootstrapDialog.show({
-            size: BootstrapDialog.SIZE_LARGE,
+            size: BootstrapDialog.SIZE_SMALL,
             title: 'Mensaje del Sistema:',
+            closable: false,
             message: '<strong>'+msjStatus+'</strong>',
             type: BootstrapDialog.TYPE_SUCCESS,
             cssClass: 'login-dialog',
@@ -117,8 +119,14 @@
         
       });
   </script>
+    <style>
+             body{
+                font:  150% comic sans ms;
+                color: gray;
+             }
+    </style>
     </head>
-    <body style="background-image: url(/god-web/static/resources/img/fondo.gif)">
+    <body>
         <div>
     <div class="login" style="margin-top: 50px;">
       <h1>Registro de Usuario</h1>

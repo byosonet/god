@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Bienvenido</title>
   <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/style.css">
+  <jsp:include page="../layout/staticResources.jsp"></jsp:include>
   <script type="text/javascript">
       $(function(){
           var status;
@@ -45,8 +46,9 @@
           
         function muestraMsjSistemaError(msjStatus){
            BootstrapDialog.show({
-            size: BootstrapDialog.SIZE_LARGE,
+            size: BootstrapDialog.SIZE_SMALL,
             title: 'Mensaje del Sistema:',
+            closable: false,
             message: msjStatus,
             type: BootstrapDialog.TYPE_DANGER,
             cssClass: 'login-dialog',
@@ -63,8 +65,9 @@
         
         function muestraMsjSistemaSuccess(msjStatus){
            BootstrapDialog.show({
-            size: BootstrapDialog.SIZE_LARGE,
+            size: BootstrapDialog.SIZE_SMALL,
             title: 'Mensaje del Sistema:',
+            closable: false,
             message: msjStatus,
             type: BootstrapDialog.TYPE_SUCCESS,
             cssClass: 'login-dialog',
@@ -85,8 +88,14 @@
         }
       });
   </script>
+  <style>
+             body{
+                font:  150% comic sans ms;
+                color: gray;
+             }
+  </style>
 </head>
-<body style="background-image: url(/god-web/static/resources/img/fondo.gif)">
+<body>
     <div>
     <div class="login" style="margin-top: 150px;">
       <h1>Recupera tu Password</h1>

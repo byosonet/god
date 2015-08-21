@@ -89,7 +89,7 @@
                         $.blockUI();
                         $.ajax({
                                 type: 'POST',
-                                url: 'http://localhost:8084/god-web'+'/contacto/sistema',
+                                url:  '${contextpath}'+'/contacto/sistema',
                                 data: $('form#formContacto').serialize(),
                                     success: function (data) {
                                        $.unblockUI();
@@ -107,8 +107,9 @@
                     //FUNCIONES DE DIALOGS DE SUCCESS Y ERROR
                             function muestraMsjSistemaError(msjStatus){
                             BootstrapDialog.show({
-                             size: BootstrapDialog.SIZE_LARGE,
+                             size: BootstrapDialog.SIZE_SMALL,
                              title: 'Mensaje del Sistema:',
+                             closable: false,
                              message: msjStatus,
                              type: BootstrapDialog.TYPE_DANGER,
                              cssClass: 'login-dialog',
@@ -125,8 +126,9 @@
 
                          function muestraMsjSistemaSuccess(msjStatus){
                             BootstrapDialog.show({
-                             size: BootstrapDialog.SIZE_LARGE,
+                             size: BootstrapDialog.SIZE_SMALL,
                              title: 'Mensaje del Sistema:',
+                             closable: false,
                              message: msjStatus,
                              type: BootstrapDialog.TYPE_SUCCESS,
                              cssClass: 'login-dialog',
