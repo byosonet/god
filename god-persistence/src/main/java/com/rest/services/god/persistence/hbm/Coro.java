@@ -5,6 +5,7 @@ import java.io.Reader;
 import java.sql.Clob;
 import java.sql.SQLException;
 import java.util.Date;
+import javax.sql.rowset.serial.SerialClob;
 
 /**
  *
@@ -103,6 +104,11 @@ public class Coro {
             sb.append(cbuf, 0, n);
         }
         return sb.toString();
+    }
+    
+    public Clob covertirStringToClob(String des) throws SQLException{
+        Clob myClobFile = new SerialClob(des.toCharArray());
+        return myClobFile;
     }
 
     @Override

@@ -39,7 +39,13 @@ public class CoroController {
            if(String.valueOf(coro.getIdCoro()).equals(id)){
                model.addAttribute("idCoro", id);
                model.addAttribute("nombre", coro.getNombre());
+               
+               if(coro.getActivo() == 1){
                model.addAttribute("coro", coro.getDescripcion()!=null?coro.getDataClob(coro.getDescripcion()):"El detalle de este coro está en proceso de validación.");
+               }else{
+                  coro.setDescripcion(null);
+                  model.addAttribute("coro", "El detalle de este coro está en proceso de validación.");
+               }
                model.addAttribute("numCoro", coro.getNumCoro());
                model.addAttribute("userEmail", userEmail);
                model.addAttribute("userPassword", userPassword);
@@ -56,7 +62,7 @@ public class CoroController {
    }
    
    @RequestMapping(value="/agregar/coro",method = RequestMethod.POST)
-   public ResponseEntity<ErrorService> agregarCoro(Model model, HttpServletRequest request) {
+   public ResponseEntity<ErrorService> agregarCoro(Model model, HttpServletRequest request) throws SQLException {
        HttpStatus status = HttpStatus.NOT_FOUND;
        
        String nombreCoro = request.getParameter("nombreCoro");
@@ -82,7 +88,7 @@ public class CoroController {
        coro.setAutor(autor);
        coro.setNumCoro(numCoro);
        coro.setFechaAct(fechaAlta);
-       coro.setDescripcion(null);
+       coro.setDescripcion(coro.covertirStringToClob(desccoro));
        coro.setNombre(nombreCoro);
        
        try{

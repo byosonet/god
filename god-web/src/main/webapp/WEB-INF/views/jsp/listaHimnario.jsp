@@ -360,7 +360,7 @@
                 <c:choose>
                    <c:when test="${coro.activo == 1}">
                        <td style="text-align:center;">
-                        <b class="glyphicon glyphicon-ok alert alert-success" style="margin-top:-4px;margin-bottom: -3px;"> Revisado</b>
+                        <b class="glyphicon glyphicon-ok alert alert-success" style="margin-top:-4px;margin-bottom: -3px;"> Procesado</b>
                        </td>
                    </c:when>
                    <c:otherwise>
@@ -406,7 +406,7 @@
                     <c:choose>
                        <c:when test="${corocomp.activo == 1}">
                            <td style="text-align:center;">
-                              <b class="glyphicon glyphicon-ok alert alert-success" style="margin-top:-4px;margin-bottom: -3px;"> Revisado</b>
+                              <b class="glyphicon glyphicon-ok alert alert-success" style="margin-top:-4px;margin-bottom: -3px;"> Procesado</b>
                            </td>
                        </c:when>
                        <c:otherwise>
