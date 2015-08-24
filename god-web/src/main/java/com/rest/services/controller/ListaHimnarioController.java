@@ -42,6 +42,16 @@ public class ListaHimnarioController {
                model.addAttribute("usuario", user.getNombre());
                model.addAttribute("userEmail", user.getEmail());
                model.addAttribute("userPassword", pass);
+               
+               //retornando los datos del perfil
+               model.addAttribute("nombreUsuario", user.getNombre());
+               model.addAttribute("falta", user.getFechaAlta());
+               model.addAttribute("fconexion", user.getUltConexion());
+               model.addAttribute("emailUsuario", user.getEmail());
+               model.addAttribute("actividad", user.getActividad());
+               model.addAttribute("sexo", user.getSexo()=='M'?"Masculino":"Femenino");
+               model.addAttribute("fnacimiento", user.getFechaNacimiento());
+               
            }
        }catch(Exception ex){
            ex.printStackTrace();

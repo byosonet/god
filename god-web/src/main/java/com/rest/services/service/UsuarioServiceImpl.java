@@ -65,4 +65,11 @@ private UsuarioDao usuarioDao;
         return user;
     }
 
+    @Transactional
+    public void actualizarDatosUsuario(Usuario usuario) {
+        this.log.info(" -- Actualizando Datos del usuario en sistema: "+usuario.toString());
+        this.usuarioDao.actualizarDatosUsuario(usuario);
+        this.log.info(" -- Datos Actualizados");
+    }
+
 }

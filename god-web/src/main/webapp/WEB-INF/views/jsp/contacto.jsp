@@ -9,10 +9,12 @@
         <center>
         <div style="width: 100%;text-align: justify;">
             <font face="Arial" color="gray">
-                <hr><blockquote>
-                    God-Web nace de la idea de un proyecto como apoyo a la Iglesia Nacional Presbiteriana de México
-                    para el acceso digital al Himnario Evángelico "Solo a Dios la Gloria", aun estamos en fase de desarrollo,                  pero tu opinión es muy importante para nosotros, así que no dudes en dejarnos tus comentarios.</blockquote>   <hr>                          
-                </blockquote></hr>
+                <hr>
+                    <blockquote>
+                        God-Web nace de la idea de un proyecto como apoyo a la Iglesia Nacional Presbiteriana de México
+                        para el acceso digital al Himnario Evángelico "Solo a Dios la Gloria", aun estamos en fase de desarrollo,                  pero tu opinión es muy importante para nosotros, así que no dudes en dejarnos tus comentarios.
+                    </blockquote>   
+                <hr>                          
             </font>
         </div>
         </center>

@@ -1,7 +1,7 @@
  <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#" style="color:white;">GOD WEB</a>
+              <a class="navbar-brand" href="#" style="color:white;">Himnario Evángelico Presbiteriano</a>
             </div>
           </div>
 </nav>

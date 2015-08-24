@@ -59,6 +59,16 @@ public class LoginController {
                       model.addAttribute("usuario", usuario.getNombre());
                       model.addAttribute("userEmail", usuario.getEmail());
                       model.addAttribute("userPassword", password);
+                      
+                      //retornando los datos del perfil
+                    model.addAttribute("nombreUsuario", usuario.getNombre());
+                    model.addAttribute("falta", usuario.getFechaAlta());
+                    model.addAttribute("fconexion", usuario.getUltConexion());
+                    model.addAttribute("emailUsuario", usuario.getEmail());
+                    model.addAttribute("actividad", usuario.getActividad());
+                    model.addAttribute("sexo", usuario.getSexo()=='M'?"Masculino":"Femenino");
+                    model.addAttribute("fnacimiento", usuario.getFechaNacimiento());
+                      
                   }
               } catch (Exception ex) {
                   ex.printStackTrace();
@@ -246,6 +256,50 @@ public class LoginController {
             response.setMensaje("NO LOCALIZADO");
         }
         return new ResponseEntity<ErrorService>(response, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/actualizar/usuario", method = RequestMethod.POST)
+    public ResponseEntity<ErrorService> actualizarDatosUsuario(HttpServletRequest request) throws IOException, JSONException {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        
+        String emailUsuario = request.getParameter("emailUsuario");
+        String passwordUsuario = request.getParameter("passwordUsuario");
+        
+        String nombreUsuario = request.getParameter("nombreUsuario");
+        String falta = request.getParameter("falta");
+        String fconexion = request.getParameter("fconexion");
+        String actividad = request.getParameter("actividad");
+        String fnacimiento = request.getParameter("fnacimiento");
+        String sexo = request.getParameter("sexo");
+        
+        
+        this.log.info(" -- Email Usuario: "+emailUsuario);
+        this.log.info(" -- Password Usuario: "+passwordUsuario);
+        
+        this.log.info(" -- Nombre Usuario: "+nombreUsuario);
+        this.log.info(" -- Fecha Alta Usuario: "+falta);
+        this.log.info(" -- Fecha Ultima Conexion Usuario: "+fconexion);
+        this.log.info(" -- Actividad Usuario: "+actividad);
+        this.log.info(" -- Fecha Nacimiento Usuario: "+fnacimiento);
+        this.log.info(" -- Sexo Usuario: "+sexo);
+        
+        ErrorService response = new ErrorService();
+        response.setCodigo("404");
+        response.setMensaje("Los datos del usuario no se pudieron actualizar, intente más tarde.");
+        
+        Usuario user = this.usuarioService.validaEmailSistema(emailUsuario);
+        if(user!=null){
+            this.log.info(" -- Usuario encontrado: "+user.toString());
+            String encriptarPassword = UtilService.Encriptar(passwordUsuario);
+            user.setPassword(encriptarPassword);
+            this.usuarioService.actualizarDatosUsuario(user);
+            this.log.info(" -- El password fue actualizado");
+            response.setCodigo("200");
+            response.setMensaje("La información fue actualizada con éxito, "
+                    + "para continuar tendrá que reingresar al sistema con su nuevo password.");
+            status = HttpStatus.OK;
+        }
+        return new ResponseEntity<ErrorService>(response, status);
     }
 
     public static boolean validaFecha(String fecha) {

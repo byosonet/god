@@ -78,7 +78,7 @@ public class CoroController {
        Date fechaAlta = new Date(stamp.getTime());
 
        Coro coro = new Coro();
-       coro.setActivo(1);
+       coro.setActivo(0);
        coro.setAutor(autor);
        coro.setNumCoro(numCoro);
        coro.setFechaAct(fechaAlta);

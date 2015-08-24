@@ -126,7 +126,7 @@
              }
     </style>
     </head>
-    <body>
+    <body style="background: InactiveBorder">
         <div>
     <div class="login" style="margin-top: 50px;">
       <h1>Registro de Usuario</h1>
@@ -138,7 +138,7 @@
         
         <br><br>
         <div style="text-align: center;"><h1>Información Personal</h1></div> 
-        <p style="text-align: center;">
+        <p style="text-align: left;">
             Día:<select id="dia" name="dia" data-bind="foreach: days, visible: days().length > 0">
             <option data-bind="value: id,text:day"></option></select>
             <br><br>

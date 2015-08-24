@@ -13,11 +13,12 @@
                 var status;
                 $('div#contactoJSP').hide();
                 $('div#agregarCoroJSP').hide();
+                $('div#perfilJSP').hide();
                 
                       var listaCoroCompleta = $('#listaCoroCompleta')
                           .dataTable(
                               {
-                              "aoColumns": [ {"bSearchable": true}, {"bSearchable": false}, {"bSearchable": false},{"bSearchable": false}],
+                              "aoColumns": [ {"bSearchable": true}, {"bSearchable": false}, {"bSearchable": false},{"bSearchable": false},{"bSearchable": false}],
                               "sPaginationType": "full_numbers",
                               "bPaginate": false,
                               "oLanguage" : {
@@ -44,7 +45,13 @@
                                   "sInfoFiltered":  "",
                               }
 
-                              });     
+                              });
+                              
+                    $('a#exit').click(function(){
+                        muestraMsjSistemaSuccessIndex("Gracias por tu visita, Dios te bendiga.");
+                    });          
+                              
+                              
                     $('a#ref').click(function(){
                         $.blockUI();
                         var a_href = $(this).attr('href');
@@ -60,6 +67,7 @@
                     $('a#contacto').click(function(){
                             $('div#contenidoDinamico').hide();
                              $('div#agregarCoroJSP').hide();
+                             $('div#perfilJSP').hide();
                             $('div#contactoJSP').show();
                     }); 
                     
@@ -67,17 +75,27 @@
                             $('div#contenidoDinamico').hide();
                              $('div#agregarCoroJSP').show();
                             $('div#contactoJSP').hide();
+                            $('div#perfilJSP').hide();
                     });  
                     
                     $('a#consultar').click(function(){
                            $('div#contenidoDinamico').show();
                            $('div#contactoJSP').hide();
                            $('div#agregarCoroJSP').hide();
+                           $('div#perfilJSP').hide();
+                    });  
+                    
+                    $('a#perfil').click(function(){
+                           $('div#contenidoDinamico').hide();
+                           $('div#contactoJSP').hide();
+                           $('div#agregarCoroJSP').hide();
+                           $('div#perfilJSP').show();
                     });  
                     
                     $('button#limpiar').click(function(){
                         $('#formContacto')[0].reset();
                         $('#formRegistrar')[0].reset();
+                        $('#formPerfil')[0].reset();
                     });
                     
                     //OPCION CONTACTO
@@ -156,6 +174,36 @@
                     });
                     
                     
+                    
+                        //OPCION PERFIL
+                        $('button#bperfil').click(function(){
+                        var passwordUsuario = $('input#passwordUsuario');
+                       
+                        if(passwordUsuario.val() === ""){
+                            muestraMsjSistemaError('Escribe tu nuevo password para actualizar.');
+                            return false;
+                        }
+                        
+                        $.blockUI();
+                        $.ajax({
+                                type: 'POST',
+                                url:  '${contextpath}'+'/actualizar/usuario',
+                                data: $('form#formPerfil').serialize(),
+                                    success: function (data) {
+                                       $.unblockUI();
+                                       muestraMsjSistemaSuccessIndex(data.mensaje);
+                                },
+                                   error: function(msj){
+                                       status = JSON.parse(msj.responseText);
+                                       $.unblockUI();
+                                       muestraMsjSistemaError(status.mensaje);
+                                    }
+                          });
+                    });
+                    
+                    
+                    
+                    
                     //FUNCIONES DE DIALOGS DE SUCCESS Y ERROR
                             function muestraMsjSistemaError(msjStatus){
                             BootstrapDialog.show({
@@ -194,6 +242,31 @@
                              }]
                          });
                          }
+                         
+                         
+                         function muestraMsjSistemaSuccessIndex(msjStatus){
+                            BootstrapDialog.show({
+                             size: BootstrapDialog.SIZE_SMALL,
+                             title: 'Mensaje del Sistema:',
+                             closable: false,
+                             message: msjStatus,
+                             type: BootstrapDialog.TYPE_SUCCESS,
+                             cssClass: 'login-dialog',
+                             buttons: [{
+                                 icon: 'glyphicon glyphicon-ok',
+                                 label: 'ACEPTAR',
+                                 cssClass: 'btn-primary',
+                                 action: function(dialog) {
+                                     dialog.close();
+                                    $.blockUI();
+                                    var urlAction = '${contextpath}';
+                                    document.getElementById('index').action = urlAction;
+                                    document.getElementById('index').method = 'GET';
+                                    document.getElementById('index').submit();
+                                 }
+                             }]
+                         });
+                         }  
                 }          
             );
         </script>
@@ -209,48 +282,40 @@
       <div class="row">
         
         <div class="col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1 main">
-          <center><h4 class="page-header">Hola, <c:out value="${usuario}"/></h4></center>
+          <center><h4 class="page-header" style="text-align: right;">Hola, <c:out value="${usuario}"/> <a id="exit" href="#"> Salir <span class="glyphicon glyphicon-arrow-right"></span></a></h4></center>
 
           <div class="row placeholders">
-            <div class="col-xs-4 col-sm-1">
-              <img src="${contextpath}/static/resources/img/user.png" data-src="holder.js/50x50/auto/sky" class="img-responsive">
+            <div class="col-xs-6 col-sm-1">
+                <a id="perfil" href="#"><img src="${contextpath}/static/resources/img/user.png" data-src="holder.js/50x50/auto/sky" class="img-responsive"></a>
               <h5>Perfil</h5>
               
             </div>
-            <div class="col-xs-4 col-sm-1">
+            <div class="col-xs-6 col-sm-1">
               <a id="registrar" href="#"><img src="${contextpath}/static/resources/img/add.png" data-src="holder.js/50x50/auto/vine" class="img-responsive"></a>
             <h5>Registrar</h5>
               
             </div>
-            <div class="col-xs-4 col-sm-1">
+            <div class="col-xs-6 col-sm-1">
                 <a id="consultar" href="#"><img src="${contextpath}/static/resources/img/consultar.png" data-src="holder.js/50x50/auto/sky" class="img-responsive"></a>
               <h5>Consultar</h5>
               
             </div>
-            <div class="col-xs-4 col-sm-1">
-              <img src="${contextpath}/static/resources/img/descargar.png" data-src="holder.js/50x50/auto/vine" class="img-responsive">
-              <h5>Descargar</h5>
-              
-            </div>
-            <div class="col-xs-4 col-sm-1">
-              <img src="${contextpath}/static/resources/img/historial.png" data-src="holder.js/50x50/auto/vine" class="img-responsive">
-              <h5>Favoritos</h5>
-              
-            </div>  
-            <div class="col-xs-4 col-sm-1">
+            
+            <div class="col-xs-6 col-sm-1">
                 <a id="contacto" href="#"><img src="${contextpath}/static/resources/img/mail.png" data-src="holder.js/50x50/auto/vine" class="img-responsive"></a>
               <h5>Contacto</h5>
               
             </div>
               
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-8">
                 <h4>Avisos</h4>  
-                <h5 style="text-align: justify">El día 9 de agosto de 2015 se llevo a cabo el culto especial de acción de gracias por el VIII aniversario de la Iglesia Nacional Presbiteriana ¡SIDON TIAKIL! del municipio de Oschuc, Chiapas. <a href="#">Seguir leyendo <span class="glyphicon glyphicon-arrow-right"/></a></h5>  
+                <h5 style="text-align: justify">El día 9 de agosto de 2015 se llevo a cabo el culto especial de acción de gracias por el VIII aniversario de la Iglesia Nacional Presbiteriana ¡SIDON TIAKIL! del municipio de Oschuc Nacional Presbiteriana ¡SIDON TIAKIL!,  Presbiteriana ¡SIDON TIAKIL! del municipio de Oschuc, Chiapas. <a href="#">Seguir leyendo.</a></h5>  
             </div>
           </div>
              
           <div id="contactoJSP"><jsp:include page="contacto.jsp"></jsp:include></div>
           <div id="agregarCoroJSP"><jsp:include page="agregarCoro.jsp"></jsp:include></div>
+          <div id="perfilJSP"><jsp:include page="perfil.jsp"></jsp:include></div>
               
           <div id="contenidoDinamico">
           <h3 style="text-align: center;" class="sub-header alert alert-info">Consultar</h3>
@@ -264,6 +329,7 @@
                   <th style="text-align: center">NOMBRE</th>
                   <th style="text-align: center">AUTOR</th>
                   <th style="text-align: center">FECHA ACTUALIZACIÓN</th>
+                  <th style="text-align: center">ESTADO</th>
                 </tr>
               </thead>
               <tbody>
@@ -276,6 +342,20 @@
                 <td style="text-align: center">
                     <fmt:formatDate value="${coro.fechaAct}" pattern="dd/MM/yyyy HH:mm:ss" />
                 </td>
+                
+                <c:choose>
+                   <c:when test="${coro.activo == 1}">
+                       <td style="text-align:center;">
+                        <b class="glyphicon glyphicon-ok alert alert-success" style="margin-top:-4px;margin-bottom: -3px;"> Revisado</b>
+                       </td>
+                   </c:when>
+                   <c:otherwise>
+                      <td style="text-align:center;">
+                        <b class="glyphicon glyphicon-remove alert alert-danger" style="margin-top:-4px;margin-bottom: -3px;"> Pendiente</b>
+                       </td>
+                   </c:otherwise>
+               </c:choose>
+                
                 </tr>    
                 </c:forEach>
                 
@@ -290,25 +370,37 @@
               <thead>
                 <tr>
                   
-                  <th style="text-align: center">NÚMERO DE CORO</th>
+                  <th style="text-align: center">CORO</th>
                   <th style="text-align: center">NOMBRE</th>
                   <th style="text-align: center">AUTOR</th>
-                  <th style="text-align: center">FECHA ACTUALIZACIÓN</th>
+                  <th style="text-align: center">SUBIDO</th>
+                  <th style="text-align: center">ESTADO</th>
                   
                 </tr>
               </thead>
               <tbody>
                 
-                <c:forEach items="${corosCompletos}" var="coroc" varStatus="indice">
+                <c:forEach items="${corosCompletos}" var="corocomp" varStatus="indice">
                <tr>
                 
-                <td style="text-align: center;"><a id="ref" href="#${coroc.idCoro}">${coroc.numCoro}</a></td>
-                <td><a id="ref" href="#${coroc.idCoro}">${coroc.nombre}</a></td>
-                <td>${coroc.autor}</td>
+                <td style="text-align: center;width: 2%;"><a id="ref" href="#${corocomp.idCoro}">${corocomp.numCoro}</a></td>
+                <td><a id="ref" href="#${corocomp.idCoro}">${corocomp.nombre}</a></td>
+                <td>${corocomp.autor}</td>
                 <td style="text-align: center">
-                    <fmt:formatDate value="${coroc.fechaAct}" pattern="dd/MM/yyyy HH:mm:ss" />
+                    <fmt:formatDate value="${corocomp.fechaAct}" pattern="dd/MM/yyyy HH:mm:ss" />
                 </td>
-                
+                    <c:choose>
+                       <c:when test="${corocomp.activo == 1}">
+                           <td style="text-align:center;">
+                              <b class="glyphicon glyphicon-ok alert alert-success" style="margin-top:-4px;margin-bottom: -3px;"> Revisado</b>
+                           </td>
+                       </c:when>
+                       <c:otherwise>
+                          <td style="text-align:center;">
+                             <b class="glyphicon glyphicon-remove alert alert-danger" style="margin-top:-4px;margin-bottom: -3px;"> Pendiente</b>
+                           </td>
+                       </c:otherwise>
+                   </c:choose>
                 </tr>    
                 </c:forEach>
                 
@@ -323,6 +415,9 @@
         <input type="hidden" id="idCoro" name="idCoro"/>
         <input type="hidden" id="userEmail" name="userEmail" value="${userEmail}">
         <input type="hidden" id="userPassword" name="userPassword" value="${userPassword}">
+    </form>
+    
+    <form id="index">
     </form>
     </body>
 </html>

@@ -22,7 +22,7 @@ public class CoroServiceImpl implements CoroService{
        if(coros!=null && coros.size()>0){
            for(Coro c : coros){
                try {
-                   this.log.info(" -- idCoro: "+c.getIdCoro()+" Nombre: "+c.getNombre()+" Descripcion: "+c.getDataClob(c.getDescripcion()));
+                   this.log.info(" -- idCoro: "+c.getIdCoro()+" Nombre: "+c.getNombre());
                } catch (Exception ex) {
                    ex.printStackTrace();
                }

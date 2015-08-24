@@ -18,4 +18,5 @@ public interface UsuarioDao {
     void actualizarConexionUsuario(Usuario usuario);
     int agregarUsuario(Usuario usuario);
     Usuario validaEmailSistema(String email);
+    void actualizarDatosUsuario(Usuario user);
 }

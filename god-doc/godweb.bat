@@ -19,7 +19,7 @@ COLOR 70
 	SET DROOLS=C:\temporal\god\god-drools\
 	SET PERSISTENCE=C:\temporal\god\god-persistence\
 	SET WEB=C:\temporal\god\god-web
-	SET COMPILAR_MODO_NORMAL=mvn clean compile install -Dmaven.test.skip=true
+	SET COMPILAR_MODO_NORMAL=mvn --offline clean compile install -Dmaven.test.skip=true
 	
 	IF %STATUS_ADAPTER% EQU TRUE (
 		CD %ADAPTER%

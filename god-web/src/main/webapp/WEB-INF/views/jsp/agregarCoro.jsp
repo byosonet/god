@@ -14,7 +14,7 @@
                      Puedes agregar nuevos himnos, pero recuerda que estos primero tendrán que ser validados por el administrador antes de
                      ser publicados, si tienes dudas puedes ponerte en contacto con el Administrador del Sistema.
                     </blockquote>
-                </hr>
+                <hr>
             </font>
         </div>
         </center>

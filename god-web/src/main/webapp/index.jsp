@@ -81,7 +81,7 @@
             type: BootstrapDialog.TYPE_SUCCESS,
             cssClass: 'login-dialog',
             buttons: [{
-                icon: 'glyphicon glyphicon-check',
+                icon: 'glyphicon glyphicon-ok',
                 label: 'CONTINUAR',
                 cssClass: 'btn-primary',
                 action: function(dialog) {
@@ -104,11 +104,11 @@
              }
   </style>
 </head>
-<body>
+<body style="background: InactiveBorder">
      <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#" style="color:white;">GOD WEB</a>
+              <a class="navbar-brand" href="#" style="color:white;">Himnario Evángelico Presbiteriano</a>
             </div>
           </div>
         </nav>
@@ -131,7 +131,7 @@
   <nav class="navbar navbar-inverse navbar-fixed-bottom">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#" style="font-size: 0.75em;color:white;">Developer: by Ulysses Mac</a>
+              <a class="navbar-brand" href="#" style="font-size: 0.75em;color:white;">by Ulysses M@c</a>
             </div>
           </div>
 </nav>

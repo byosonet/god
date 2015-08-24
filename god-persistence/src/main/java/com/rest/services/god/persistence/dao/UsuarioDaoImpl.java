@@ -85,5 +85,21 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
         }
         return usuario.getIdUsuario();
     }
+
+    public void actualizarDatosUsuario(Usuario user) {
+        try {
+            this.mysql.iniciarOperacion();
+            if(user!=null){
+                this.mysql.getSesion().saveOrUpdate(user);
+                this.mysql.getSesion().flush();
+                this.mysql.getTx().commit();
+            }
+        } catch (HibernateException he) {
+            this.mysql.manejarException(he);
+            throw he;
+        } finally {
+            this.mysql.getSesion().close();
+        }
+    }
     
 }

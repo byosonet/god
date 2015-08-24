@@ -18,7 +18,7 @@ public class CoroDaoImpl extends HibernateDaoSupport implements CoroDao{
         this.log.info(" -- Buscando por lista de coros por fecha::");
         return (List<Coro>) this
                 .getSession()
-                .createQuery("FROM Coro c " + "WHERE c.activo = 1 ORDER BY c.fechaAct DESC")
+                .createQuery("FROM Coro c " + "ORDER BY c.fechaAct DESC")
                 .setMaxResults(2)
                 .list();
     }
@@ -27,7 +27,7 @@ public class CoroDaoImpl extends HibernateDaoSupport implements CoroDao{
         this.log.info(" -- Buscando por lista de coros::");
         return (List<Coro>) this
                 .getSession()
-                .createQuery("FROM Coro c " + "WHERE c.activo = 1 ORDER BY c.nombre ASC")
+                .createQuery("FROM Coro c " + "ORDER BY c.nombre ASC")
                 .list();
     }
     
