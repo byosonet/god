@@ -20,6 +20,9 @@
     
     <bean id="coroService" 
           class="com.rest.services.service.CoroServiceImpl"/>
+    
+    <bean id="propiedadSistemaService" 
+          class="com.rest.services.service.PropiedadSistemaServiceImpl"/>
 
     <!-- Adapters Externos-->
     <bean id="banxicoTipoCambioAdapter" 

@@ -1,8 +1,10 @@
 package com.rest.services.controller;
 
 import com.rest.services.god.persistence.hbm.Coro;
+import com.rest.services.god.persistence.hbm.PropiedadSistema;
 import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.service.CoroService;
+import com.rest.services.service.PropiedadSistemaService;
 import com.rest.services.service.UsuarioService;
 import com.rest.services.util.UtilService;
 import java.util.List;
@@ -52,6 +54,13 @@ public class ListaHimnarioController {
                model.addAttribute("sexo", user.getSexo()=='M'?"Masculino":"Femenino");
                model.addAttribute("fnacimiento", user.getFechaNacimiento());
                
+               //retornando los aviso
+               PropiedadSistema tituloAviso = this.propiedadSistemaService.obtenerValorPropiedad("titulo.aviso");
+               PropiedadSistema detalleAviso = this.propiedadSistemaService.obtenerValorPropiedad("detalle.aviso");
+               
+               model.addAttribute("titulo", tituloAviso.getValue());
+               model.addAttribute("detalle", detalleAviso.getValue());
+               
            }
        }catch(Exception ex){
            ex.printStackTrace();
@@ -69,4 +78,7 @@ public class ListaHimnarioController {
    
    @Autowired
    private UsuarioService usuarioService;
+   
+   @Autowired
+   private PropiedadSistemaService propiedadSistemaService;
 }

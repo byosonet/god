@@ -3,10 +3,12 @@ package com.rest.services.controller;
 import com.rest.services.god.drools.DroolRuleAge;
 import com.rest.services.god.drools.vo.UserTemp;
 import com.rest.services.god.persistence.hbm.Coro;
+import com.rest.services.god.persistence.hbm.PropiedadSistema;
 import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.model.ErrorService;
 import com.rest.services.service.CoroService;
 import com.rest.services.service.EmailSendService;
+import com.rest.services.service.PropiedadSistemaService;
 import com.rest.services.service.UsuarioService;
 import com.rest.services.util.UtilService;
 import java.io.BufferedReader;
@@ -68,6 +70,14 @@ public class LoginController {
                     model.addAttribute("actividad", usuario.getActividad());
                     model.addAttribute("sexo", usuario.getSexo()=='M'?"Masculino":"Femenino");
                     model.addAttribute("fnacimiento", usuario.getFechaNacimiento());
+                    
+                    
+                     //retornando los aviso
+                    PropiedadSistema tituloAviso = this.propiedadSistemaService.obtenerValorPropiedad("titulo.aviso");
+                    PropiedadSistema detalleAviso = this.propiedadSistemaService.obtenerValorPropiedad("detalle.aviso");
+
+                    model.addAttribute("titulo", tituloAviso.getValue());
+                    model.addAttribute("detalle", detalleAviso.getValue());
                       
                   }
               } catch (Exception ex) {
@@ -325,5 +335,8 @@ public class LoginController {
     
     @Autowired
     private DroolRuleAge droolRuleAgeAdapter;
+    
+    @Autowired
+    private PropiedadSistemaService propiedadSistemaService;
     
 }

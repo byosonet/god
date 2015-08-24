@@ -55,7 +55,7 @@
                 
         </center>
         <br>
-        <center><h4 class="page-header"><a href="#" id="back">REGRESAR</a></h4></center>
+        <center><h4 class="page-header"><a href="#" id="back">Regresar <span class="glyphicon glyphicon-arrow-left"></span></a></h4></center>
     </div>
   </div>
     <form id="regresar">

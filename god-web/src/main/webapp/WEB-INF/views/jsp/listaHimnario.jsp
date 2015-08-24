@@ -14,6 +14,7 @@
                 $('div#contactoJSP').hide();
                 $('div#agregarCoroJSP').hide();
                 $('div#perfilJSP').hide();
+                $('div#avisoJSP').hide();
                 
                       var listaCoroCompleta = $('#listaCoroCompleta')
                           .dataTable(
@@ -64,11 +65,20 @@
                         document.getElementById('enviarCoro').submit();
                     });
                     
+                    $('a#aviso').click(function(){
+                            $('div#contenidoDinamico').hide();
+                            $('div#agregarCoroJSP').hide();
+                            $('div#perfilJSP').hide();
+                            $('div#contactoJSP').hide();
+                            $('div#avisoJSP').show();
+                    }); 
+                    
                     $('a#contacto').click(function(){
                             $('div#contenidoDinamico').hide();
                              $('div#agregarCoroJSP').hide();
                              $('div#perfilJSP').hide();
                             $('div#contactoJSP').show();
+                            $('div#avisoJSP').hide();
                     }); 
                     
                     $('a#registrar').click(function(){
@@ -76,6 +86,7 @@
                              $('div#agregarCoroJSP').show();
                             $('div#contactoJSP').hide();
                             $('div#perfilJSP').hide();
+                            $('div#avisoJSP').hide();
                     });  
                     
                     $('a#consultar').click(function(){
@@ -83,6 +94,7 @@
                            $('div#contactoJSP').hide();
                            $('div#agregarCoroJSP').hide();
                            $('div#perfilJSP').hide();
+                           $('div#avisoJSP').hide();
                     });  
                     
                     $('a#perfil').click(function(){
@@ -90,6 +102,7 @@
                            $('div#contactoJSP').hide();
                            $('div#agregarCoroJSP').hide();
                            $('div#perfilJSP').show();
+                           $('div#avisoJSP').hide();
                     });  
                     
                     $('button#limpiar').click(function(){
@@ -285,23 +298,23 @@
           <center><h4 class="page-header" style="text-align: right;">Hola, <c:out value="${usuario}"/> <a id="exit" href="#"> Salir <span class="glyphicon glyphicon-arrow-right"></span></a></h4></center>
 
           <div class="row placeholders">
-            <div class="col-xs-6 col-sm-1">
+            <div class="col-xs-3 col-sm-1">
                 <a id="perfil" href="#"><img src="${contextpath}/static/resources/img/user.png" data-src="holder.js/50x50/auto/sky" class="img-responsive"></a>
               <h5>Perfil</h5>
               
             </div>
-            <div class="col-xs-6 col-sm-1">
+            <div class="col-xs-3 col-sm-1">
               <a id="registrar" href="#"><img src="${contextpath}/static/resources/img/add.png" data-src="holder.js/50x50/auto/vine" class="img-responsive"></a>
             <h5>Registrar</h5>
               
             </div>
-            <div class="col-xs-6 col-sm-1">
+            <div class="col-xs-3 col-sm-1">
                 <a id="consultar" href="#"><img src="${contextpath}/static/resources/img/consultar.png" data-src="holder.js/50x50/auto/sky" class="img-responsive"></a>
               <h5>Consultar</h5>
               
             </div>
             
-            <div class="col-xs-6 col-sm-1">
+            <div class="col-xs-3 col-sm-1">
                 <a id="contacto" href="#"><img src="${contextpath}/static/resources/img/mail.png" data-src="holder.js/50x50/auto/vine" class="img-responsive"></a>
               <h5>Contacto</h5>
               
@@ -309,13 +322,14 @@
               
             <div class="col-xs-12 col-sm-8">
                 <h4>Avisos</h4>  
-                <h5 style="text-align: justify">El día 9 de agosto de 2015 se llevo a cabo el culto especial de acción de gracias por el VIII aniversario de la Iglesia Nacional Presbiteriana ¡SIDON TIAKIL! del municipio de Oschuc Nacional Presbiteriana ¡SIDON TIAKIL!,  Presbiteriana ¡SIDON TIAKIL! del municipio de Oschuc, Chiapas. <a href="#">Seguir leyendo.</a></h5>  
+                <h5 style="text-align: justify"><c:out value="${titulo}"/> <a id="aviso" href="#">Seguir leyendo.</a></h5>  
             </div>
           </div>
              
           <div id="contactoJSP"><jsp:include page="contacto.jsp"></jsp:include></div>
           <div id="agregarCoroJSP"><jsp:include page="agregarCoro.jsp"></jsp:include></div>
           <div id="perfilJSP"><jsp:include page="perfil.jsp"></jsp:include></div>
+          <div id="avisoJSP"><jsp:include page="aviso.jsp"></jsp:include></div>
               
           <div id="contenidoDinamico">
           <h3 style="text-align: center;" class="sub-header alert alert-info">Consultar</h3>

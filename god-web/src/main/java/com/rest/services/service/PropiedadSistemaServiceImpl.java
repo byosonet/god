@@ -1,0 +1,27 @@
+package com.rest.services.service;
+
+import com.rest.services.god.persistence.dao.PropiedadSistemaDao;
+import com.rest.services.god.persistence.hbm.PropiedadSistema;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ *
+ * @author User
+ */
+public class PropiedadSistemaServiceImpl implements PropiedadSistemaService{
+    private final Logger log = Logger.getLogger(PropiedadSistemaServiceImpl.class);
+    
+    @Transactional
+    public PropiedadSistema obtenerValorPropiedad(String key) {
+        this.log.info(" -- Key recibida: "+key);
+        PropiedadSistema ps = this.propiedadSistemaDao.obtenerValorPropiedad(key);
+        this.log.info(" -- Propiedad Sistema Devuelto: "+ps.toString());
+        return ps;
+    }
+    
+    @Autowired
+    private PropiedadSistemaDao propiedadSistemaDao;
+    
+}

@@ -16,5 +16,9 @@
     <bean id="coroDao"
         class="com.rest.services.god.persistence.dao.CoroDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
+    
+     <bean id="propiedadSistemaDao"
+        class="com.rest.services.god.persistence.dao.PropiedadSistemaDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
 
 </beans>

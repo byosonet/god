@@ -38,5 +38,6 @@
     <property name="current_session_context_class">thread</property>
     <mapping resource="com/rest/services/god/persistence/hbm/Usuario.hbm.xml"/>
     <mapping resource="com/rest/services/god/persistence/hbm/Coro.hbm.xml"/>
+    <mapping resource="com/rest/services/god/persistence/hbm/Propiedad_Sistema.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
