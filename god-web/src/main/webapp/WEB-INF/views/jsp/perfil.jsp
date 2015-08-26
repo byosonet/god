@@ -4,13 +4,13 @@
 <html>
 <body>
     <div>
-        <h3 class="alert alert-info" style="text-align: center;">Perfil</h3>
+        <h4 class="alert alert-info" style="text-align: center;">Perfil</h4>
         
         <center>
         <div style="width: 100%;text-align: justify;">
-            <font face="Arial" color="gray">
+            <font face="Verdana" color="gray">
                 <hr>
-                    <blockquote>                          
+                    <blockquote style="font-size: 12px;">                          
                      En esta sección unicamente puedes visualizar la información de tu perfil, más adelante podrás actualizar tus datos completos, 
                      por el momento solo puedes cambiar tu password.
                     </blockquote>

@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Coro #520</title>
+        <title>Sólo a Dios la Gloria</title>
     <script type="text/javascript">
       $(function(){
           $('a#back').click(function(){
@@ -21,11 +21,13 @@
         body{
            font:  150% comic sans ms;
            color: gray;
+           font-size: 12.5px;
         }
     </style>
     </head>
-    <body style="background: white;">
-    <div class="row">
+    <body>
+    <div class="container-fluid">
+        <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-8 col-md-offset-2 main">
             <br>
             <center><h4 class="page-header">"<c:out value="${nombre}"/>"<br><u>(CORO <c:out value="${numCoro}"/>)</u></h4></center>
@@ -35,7 +37,7 @@
         <c:choose>
             <c:when test="${statusDescripcion}">
                <div style="width: 100%;text-align: justify;">
-                    <font size="3" face="Verdana" color="black">
+                   <font size="3" face="Verdana" color="black">
                     <strong>
 
                         <c:out value="${coro}" escapeXml="false"/>
@@ -56,6 +58,7 @@
         </center>
         <br>
         <center><h4 class="page-header"><a href="#" id="back">Regresar <span class="glyphicon glyphicon-arrow-left"></span></a></h4></center>
+        </div>
     </div>
   </div>
     <form id="regresar">

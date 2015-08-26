@@ -4,13 +4,13 @@
 <html>
 <body>
     <div>
-        <h3 class="alert alert-info" style="text-align: center;">Registrar</h3>
+        <h4 class="alert alert-info" style="text-align: center;">Registrar</h4>
         
         <center>
         <div style="width: 100%;text-align: justify;">
-            <font face="Arial" color="gray">
+            <font face="Verdana" color="gray">
                 <hr>
-                    <blockquote>                          
+                    <blockquote style="font-size: 12px;">                          
                      Puedes agregar nuevos himnos, pero recuerda que estos primero tendrán que ser validados por el administrador antes de
                      ser publicados, si tienes dudas puedes ponerte en contacto con el Administrador del Sistema.
                     </blockquote>

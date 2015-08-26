@@ -1,7 +1,7 @@
 <%@ include file="../layout/taglibs.jsp"%>
 <c:set var="contextpath" value="<%=request.getContextPath()%>"/>
 
-<link rel="shortcut icon" href="${contextpath}/static/resources/img/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="${contextpath}/static/resources/img/inp.png"/>
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/dashboard.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/bootstrap-dialog.css">

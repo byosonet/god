@@ -15,9 +15,10 @@
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
        <property name="triggers">
             <list>
+                <!--
                 <ref bean="monitorFechaCronTrigger"/>
                 <ref bean="monitorStatusCronTrigger"/>
-                <ref bean="monitorAdapterCronTrigger"/>
+                <ref bean="monitorAdapterCronTrigger"/>-->
             </list>
         </property>
         </bean>

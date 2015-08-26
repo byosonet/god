@@ -89,7 +89,7 @@ public class CoroController {
        coro.setNumCoro(numCoro);
        coro.setFechaAct(fechaAlta);
        coro.setDescripcion(coro.covertirStringToClob(desccoro));
-       coro.setNombre(nombreCoro);
+       coro.setNombre(nombreCoro.toUpperCase());
        
        try{
           int idCoro = this.coroService.agregarCoro(coro);

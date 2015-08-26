@@ -4,13 +4,13 @@
 <html>
 <body>
     <div>
-        <h3 class="alert alert-info" style="text-align: center;">Contacto</h3>
+        <h4 class="alert alert-info" style="text-align: center;">Contacto</h4>
         
         <center>
         <div style="width: 100%;text-align: justify;">
-            <font face="Arial" color="gray">
+            <font face="Verdana" color="gray">
                 <hr>
-                    <blockquote>
+                    <blockquote style="font-size: 12px;">
                         God-Web nace de la idea de un proyecto como apoyo a la Iglesia Nacional Presbiteriana de México
                         para el acceso digital al Himnario Evángelico "Solo a Dios la Gloria", aun estamos en fase de desarrollo,                  pero tu opinión es muy importante para nosotros, así que no dudes en dejarnos tus comentarios.
                     </blockquote>   

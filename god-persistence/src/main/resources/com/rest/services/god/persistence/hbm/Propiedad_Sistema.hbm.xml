@@ -16,6 +16,10 @@
         <property name="value" type="string">
             <column name="VALUE" length="2044" />
         </property>
+        
+        <property name="active" type="integer">
+            <column name="ACTIVE" length="1" />
+        </property>
 
     </class>
 </hibernate-mapping>

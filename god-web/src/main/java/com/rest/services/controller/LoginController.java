@@ -76,9 +76,13 @@ public class LoginController {
                     PropiedadSistema tituloAviso = this.propiedadSistemaService.obtenerValorPropiedad("titulo.aviso");
                     PropiedadSistema detalleAviso = this.propiedadSistemaService.obtenerValorPropiedad("detalle.aviso");
 
-                    model.addAttribute("titulo", tituloAviso.getValue());
-                    model.addAttribute("detalle", detalleAviso.getValue());
-                      
+                    if(tituloAviso.getActive() == 1){
+                        model.addAttribute("titulo", tituloAviso.getValue());
+                        model.addAttribute("detalle", detalleAviso.getValue());
+                    }else{
+                         model.addAttribute("titulo", "<p class=\"alert alert-warning\">Por el momento no hay avisos disponibles.</p>");
+                        model.addAttribute("detalle", "");
+                    }  
                   }
               } catch (Exception ex) {
                   ex.printStackTrace();

@@ -79,7 +79,7 @@
 		// override these in your code to change the default behavior and style
 		$.blockUI.defaults = {
 			// message displayed when blocking (use null for no message)
-			message:  '<h4>Procesando Informaci&oacute;n... <br><img src="http://localhost:8084/god-web/static/resources/img/small-loader.gif"/></h4>',
+			message:  '<h4>Procesando Informaci&oacute;n... <br><img src="http://11.254.13.154:8084/god-web/static/resources/img/small-loader.gif"/></h4>',
 
 			title: 'Mensaje de Sistema',	  // title string; only used when theme == true
 			draggable: true,  // only used when theme == true (requires jquery-ui.js to be loaded)

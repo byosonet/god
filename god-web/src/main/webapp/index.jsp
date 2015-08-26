@@ -5,8 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Bienvenido</title>
-  <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/style.css">
+  <title>Sólo a Dios la Gloria</title>
   <jsp:include page="./WEB-INF/views/layout/staticResources.jsp"></jsp:include>
   <style>
       
@@ -16,7 +15,7 @@
       $(function(){
           var status;
           $('input#login').focus();
-          $('input#acceder').click(function(){
+          $('button#acceder').click(function(){
               
               var email = $('input#login');
               var password = $('input#password');
@@ -45,7 +44,7 @@
 	        });
           });
           
-          $('input#registrar').click(function(){
+          $('button#registrar').click(function(){
                 $.blockUI();
                 var urlAction = '${contextpath}' + '/registrar/usuario';
 		document.getElementById('ingresar').action = urlAction;
@@ -108,30 +107,48 @@
      <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#" style="color:white;">Himnario Presbiteriano</a>
+              <a class="navbar-brand" href="/god-web/" style="color:white;">Himnario Presbiteriano</a>
             </div>
           </div>
         </nav>
-    <div>
-    <div class="login" style="margin-top: 100px;">
-      <h1>¡Solo a Dios la gloria!</h1>
-      <form id="ingresar" method="post" action="${contextpath}/ingresar">
-        <p><input type="text" name="user" id="login" value="" placeholder="email" style="margin-left: -3px;"></p>
-        <p><input type="password" name="password" id="password" value="" placeholder="password" style="margin-left: -3px;"></p>
-        <p class="submit">
-            <input id="registrar" type="button" name="registrar" value="Registrar">
-            <input id="acceder" type="button" name="acceder" value="Acceder">
-        </p>
-      </form>
-    </div>
-    <div class="login-help">
-      <p>¿Olvide mi contraseña? <a href="${contextpath}/password/recuperar">Recuperar contraseña</a>.</p>
-    </div>
-    </div>
+
+<div class="container-fluid" style="margin-top: 30px;">
+    <div class="row">
+        <div class="col-sm-12 col-sm-offset-0 col-md-5 col-md-offset-3 main">
+            <form id="ingresar" class="form-horizontal" method="POST" action="${contextpath}/ingresar">
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="nombre">Email:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="login" name="user" placeholder="Ingresa tu email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="email">Password:</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingesa tu password">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-12">¿Olvidé mi contraseña? <a href="${contextpath}/password/recuperar">Recuperar contraseña</a></label>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
+                <button id="registrar" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> REGISTRAR</button>
+                <button id="acceder" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ACCEDER</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+         
+
   <nav class="navbar navbar-inverse navbar-fixed-bottom">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#" style="font-size: 0.75em;color:white;">by Ulysses M@c</a>
+              <a class="navbar-brand" href="https://www.linkedin.com/pub/gustavo-ulises-trejo-armenta/94/aa6/262" style="font-size: 0.75em;color:white;">by Ulysses M@c</a>
             </div>
           </div>
 </nav>

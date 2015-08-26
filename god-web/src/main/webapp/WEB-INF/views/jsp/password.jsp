@@ -5,14 +5,13 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Bienvenido</title>
-  <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/style.css">
+  <title>Sólo a Dios la Gloria</title>
   <jsp:include page="../layout/staticResources.jsp"></jsp:include>
   <script type="text/javascript">
       $(function(){
           var status;
           $('input#email').focus();
-          $('input#enviar').click(function(){
+          $('button#enviar').click(function(){
               
               var email = $('input#email');
               var confEmail = $('input#confEmail');
@@ -42,6 +41,10 @@
                              muestraMsjSistemaError(status.mensaje);
                           }
 	        });
+          });
+          
+         $('button#limpiar').click(function(){
+              $('form#recuperar')[0].reset();
           });
           
         function muestraMsjSistemaError(msjStatus){
@@ -95,20 +98,40 @@
              }
   </style>
 </head>
-<body>
-    <div>
-    <div class="login" style="margin-top: 150px;">
-      <h1>Recupera tu Password</h1>
-      <form id="recuperar">
-        <p><input type="text" name="email" id="email" value="" placeholder="email" style="margin-left: -3px;"></p>
-        <p><input type="text" name="confEmail" id="confEmail" value="" placeholder="confirma email" style="margin-left: -3px;"></p>
-        <p class="submit">
-            <input id="limpiar" type="reset" name="limpiar" value="Limpiar">
-            <input id="enviar" type="button" name="enviar" value="Enviar">
-        </p>
-      </form>
-      <form id="regresar"></form>
-    </div>
-    </div>
+<body>  
+    
+    <div class="container-fluid" style="margin-top: 30px;">
+    <div class="row">
+        <div class="col-sm-12 col-sm-offset-0 col-md-5 col-md-offset-3 main">
+            <form id="recuperar" class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="nombre">Email:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Ingresa tu email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="email">Confirmar email:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="confEmail" name="confEmail" placeholder="Confirma tu email">
+                    </div>
+                </div>
+            </form>
+            <form id="regresar"></form>
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
+                <button id="limpiar" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
+                <button id="enviar" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> ENVIAR</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+    
+    
+    
+    
+    
 </body>
 </html>
