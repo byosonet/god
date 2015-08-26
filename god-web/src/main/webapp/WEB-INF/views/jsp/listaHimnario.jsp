@@ -279,7 +279,7 @@
       <div class="row">
         
         <div class="col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1 main">
-          <center><h4 class="page-header" style="text-align: right;">Hola, <c:out value="${usuario}"/> <a id="exit" href="#"> Salir <span class="glyphicon glyphicon-arrow-right"></span></a></h4></center>
+          <center><h4 class="page-header" style="text-align: center;">Hola, <c:out value="${usuario}"/></h4></center>
 
           <div class="row placeholders">
             <div class="col-xs-3 col-sm-1">
