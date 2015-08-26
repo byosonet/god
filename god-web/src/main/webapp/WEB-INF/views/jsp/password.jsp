@@ -6,7 +6,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Sólo a Dios la Gloria</title>
-  <jsp:include page="../layout/staticResources.jsp"></jsp:include>
   <script type="text/javascript">
       $(function(){
           var status;
