@@ -64,4 +64,37 @@ public class CoroDaoImpl extends HibernateDaoSupport implements CoroDao{
         return coro.getIdCoro();
     }
 
+    public boolean validarNumeroCoro(String numCoro) {
+        boolean statusNumeroCoro = false;
+        this.log.info(" -- Buscando por número de coro ::" + numCoro);
+        Coro coro = (Coro) this
+                .getSession()
+                .createQuery("FROM Coro c WHERE c.numCoro = :numCoro")
+                .setParameter("numCoro", numCoro)
+                .uniqueResult();
+        if (coro == null)
+            statusNumeroCoro = true;
+        else
+            this.log.info(" -- Este número de coro ya exite y esta asociado con el nombre de: "+coro.getNombre());
+        return statusNumeroCoro;
+    }
+
+    public boolean validarNombreCoro(String nombre) {
+       boolean statusNombreCoro = false;
+        this.log.info(" -- Buscando por nombre de coro ::" + nombre);
+        List<Coro> listCoro = (List<Coro>) this
+                .getSession()
+                .createQuery("FROM Coro c")   
+                .list();
+        
+        for(Coro c : listCoro){
+            if(c.getNombre().toUpperCase().trim().equals(nombre.toUpperCase().trim())){
+                this.log.info(" -- Ya existe un nombre de coro asociado al id: "+c.getIdCoro());
+                return statusNombreCoro;
+            }
+        }
+        this.log.info(" -- Este nombre de coro es valido: "+nombre);
+        statusNombreCoro = true;
+        return statusNombreCoro;
+    }
 }

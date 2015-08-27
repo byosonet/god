@@ -12,4 +12,6 @@ public interface CoroDao {
     List<Coro> obtenerListacCompletaCoro();
     Coro obtenerCoro(String idCoro);
     int agregarCoro(Coro coro);
+    boolean validarNumeroCoro(String numCoro);
+    boolean validarNombreCoro(String nombre);
 }

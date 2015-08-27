@@ -72,7 +72,19 @@ public class CoroServiceImpl implements CoroService{
         }
         return idCoro;
     }
-    
+
+    @Transactional
+    public boolean validarNumCoro(String numero) {
+        this.log.info(" -- ServiceCoro recibiendo y validando numero de coro: "+numero);
+        return this.coroDao.validarNumeroCoro(numero);
+    }
+
+    @Transactional
+    public boolean validarNombreCoro(String nombre) {
+        this.log.info(" -- ServiceCoro recibiendo y validando nombre de coro: "+nombre);
+        return this.coroDao.validarNombreCoro(nombre);
+    }
+
     @Autowired
     private CoroDao coroDao;
 }

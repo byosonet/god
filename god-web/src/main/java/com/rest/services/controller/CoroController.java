@@ -90,17 +90,36 @@ public class CoroController {
        coro.setFechaAct(fechaAlta);
        coro.setDescripcion(coro.covertirStringToClob(desccoro));
        coro.setNombre(nombreCoro.toUpperCase());
-       
-       try{
-          int idCoro = this.coroService.agregarCoro(coro);
-          this.log.info(" -- Coro Agregado con el id: "+idCoro);
-          response.setCodigo("200");
-          response.setMensaje("El coro ha sido agregado exitosamente al sistema.");
-          status = HttpStatus.OK;
-       }catch(Exception ex){
-           this.log.error(" -- No se pudo agregar el coro al sistema: "+ex.getMessage());
+
+       int longNombre = coro.getNombre().length();
+       if (longNombre > 99) {
+           this.log.info(" -- Longitud del nombre del coro: "+longNombre);
+           response.setMensaje("La longitud del nombre del coro es demasiado larga.");
+           response.setCodigo("404");
+           return new ResponseEntity<ErrorService>(response, status);
        }
-        
+       this.log.info(" -- Longitud del nombre del coro: "+longNombre);
+           
+       //VALIDANDO CORO EN BASE DE DATOS
+       boolean nCoro = this.coroService.validarNumCoro(coro.getNumCoro());
+       boolean nomCoro = this.coroService.validarNombreCoro(coro.getNombre());
+       if (nCoro && nomCoro) {
+           try {
+               int idCoro = this.coroService.agregarCoro(coro);
+               this.log.info(" -- Coro Agregado con el id: " + idCoro);
+               response.setCodigo("200");
+               response.setMensaje("El coro ha sido agregado exitosamente al sistema.");
+               status = HttpStatus.OK;
+           } catch (Exception ex) {
+               this.log.error(" -- No se pudo agregar el coro al sistema: " + ex.getMessage());
+           }
+       } else {
+           if (nCoro == false) 
+               response.setMensaje("Este número de coro "+coro.getNumCoro()+" ya existe en sistema.");
+            else if (nomCoro == false) 
+               response.setMensaje("Este nombre de coro ya se encuentra registrado en sistema: "+coro.getNombre());
+           response.setCodigo("404");
+       }
     return new ResponseEntity<ErrorService>(response, status);
    }
    

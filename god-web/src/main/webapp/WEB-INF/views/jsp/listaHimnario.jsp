@@ -158,7 +158,7 @@
                                 data: $('form#formRegistrar').serialize(),
                                     success: function (data) {
                                        $.unblockUI();
-                                       muestraMsjSistemaSuccess(data.mensaje);
+                                       muestraMsjSistemaSuccessRegistrarCoro(data.mensaje);
                                 },
                                    error: function(msj){
                                        status = JSON.parse(msj.responseText);
@@ -233,6 +233,30 @@
                                  cssClass: 'btn-primary',
                                  action: function(dialog) {
                                      dialog.close();
+                                 }
+                             }]
+                         });
+                         }
+                         
+                         function muestraMsjSistemaSuccessRegistrarCoro(msjStatus){
+                            BootstrapDialog.show({
+                             size: BootstrapDialog.SIZE_SMALL,
+                             title: 'Mensaje del Sistema:',
+                             closable: false,
+                             message: msjStatus,
+                             type: BootstrapDialog.TYPE_SUCCESS,
+                             cssClass: 'login-dialog',
+                             buttons: [{
+                                 icon: 'glyphicon glyphicon-check',
+                                 label: 'OK',
+                                 cssClass: 'btn-primary',
+                                 action: function(dialog) {
+                                     dialog.close();
+                                        $.blockUI();
+                                        var urlAction = '${contextpath}' + '/ingresar';
+                                        document.getElementById('regresar').action = urlAction;
+                                        document.getElementById('regresar').method = 'POST';
+                                        document.getElementById('regresar').submit();
                                  }
                              }]
                          });
@@ -363,6 +387,11 @@
         <input type="hidden" id="idCoro" name="idCoro"/>
         <input type="hidden" id="userEmail" name="userEmail" value="${userEmail}">
         <input type="hidden" id="userPassword" name="userPassword" value="${userPassword}">
+    </form>
+    
+    <form id="regresar">
+        <input type="hidden" id="user" name="user" value="${userEmail}">
+        <input type="hidden" id="password" name="password" value="${userPassword}">
     </form>
     
     <form id="index">

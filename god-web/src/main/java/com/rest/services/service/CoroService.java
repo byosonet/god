@@ -17,4 +17,6 @@ public interface CoroService {
     List<Coro> obtenerListaCoroCompleta();
     Coro obtenerCoro(String idCoro);
     int agregarCoro(Coro coro);
+    boolean validarNumCoro(String numero);
+    boolean validarNombreCoro(String nombre);
 }
