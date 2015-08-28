@@ -40,19 +40,28 @@ public class CoroController {
                model.addAttribute("idCoro", id);
                model.addAttribute("nombre", coro.getNombre());
                
-               if(coro.getActivo() == 1){
-               model.addAttribute("coro", coro.getDescripcion()!=null?coro.getDataClob(coro.getDescripcion()):"El detalle de este coro está en proceso de validación.");
+               if(coro.getActivo() == 2){
+               model.addAttribute("coro", coro.getDescripcion()!=null?coro.getDataClob(coro.getDescripcion()):"El detalle de este coro no está disponible por el momento.");
+               }else if(coro.getActivo() == 1){
+                  coro.setDescripcion(null);
+                  model.addAttribute("status", "1");
+                  model.addAttribute("coro", "El detalle de este coro está en proceso de: VALIDACIÓN.");
                }else{
                   coro.setDescripcion(null);
-                  model.addAttribute("coro", "El detalle de este coro está en proceso de validación.");
+                  model.addAttribute("status", "0");
+                  model.addAttribute("coro", "El detalle de este coro está en proceso de: PENDIENTE.");
                }
                model.addAttribute("numCoro", coro.getNumCoro());
                model.addAttribute("userEmail", userEmail);
                model.addAttribute("userPassword", userPassword);
                model.addAttribute("statusDescripcion", true);
-               
+
                if(coro.getDescripcion()==null){
                    model.addAttribute("statusDescripcion", false);
+               }else if(coro.getDataClob(coro.getDescripcion()).trim().equals("")){
+                   model.addAttribute("statusDescripcion", false);
+                   model.addAttribute("coro", "El detalle de este coro no está disponible por el momento.");
+                   model.addAttribute("status", "1");
                }
                return "detalle";
            }

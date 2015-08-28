@@ -362,9 +362,14 @@
                 <td><a id="ref" href="#${corocomp.idCoro}">${corocomp.nombre}</a></td>
                 <td>${corocomp.autor}</td>
                     <c:choose>
-                       <c:when test="${corocomp.activo == 1}">
+                       <c:when test="${corocomp.activo == 2}">
                            <td style="text-align:center;">
                               <b class="glyphicon glyphicon-ok alert alert-success" style="margin-top:-4px;margin-bottom: -3px;"> Procesado</b>
+                           </td>
+                       </c:when>
+                       <c:when test="${corocomp.activo == 1}">
+                           <td style="text-align:center;">
+                              <b class="glyphicon glyphicon-refresh alert alert-info" style="margin-top:-4px;margin-bottom: -3px;"> Validando</b>
                            </td>
                        </c:when>
                        <c:otherwise>

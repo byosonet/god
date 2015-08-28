@@ -39,17 +39,20 @@
                <div style="width: 100%;text-align: justify;">
                    <font size="3" face="Verdana" color="black">
                     <strong>
-
                         <c:out value="${coro}" escapeXml="false"/>
-
                         <br><br>
                     </strong>
                     </font>
                 </div>
             </c:when>
+            <c:when test="${status == 1}">
+              <div class="row alert alert-info" style="width: 100%;text-align: center;">
+                   <strong><c:out value="${coro}"/></strong>
+                </div>
+            </c:when>
             <c:otherwise>
                <div class="row alert alert-danger" style="width: 100%;text-align: center;">
-                   <strong><c:out value="${coro}" escapeXml="false"/></strong>
+                   <strong><c:out value="${coro}"/></strong>
                 </div>
             </c:otherwise>
         </c:choose>
