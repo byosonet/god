@@ -20,13 +20,32 @@
                               {
                               "aoColumns": [ {"bSearchable": true}, {"bSearchable": false}, {"bSearchable": false},{"bSearchable": false}],
                               "sPaginationType": "full_numbers",
-                              "bPaginate": false,
+                              "bPaginate": true,
+                              "bLengthChange" : false,
+                              "pageLength": 5,
                               "oLanguage" : {
-                                  "sZeroRecords":   "No se encontro ningún resultado con el criterio de Busqueda.",
-                                  "sSearch":        "Coro #:",
-                                  "sInfo":          "",
-                                  "sInfoEmpty":     "",
-                                  "sInfoFiltered":  "",
+                                    "sProcessing":     "Procesando...",
+                                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                                    "sZeroRecords":    "No se encontraron resultados",
+                                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                                    "sInfo":           "",
+                                    "sInfoEmpty":      "",
+                                    "sInfoFiltered":   "",
+                                    "sInfoPostFix":    "",
+                                    "sSearch":         "Coro #:",
+                                    "sUrl":            "",
+                                    "sInfoThousands":  ",",
+                                    "sLoadingRecords": "Cargando...",
+                                    "oPaginate": {
+                                        "sFirst":    "",
+                                        "sLast":     "",
+                                        "sNext":     "",
+                                        "sPrevious": ""
+                                    },
+                                    "oAria": {
+                                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                                    }
                               }
                               });
                                                           
