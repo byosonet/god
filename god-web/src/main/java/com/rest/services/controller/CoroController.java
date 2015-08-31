@@ -4,6 +4,7 @@ package com.rest.services.controller;
 import com.rest.services.god.persistence.hbm.Coro;
 import com.rest.services.model.ErrorService;
 import com.rest.services.service.CoroService;
+import com.rest.services.util.UtilService;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -15,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,48 +27,61 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class CoroController {
     private final Logger log = Logger.getLogger(CoroController.class);
-   @RequestMapping(value="/coro",method = RequestMethod.POST)
-   public String obtenerListaHimnario(Model model, HttpServletRequest request) throws SQLException, IOException {
-       String id = request.getParameter("idCoro");
-       String userEmail = request.getParameter("userEmail");
-       String userPassword = request.getParameter("userPassword");
-       this.log.info(" -- IdCoro recibido:::: "+id);
-       this.log.info(" -- userEmail recibido:::: "+userEmail);
-       this.log.info(" -- userPassword recibido:::: "+userPassword);
+   @RequestMapping(value="/coro/{cifrar}/{idCoro}",method = RequestMethod.GET)
+   public String obtenerListaHimnario(Model model, @PathVariable("cifrar") String cifrar, @PathVariable("idCoro") String idCoro) throws SQLException, IOException, Exception {
        
-       Coro coro = this.coroService.obtenerCoro(id);
-       if(coro!=null){
-           if(String.valueOf(coro.getIdCoro()).equals(id)){
-               model.addAttribute("idCoro", id);
-               model.addAttribute("nombre", coro.getNombre());
-               
-               if(coro.getActivo() == 2){
-               model.addAttribute("coro", coro.getDescripcion()!=null?coro.getDataClob(coro.getDescripcion()):"El detalle de este coro no está disponible por el momento.");
-               }else if(coro.getActivo() == 1){
-                  coro.setDescripcion(null);
-                  model.addAttribute("status", "1");
-                  model.addAttribute("coro", "El detalle de este coro está en proceso de: VALIDACIÓN.");
-               }else{
-                  coro.setDescripcion(null);
-                  model.addAttribute("status", "0");
-                  model.addAttribute("coro", "El detalle de este coro está en proceso de: PENDIENTE.");
-               }
-               model.addAttribute("numCoro", coro.getNumCoro());
-               model.addAttribute("userEmail", userEmail);
-               model.addAttribute("userPassword", userPassword);
-               model.addAttribute("statusDescripcion", true);
+       try{
+        String id = idCoro;
+        this.log.info(" -- idCoro: "+id);
+        this.log.info(" -- Cifrado: "+cifrar);
+        String descifrado = UtilService.Desencriptar(cifrar);
+        this.log.info(" -- Descifrado: "+descifrado);
+        String[] data = descifrado.split(";");
 
-               if(coro.getDescripcion()==null){
-                   model.addAttribute("statusDescripcion", false);
-               }else if(coro.getDataClob(coro.getDescripcion()).trim().equals("")){
-                   model.addAttribute("statusDescripcion", false);
-                   model.addAttribute("coro", "El detalle de este coro no está disponible por el momento.");
+        String userEmail = data[0];
+        String userPassword = data[1];
+        this.log.info(" -- IdCoro recibido:::: "+id);
+        this.log.info(" -- userEmail recibido:::: "+userEmail);
+        this.log.info(" -- userPassword recibido:::: "+userPassword);
+
+        Coro coro = this.coroService.obtenerCoro(id);
+        if(coro!=null){
+            if(String.valueOf(coro.getIdCoro()).equals(id)){
+                model.addAttribute("idCoro", id);
+                model.addAttribute("nombre", coro.getNombre());
+
+                if(coro.getActivo() == 2){
+                model.addAttribute("coro", coro.getDescripcion()!=null?coro.getDataClob(coro.getDescripcion()):"El detalle de este coro no está disponible por el momento.");
+                }else if(coro.getActivo() == 1){
+                   coro.setDescripcion(null);
                    model.addAttribute("status", "1");
-               }
-               return "detalle";
-           }
+                   model.addAttribute("coro", "El detalle de este coro está en proceso de: VALIDACIÓN.");
+                }else{
+                   coro.setDescripcion(null);
+                   model.addAttribute("status", "0");
+                   model.addAttribute("coro", "El detalle de este coro está en proceso de: PENDIENTE.");
+                }
+                model.addAttribute("numCoro", coro.getNumCoro());
+
+                //model.addAttribute("userEmail", userEmail);
+                //model.addAttribute("userPassword", userPassword);
+                model.addAttribute("cifrar", cifrar);
+
+                model.addAttribute("statusDescripcion", true);
+
+                if(coro.getDescripcion()==null){
+                    model.addAttribute("statusDescripcion", false);
+                }else if(coro.getDataClob(coro.getDescripcion()).trim().equals("")){
+                    model.addAttribute("statusDescripcion", false);
+                    model.addAttribute("coro", "El detalle de este coro no está disponible por el momento.");
+                    model.addAttribute("status", "1");
+                }
+                return "detalle";
+            }
+        }
+       }catch(Exception ex){
+           ex.printStackTrace();
        }
-        
     return "notfoundCoro";
    }
    

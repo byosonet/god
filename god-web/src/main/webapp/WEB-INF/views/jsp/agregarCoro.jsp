@@ -4,22 +4,7 @@
 <html>
 <body>
     <div>
-        <h4 class="alert alert-info" style="text-align: center;">Registrar</h4>
-        
-        <center>
-        <div style="width: 100%;text-align: justify;">
-            <font face="Verdana" color="gray">
-                <hr>
-                    <blockquote style="font-size: 12px;">                          
-                     Puedes agregar nuevos himnos, pero recuerda que estos primero tendrán que ser validados por el administrador antes de
-                     ser publicados, si tienes dudas puedes ponerte en contacto con el Administrador del Sistema.
-                    </blockquote>
-                <hr>
-            </font>
-        </div>
-        </center>
-                
-        <br>
+        <h4 class="sub-header" style="text-align: center;">Registrar</h4>
         <form id="formRegistrar" class="form-horizontal" method="POST">
             
              <div class="form-group">
@@ -59,6 +44,18 @@
                   <button id="limpiar" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
                   <button id="bregistrar" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> AGREGAR</button>
               </div>
+            <center>
+            <div style="width: 100%;text-align: justify;">
+                <font face="Verdana" color="gray">
+                    <hr>
+                        <blockquote style="font-size: 12px;">                          
+                         Puedes agregar nuevos himnos, pero recuerda que estos primero tendrán que ser validados por el administrador antes de
+                         ser publicados, si tienes dudas puedes ponerte en contacto con el Administrador del Sistema.
+                        </blockquote>
+                    <hr>
+                </font>
+            </div>
+            </center>
         </div>
         
         

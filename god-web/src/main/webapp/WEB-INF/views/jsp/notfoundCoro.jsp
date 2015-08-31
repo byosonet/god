@@ -6,6 +6,13 @@
         <title>Sólo a Dios la Gloria</title>
     </head>
     <body>
-        <h1>Coro No encontrado</h1>
+        <div class="container-fluid" style="margin-top: 30px;">
+            <div class="row">
+                <div class="col-sm-12 col-sm-offset-0 col-md-5 col-md-offset-3 main">
+                  <div style="text-align:center;" class="alert alert-danger"><strong>El número de coro no ha sido encontrado.</strong></div>
+
+                </div>
+            </div>    
+        </div>
     </body>
 </html>

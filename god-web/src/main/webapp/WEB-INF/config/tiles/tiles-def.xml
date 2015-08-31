@@ -24,5 +24,9 @@
         <definition name="password" extends="principal">
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/password.jsp"/>
 	</definition>
-        
+
+        <definition name="notfoundCoro" extends="principal">
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/notfoundCoro.jsp"/>
+	</definition>
+             
 </tiles-definitions>

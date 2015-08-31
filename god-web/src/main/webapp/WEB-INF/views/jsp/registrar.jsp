@@ -77,7 +77,7 @@
             size: BootstrapDialog.SIZE_SMALL,
             title: 'Mensaje del Sistema:',
             closable: false,
-            message: '<strong>'+msjStatus+'</strong>',
+            message: msjStatus,
             type: BootstrapDialog.TYPE_DANGER,
             cssClass: 'login-dialog',
             buttons: [{
@@ -96,7 +96,7 @@
             size: BootstrapDialog.SIZE_SMALL,
             title: 'Mensaje del Sistema:',
             closable: false,
-            message: '<strong>'+msjStatus+'</strong>',
+            message: msjStatus,
             type: BootstrapDialog.TYPE_SUCCESS,
             cssClass: 'login-dialog',
             buttons: [{

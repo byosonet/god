@@ -20,7 +20,7 @@
                               {
                               "aoColumns": [ {"bSearchable": true}, {"bSearchable": false}, {"bSearchable": false}],
                               "sPaginationType": "full_numbers",
-                              "bPaginate": false,
+                              "bPaginate": true,
                               "bLengthChange" : false,
                               "pageLength": 5,
                               "oLanguage" : {
@@ -53,7 +53,7 @@
                         muestraMsjSistemaSuccessIndex("Gracias por tu visita, Dios te bendiga.");
                     });          
                               
-                              
+                    /*          
                     $('a#ref').click(function(){
                         $.blockUI();
                         var a_href = $(this).attr('href');
@@ -65,7 +65,7 @@
                         document.getElementById('enviarCoro').method = 'POST';
                         document.getElementById('enviarCoro').submit();
                     });
-                    
+                    */
                     $('a#aviso').click(function(){
                             $('div#contenidoDinamico').hide();
                             $('div#agregarCoroJSP').hide();
@@ -347,7 +347,14 @@
               
             <div class="col-xs-12 col-sm-8">
                 <h4>Avisos</h4>  
-                <h5 style="text-align: justify"><c:out value="${titulo}" escapeXml="false"/></h5>  
+                <c:choose>
+                       <c:when test="${detalle == ''}">
+                         <h5 style="text-align: center"><c:out value="${titulo}" escapeXml="false"/></h5> 
+                       </c:when>
+                       <c:otherwise>
+                         <h5 style="text-align: justify"><c:out value="${titulo}" escapeXml="false"/></h5>
+                       </c:otherwise>
+                </c:choose> 
             </div>
           </div>
           <div id="contactoJSP"><jsp:include page="contacto.jsp"></jsp:include></div>
@@ -358,15 +365,9 @@
         </div>
       </div>
     </div>
-    <form id="enviarCoro">
-        <input type="hidden" id="idCoro" name="idCoro"/>
-        <input type="hidden" id="userEmail" name="userEmail" value="${userEmail}">
-        <input type="hidden" id="userPassword" name="userPassword" value="${userPassword}">
-    </form>
     
     <form id="regresar">
-        <input type="hidden" id="user" name="user" value="${userEmail}">
-        <input type="hidden" id="password" name="password" value="${userPassword}">
+        <input type="hidden" id="cifrar" name="cifrar" value="${cifrar}">
     </form>
     
     <form id="index">

@@ -4,22 +4,7 @@
 <html>
 <body>
     <div>
-        <h4 class="alert alert-info" style="text-align: center;">Contacto</h4>
-        
-        <center>
-        <div style="width: 100%;text-align: justify;">
-            <font face="Verdana" color="gray">
-                <hr>
-                    <blockquote style="font-size: 12px;">
-                        God-Web nace de la idea de un proyecto como apoyo a la Iglesia Nacional Presbiteriana de México
-                        para el acceso digital al Himnario Evángelico "Solo a Dios la Gloria", aun estamos en fase de desarrollo,                  pero tu opinión es muy importante para nosotros, así que no dudes en dejarnos tus comentarios.
-                    </blockquote>   
-                <hr>                          
-            </font>
-        </div>
-        </center>
-                
-        <br>
+        <h4 class="sub-header" style="text-align: center;">Contacto</h4>
         <form id="formContacto" class="form-horizontal" method="POST">
             
              <div class="form-group">
@@ -59,6 +44,18 @@
                   <button id="limpiar" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
                   <button id="bcontacto" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ENVIAR</button>
               </div>
+            <center>
+            <div style="width: 100%;text-align: justify;">
+                <font face="Verdana" color="gray">
+                    <hr>
+                        <blockquote style="font-size: 12px;">
+                            God-Web nace de la idea de un proyecto como apoyo a la Iglesia Nacional Presbiteriana de México
+                            para el acceso digital al Himnario Evángelico "Solo a Dios la Gloria", aun estamos en fase de desarrollo,                  pero tu opinión es muy importante para nosotros, así que no dudes en dejarnos tus comentarios.
+                        </blockquote>   
+                    <hr>                          
+                </font>
+            </div>
+            </center>
         </div>
         
         

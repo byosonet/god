@@ -39,15 +39,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
    private final Logger log = Logger.getLogger(LoginController.class);
    @RequestMapping(value="/ingresar",method = RequestMethod.POST)
-   public String ingresar(Model model, HttpServletRequest request) {
+   public String ingresar(Model model, HttpServletRequest request) throws Exception {
+       
+      String requestEmail="";
+      String requestPassword="";
+               
+      String cifrarEnviado = request.getParameter("cifrar");
+      if(cifrarEnviado!=null){
+          this.log.info(" -- El cifrado es enviado: "+cifrarEnviado);
+          String descifrar = UtilService.Desencriptar(cifrarEnviado);
+          String[] dataEnviada = descifrar.split(";");
+          requestEmail = dataEnviada[0];
+          requestPassword = dataEnviada[1];          
+      }else{
+          this.log.info(" -- El cifrado no es enviado: ");
+          requestEmail = request.getParameter("user");
+          requestPassword = request.getParameter("password");  
+      }
+
       this.log.info(" -- Ingresando al sistema");
       this.log.info(" -- Request: "+request);
-      this.log.info(" -- User: "+request.getParameter("user"));
-      this.log.info(" -- Password: "+request.getParameter("password"));
+      this.log.info(" -- User: "+requestEmail);
+      this.log.info(" -- Password: "+requestPassword);
       
-      if(request.getParameter("user")!=null && request.getParameter("password")!=null){
-          String user = request.getParameter("user");
-          String password = request.getParameter("password");
+      if(requestEmail!=null && requestPassword!=null){
+          String user = requestEmail;
+          String password = requestPassword;
           String encriptarPassword = UtilService.Encriptar(password);
           Usuario usuario = this.usuarioService.validaUsuario(user, encriptarPassword);
           if(usuario!=null){
@@ -59,8 +76,11 @@ public class LoginController {
                       model.addAttribute("coros", corosActualizados);
                       model.addAttribute("corosCompletos", corosCompletos);
                       model.addAttribute("usuario", usuario.getNombre());
-                      model.addAttribute("userEmail", usuario.getEmail());
-                      model.addAttribute("userPassword", password);
+                     
+                      //model.addAttribute("userEmail", usuario.getEmail());
+                      //model.addAttribute("userPassword", password);
+                      String cifrar = UtilService.Encriptar(usuario.getEmail()+";"+password);
+                      model.addAttribute("cifrar",cifrar);
                       
                       //retornando los datos del perfil
                     model.addAttribute("nombreUsuario", usuario.getNombre());

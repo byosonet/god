@@ -4,22 +4,7 @@
 <html>
 <body>
     <div>
-        <h4 class="alert alert-info" style="text-align: center;">Perfil</h4>
-        
-        <center>
-        <div style="width: 100%;text-align: justify;">
-            <font face="Verdana" color="gray">
-                <hr>
-                    <blockquote style="font-size: 12px;">                          
-                     En esta sección unicamente puedes visualizar la información de tu perfil, más adelante podrás actualizar tus datos completos, 
-                     por el momento solo puedes cambiar tu password.
-                    </blockquote>
-                <hr>
-            </font>
-        </div>
-        </center>
-                
-        <br>
+        <h4 class="sub-header" style="text-align: center;">Perfil</h4>
         <form id="formPerfil" class="form-horizontal" method="POST">
             
              <div class="form-group">
@@ -84,6 +69,18 @@
                   <button id="limpiar" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
                   <button id="bperfil" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ACTUALIZAR</button>
               </div>
+            <center>
+            <div style="width: 100%;text-align: justify;">
+                <font face="Verdana" color="gray">
+                    <hr>
+                        <blockquote style="font-size: 12px;">                          
+                         En esta sección unicamente puedes visualizar la información de tu perfil, más adelante podrás actualizar tus datos completos, 
+                         por el momento solo puedes cambiar tu password.
+                        </blockquote>
+                    <hr>
+                </font>
+            </div>
+            </center>
         </div>
         
         

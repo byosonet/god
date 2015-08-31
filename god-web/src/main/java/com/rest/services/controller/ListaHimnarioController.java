@@ -42,8 +42,11 @@ public class ListaHimnarioController {
                model.addAttribute("coros", corosActualizados);
                model.addAttribute("corosCompletos", corosCompletos);
                model.addAttribute("usuario", user.getNombre());
-               model.addAttribute("userEmail", user.getEmail());
-               model.addAttribute("userPassword", pass);
+               
+               //model.addAttribute("userEmail", user.getEmail());
+               //model.addAttribute("userPassword", pass);
+               String cifrar = UtilService.Encriptar(user.getEmail()+";"+pass);
+               model.addAttribute("cifrar",cifrar);
                
                //retornando los datos del perfil
                model.addAttribute("nombreUsuario", user.getNombre());

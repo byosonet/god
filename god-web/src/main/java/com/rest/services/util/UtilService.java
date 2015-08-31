@@ -18,7 +18,7 @@ import org.apache.commons.codec.binary.Base64;
  */
 public class UtilService {
     public static String Encriptar(String password){
-        String secretKey = "soloadioslagloria"; //llave para encriptar datos
+        String secretKey = "abc"; //llave para encriptar datos
         String base64EncryptedString = "";
 
         try {
@@ -42,7 +42,7 @@ public class UtilService {
     
     public static String Desencriptar(String password) throws Exception {
 
-        String secretKey = "soloadioslagloria"; //llave para desenciptar datos
+        String secretKey = "abc"; //llave para desenciptar datos
         String base64EncryptedString = "";
 
         try {

@@ -8,7 +8,7 @@
         <title>Sólo a Dios la Gloria</title>
     <script type="text/javascript">
       $(function(){
-          $('a#back').click(function(){
+          $('button#back').click(function(){
               $.blockUI();
                 var urlAction = '${contextpath}' + '/ingresar';
                 document.getElementById('regresar').action = urlAction;
@@ -60,13 +60,16 @@
                 
         </center>
         <br>
-        <center><h4 class="page-header"><a href="#" id="back">Regresar <span class="glyphicon glyphicon-arrow-left"></span></a></h4></center>
+        <center>
+            <h4 class="page-header">
+                <button id="back" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> REGRESAR</button>
+            </h4>
+        </center>
         </div>
     </div>
   </div>
     <form id="regresar">
-        <input type="hidden" id="user" name="user" value="${userEmail}">
-        <input type="hidden" id="password" name="password" value="${userPassword}">
+        <input type="hidden" id="cifrar" name="cifrar" value="${cifrar}">
     </form>
     </body>
 </html>
