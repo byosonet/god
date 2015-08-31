@@ -11,9 +11,9 @@
               <thead>
                 <tr>
                   
-                  <th style="text-align: center" class="alert alert-dismissible">CORO</th>
-                  <th style="text-align: center" class="alert alert-dismissible">NOMBRE</th>
-                  <th style="text-align: center" class="alert alert-dismissible">ESTADO</th>
+                  <th style="text-align: center" class="alert alert-dismissible">#</th>
+                  <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-music"></span></th>
+                  <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-tasks"></span></th>
                   
                 </tr>
               </thead>

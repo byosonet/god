@@ -32,7 +32,7 @@
                                     "sInfoEmpty":      "",
                                     "sInfoFiltered":   "",
                                     "sInfoPostFix":    "",
-                                    "sSearch":         "Coro #:",
+                                    "sSearch":         "<span class='glyphicon glyphicon-search'></span>",
                                     "sUrl":            "",
                                     "sInfoThousands":  ",",
                                     "sLoadingRecords": "Cargando...",
