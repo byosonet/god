@@ -1,7 +1,13 @@
 package com.rest.services.controller;
 
+import com.rest.services.god.persistence.hbm.TipoMovimientoEnum;
+import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.model.ErrorService;
+import com.rest.services.service.ChangesetService;
 import com.rest.services.service.EmailSendService;
+import com.rest.services.service.UsuarioService;
+import com.rest.services.util.UtilService;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +27,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ContactoController {
     private final Logger log = Logger.getLogger(ContactoController.class);
     @RequestMapping(value="/sistema",method = RequestMethod.POST)
-   public ResponseEntity<ErrorService> obtenerListaHimnario(Model model, HttpServletRequest request) {
+   public ResponseEntity<ErrorService> obtenerListaHimnario(Model model, HttpServletRequest request) throws Exception {
        HttpStatus status = HttpStatus.NOT_FOUND;
        
+       String cifrar = request.getParameter("cifrar");
+       String descifrado = UtilService.Desencriptar(cifrar);
+       this.log.info(" -- Descifrado: "+descifrado);
+       String[] data = descifrado.split(";");
+       String userEmail = data[0];
+       Usuario user = this.usuarioService.validaEmailSistema(userEmail);
+       if(user!=null){
+           this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.CORREO_CONTACTO,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      user.getIdUsuario(), null);
+       }
+
        String asunto = request.getParameter("asunto");
        String nombre = request.getParameter("nombre");
        String email = request.getParameter("emailContacto");
@@ -52,4 +71,10 @@ public class ContactoController {
    
    @Autowired
    EmailSendService emailSendService;
+   
+   @Autowired
+   private UsuarioService usuarioService;
+   
+   @Autowired
+   private ChangesetService changesetService;
 }

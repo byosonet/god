@@ -36,6 +36,8 @@
                   <textArea class="form-control" id="textarea" name="textarea" placeholder="Gracias por ponerte en contacto." style="height: 200px;"></textarea>
               </div>
             </div>
+
+            <input type="hidden" id="cifrar" name="cifrar" value="${cifrar}">
         </form>
         
         

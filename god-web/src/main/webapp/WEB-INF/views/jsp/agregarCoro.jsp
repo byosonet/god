@@ -36,6 +36,8 @@
                   <textArea class="form-control" id="desccoro" name="desccoro" placeholder="Pega aquí el contenido del coro por favor..." style="height: 400px;"></textarea>
               </div>
             </div>
+            
+            <input type="hidden" id="cifrar" name="cifrar" value="${cifrar}">
         </form>
         
         

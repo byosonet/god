@@ -1,6 +1,7 @@
 package com.rest.services.util;
 
 import java.security.MessageDigest;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -89,5 +90,10 @@ public class UtilService {
             System.err.println(" -- No se puede calcular la edad");
             return -1;
         }
+    }
+    
+    public static Timestamp getFechaTimeStamp(){
+        Timestamp stamp = new Timestamp(System.currentTimeMillis());
+        return stamp;
     }
 }

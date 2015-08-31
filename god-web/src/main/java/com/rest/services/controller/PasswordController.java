@@ -1,9 +1,13 @@
 package com.rest.services.controller;
 
+import com.rest.services.god.persistence.hbm.TipoMovimientoEnum;
 import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.model.ErrorService;
+import com.rest.services.service.ChangesetService;
 import com.rest.services.service.EmailSendService;
 import com.rest.services.service.UsuarioService;
+import com.rest.services.util.UtilService;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +43,11 @@ public class PasswordController {
         ErrorService response = new ErrorService();
         Usuario user = this.usuarioService.validaEmailSistema(email);
         if(user!=null){
+            this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.RECUPERAR_PASSWORD,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      user.getIdUsuario(), null);
+            
             this.log.info(" -- Enviar email de password a usuario: "+user.getNombre());
             response.setCodigo("202");
             response.setMensaje("Hola "+user.getNombre()+", tu password ha sido enviado a: "+user.getEmail());
@@ -60,5 +69,8 @@ public class PasswordController {
     
     @Autowired
     private EmailSendService emailSendService;
+    
+    @Autowired
+    private ChangesetService changesetService;
     
 }

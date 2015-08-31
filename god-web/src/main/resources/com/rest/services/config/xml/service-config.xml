@@ -23,6 +23,9 @@
     
     <bean id="propiedadSistemaService" 
           class="com.rest.services.service.PropiedadSistemaServiceImpl"/>
+    
+    <bean id="changesetService" 
+          class="com.rest.services.service.ChangesetServiceImpl"/>
 
     <!-- Adapters Externos-->
     <bean id="banxicoTipoCambioAdapter" 

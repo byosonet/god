@@ -2,11 +2,14 @@ package com.rest.services.controller;
 
 import com.rest.services.god.persistence.hbm.Coro;
 import com.rest.services.god.persistence.hbm.PropiedadSistema;
+import com.rest.services.god.persistence.hbm.TipoMovimientoEnum;
 import com.rest.services.god.persistence.hbm.Usuario;
+import com.rest.services.service.ChangesetService;
 import com.rest.services.service.CoroService;
 import com.rest.services.service.PropiedadSistemaService;
 import com.rest.services.service.UsuarioService;
 import com.rest.services.util.UtilService;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
@@ -34,6 +37,13 @@ public class ListaHimnarioController {
        
        String encriptarPassword = UtilService.Encriptar(pass);
        Usuario user = this.usuarioService.validaUsuario(email, encriptarPassword);
+       
+       if(user!=null){
+            this.changesetService.guardarChangeset(
+                TipoMovimientoEnum.CONSULTAR_HIMNARIO,
+                new Date(UtilService.getFechaTimeStamp().getTime()), 
+                user.getIdUsuario(), null);
+        }
        
        try{
            List<Coro> corosActualizados = this.coroService.obtenerListaCoroActualizada();
@@ -89,4 +99,7 @@ public class ListaHimnarioController {
    
    @Autowired
    private PropiedadSistemaService propiedadSistemaService;
+   
+   @Autowired
+   private ChangesetService changesetService;
 }

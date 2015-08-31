@@ -20,5 +20,9 @@
      <bean id="propiedadSistemaDao"
         class="com.rest.services.god.persistence.dao.PropiedadSistemaDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
+     
+     <bean id="changesetDao"
+        class="com.rest.services.god.persistence.dao.ChangesetDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
 
 </beans>

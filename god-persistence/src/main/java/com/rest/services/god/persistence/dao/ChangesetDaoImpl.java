@@ -1,0 +1,31 @@
+package com.rest.services.god.persistence.dao;
+
+import com.rest.services.god.persistence.hbm.Changeset;
+import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+/**
+ *
+ * @author User
+ */
+public class ChangesetDaoImpl extends HibernateDaoSupport implements ChangesetDao{
+    private final Logger log = Logger.getLogger(ChangesetDaoImpl.class);
+    TransacctionMySQL mysql = new TransacctionMySQL();
+    
+    public void guardarChangeset(Changeset changeset) {
+       try {
+            this.mysql.iniciarOperacion();
+            this.mysql.getSesion().save(changeset);
+            this.mysql.getSesion().flush();
+            this.mysql.getTx().commit();
+            this.log.info(" -- Guardando Changeset en BD: "+changeset.toString());
+        } catch (HibernateException he) {
+            this.mysql.manejarException(he);
+            throw he;
+        } finally {
+            this.mysql.getSesion().close();
+        }
+    }
+    
+}

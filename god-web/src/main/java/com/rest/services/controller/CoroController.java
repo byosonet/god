@@ -2,8 +2,12 @@ package com.rest.services.controller;
 
 
 import com.rest.services.god.persistence.hbm.Coro;
+import com.rest.services.god.persistence.hbm.TipoMovimientoEnum;
+import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.model.ErrorService;
+import com.rest.services.service.ChangesetService;
 import com.rest.services.service.CoroService;
+import com.rest.services.service.UsuarioService;
 import com.rest.services.util.UtilService;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -46,6 +50,13 @@ public class CoroController {
 
         Coro coro = this.coroService.obtenerCoro(id);
         if(coro!=null){
+            Usuario user = this.usuarioService.validaEmailSistema(userEmail);
+            if(user!=null){
+                this.changesetService.guardarChangeset(
+                           TipoMovimientoEnum.CONSULTAR_CORO,
+                           new Date(UtilService.getFechaTimeStamp().getTime()), 
+                           user.getIdUsuario(), String.valueOf(coro.getIdCoro()));
+            }
             if(String.valueOf(coro.getIdCoro()).equals(id)){
                 model.addAttribute("idCoro", id);
                 model.addAttribute("nombre", coro.getNombre());
@@ -86,8 +97,16 @@ public class CoroController {
    }
    
    @RequestMapping(value="/agregar/coro",method = RequestMethod.POST)
-   public ResponseEntity<ErrorService> agregarCoro(Model model, HttpServletRequest request) throws SQLException {
+   public ResponseEntity<ErrorService> agregarCoro(Model model, HttpServletRequest request) throws SQLException, Exception {
        HttpStatus status = HttpStatus.NOT_FOUND;
+       
+       
+       String cifrar = request.getParameter("cifrar");
+       String descifrado = UtilService.Desencriptar(cifrar);
+       this.log.info(" -- Descifrado: "+descifrado);
+       String[] data = descifrado.split(";");
+       String userEmail = data[0];
+       Usuario user = this.usuarioService.validaEmailSistema(userEmail);
        
        String nombreCoro = request.getParameter("nombreCoro");
        String autor = request.getParameter("autor");
@@ -108,7 +127,7 @@ public class CoroController {
        Date fechaAlta = new Date(stamp.getTime());
 
        Coro coro = new Coro();
-       coro.setActivo(0);
+       coro.setActivo(2);
        coro.setAutor(autor);
        coro.setNumCoro(numCoro);
        coro.setFechaAct(fechaAlta);
@@ -134,6 +153,12 @@ public class CoroController {
                response.setCodigo("200");
                response.setMensaje("El coro ha sido agregado exitosamente al sistema.");
                status = HttpStatus.OK;
+               if(user!=null){
+                    this.changesetService.guardarChangeset(
+                        TipoMovimientoEnum.REGISTRO_CORO,
+                        new Date(UtilService.getFechaTimeStamp().getTime()), 
+                        user.getIdUsuario(), String.valueOf(idCoro));
+                }
            } catch (Exception ex) {
                this.log.error(" -- No se pudo agregar el coro al sistema: " + ex.getMessage());
            }
@@ -149,5 +174,11 @@ public class CoroController {
    
    @Autowired
    private CoroService coroService;
+   
+   @Autowired
+   private ChangesetService changesetService;
+   
+   @Autowired
+   private UsuarioService usuarioService;
     
 }

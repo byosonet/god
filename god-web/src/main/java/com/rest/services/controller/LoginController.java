@@ -4,8 +4,10 @@ import com.rest.services.god.drools.DroolRuleAge;
 import com.rest.services.god.drools.vo.UserTemp;
 import com.rest.services.god.persistence.hbm.Coro;
 import com.rest.services.god.persistence.hbm.PropiedadSistema;
+import com.rest.services.god.persistence.hbm.TipoMovimientoEnum;
 import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.model.ErrorService;
+import com.rest.services.service.ChangesetService;
 import com.rest.services.service.CoroService;
 import com.rest.services.service.EmailSendService;
 import com.rest.services.service.PropiedadSistemaService;
@@ -69,6 +71,12 @@ public class LoginController {
           Usuario usuario = this.usuarioService.validaUsuario(user, encriptarPassword);
           if(usuario!=null){
               this.log.info(" -- Ingresando al sistema como: "+usuario.getNombre());
+              
+              this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.ACCESO_SISTEMA,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      usuario.getIdUsuario(), null);
+              
               try {
                   List<Coro> corosActualizados = this.coroService.obtenerListaCoroActualizada();
                   List<Coro> corosCompletos = this.coroService.obtenerListaCoroCompleta();
@@ -104,6 +112,10 @@ public class LoginController {
                         model.addAttribute("detalle", "");
                     }  
                   }
+                  this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.CONSULTAR_HIMNARIO,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      usuario.getIdUsuario(), null);
               } catch (Exception ex) {
                   ex.printStackTrace();
               }
@@ -133,6 +145,11 @@ public class LoginController {
           String encriptarPassword = UtilService.Encriptar(password);
           Usuario usuario = this.usuarioService.validaUsuario(user, encriptarPassword);
           if(usuario!=null){
+              this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.VALIDAR_USUARIO,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      usuario.getIdUsuario(), null);
+              
               this.log.info(" -- Usuario correcto");
               ErrorService data = new ErrorService();
               data.setCodigo("200");
@@ -246,6 +263,11 @@ public class LoginController {
 
             int id = this.usuarioService.agregaUsuarioNuevo(usuario);
             this.log.info(" -- El usuario se agrego correctamente con el id: "+id);
+            
+            this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.REGISTRO_USUARIO,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      id, null);
            try {
                this.emailSendService.sendEmailRegister(usuario.getEmail(), "gtrejo.armenta@gmail.com", usuario.getNombre(), null);
                this.log.info(" -- Enviado");
@@ -284,6 +306,12 @@ public class LoginController {
         String email = jObj.getString("email");
         Usuario user = this.usuarioService.validaEmailSistema(email);
         if(user!=null){
+            
+            this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.VALIDAR_EMAIL,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      user.getIdUsuario(), null);
+            
             this.log.info(" -- Usuario encontrado: "+user.getEmail());
             response.setMensaje(user.getNombre());
         }else{
@@ -323,6 +351,11 @@ public class LoginController {
         
         Usuario user = this.usuarioService.validaEmailSistema(emailUsuario);
         if(user!=null){
+            this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.ACTUALIZAR_PERFIL,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      user.getIdUsuario(), null);
+            
             this.log.info(" -- Usuario encontrado: "+user.toString());
             String encriptarPassword = UtilService.Encriptar(passwordUsuario);
             user.setPassword(encriptarPassword);
@@ -362,5 +395,8 @@ public class LoginController {
     
     @Autowired
     private PropiedadSistemaService propiedadSistemaService;
+    
+    @Autowired
+    ChangesetService changesetService;
     
 }
