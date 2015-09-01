@@ -55,7 +55,7 @@ public class CoroController {
                 this.changesetService.guardarChangeset(
                            TipoMovimientoEnum.CONSULTAR_CORO,
                            new Date(UtilService.getFechaTimeStamp().getTime()), 
-                           user.getIdUsuario(), String.valueOf(coro.getIdCoro()));
+                           user.getIdUsuario(), String.valueOf(coro.getNumCoro()));
             }
             if(String.valueOf(coro.getIdCoro()).equals(id)){
                 model.addAttribute("idCoro", id);
@@ -155,9 +155,9 @@ public class CoroController {
                status = HttpStatus.OK;
                if(user!=null){
                     this.changesetService.guardarChangeset(
-                        TipoMovimientoEnum.REGISTRO_CORO,
+                        TipoMovimientoEnum.REGISTRO_DE_CORO,
                         new Date(UtilService.getFechaTimeStamp().getTime()), 
-                        user.getIdUsuario(), String.valueOf(idCoro));
+                        user.getIdUsuario(), String.valueOf(coro.getNumCoro()));
                 }
            } catch (Exception ex) {
                this.log.error(" -- No se pudo agregar el coro al sistema: " + ex.getMessage());

@@ -9,14 +9,14 @@ public enum TipoMovimientoEnum {
     ACCESO_AL_SISTEMA("2"),
     RECUPERAR_TU_PASSWORD("3"),
     CONSULTAR_MI_PERFIL("4"),
-    REGISTRO_CORO("5"),
+    REGISTRO_DE_CORO("5"),
     CONSULTAR_HIMNARIO("6"),
     CONSULTAR_CORO("7"),
     SALIR_DEL_SISTEMA("8"),
     VALIDAR_USUARIO("9"),
     VALIDAR_EMAIL("10"),
     ACTUALIZAR_PERFIL("11"),
-    ENVIAR_CORREO_CONTACTO("12");
+    ENVIO_CORREO_CONTACTO("12");
 
     private String tipo;
 
