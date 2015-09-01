@@ -81,6 +81,8 @@
                 </font>
             </div>
             </center>
+            
+            <div id="bitacora"><jsp:include page="bitacora.jsp"></jsp:include></div>
         </div>
         
         

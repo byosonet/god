@@ -38,7 +38,7 @@ public class ContactoController {
        Usuario user = this.usuarioService.validaEmailSistema(userEmail);
        if(user!=null){
            this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.CORREO_CONTACTO,
+                      TipoMovimientoEnum.ENVIAR_CORREO_CONTACTO,
                       new Date(UtilService.getFechaTimeStamp().getTime()), 
                       user.getIdUsuario(), null);
        }

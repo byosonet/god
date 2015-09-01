@@ -10,7 +10,7 @@ public class Changeset implements java.io.Serializable{
     
     private int idChangeset;
     private String idUsuario;
-    private String idMovement;
+    private String movement;
     private String idCoro;
     private Date fechaMov;
     
@@ -20,9 +20,17 @@ public class Changeset implements java.io.Serializable{
     public Changeset(int idChangeset, String idUsuario, String idMovement, String idCoro, Date fechaMov){
         this.idChangeset = idChangeset;
         this.idUsuario = idUsuario;
-        this.idMovement = idMovement;
+        this.movement = idMovement;
         this.idCoro = idCoro;
         this.fechaMov = fechaMov;
+    }
+
+    public int getIdChangeset() {
+        return idChangeset;
+    }
+
+    public void setIdChangeset(int idChangeset) {
+        this.idChangeset = idChangeset;
     }
 
     public String getIdUsuario() {
@@ -33,12 +41,12 @@ public class Changeset implements java.io.Serializable{
         this.idUsuario = idUsuario;
     }
 
-    public String getIdMovement() {
-        return idMovement;
+    public String getMovement() {
+        return movement;
     }
 
-    public void setIdMovement(String idMovement) {
-        this.idMovement = idMovement;
+    public void setMovement(String movement) {
+        this.movement = movement;
     }
 
     public String getIdCoro() {
@@ -57,17 +65,9 @@ public class Changeset implements java.io.Serializable{
         this.fechaMov = fechaMov;
     }
 
-    public int getIdChangeset() {
-        return idChangeset;
-    }
-
-    public void setIdChangeset(int idChangeset) {
-        this.idChangeset = idChangeset;
-    }
-
     @Override
     public String toString() {
-        return "Changeset{" + "idChangeset=" + idChangeset + ", idUsuario=" + idUsuario + ", idMovement=" + idMovement + ", idCoro=" + idCoro + ", fechaMov=" + fechaMov + '}';
+        return "Changeset{" + "idChangeset=" + idChangeset + ", idUsuario=" + idUsuario + ", movement=" + movement + ", idCoro=" + idCoro + ", fechaMov=" + fechaMov + '}';
     }
-    
+  
 }

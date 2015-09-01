@@ -1,6 +1,7 @@
 package com.rest.services.god.persistence.dao;
 
 import com.rest.services.god.persistence.hbm.Changeset;
+import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -27,5 +28,12 @@ public class ChangesetDaoImpl extends HibernateDaoSupport implements ChangesetDa
             this.mysql.getSesion().close();
         }
     }
-    
+
+    public List<Changeset> getChangesetUser(String idUser) {
+         List<Changeset> list = (List<Changeset>) this.getSession()
+                .createQuery("FROM Changeset ch WHERE ch.idUsuario = :idUser ORDER BY ch.idChangeset DESC")
+                .setParameter("idUser", idUser)
+                .list();
+         return list;
+    }
 }

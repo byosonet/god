@@ -13,8 +13,8 @@
             <column name="ID_USUARIO" length="255" />
         </property>
        
-        <property name="idMovement" type="string">
-            <column name="ID_MOVEMENT" length="255" />
+        <property name="movement" type="string">
+            <column name="MOVEMENT" length="255" />
         </property>
         
         <property name="idCoro" type="string">

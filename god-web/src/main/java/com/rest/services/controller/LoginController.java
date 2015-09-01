@@ -2,6 +2,7 @@ package com.rest.services.controller;
 
 import com.rest.services.god.drools.DroolRuleAge;
 import com.rest.services.god.drools.vo.UserTemp;
+import com.rest.services.god.persistence.hbm.Changeset;
 import com.rest.services.god.persistence.hbm.Coro;
 import com.rest.services.god.persistence.hbm.PropiedadSistema;
 import com.rest.services.god.persistence.hbm.TipoMovimientoEnum;
@@ -73,7 +74,7 @@ public class LoginController {
               this.log.info(" -- Ingresando al sistema como: "+usuario.getNombre());
               
               this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.ACCESO_SISTEMA,
+                      TipoMovimientoEnum.ACCESO_AL_SISTEMA,
                       new Date(UtilService.getFechaTimeStamp().getTime()), 
                       usuario.getIdUsuario(), null);
               
@@ -81,36 +82,43 @@ public class LoginController {
                   List<Coro> corosActualizados = this.coroService.obtenerListaCoroActualizada();
                   List<Coro> corosCompletos = this.coroService.obtenerListaCoroCompleta();
                   if (corosActualizados != null && corosActualizados.size() > 0) {
-                      model.addAttribute("coros", corosActualizados);
-                      model.addAttribute("corosCompletos", corosCompletos);
-                      model.addAttribute("usuario", usuario.getNombre());
-                     
-                      //model.addAttribute("userEmail", usuario.getEmail());
-                      //model.addAttribute("userPassword", password);
-                      String cifrar = UtilService.Encriptar(usuario.getEmail()+";"+password);
-                      model.addAttribute("cifrar",cifrar);
-                      
-                      //retornando los datos del perfil
-                    model.addAttribute("nombreUsuario", usuario.getNombre());
-                    model.addAttribute("falta", usuario.getFechaAlta());
-                    model.addAttribute("fconexion", usuario.getUltConexion());
-                    model.addAttribute("emailUsuario", usuario.getEmail());
-                    model.addAttribute("actividad", usuario.getActividad());
-                    model.addAttribute("sexo", usuario.getSexo()=='M'?"Masculino":"Femenino");
-                    model.addAttribute("fnacimiento", usuario.getFechaNacimiento());
-                    
-                    
-                     //retornando los aviso
-                    PropiedadSistema tituloAviso = this.propiedadSistemaService.obtenerValorPropiedad("titulo.aviso");
-                    PropiedadSistema detalleAviso = this.propiedadSistemaService.obtenerValorPropiedad("detalle.aviso");
+                        model.addAttribute("coros", corosActualizados);
+                        model.addAttribute("corosCompletos", corosCompletos);
+                        model.addAttribute("usuario", usuario.getNombre());
 
-                    if(tituloAviso.getActive() == 1){
-                        model.addAttribute("titulo", tituloAviso.getValue());
-                        model.addAttribute("detalle", detalleAviso.getValue());
-                    }else{
-                         model.addAttribute("titulo", "<p class=\"alert alert-warning\">Por el momento no hay avisos disponibles.</p>");
-                        model.addAttribute("detalle", "");
-                    }  
+                        //model.addAttribute("userEmail", usuario.getEmail());
+                        //model.addAttribute("userPassword", password);
+                        String cifrar = UtilService.Encriptar(usuario.getEmail()+";"+password);
+                        model.addAttribute("cifrar",cifrar);
+
+                        //retornando los datos del perfil
+                        model.addAttribute("nombreUsuario", usuario.getNombre());
+                        model.addAttribute("falta", usuario.getFechaAlta());
+                        model.addAttribute("fconexion", usuario.getUltConexion());
+                        model.addAttribute("emailUsuario", usuario.getEmail());
+                        model.addAttribute("actividad", usuario.getActividad());
+                        model.addAttribute("sexo", usuario.getSexo()=='M'?"Masculino":"Femenino");
+                        model.addAttribute("fnacimiento", usuario.getFechaNacimiento());
+
+
+                         //retornando los aviso
+                        PropiedadSistema tituloAviso = this.propiedadSistemaService.obtenerValorPropiedad("titulo.aviso");
+                        PropiedadSistema detalleAviso = this.propiedadSistemaService.obtenerValorPropiedad("detalle.aviso");
+
+                        if(tituloAviso.getActive() == 1){
+                            model.addAttribute("titulo", tituloAviso.getValue());
+                            model.addAttribute("detalle", detalleAviso.getValue());
+                        }else{
+                             model.addAttribute("titulo", "<p class=\"alert alert-warning\">Por el momento no hay avisos disponibles.</p>");
+                             model.addAttribute("detalle", "");
+                        }
+                        
+                        //Retornando Lista de movimientos de usuario
+                        List<Changeset> listCh = 
+                                this.changesetService.listaChangeset(String.valueOf(usuario.getIdUsuario()));
+                        if(listCh != null){
+                            model.addAttribute("changesetUser", listCh);
+                        } 
                   }
                   this.changesetService.guardarChangeset(
                       TipoMovimientoEnum.CONSULTAR_HIMNARIO,
@@ -265,7 +273,7 @@ public class LoginController {
             this.log.info(" -- El usuario se agrego correctamente con el id: "+id);
             
             this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.REGISTRO_USUARIO,
+                      TipoMovimientoEnum.REGISTRO_DE_USUARIO,
                       new Date(UtilService.getFechaTimeStamp().getTime()), 
                       id, null);
            try {
@@ -395,13 +403,13 @@ public class LoginController {
        Usuario user = this.usuarioService.validaEmailSistema(userEmail);
        if(user!=null){
            this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.SALIR_SISTEMA,
+                      TipoMovimientoEnum.SALIR_DEL_SISTEMA,
                       new Date(UtilService.getFechaTimeStamp().getTime()), 
                       user.getIdUsuario(), null);
        }
        ErrorService response = new ErrorService();
        response.setCodigo("200");
-       response.setMensaje("Registro de mensaje de sálida. "+TipoMovimientoEnum.SALIR_SISTEMA.toString());
+       response.setMensaje("Registro de mensaje de sálida. "+TipoMovimientoEnum.SALIR_DEL_SISTEMA.toString());
        
        return new ResponseEntity<ErrorService>(response, HttpStatus.OK);
     }

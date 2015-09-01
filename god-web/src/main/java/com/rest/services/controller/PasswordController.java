@@ -44,7 +44,7 @@ public class PasswordController {
         Usuario user = this.usuarioService.validaEmailSistema(email);
         if(user!=null){
             this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.RECUPERAR_PASSWORD,
+                      TipoMovimientoEnum.RECUPERAR_TU_PASSWORD,
                       new Date(UtilService.getFechaTimeStamp().getTime()), 
                       user.getIdUsuario(), null);
             

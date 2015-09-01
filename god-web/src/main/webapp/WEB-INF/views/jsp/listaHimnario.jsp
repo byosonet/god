@@ -48,6 +48,38 @@
                                     }
                               }
                               });
+                              
+                              
+                      var listaBitacora = $('#listaBitacora')
+                          .dataTable(
+                              {
+                              "aoColumns": [ {"bSearchable": false}, {"bSearchable": true}, {"bSearchable": false}],
+                              "sPaginationType": "full_numbers",
+                              "bPaginate": true,
+                              "bLengthChange" : false,
+                              "pageLength": 10,
+                              "bSort" : false,
+                              "oLanguage" : {
+                                    "sProcessing":     "Procesando...",
+                                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                                    "sZeroRecords":    "No se encontraron resultados",
+                                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                                    "sInfo":           "",
+                                    "sInfoEmpty":      "",
+                                    "sInfoFiltered":   "",
+                                    "sInfoPostFix":    "",
+                                    "sSearch":         "<span class='glyphicon glyphicon-search'></span>",
+                                    "sUrl":            "",
+                                    "sInfoThousands":  ",",
+                                    "sLoadingRecords": "Cargando...",
+                                    "oPaginate": {
+                                        "sFirst":    "",
+                                        "sLast":     "",
+                                        "sNext":     "",
+                                        "sPrevious": ""
+                                    }
+                              }
+                              });
                                                           
                     $('a#exit').click(function(){
                         $.blockUI();
@@ -62,19 +94,6 @@
                           });
                     });          
                               
-                    /*          
-                    $('a#ref').click(function(){
-                        $.blockUI();
-                        var a_href = $(this).attr('href');
-                        var idCoro = a_href.split("#")[1]; 
-                        $('input#idCoro').val(idCoro);
-
-                        var urlAction = '${contextpath}' + '/coro';
-                        document.getElementById('enviarCoro').action = urlAction;
-                        document.getElementById('enviarCoro').method = 'POST';
-                        document.getElementById('enviarCoro').submit();
-                    });
-                    */
                     $('a#aviso').click(function(){
                             $('div#contenidoDinamico').hide();
                             $('div#agregarCoroJSP').hide();

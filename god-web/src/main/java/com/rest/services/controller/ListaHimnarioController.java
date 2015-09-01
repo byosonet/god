@@ -1,5 +1,6 @@
 package com.rest.services.controller;
 
+import com.rest.services.god.persistence.hbm.Changeset;
 import com.rest.services.god.persistence.hbm.Coro;
 import com.rest.services.god.persistence.hbm.PropiedadSistema;
 import com.rest.services.god.persistence.hbm.TipoMovimientoEnum;
@@ -43,6 +44,13 @@ public class ListaHimnarioController {
                 TipoMovimientoEnum.CONSULTAR_HIMNARIO,
                 new Date(UtilService.getFechaTimeStamp().getTime()), 
                 user.getIdUsuario(), null);
+            
+            //Retornando Lista de movimientos de usuario
+            List<Changeset> listCh = 
+                    this.changesetService.listaChangeset(String.valueOf(user.getIdUsuario()));
+            if(listCh != null){
+                model.addAttribute("changesetUser", listCh);
+            }
         }
        
        try{
