@@ -90,6 +90,9 @@ public class LoginController {
                         //model.addAttribute("userPassword", password);
                         String cifrar = UtilService.Encriptar(usuario.getEmail()+";"+password);
                         model.addAttribute("cifrar",cifrar);
+                        
+                        //activar menu
+                        model.addAttribute("menu",true);
 
                         //retornando los datos del perfil
                         model.addAttribute("nombreUsuario", usuario.getNombre());
@@ -179,7 +182,9 @@ public class LoginController {
    }
    
     @RequestMapping(value="/registrar/usuario", method = RequestMethod.GET)
-    public String registrarUsuario(){
+    public String registrarUsuario(Model model){
+         //activar menu
+         model.addAttribute("menu","smenu");
         return "registrar";
     }
     

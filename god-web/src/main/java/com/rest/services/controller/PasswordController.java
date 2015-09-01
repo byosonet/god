@@ -28,7 +28,9 @@ public class PasswordController {
     private final Logger log = Logger.getLogger(PasswordController.class);
  
     @RequestMapping(value="/recuperar", method = RequestMethod.GET)
-    public String recuperarPassword(){
+    public String recuperarPassword(Model model){
+         //activar menu
+        model.addAttribute("menu","smenu");
         return "password";
     }
     

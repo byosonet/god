@@ -66,6 +66,9 @@ public class ListaHimnarioController {
                String cifrar = UtilService.Encriptar(user.getEmail()+";"+pass);
                model.addAttribute("cifrar",cifrar);
                
+               //activar menu
+               model.addAttribute("menu",true);
+               
                //retornando los datos del perfil
                model.addAttribute("nombreUsuario", user.getNombre());
                model.addAttribute("falta", user.getFechaAlta());

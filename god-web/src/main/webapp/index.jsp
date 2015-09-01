@@ -117,10 +117,10 @@
           </div>
           <div style="height: 1px;" aria-expanded="false" class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
-                <a href="#" class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white;">Salir <span class="glyphicon glyphicon-user"></span></a>
-              </li>
-            </ul>
+                <li class="dropdown">
+                  <a style="color:white;" aria-expanded="true" aria-haspopup="true" role="button" data-toggle="dropdown" class="navbar-brand dropdown-toggle" href="#">Menú </a>
+                </li>
+              </ul>
           </div>
         </div>
       </nav>
