@@ -15,6 +15,43 @@
                 document.getElementById('regresar').method = 'POST';
                 document.getElementById('regresar').submit();
           });
+          
+          $('a#exit').click(function(){
+                $.blockUI();
+                $.ajax({
+                        type: 'POST',
+                        url:  '${contextpath}'+'/sistema/salir',
+                        data: $('form#regresar').serialize(),
+                         success: function (data) {
+                               $.unblockUI();
+                               muestraMsjSistemaSuccessIndex("Gracias por tu visita, Dios te bendiga.");
+                        }  
+                  });
+            });
+            
+            function muestraMsjSistemaSuccessIndex(msjStatus){
+                BootstrapDialog.show({
+                 size: BootstrapDialog.SIZE_SMALL,
+                 title: 'Mensaje del Sistema:',
+                 closable: false,
+                 message: msjStatus,
+                 type: BootstrapDialog.TYPE_SUCCESS,
+                 cssClass: 'login-dialog',
+                 buttons: [{
+                     icon: 'glyphicon glyphicon-ok',
+                     label: 'ACEPTAR',
+                     cssClass: 'btn-primary',
+                     action: function(dialog) {
+                         dialog.close();
+                        $.blockUI();
+                        var urlAction = '${contextpath}';
+                        document.getElementById('index').action = urlAction;
+                        document.getElementById('index').method = 'GET';
+                        document.getElementById('index').submit();
+                     }
+                 }]
+             });
+             }  
       });
   </script>
     <style>
@@ -70,6 +107,8 @@
   </div>
     <form id="regresar">
         <input type="hidden" id="cifrar" name="cifrar" value="${cifrar}">
+    </form>
+    <form id="index">
     </form>
     </body>
 </html>
