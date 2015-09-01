@@ -381,6 +381,31 @@ public class LoginController {
         return true;
     }
     
+    @RequestMapping(value = "/sistema/salir", method = RequestMethod.POST)
+    public ResponseEntity<ErrorService> exitSistema(HttpServletRequest request) throws IOException, JSONException, Exception {
+       
+       this.log.info(" -- Registrando salida en sistema."); 
+       String cifrar = request.getParameter("cifrar");
+       this.log.info(" -- Cifrado enviado: "+cifrar);
+       
+       String descifrado = UtilService.Desencriptar(cifrar);
+       this.log.info(" -- Descifrado: "+descifrado);
+       String[] data = descifrado.split(";");
+       String userEmail = data[0];
+       Usuario user = this.usuarioService.validaEmailSistema(userEmail);
+       if(user!=null){
+           this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.SALIR_SISTEMA,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      user.getIdUsuario(), null);
+       }
+       ErrorService response = new ErrorService();
+       response.setCodigo("200");
+       response.setMensaje("Registro de mensaje de sálida. "+TipoMovimientoEnum.SALIR_SISTEMA.toString());
+       
+       return new ResponseEntity<ErrorService>(response, HttpStatus.OK);
+    }
+    
     @Autowired
     UsuarioService usuarioService;
     

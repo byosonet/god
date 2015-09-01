@@ -50,7 +50,16 @@
                               });
                                                           
                     $('a#exit').click(function(){
-                        muestraMsjSistemaSuccessIndex("Gracias por tu visita, Dios te bendiga.");
+                        $.blockUI();
+                        $.ajax({
+                                type: 'POST',
+                                url:  '${contextpath}'+'/sistema/salir',
+                                data: $('form#regresar').serialize(),
+                                 success: function (data) {
+                                       $.unblockUI();
+                                       muestraMsjSistemaSuccessIndex("Gracias por tu visita, Dios te bendiga.");
+                                }  
+                          });
                     });          
                               
                     /*          
