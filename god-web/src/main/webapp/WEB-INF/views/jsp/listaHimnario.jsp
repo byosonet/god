@@ -332,7 +332,11 @@
                                  }
                              }]
                          });
-                         }  
+                         }
+                         
+                         $('span#menuSpan').click(function(){
+                                $('div#menuPrincipal').css('display','none');
+                         });
                 }          
             );
         </script>
@@ -349,8 +353,9 @@
       <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1 main">
           <center><h4 class="page-header" style="text-align: center;">Hola, <c:out value="${usuario}"/></h4></center>
-
-          <div class="row placeholders">
+          <div style="text-align:center"><span class="glyphicon glyphicon-th-large" style="font-size: 2.5em;" id="menuSpan"></span></div>
+          <br>
+          <div class="row placeholders" id="menuPrincipal">
             <div class="col-xs-3 col-sm-1">
                 <a id="perfil" href="#"><img src="${contextpath}/static/resources/img/user.png" data-src="holder.js/50x50/auto/sky" class="img-responsive"></a>
               <h5>Perfil</h5>
