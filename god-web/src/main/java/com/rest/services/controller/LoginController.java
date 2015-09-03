@@ -103,6 +103,13 @@ public class LoginController {
                         model.addAttribute("sexo", usuario.getSexo()=='M'?"Masculino":"Femenino");
                         model.addAttribute("fnacimiento", usuario.getFechaNacimiento());
 
+                        //Dial
+                        model.addAttribute("accesoSistema", 30);
+                        model.addAttribute("registroCoro", 35);
+                        model.addAttribute("consultarPerfil", 40);
+                        model.addAttribute("consultarCoro", 45);
+                        model.addAttribute("emailContacto", 50);
+                        model.addAttribute("actUsuario", 55);
 
                          //retornando los aviso
                         PropiedadSistema tituloAviso = this.propiedadSistemaService.obtenerValorPropiedad("titulo.aviso");

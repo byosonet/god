@@ -78,6 +78,14 @@ public class ListaHimnarioController {
                model.addAttribute("sexo", user.getSexo()=='M'?"Masculino":"Femenino");
                model.addAttribute("fnacimiento", user.getFechaNacimiento());
                
+               //Dial
+               model.addAttribute("accesoSistema", 30);
+               model.addAttribute("registroCoro", 35);
+               model.addAttribute("consultarPerfil", 40);
+               model.addAttribute("consultarCoro", 45);
+               model.addAttribute("emailContacto", 50);
+               model.addAttribute("actUsuario", 55);
+               
                //retornando los aviso
                PropiedadSistema tituloAviso = this.propiedadSistemaService.obtenerValorPropiedad("titulo.aviso");
                PropiedadSistema detalleAviso = this.propiedadSistemaService.obtenerValorPropiedad("detalle.aviso");
