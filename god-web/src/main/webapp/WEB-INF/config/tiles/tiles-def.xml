@@ -18,7 +18,7 @@
 	</definition>
         
         <definition name="listaHimnario" extends="principal">
-		<put-attribute name="contenido" value="/WEB-INF/views/jsp/listaHimnario.jsp"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/body.jsp"/>
 	</definition>
         
         <definition name="password" extends="principal">
