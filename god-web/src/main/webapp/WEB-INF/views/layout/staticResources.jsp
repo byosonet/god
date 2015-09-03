@@ -7,6 +7,10 @@
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/bootstrap-dialog.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/dataTables.css">
 
+<!-- knob && nouislider CSS -->
+<link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/noui/nouislider.css">
+<link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/noui/nouislider.pips.css">
+
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knockout-3.2.0.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knockout.simpleGrid.3.0.js"></script>
@@ -17,5 +21,7 @@
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/dataTables.min.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/bootstrap/bootstrap.min.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/bootstrap/bootstrap-dialog.js"></script>
-        
-        
+
+<!-- knob && nouislider JS -->
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knob/knob.js"></script>
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/noui/nouislider.js"></script>    
