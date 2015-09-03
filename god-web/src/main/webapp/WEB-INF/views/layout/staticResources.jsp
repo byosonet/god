@@ -3,6 +3,8 @@
 
 <link rel="shortcut icon" type="image/x-icon" href="${contextpath}/static/resources/img/inp.png"/>
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/bootstrap-checkbox.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/dashboard.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/bootstrap-dialog.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/dataTables.css">
@@ -10,6 +12,9 @@
 <!-- knob && nouislider CSS -->
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/noui/nouislider.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/noui/nouislider.pips.css">
+
+<!-- Select2 css -->
+<link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/select2/select2.min.css">
 
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knockout-3.2.0.js"></script>
@@ -24,4 +29,7 @@
 
 <!-- knob && nouislider JS -->
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knob/knob.js"></script>
-<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/noui/nouislider.js"></script>    
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/noui/nouislider.js"></script>   
+
+<!-- select2 js -->
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/select2/select2.min.js"></script>   

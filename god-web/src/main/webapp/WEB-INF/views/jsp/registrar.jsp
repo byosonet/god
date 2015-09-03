@@ -12,6 +12,12 @@
   
   <script type="text/javascript">
       $(function(){
+          
+        $('select#dia').select2();
+        $('select#anio').select2();
+        $('select#mes').select2();
+        $('select#actividad').select2();
+          
         var status;
         $('input#masculino').click(function(){
             $('input#femenino').attr('checked',false);
@@ -191,19 +197,27 @@
                  <div class="form-group">
                     <label class="control-label col-sm-2">Sexo:</label>
                     <div class="col-sm-2">
-                       <div class="alert alert-info">Masculino <input value="M" type="radio" name="sexo" id="masculino">
-                       </div>
+                       <div class="radio radio-info radio-inline">
+                            <input type="radio" id="masculino" name="sexo" value="M">
+                            <label> Masculino </label>
+                        </div>
                     </div>
 
                     <div class="col-sm-2">
-                       <div class="alert alert-info">Femenino <input value="F" type="radio" name="sexo" id="femenino">
-                       </div>
+                       <div class="radio radio-info radio-inline">
+                            <input type="radio" id="femenino" name="sexo" value="F">
+                            <label> Femenino </label>
+                        </div>
                     </div>
      
                     <label class="control-label col-sm-3">Deseo recibir notificaciones:</label>
                     <div class="col-sm-3">
-                       <div class="alert alert-info">Sí <input type="checkbox" id="notificar" name="notificar" value="SI">
-                        </div>
+                       <div class="checkbox checkbox-primary">
+                        <input type="checkbox" value="SI" name="notificar" id="notificar">
+                        <label>
+                            Sí
+                        </label>
+                    </div>
                     </div>
                 </div>
             </form>
