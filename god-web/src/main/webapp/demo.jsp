@@ -7,10 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Sólo a Dios la Gloria</title>
   <jsp:include page="./WEB-INF/views/layout/staticResources.jsp"></jsp:include>
-  <style>
-
-  </style>
-  
   <script type="text/javascript">
       $(function(){ 
           var myVar;

@@ -2,6 +2,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <html>
+<script type="text/javascript">
+$(function(){ 
+    $('input#acceso').knob();
+});
+</script>
 <body>
     <div>
         <h4 class="sub-header" style="text-align: center;">Perfil</h4>
@@ -85,6 +90,46 @@
             <div id="bitacora"><jsp:include page="bitacora.jsp"></jsp:include></div>
         </div>
         
+        <br>
+        <h4 class="sub-header" style="text-align: center;"></h4>
+        <div class="row col-sm-12">
+            
+            <div class="col-sm-2" style="text-align: center">
+                <label>Accesos a Sistema</label>
+                <input disabled data-step="1" data-min="1" data-max="100" data-width="50" data-height="50" data-fgColor="#000000" id="acceso" type="text" value="30" class="dial">
+            </div>
+            
+           
+            <div class="col-sm-2" style="text-align: center">
+                 <label>Registros de Coros</label>
+                <input disabled data-step="1" data-min="1" data-max="100" data-width="50" data-height="50" data-fgColor="#FF0000" id="acceso" type="text" value="20" class="dial">
+            </div>
+            
+            
+            <div class="col-sm-2" style="text-align: center">
+                <label>Consulta de Perfil</label>
+                <input disabled data-step="1" data-min="1" data-max="100" data-width="50" data-height="50" data-fgColor="#FF00FF" id="acceso" type="text" value="50" class="dial">
+            </div>
+            
+            
+            <div class="col-sm-2" style="text-align: center">
+                <label>Consulta de Coros</label>
+                <input disabled data-step="1" data-min="1" data-max="100" data-width="50" data-height="50" data-fgColor="#000000" id="acceso" type="text" value="10" class="dial">
+            </div>
+            
+            
+            <div class="col-sm-2" style="text-align: center">
+                <label>Email de Contacto</label>
+                <input disabled data-step="1" data-min="1" data-max="100" data-width="50" data-height="50" data-fgColor="#FF0000" id="acceso" type="text" value="5" class="dial">
+            </div>
+            
+            
+            <div class="col-sm-2" style="text-align: center">
+                 <label>Actualizar Usuario</label>
+                <input disabled data-step="1" data-min="1" data-max="100" data-width="50" data-height="50" data-fgColor="#FF00FF" id="acceso" type="text" value="80" class="dial">
+            </div>
+        </div>
+        <br><br>
         
     </div>
 </body>
