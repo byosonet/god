@@ -79,12 +79,18 @@ public class ListaHimnarioController {
                model.addAttribute("fnacimiento", user.getFechaNacimiento());
                
                //Dial
-               model.addAttribute("accesoSistema", 30);
-               model.addAttribute("registroCoro", 35);
-               model.addAttribute("consultarPerfil", 40);
-               model.addAttribute("consultarCoro", 45);
-               model.addAttribute("emailContacto", 50);
-               model.addAttribute("actUsuario", 55);
+               model.addAttribute("accesoSistema", 
+                       this.changesetService.totalMovement(TipoMovimientoEnum.ACCESO_AL_SISTEMA, String.valueOf(user.getIdUsuario())));
+               model.addAttribute("registroCoro", 
+                       this.changesetService.totalMovement(TipoMovimientoEnum.REGISTRO_DE_CORO, String.valueOf(user.getIdUsuario())));
+               model.addAttribute("consultarPerfil", 
+                       this.changesetService.totalMovement(TipoMovimientoEnum.CONSULTAR_MI_PERFIL, String.valueOf(user.getIdUsuario())));
+               model.addAttribute("consultarCoro", 
+                       this.changesetService.totalMovement(TipoMovimientoEnum.CONSULTAR_CORO, String.valueOf(user.getIdUsuario())));
+               model.addAttribute("emailContacto", 
+                       this.changesetService.totalMovement(TipoMovimientoEnum.ENVIO_CORREO_CONTACTO, String.valueOf(user.getIdUsuario())));
+               model.addAttribute("actUsuario", 
+                       this.changesetService.totalMovement(TipoMovimientoEnum.ACTUALIZAR_PERFIL, String.valueOf(user.getIdUsuario())));
                
                //retornando los aviso
                PropiedadSistema tituloAviso = this.propiedadSistemaService.obtenerValorPropiedad("titulo.aviso");

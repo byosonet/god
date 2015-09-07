@@ -1,6 +1,7 @@
 package com.rest.services.god.persistence.dao;
 
 import com.rest.services.god.persistence.hbm.Changeset;
+import com.rest.services.god.persistence.hbm.TipoMovimientoEnum;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -36,4 +37,16 @@ public class ChangesetDaoImpl extends HibernateDaoSupport implements ChangesetDa
                 .list();
          return list;
     }
+
+    public int totalMovemente(TipoMovimientoEnum movement, String idUser) {
+            Number maximo = (Number) this.getSession().createQuery(
+                    "SELECT COUNT(*) "
+                    + "FROM Changeset ch WHERE ch.idUsuario = :idUser AND ch.movement = :movement")
+                    .setParameter("idUser", idUser)
+                    .setParameter("movement", movement.name().replace("_", " "))
+                    .uniqueResult();
+            return maximo.intValue();
+    }
+    
+    
 }

@@ -96,37 +96,37 @@ $(function(){
             
             <div class="col-sm-2" style="text-align: center">
                 <label>Accesos a Sistema</label>
-                <input disabled data-step="1" data-min="1" data-max="100" data-width="50" data-height="50" data-fgColor="#000000" id="acceso" type="text" value="${accesoSistema}" class="dial">
+                <input disabled data-step="1" data-min="0" data-max="100" data-width="50" data-height="50" data-fgColor="#000000" id="acceso" type="text" value="${accesoSistema}" class="dial">
             </div>
             
            
             <div class="col-sm-2" style="text-align: center">
                  <label>Registros de Coros</label>
-                <input disabled data-step="1" data-min="1" data-max="100" data-width="50" data-height="50" data-fgColor="#FF0000" id="acceso" type="text" value="${registroCoro}" class="dial">
+                <input disabled data-step="1" data-min="0" data-max="100" data-width="50" data-height="50" data-fgColor="#FF0000" id="acceso" type="text" value="${registroCoro}" class="dial">
             </div>
             
             
             <div class="col-sm-2" style="text-align: center">
                 <label>Consulta de Perfil</label>
-                <input disabled data-step="1" data-min="1" data-max="100" data-width="50" data-height="50" data-fgColor="#FF00FF" id="acceso" type="text" value="${consultarPerfil}" class="dial">
+                <input disabled data-step="1" data-min="0" data-max="100" data-width="50" data-height="50" data-fgColor="#FF00FF" id="acceso" type="text" value="${consultarPerfil}" class="dial">
             </div>
             
             
             <div class="col-sm-2" style="text-align: center">
                 <label>Consulta de Coros</label>
-                <input disabled data-step="1" data-min="1" data-max="100" data-width="50" data-height="50" data-fgColor="#000000" id="acceso" type="text" value="${consultarCoro}" class="dial">
+                <input disabled data-step="1" data-min="0" data-max="100" data-width="50" data-height="50" data-fgColor="#000000" id="acceso" type="text" value="${consultarCoro}" class="dial">
             </div>
             
             
             <div class="col-sm-2" style="text-align: center">
                 <label>Email de Contacto</label>
-                <input disabled data-step="1" data-min="1" data-max="100" data-width="50" data-height="50" data-fgColor="#FF0000" id="acceso" type="text" value="${emailContacto}" class="dial">
+                <input disabled data-step="1" data-min="0" data-max="100" data-width="50" data-height="50" data-fgColor="#FF0000" id="acceso" type="text" value="${emailContacto}" class="dial">
             </div>
             
             
             <div class="col-sm-2" style="text-align: center">
                  <label>Actualizar Usuario</label>
-                <input disabled data-step="1" data-min="1" data-max="100" data-width="50" data-height="50" data-fgColor="#FF00FF" id="acceso" type="text" value="${actUsuario}" class="dial">
+                <input disabled data-step="1" data-min="0" data-max="100" data-width="50" data-height="50" data-fgColor="#FF00FF" id="acceso" type="text" value="${actUsuario}" class="dial">
             </div>
         </div>
         

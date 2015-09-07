@@ -44,6 +44,13 @@ public class ChangesetServiceImpl implements ChangesetService{
         return list;
     }
 
+    @Transactional
+    public int totalMovement(TipoMovimientoEnum tipo, String idUser) {
+        int total = this.changesetDao.totalMovemente(tipo, idUser);
+        this.log.info(" -- Recuperando total de movimientos para: "+tipo.name()+" Total encontrado: "+total);
+        return total;
+    }
+
     @Autowired
     private ChangesetDao changesetDao;
     
