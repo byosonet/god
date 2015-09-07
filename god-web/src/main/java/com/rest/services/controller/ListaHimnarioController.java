@@ -84,7 +84,7 @@ public class ListaHimnarioController {
                model.addAttribute("registroCoro", 
                        this.changesetService.totalMovement(TipoMovimientoEnum.REGISTRO_DE_CORO, String.valueOf(user.getIdUsuario())));
                model.addAttribute("consultarPerfil", 
-                       this.changesetService.totalMovement(TipoMovimientoEnum.CONSULTAR_MI_PERFIL, String.valueOf(user.getIdUsuario())));
+                       this.changesetService.totalMovement(TipoMovimientoEnum.VALIDAR_USUARIO, String.valueOf(user.getIdUsuario())));
                model.addAttribute("consultarCoro", 
                        this.changesetService.totalMovement(TipoMovimientoEnum.CONSULTAR_CORO, String.valueOf(user.getIdUsuario())));
                model.addAttribute("emailContacto", 

@@ -109,7 +109,7 @@ public class LoginController {
                         model.addAttribute("registroCoro", 
                                 this.changesetService.totalMovement(TipoMovimientoEnum.REGISTRO_DE_CORO, String.valueOf(usuario.getIdUsuario())));
                         model.addAttribute("consultarPerfil", 
-                                this.changesetService.totalMovement(TipoMovimientoEnum.CONSULTAR_MI_PERFIL, String.valueOf(usuario.getIdUsuario())));
+                                this.changesetService.totalMovement(TipoMovimientoEnum.VALIDAR_USUARIO, String.valueOf(usuario.getIdUsuario())));
                         model.addAttribute("consultarCoro", 
                                 this.changesetService.totalMovement(TipoMovimientoEnum.CONSULTAR_CORO, String.valueOf(usuario.getIdUsuario())));
                         model.addAttribute("emailContacto", 
