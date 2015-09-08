@@ -59,13 +59,10 @@
       });
   </script>
   <style>
-             body{
-                font:  150% comic sans ms;
-                color: gray;
-             }
+            
   </style>
 </head>
-<body style="background: InactiveBorder">
+<body>
      <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -75,7 +72,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/god-web/" style="color:white;">Himnario Presbiteriano</a>
+            <a class="navbar-brand" href="/god-web/" style="color:white;"></a>
           </div>
           <div style="height: 1px;" aria-expanded="false" class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -89,8 +86,8 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 main">
-            <h4 style="text-align: center;">Trámite Seguros Voluntarios</h4>
+        <div class="col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1 main">
+            <h2 style="text-align: left;">Paso 1: Cotizar Seguro</h2>
                 <div class="row">
                     <div class="col-sm-6" style="margin-top: 30px;height: 100px">
                         <label class="font-bold">Tipo Seguro</label>
@@ -112,19 +109,19 @@
                                   </thead>
                                    <tbody>
                                         <tr>
-                                            <td><label class="btn btn-sm btn-primary"><strong>8</strong></label> Fallecimiento</td>
-                                            <td><label class="btn btn-sm btn-danger"><strong>4</strong></label> Vida</td>
+                                            <td><label class="btn btn-sm btn-primary"><strong>08</strong></label> Fallecimiento</td>
+                                            <td><label class="btn btn-sm btn-danger"><strong>04</strong></label> Vida</td>
                                             <td><label class="btn btn-sm btn-info"><strong>10</strong></label> Enfermedad</td>
                                          </tr>
                                          <tr>
-                                            <td><label class="btn btn-sm btn-success"><strong>5</strong></label> Accidente</td>
+                                            <td><label class="btn btn-sm btn-success"><strong>05</strong></label> Accidente</td>
                                             <td><label class="btn btn-sm btn-info"><strong>21</strong></label> Asalto</td>
                                             <td><label class="btn btn-sm btn-danger"><strong>12</strong></label> Robo</td>
                                          </tr>
                                          <tr>
                                             <td><label class="btn btn-sm btn-default"><strong>13</strong></label> Familiar</td>
                                             <td><label class="btn btn-sm btn-warning"><strong>16</strong></label> Infarto</td>
-                                            <td><label class="btn btn-sm btn-success"><strong>4</strong></label> Embarazo</td>
+                                            <td><label class="btn btn-sm btn-success"><strong>04</strong></label> Embarazo</td>
                                          </tr>
                                    </tbody>
                                  </table>
@@ -133,76 +130,129 @@
                     </div>
                 </div>
             
-            <div class="row sub-header">
-                    <h4 style="text-align: center">Calculadora de Seguro Voluntario</h4>
+            <div class="row col-md-12 sub-header">
+                    <h4 style="text-align: left;">Calculadora de Seguro</h4>
             </div>
             <br>
+            
             <div class="row">
-                <div class="col-md-6" style="text-align: center">Seguro Familiar</div>
-                <div class="col-md-6">
-                    <div class="row col-sm-12">
-                        <label class="control-label col-sm-3 col-xs-3" style="text-align: center;">Cant.</label>
-                        <label class="control-label col-sm-3 col-xs-3" style="text-align: center;">Edad</label>
-                        <label class="control-label col-sm-3 col-xs-3" style="text-align: center;">Familia</label>
-                        <label class="control-label col-sm-3 col-xs-3" style="text-align: center;">$</label>
+                <div class="col-md-6" style="text-align: left;">
+                    
+                    <div class="row col-sm-12 sub-header">
+                     <br>
+                     <span class="control-label col-sm-1 col-xs-2 glyphicon glyphicon-tasks" style="font-size: 2em;"></span>
+                     <label class="control-label col-sm-11 col-xs-10">Usted está comprando: <br>Seguro de Salud para la Familia.</label>
                     </div>
                     
-                    <div class="row col-sm-12">
-                        
-                        <div class="col-sm-3 col-xs-3" style="text-align: center">
-                            <input data-step="1" data-min="18" data-max="75" data-width="40" data-height="40" data-fgColor="#000000" id="dial" type="text" value="25" class="dial">
-                        </div>
-                        
-                        <div class="col-sm-3 col-xs-3" style="text-align: center">
-                            <input data-step="1" data-min="1" data-max="100" data-width="40" data-height="40" data-fgColor="#FF0000" id="dial2" type="text" value="50" class="dial">
-                        </div>
-
-                        
-                        <div class="col-sm-3 col-xs-3" style="text-align: center">
-                            <span class="glyphicon glyphicon-user"> HIJO</span> 
-                        </div>
-
-                        
-                        <div class="col-sm-3 col-xs-3" style="text-align: center">
-                            <span id="total"> $ 15,345.00</span> 
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            
-            
-            <br>
-              <div class="row">
-                <div class="col-md-6" style="text-align: center"></div>
-                <div class="col-md-6">
-                    <div class="row col-sm-12">
+                     <div class="row col-sm-12 sub-header">
+                     <br>
+                     <span class="control-label col-sm-1 col-xs-2 glyphicon glyphicon-credit-card" style="font-size: 2em;"></span>
+                     <label class="control-label col-sm-11 col-xs-10">Forma de Pago: <br>Pago mensual a través de la Línea de captura.</label>
                     </div>
                     
-                    <div class="row col-sm-12">
-                        
-                        <div class="col-sm-3 col-xs-3" style="text-align: center">
-                            <input data-step="1" data-min="18" data-max="75" data-width="40" data-height="40" data-fgColor="#000000" id="dial" type="text" value="25" class="dial">
-                        </div>
-                        
-                        <div class="col-sm-3 col-xs-3" style="text-align: center">
-                            <input data-step="1" data-min="1" data-max="100" data-width="40" data-height="40" data-fgColor="#FF0000" id="dial2" type="text" value="50" class="dial">
-                        </div>
-
-                        
-                        <div class="col-sm-3 col-xs-3" style="text-align: center">
-                            <span class="glyphicon glyphicon-user"> HIJO</span> 
-                        </div>
-
-                        
-                        <div class="col-sm-3 col-xs-3" style="text-align: center">
-                            <span id="total"> $ 15,345.00</span> 
-                        </div>
-                        
+                    <div class="row col-sm-12 sub-header">
+                     <br>
+                    <label style="text-align: center;" class="control-label col-sm-4 col-xs-4">Cantidad</label>
+                    <label style="text-align: center;" class="control-label col-sm-4 col-xs-3">Edad</label>
+                    <label style="text-align: left;" class="control-label col-sm-4 col-xs-5">Parentesco</label>
                     </div>
+                    
+                    
+                    <div class="row col-sm-12 sub-header">
+                     <br>
+                        <div class="col-sm-4 col-xs-3" style="text-align: center;">
+                            <input data-step="1" data-min="0" data-max="10" data-width="40" data-height="40" data-fgColor="#000000" id="dial" type="text" value="2" class="dial">
+                        </div>
+                        <div class="col-sm-4 col-xs-3" style="text-align: center;">
+                            <input data-step="1" data-min="0" data-max="10" data-width="40" data-height="40" data-fgColor="#000000" id="dial" type="text" value="2" class="dial">
+                        </div>
+                        <div class="col-sm-4 col-xs-6" style="text-align: center;">
+                            <span class="control-label col-sm-1 col-xs-1 glyphicon glyphicon-user"></span>
+                            <span class="control-label col-sm-3 col-xs-5">HIJO</span>
+                        </div>
+                    </div>
+                    
+                     <div class="row col-sm-12">
+                         <br>
+                         <label style="text-align: center;" class="control-label col-sm-3 col-xs-2"></label>
+                         <span class="control-label col-sm-2 col-xs-1"></span>
+                         <span style="text-align: center;" class="control-label col-sm-3 col-xs-2"></span>
+                         <input class="control-label col-sm-4 col-xs-6 btn btn-primary" type="button" value="AGREGAR"/>
+                     </div>
+                    
+                </div>
+                
+                <div class="col-md-1"></div>
+                
+                <div class="col-md-5">
+                    
+                    <div class="row col-sm-12 sub-header">
+                        <br>
+                        <label class="control-label col-sm-6 col-xs-6" style="text-align: center;margin-top: 15px;">Integrantes:</label>
+                        <div class="col-sm-6 col-xs-6" style="text-align: center;margin-top: 7px;">
+                            <input data-step="1" data-min="0" data-max="10" data-width="40" data-height="40" data-fgColor="#000000" id="dial" type="text" value="2" class="dial">
+                        </div>
+                    </div>
+                   
+                     <div class="row col-sm-12 sub-header">
+                         <br>
+                         <label style="text-align: center;" class="control-label col-sm-3 col-xs-2">4</label>
+                         <span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>
+                         <span style="text-align: center;" class="control-label col-sm-3 col-xs-2">HIJO</span>
+                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-6">$ 10,430.00</label>
+                     </div>
+                    
+                    <div class="row col-sm-12 sub-header">
+                         <br>
+                         <label style="text-align: center;" class="control-label col-sm-3 col-xs-2">2</label>
+                         <span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>
+                         <span style="text-align: center;" class="control-label col-sm-3 col-xs-2">PADRE</span>
+                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-6">$ 2,433.10</label>
+                     </div>
+                    
+                     <div class="row col-sm-12 sub-header">
+                         <br>
+                         <label style="text-align: center;" class="control-label col-sm-3 col-xs-2">3</label>
+                         <span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>
+                         <span style="text-align: center;" class="control-label col-sm-3 col-xs-2">MADRE</span>
+                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-6">$ 1,000.00</label>
+                     </div>
+                    
+                    <div class="row col-sm-12 sub-header">
+                         <br>
+                         <label style="text-align: center;" class="control-label col-sm-3 col-xs-2"></label>
+                         <span class="control-label col-sm-2 col-xs-1"></span>
+                         <span style="text-align: center;" class="control-label col-sm-3 col-xs-2">TOTAL</span>
+                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-6">$ 13,433.10</label>
+                     </div>
+                    
+                     <div class="row col-sm-12">
+                         <br>
+                         <label style="text-align: center;" class="control-label col-sm-3 col-xs-2"></label>
+                         <span class="control-label col-sm-2 col-xs-1"></span>
+                         <span style="text-align: center;" class="control-label col-sm-3 col-xs-2"></span>
+                         <input class="control-label col-sm-4 col-xs-6 btn btn-primary" type="button" value="CONTRATAR"/>
+                     </div>
+                    
                 </div>
             </div>
+           
             
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+         
         </div>
     </div>    
 </div>
