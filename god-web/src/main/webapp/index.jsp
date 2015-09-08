@@ -315,34 +315,37 @@
                    
                      <div class="row col-sm-12 sub-header">
                          <br>
-                         <label style="text-align: center;" class="control-label col-sm-3 col-xs-2">4</label>
+                         <label style="text-align: center;" class="control-label col-sm-2 col-xs-1">4</label>
                          <span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>
                          <span style="text-align: center;" class="control-label col-sm-3 col-xs-2">Papa</span>
-                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-6">$ 10,430.00</label>
+                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-5">$10,430.00</label>
+                         <label class="btn btn-danger control-label col-sm-1 col-xs-2" style="margin-top:-10px;border-radius:20px"><strong>-</strong></label>
                      </div>
                     
                     <div class="row col-sm-12 sub-header">
                          <br>
-                         <label style="text-align: center;" class="control-label col-sm-3 col-xs-2">2</label>
+                         <label style="text-align: center;" class="control-label col-sm-2 col-xs-1">2</label>
                          <span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>
                          <span style="text-align: center;" class="control-label col-sm-3 col-xs-2">Hijo</span>
-                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-6">$ 2,433.10</label>
+                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-5">$2,433.10</label>
+                         <label class="btn btn-danger control-label col-sm-1 col-xs-2" style="margin-top:-10px;border-radius:20px"><strong>-</strong></label>
                      </div>
                     
                      <div class="row col-sm-12 sub-header">
                          <br>
-                         <label style="text-align: center;" class="control-label col-sm-3 col-xs-2">3</label>
+                         <label style="text-align: center;" class="control-label col-sm-2 col-xs-1">3</label>
                          <span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>
                          <span style="text-align: center;" class="control-label col-sm-3 col-xs-2">Hijo</span>
-                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-6">$ 1,000.00</label>
+                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-5">$1,000.00</label>
+                         <label class="btn btn-danger control-label col-sm-1 col-xs-2" style="margin-top:-10px;border-radius:20px"><strong>-</strong></label>
                      </div>
                     
                     <div class="row col-sm-12 sub-header">
                          <br>
-                         <label style="text-align: center;" class="control-label col-sm-3 col-xs-2"></label>
+                         <label style="text-align: center;" class="control-label col-sm-3 col-xs-1"></label>
                          <span class="control-label col-sm-2 col-xs-1"></span>
-                         <span style="text-align: center;" class="control-label col-sm-3 col-xs-2">TOTAL</span>
-                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-6">$ 13,433.10</label>
+                         <span style="text-align: center;margin-left: -10px;" class="control-label col-sm-3 col-xs-3"><strong>TOTAL</strong></span>
+                         <label style="text-align: left;" class="control-label col-sm-4 col-xs-6"><u>$ 13,433.10</u></label>
                      </div>
                     
                      <div class="row col-sm-12">
