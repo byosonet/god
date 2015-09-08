@@ -42,6 +42,66 @@
                     }
             });
             
+            slider.noUiSlider.on('change', function ( values, handle ) {
+                    if ( values[handle] > 20 && values[handle] < 50) {
+                            
+                            $('input#valorBarra').val('familiar');
+                            $('strong#tipoSeguro').text('Familiar');
+                            
+                            $('strong#tipoSeguro').removeClass().addClass('btn btn-sm btn-success');
+                            
+                            $('input#embarazo').attr('checked',true);
+                            $('input#accidente').attr('checked',true);
+                            
+                            $('input#fallecimiento').attr('checked',false);
+                            $('input#enfermedad').attr('checked',false);
+                            $('input#asalto').attr('checked',false);
+                            
+                            $('input#vida').attr('checked',false);
+                            $('input#robo').attr('checked',false);
+                            $('input#familiar').attr('checked',false);
+                            $('input#infarto').attr('checked',false);
+                            
+                    } else if ( values[handle] > 50 && values[handle] < 80) {
+                            
+                            $('input#valorBarra').val('laboral');
+                            $('strong#tipoSeguro').text('Laboral');
+                            
+                            $('strong#tipoSeguro').removeClass().addClass('btn btn-sm btn-info');
+                            
+                            $('input#embarazo').attr('checked',false);
+                            $('input#accidente').attr('checked',false);
+                            
+                            $('input#fallecimiento').attr('checked',true);
+                            $('input#enfermedad').attr('checked',true);
+                            $('input#asalto').attr('checked',true);
+                            
+                            $('input#vida').attr('checked',false);
+                            $('input#robo').attr('checked',false);
+                            $('input#familiar').attr('checked',false);
+                            $('input#infarto').attr('checked',false);
+  
+                    } else if ( values[handle] > 80 ) {
+                            
+                            $('input#valorBarra').val('personal');
+                            $('strong#tipoSeguro').text('Personal');
+                            
+                            $('strong#tipoSeguro').removeClass().addClass('btn btn-sm btn-danger');
+                            
+                            $('input#embarazo').attr('checked',false);
+                            $('input#accidente').attr('checked',false);
+                            
+                            $('input#fallecimiento').attr('checked',false);
+                            $('input#enfermedad').attr('checked',false);
+                            $('input#asalto').attr('checked',false);
+                            
+                            $('input#vida').attr('checked',true);
+                            $('input#robo').attr('checked',true);
+                            $('input#familiar').attr('checked',true);
+                            $('input#infarto').attr('checked',true);
+                    }
+            });
+            
             function updatePips( value, type ){
                 switch(true)   {
                     case (value === 20):
@@ -92,6 +152,7 @@
                     <div class="col-sm-6" style="margin-top: 30px;height: 100px">
                         <label class="font-bold">Tipo Seguro</label>
                         <div id="slider" class="noUi-target noUi-ltr noUi-horizontal noUi-background"></div>
+                        <input id="valorBarra" value="" type="hidden"/>
                     </div>
                     <br>
                     <div class="col-sm-6">
@@ -109,19 +170,73 @@
                                   </thead>
                                    <tbody>
                                         <tr>
-                                            <td><label class="btn btn-sm btn-primary"><strong>08</strong></label> Fallecimiento</td>
-                                            <td><label class="btn btn-sm btn-danger"><strong>04</strong></label> Vida</td>
-                                            <td><label class="btn btn-sm btn-info"><strong>10</strong></label> Enfermedad</td>
+                                            <td><div class="checkbox checkbox-info">
+                                                <input type="checkbox" value="SI" name="notificar" id="fallecimiento">
+                                                <label>
+                                                    Fallecimiento
+                                                </label>
+                                            </div>  
+                                            </td>
+                                            <td><div class="checkbox checkbox-danger">
+                                                <input type="checkbox" value="SI" name="notificar" id="vida">
+                                                <label>
+                                                    Vida
+                                                </label>
+                                            </div>  
+                                            </td>
+                                            <td><div class="checkbox checkbox-info">
+                                                    <input type="checkbox" value="SI" name="notificar" id="enfermedad">
+                                                    <label>
+                                                        Enfermedad
+                                                    </label>
+                                                </div>  
+                                            </td>
                                          </tr>
                                          <tr>
-                                            <td><label class="btn btn-sm btn-success"><strong>05</strong></label> Accidente</td>
-                                            <td><label class="btn btn-sm btn-info"><strong>21</strong></label> Asalto</td>
-                                            <td><label class="btn btn-sm btn-danger"><strong>12</strong></label> Robo</td>
+                                            <td><div class="checkbox checkbox-success">
+                                                <input type="checkbox" value="SI" checked name="notificar" id="accidente">
+                                                <label>
+                                                    Accidente
+                                                </label>
+                                            </div>  
+                                            </td>
+                                            <td><div class="checkbox checkbox-info">
+                                                <input type="checkbox" value="SI" name="notificar" id="asalto">
+                                                <label>
+                                                    Asalto
+                                                </label>
+                                            </div>  
+                                            </td>
+                                            <td><div class="checkbox checkbox-danger">
+                                                <input type="checkbox" value="SI" name="notificar" id="robo">
+                                                <label>
+                                                    Robo
+                                                </label>
+                                            </div>  
+                                            </td>
                                          </tr>
                                          <tr>
-                                            <td><label class="btn btn-sm btn-default"><strong>13</strong></label> Familiar</td>
-                                            <td><label class="btn btn-sm btn-warning"><strong>16</strong></label> Infarto</td>
-                                            <td><label class="btn btn-sm btn-success"><strong>04</strong></label> Embarazo</td>
+                                            <td><div class="checkbox checkbox-danger">
+                                                <input type="checkbox" value="SI" name="notificar" id="familiar">
+                                                <label>
+                                                    Familiar
+                                                </label>
+                                            </div>  
+                                            </td>
+                                            <td><div class="checkbox checkbox-danger">
+                                                    <input type="checkbox" value="SI" name="notificar" id="infarto">
+                                                    <label>
+                                                        Infarto
+                                                    </label>
+                                                </div>  
+                                            </td>
+                                            <td><div class="checkbox checkbox-success">
+                                                <input type="checkbox" value="SI" checked name="notificar" id="embarazo">
+                                                <label>
+                                                    Embarazo
+                                                </label>
+                                            </div>  
+                                            </td>
                                          </tr>
                                    </tbody>
                                  </table>
@@ -141,7 +256,7 @@
                     <div class="row col-sm-12 sub-header">
                      <br>
                      <span class="control-label col-sm-1 col-xs-2 glyphicon glyphicon-tasks" style="font-size: 2em;"></span>
-                     <label class="control-label col-sm-11 col-xs-10">Usted está comprando: <br>Seguro de Salud para la Familia.</label>
+                     <label class="control-label col-sm-11 col-xs-10">Usted está comprando: <br>Seguro de Salud tipo: <label><strong id="tipoSeguro" class="btn btn-sm btn-success">Familiar</strong></label></label>
                     </div>
                     
                      <div class="row col-sm-12 sub-header">
@@ -161,10 +276,10 @@
                     <div class="row col-sm-12 sub-header">
                      <br>
                         <div class="col-sm-4 col-xs-3" style="text-align: center;">
-                            <input data-step="1" data-min="0" data-max="10" data-width="40" data-height="40" data-fgColor="#000000" id="dial" type="text" value="2" class="dial">
+                            <input data-step="1" data-min="1" data-max="10" data-width="40" data-height="40" data-fgColor="#66CC66" id="dial" type="text" value="1" class="dial">
                         </div>
                         <div class="col-sm-4 col-xs-3" style="text-align: center;">
-                            <input data-step="1" data-min="0" data-max="10" data-width="40" data-height="40" data-fgColor="#000000" id="dial" type="text" value="2" class="dial">
+                            <input data-step="1" data-min="18" data-max="45" data-width="40" data-height="40" data-fgColor="#66CC66" id="dial" type="text" value="18" class="dial">
                         </div>
                         <div class="col-sm-4 col-xs-6" style="text-align: center;">
                             <span class="control-label col-sm-1 col-xs-1 glyphicon glyphicon-user"></span>
@@ -190,7 +305,7 @@
                         <br>
                         <label class="control-label col-sm-6 col-xs-6" style="text-align: center;margin-top: 15px;">Integrantes:</label>
                         <div class="col-sm-6 col-xs-6" style="text-align: center;margin-top: 7px;">
-                            <input data-step="1" data-min="0" data-max="10" data-width="40" data-height="40" data-fgColor="#000000" id="dial" type="text" value="2" class="dial">
+                            <input data-step="1" data-min="0" data-max="10" data-width="40" data-height="40" data-fgColor="#66CC66" id="dial" type="text" value="9" class="dial">
                         </div>
                     </div>
                    
@@ -235,24 +350,7 @@
                      </div>
                     
                 </div>
-            </div>
-           
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-         
+            </div>         
         </div>
     </div>    
 </div>
