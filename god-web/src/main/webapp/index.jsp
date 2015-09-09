@@ -25,8 +25,41 @@
                 $('span#total').text(operacion);
             }
 
-          $('input#dial').knob();
-          $('input#dial2').knob();
+          $('input#dialCantidad').knob();
+          $('input#dialEdad').knob();
+          $('input#dialIntegrantes').knob();
+          
+          $('input#agregar').click(function(){
+              var cantidad = $('input#dialCantidad').val();
+              var edad = $('input#dialEdad').val();
+              var integrantes = $('input#dialIntegrantes').val();
+              
+              var select = $('select#tipoFamilia').val();
+              
+              var totalCompra = $('u#totalCompra').text();
+              var res = totalCompra.replace('$','');
+              var res2 = res.replace(',','');
+              var totalInt = parseFloat(res2);
+              var totIntegrantes = parseInt(integrantes) + parseInt(cantidad);
+              
+              $('input#dialIntegrantes').val(totIntegrantes);
+              var imp = parseFloat(totalInt) + 1000.00;
+              imp = imp.toFixed(2).replace(/./g, function(c, i, a) {
+                    return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                });
+              $('u#totalCompra').text('$'+imp);
+              
+              $('div#listaSeguro').after('<div class="row col-sm-12 sub-header">'
+                         +'<br>'
+                         +'<label style="text-align: center;" class="control-label col-sm-2 col-xs-1">'+cantidad+'</label>'
+                         +'<span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>'
+                         +'<span style="text-align: center;" class="control-label col-sm-3 col-xs-2">'+select+'</span>'
+                         +'<label style="text-align: right;" class="control-label col-sm-4 col-xs-5">'+'$1,000.00'+'</label>'
+                         +'<label class="btn btn-danger control-label col-sm-1 col-xs-2" style="margin-top:-10px;border-radius:20px"><strong>-</strong></label>'
+                     +'</div>');
+              
+          });
+          
           var slider = document.getElementById('slider');
             noUiSlider.create(slider, {
                     start: [20],
@@ -277,16 +310,16 @@
                     <div class="row col-sm-12 sub-header">
                      <br>
                         <div class="col-sm-4 col-xs-3" style="text-align: center;">
-                            <input data-step="1" data-min="1" data-max="10" data-width="40" data-height="40" data-fgColor="#66CC66" id="dial" type="text" value="1" class="dial">
+                            <input data-step="1" data-min="1" data-max="10" data-width="40" data-height="40" data-fgColor="#66CC66" id="dialCantidad" type="text" value="1" class="dial">
                         </div>
                         <div class="col-sm-4 col-xs-3" style="text-align: center;">
-                            <input data-step="1" data-min="18" data-max="45" data-width="40" data-height="40" data-fgColor="#66CC66" id="dial" type="text" value="18" class="dial">
+                            <input data-step="1" data-min="18" data-max="45" data-width="40" data-height="40" data-fgColor="#66CC66" id="dialEdad" type="text" value="18" class="dial">
                         </div>
                         <div class="col-sm-4 col-xs-6" style="text-align: left;">
                             <span class="glyphicon glyphicon-user"></span>
                              <select id="tipoFamilia" class="" style="width: 70px;">
-                                <option value="papa">Papa</option>
-                                <option value="hijo">Hijo</option>
+                                <option value="Papa">Papa</option>
+                                <option value="Hijo">Hijo</option>
                               </select> 
                         </div>
                     </div>
@@ -296,7 +329,7 @@
                          <label style="text-align: center;" class="control-label col-sm-3 col-xs-2"></label>
                          <span class="control-label col-sm-2 col-xs-1"></span>
                          <span style="text-align: center;" class="control-label col-sm-3 col-xs-2"></span>
-                         <input class="control-label col-sm-4 col-xs-6 btn btn-primary" type="button" value="AGREGAR"/>
+                         <input class="control-label col-sm-4 col-xs-6 btn btn-primary" id="agregar" type="button" value="AGREGAR"/>
                      </div>
                     
                 </div>
@@ -305,11 +338,11 @@
                 
                 <div class="col-md-5">
                     
-                    <div class="row col-sm-12 sub-header">
+                    <div class="row col-sm-12 sub-header" id="listaSeguro">
                         <br>
                         <label class="control-label col-sm-6 col-xs-6" style="text-align: center;margin-top: 15px;">Integrantes:</label>
                         <div class="col-sm-6 col-xs-6" style="text-align: center;margin-top: 7px;">
-                            <input data-step="1" data-min="0" data-max="10" data-width="40" data-height="40" data-fgColor="#66CC66" id="dial" type="text" value="9" class="dial">
+                            <input data-step="1" data-min="0" data-max="50" data-width="40" data-height="40" data-fgColor="#66CC66" id="dialIntegrantes" type="text" value="6" class="dial">
                         </div>
                     </div>
                    
@@ -318,7 +351,7 @@
                          <label style="text-align: center;" class="control-label col-sm-2 col-xs-1">4</label>
                          <span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>
                          <span style="text-align: center;" class="control-label col-sm-3 col-xs-2">Papa</span>
-                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-5">$10,430.00</label>
+                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-5">$1,430.00</label>
                          <label class="btn btn-danger control-label col-sm-1 col-xs-2" style="margin-top:-10px;border-radius:20px"><strong>-</strong></label>
                      </div>
                     
@@ -327,16 +360,7 @@
                          <label style="text-align: center;" class="control-label col-sm-2 col-xs-1">2</label>
                          <span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>
                          <span style="text-align: center;" class="control-label col-sm-3 col-xs-2">Hijo</span>
-                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-5">$2,433.10</label>
-                         <label class="btn btn-danger control-label col-sm-1 col-xs-2" style="margin-top:-10px;border-radius:20px"><strong>-</strong></label>
-                     </div>
-                    
-                     <div class="row col-sm-12 sub-header">
-                         <br>
-                         <label style="text-align: center;" class="control-label col-sm-2 col-xs-1">3</label>
-                         <span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>
-                         <span style="text-align: center;" class="control-label col-sm-3 col-xs-2">Hijo</span>
-                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-5">$1,000.00</label>
+                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-5">$2,000.00</label>
                          <label class="btn btn-danger control-label col-sm-1 col-xs-2" style="margin-top:-10px;border-radius:20px"><strong>-</strong></label>
                      </div>
                     
@@ -345,7 +369,7 @@
                          <label style="text-align: center;" class="control-label col-sm-3 col-xs-1"></label>
                          <span class="control-label col-sm-2 col-xs-1"></span>
                          <span style="text-align: center;margin-left: -10px;" class="control-label col-sm-3 col-xs-3"><strong>TOTAL</strong></span>
-                         <label style="text-align: left;" class="control-label col-sm-4 col-xs-6"><u>$ 13,433.10</u></label>
+                         <label style="text-align: left;" class="control-label col-sm-4 col-xs-6"><u id="totalCompra">$3,430.00</u></label>
                      </div>
                     
                      <div class="row col-sm-12">
