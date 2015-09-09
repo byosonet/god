@@ -11,54 +11,70 @@
   <script type="text/javascript">
       $(function(){ 
           $('select#tipoFamilia').select2();
-          var myVar;
-           
-            myVar = setInterval(alertFunc, 10);
-            function alertFunc() {
-                var operacion;
-                var valor;
-                var cantidad;
-                valor = $('input#dial').val();
-                cantidad = $('input#dial2').val();
-                operacion = valor * cantidad;
-                operacion.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-                $('span#total').text(operacion);
-            }
-
           $('input#dialCantidad').knob();
           $('input#dialEdad').knob();
           $('input#dialIntegrantes').knob();
           
           $('input#agregar').click(function(){
               var cantidad = $('input#dialCantidad').val();
-              var edad = $('input#dialEdad').val();
               var integrantes = $('input#dialIntegrantes').val();
-              
               var select = $('select#tipoFamilia').val();
-              
               var totalCompra = $('u#totalCompra').text();
-              var res = totalCompra.replace('$','');
-              var res2 = res.replace(',','');
-              var totalInt = parseFloat(res2);
+              var r1 = totalCompra.replace('$','');
+              var r2 = r1.replace(',','');
+              var totalInt = parseFloat(r2);
               var totIntegrantes = parseInt(integrantes) + parseInt(cantidad);
               
               $('input#dialIntegrantes').val(totIntegrantes);
-              var imp = parseFloat(totalInt) + 1000.00;
-              imp = imp.toFixed(2).replace(/./g, function(c, i, a) {
+              var precio = Math.floor((Math.random() * 10000) + 1);
+              var imp = parseFloat(totalInt) + precio;
+              
+              imp = formatoMoneda(imp);
+              precio = formatoMoneda(precio);
+              
+              $('u#totalCompra').text('$ '+imp);
+              var x = 'abc'+Math.floor((Math.random() * 10000000000) + 1);
+              $('div#listaSeguro').after('<div class="row col-sm-12 sub-header" id="'+x+'">'
+                         +'<br>'
+                         +'<label id="'+x+'" style="text-align: center;" class="control-label col-sm-2 col-xs-1">'+cantidad+'</label>'
+                         +'<span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>'
+                         +'<span id="'+x+'" style="text-align: center;" class="control-label col-sm-3 col-xs-2">'+select+'</span>'
+                         +'<strong id="'+x+'" style="text-align: right;" class="control-label col-sm-4 col-xs-5">'+'$ '+precio+'</strong>'
+                         +'<label id="'+x+'" class="btn btn-danger control-label col-sm-1 col-xs-2" style="margin-top:-10px;border-radius:20px"><strong>-</strong></label>'
+                     +'</div>');
+             
+                var idHtml = 'label#'+x+'.btn.btn-danger';
+                $(idHtml).live('click',function(){
+                      var id = $(this).attr('id');
+                      var idCantidad = 'label#'+id;
+                      var idCant = $(idCantidad).text()[0];
+                      var idPrecio = 'strong#'+id;
+                      var idPre = $(idPrecio).text();
+                      var integrantes = $('input#dialIntegrantes').val();
+                      var totIntegrantes = parseInt(integrantes) - parseInt(idCant);
+                      $('input#dialIntegrantes').val(totIntegrantes);
+                      var totalCompra = $('u#totalCompra').text();
+                      var r1 = totalCompra.replace('$','');
+                      var r2 = r1.replace(',','');
+                      var totalInt = parseFloat(r2);
+                      var p1 = idPre.replace('$','');
+                      var p2 = p1.replace(',','');
+                      var precio = parseFloat(p2);
+                      var imp = parseFloat(totalInt) - precio;
+                      imp = formatoMoneda(imp);
+                      $('u#totalCompra').text('$ '+imp);
+              
+                      var divHtml = 'div#'+id;
+                      $(divHtml).remove();
+                });
+          });
+          
+          function formatoMoneda(moneda){
+              moneda = moneda.toFixed(2).replace(/./g, function(c, i, a) {
                     return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
                 });
-              $('u#totalCompra').text('$'+imp);
-              
-              $('div#listaSeguro').after('<div class="row col-sm-12 sub-header">'
-                         +'<br>'
-                         +'<label style="text-align: center;" class="control-label col-sm-2 col-xs-1">'+cantidad+'</label>'
-                         +'<span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>'
-                         +'<span style="text-align: center;" class="control-label col-sm-3 col-xs-2">'+select+'</span>'
-                         +'<label style="text-align: right;" class="control-label col-sm-4 col-xs-5">'+'$1,000.00'+'</label>'
-                         +'<label class="btn btn-danger control-label col-sm-1 col-xs-2" style="margin-top:-10px;border-radius:20px"><strong>-</strong></label>'
-                     +'</div>');
-              
-          });
+              return moneda;
+          }
           
           var slider = document.getElementById('slider');
             noUiSlider.create(slider, {
@@ -78,57 +94,41 @@
             
             slider.noUiSlider.on('change', function ( values, handle ) {
                     if ( values[handle] > 20 && values[handle] < 50) {
-                            
                             $('input#valorBarra').val('familiar');
                             $('strong#tipoSeguro').text('Familiar');
-                            
                             $('strong#tipoSeguro').removeClass().addClass('btn btn-sm btn-success');
-                            
                             $('input#embarazo').attr('checked',true);
                             $('input#accidente').attr('checked',true);
-                            
                             $('input#fallecimiento').attr('checked',false);
                             $('input#enfermedad').attr('checked',false);
                             $('input#asalto').attr('checked',false);
-                            
                             $('input#vida').attr('checked',false);
                             $('input#robo').attr('checked',false);
                             $('input#familiar').attr('checked',false);
                             $('input#infarto').attr('checked',false);
                             
                     } else if ( values[handle] > 50 && values[handle] < 80) {
-                            
                             $('input#valorBarra').val('laboral');
                             $('strong#tipoSeguro').text('Laboral');
-                            
                             $('strong#tipoSeguro').removeClass().addClass('btn btn-sm btn-info');
-                            
                             $('input#embarazo').attr('checked',false);
                             $('input#accidente').attr('checked',false);
-                            
                             $('input#fallecimiento').attr('checked',true);
                             $('input#enfermedad').attr('checked',true);
                             $('input#asalto').attr('checked',true);
-                            
                             $('input#vida').attr('checked',false);
                             $('input#robo').attr('checked',false);
                             $('input#familiar').attr('checked',false);
                             $('input#infarto').attr('checked',false);
-  
                     } else if ( values[handle] > 80 ) {
-                            
                             $('input#valorBarra').val('personal');
                             $('strong#tipoSeguro').text('Personal');
-                            
                             $('strong#tipoSeguro').removeClass().addClass('btn btn-sm btn-danger');
-                            
                             $('input#embarazo').attr('checked',false);
                             $('input#accidente').attr('checked',false);
-                            
                             $('input#fallecimiento').attr('checked',false);
                             $('input#enfermedad').attr('checked',false);
                             $('input#asalto').attr('checked',false);
-                            
                             $('input#vida').attr('checked',true);
                             $('input#robo').attr('checked',true);
                             $('input#familiar').attr('checked',true);
@@ -342,34 +342,16 @@
                         <br>
                         <label class="control-label col-sm-6 col-xs-6" style="text-align: center;margin-top: 15px;">Integrantes:</label>
                         <div class="col-sm-6 col-xs-6" style="text-align: center;margin-top: 7px;">
-                            <input data-step="1" data-min="0" data-max="50" data-width="40" data-height="40" data-fgColor="#66CC66" id="dialIntegrantes" type="text" value="6" class="dial">
+                            <input data-step="1" data-min="0" data-max="50" data-width="40" data-height="40" data-fgColor="#66CC66" id="dialIntegrantes" type="text" value="0" class="dial">
                         </div>
                     </div>
-                   
-                     <div class="row col-sm-12 sub-header">
-                         <br>
-                         <label style="text-align: center;" class="control-label col-sm-2 col-xs-1">4</label>
-                         <span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>
-                         <span style="text-align: center;" class="control-label col-sm-3 col-xs-2">Papa</span>
-                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-5">$1,430.00</label>
-                         <label class="btn btn-danger control-label col-sm-1 col-xs-2" style="margin-top:-10px;border-radius:20px"><strong>-</strong></label>
-                     </div>
-                    
-                    <div class="row col-sm-12 sub-header">
-                         <br>
-                         <label style="text-align: center;" class="control-label col-sm-2 col-xs-1">2</label>
-                         <span class="control-label col-sm-2 col-xs-1 glyphicon glyphicon-user"></span>
-                         <span style="text-align: center;" class="control-label col-sm-3 col-xs-2">Hijo</span>
-                         <label style="text-align: right;" class="control-label col-sm-4 col-xs-5">$2,000.00</label>
-                         <label class="btn btn-danger control-label col-sm-1 col-xs-2" style="margin-top:-10px;border-radius:20px"><strong>-</strong></label>
-                     </div>
                     
                     <div class="row col-sm-12 sub-header">
                          <br>
                          <label style="text-align: center;" class="control-label col-sm-3 col-xs-1"></label>
                          <span class="control-label col-sm-2 col-xs-1"></span>
                          <span style="text-align: center;margin-left: -10px;" class="control-label col-sm-3 col-xs-3"><strong>TOTAL</strong></span>
-                         <label style="text-align: left;" class="control-label col-sm-4 col-xs-6"><u id="totalCompra">$3,430.00</u></label>
+                         <label style="text-align: left;" class="control-label col-sm-4 col-xs-6"><u id="totalCompra">$ 0.00</u></label>
                      </div>
                     
                      <div class="row col-sm-12">
