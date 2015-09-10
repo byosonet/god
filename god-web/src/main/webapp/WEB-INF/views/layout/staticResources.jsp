@@ -32,4 +32,8 @@
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/noui/nouislider.js"></script>   
 
 <!-- select2 js -->
-<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/select2/select2.min.js"></script>   
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/select2/select2.min.js"></script> 
+
+
+<!-- chart js -->
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/chart/Chart.js"></script> 
