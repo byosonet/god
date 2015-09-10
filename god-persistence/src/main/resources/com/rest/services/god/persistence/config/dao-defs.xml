@@ -24,5 +24,9 @@
      <bean id="changesetDao"
         class="com.rest.services.god.persistence.dao.ChangesetDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
+     
+     <bean id="deliveryFailedDao"
+        class="com.rest.services.god.persistence.dao.DeliveryFailedDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
 
 </beans>

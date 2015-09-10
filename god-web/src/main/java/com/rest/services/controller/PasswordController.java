@@ -55,8 +55,16 @@ public class PasswordController {
             response.setMensaje("Hola "+user.getNombre()+", tu password ha sido enviado a: "+user.getEmail());
             status = HttpStatus.OK;
             
-            this.emailSendService.recuperarPassword(email, user.getPassword(),"gtrejo.armenta@gmail.com");
-            this.log.info(" -- El correo fue enviado con tu password a: " + email);
+            try
+            {
+                this.emailSendService.recuperarPassword(email, user.getPassword(),"gtrejo.armenta@gmail.com");
+                this.log.info(" -- El correo fue enviado con tu password a: " + email);
+            }catch(Exception ex){
+                 response.setCodigo("404");
+                 response.setMensaje("Por el momento no se pudo enviar tu password a tu correo, intenta más tarde.");
+                 status = HttpStatus.NOT_FOUND;
+                 this.log.info(" -- El password no pudo ser enviado por el sistema");    
+            }
             
         }else{
             this.log.info(" -- Este email no esta registrado en el sistema");

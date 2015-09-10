@@ -305,8 +305,8 @@ public class LoginController {
                 return new ResponseEntity<ErrorService>(data, HttpStatus.OK);
                
            } catch (Exception ex) {
-               this.log.info(" -- No se puedo enviar el correo: "+ex);
-               ex.printStackTrace();
+               this.log.info(" -- No se puedo llevar a cabo el registro del usuario en el sistema.");    
+               
            }
         }
         this.log.info(" -- Usuario ya se encuentra en sistema registrado");

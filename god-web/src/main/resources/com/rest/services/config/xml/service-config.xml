@@ -26,6 +26,9 @@
     
     <bean id="changesetService" 
           class="com.rest.services.service.ChangesetServiceImpl"/>
+    
+    <bean id="deliveryFailedService" 
+          class="com.rest.services.service.DeliveryFailedServiceImpl"/>
 
     <!-- Adapters Externos-->
     <bean id="banxicoTipoCambioAdapter" 

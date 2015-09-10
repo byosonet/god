@@ -4,6 +4,8 @@ package com.rest.services.service;
  *
  * @author Priscila
  */
+import com.rest.services.god.persistence.hbm.DeliveryFailed;
+import com.rest.services.god.persistence.hbm.TipoEnvioEmail;
 import java.io.File;
 import java.util.Map;
 import javax.mail.internet.MimeMessage;
@@ -43,7 +45,17 @@ public class EmailSendServiceImpl implements EmailSendService
             this.mailSender.send(preparator);
             this.log.info(" -- Correo enviado a: "+toEmail);
         } catch (MailException e) {
+            DeliveryFailed failed = new DeliveryFailed();
+            failed.setMailTo(toEmail);
+            failed.setMailFrom("godweb.mx@gmail.com");
+            failed.setSubject("Gracias por registrate en nuestra página, Solo a Dios la Gloria.");
+            failed.setName(user);
+            failed.setBody("<html><h2><strong>Bienvenido: "+user+"</strong></h2></html>");
+            failed.setTypeFailed(TipoEnvioEmail.MAIL_REGISTRO.name());
+            this.deliveryFailedService.guardarDeliveryFailed(failed);
+            
             log.error(" -- Correo no pudo ser enviado: ", e);
+            //throw new RuntimeException("No se pudo enviar mensaje de registro");
             
         }
     }
@@ -63,7 +75,17 @@ public class EmailSendServiceImpl implements EmailSendService
             this.mailSender.send(preparator);
             this.log.info(" -- Correo enviado a: "+email);
         } catch (MailException e) {
+            DeliveryFailed failed = new DeliveryFailed();
+            failed.setMailTo(email);
+            failed.setMailFrom("godweb.mx@gmail.com");
+            failed.setSubject("Recuperación de contraseña, Solo a Dios la Gloria.");
+            failed.setName(email);
+            failed.setBody("<html><h2><strong>Hola tu password para ingresar al sistema es: "+password+"</strong></h2></html>");
+            failed.setTypeFailed(TipoEnvioEmail.MAIL_PASSWORD.name());
+            this.deliveryFailedService.guardarDeliveryFailed(failed);
+
             log.error(" -- Correo no pudo ser enviado: ", e);
+            throw new RuntimeException("No se pudo enviar mensaje de password");
             
         }
     }
@@ -85,10 +107,25 @@ public class EmailSendServiceImpl implements EmailSendService
             this.mailSender.send(preparator);
             this.log.info(" -- Correo enviado a: "+emailSistema);
         } catch (MailException e) {
+            DeliveryFailed failed = new DeliveryFailed();
+            failed.setMailTo("godweb.mx@gmail.com");
+            failed.setMailFrom(emailCliente);
+            failed.setSubject(asunto);
+            failed.setName(nombre);
+            failed.setBody("<html><h2><strong>Email de Usuario: "+emailCliente+"<br>"
+                        + "Nombre: "+nombre+"<br>"
+                        + "Asunto: "+boydAsunto+"<br>"
+                        + "</strong></h2></html>");
+            failed.setTypeFailed(TipoEnvioEmail.MAIL_CONTACTO.name());
+            this.deliveryFailedService.guardarDeliveryFailed(failed);
+            
             log.error(" -- Correo no pudo ser enviado: ", e);
-            throw new RuntimeException("No se pudo enviar mensaje");
+            throw new RuntimeException("No se pudo enviar mensaje de contacto");
         }
     }
+    
+    @Autowired
+    private DeliveryFailedService deliveryFailedService;
     
     private final Logger log = Logger.getLogger(EmailSendServiceImpl.class);
 }

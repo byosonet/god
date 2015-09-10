@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 27, 2012 8:58:30 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.rest.services.god.persistence.hbm.DeliveryFailed" table="DELIVERYFAILED" schema="goddev">
+        <id name="idFailed" type="integer">
+            <column name="ID_FAILED" precision="11" scale="0" />
+            <generator class="increment" />
+        </id>
+        
+        <property name="mailTo" type="string">
+            <column name="MAIL_TO" length="255" />
+        </property>
+       
+        <property name="mailFrom" type="string">
+            <column name="MAIL_FROM" length="255" />
+        </property>
+        
+        <property name="subject" type="string">
+            <column name="SUBJECT" length="255"/>
+        </property>
+
+        <property name="name" type="string">
+            <column name="NAME" length="255"/>
+        </property>
+        
+        <property name="body" type="string">
+            <column name="BODY" length="500"/>
+        </property>
+        
+        <property name="typeFailed" type="string">
+            <column name="TYPE_FAILED" length="255"/>
+        </property>
+
+    </class>
+</hibernate-mapping>

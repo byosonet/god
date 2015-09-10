@@ -40,5 +40,6 @@
     <mapping resource="com/rest/services/god/persistence/hbm/Choir.hbm.xml"/>
     <mapping resource="com/rest/services/god/persistence/hbm/Property.hbm.xml"/>
     <mapping resource="com/rest/services/god/persistence/hbm/Changeset.hbm.xml"/>
+    <mapping resource="com/rest/services/god/persistence/hbm/DeliveryFailed.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
