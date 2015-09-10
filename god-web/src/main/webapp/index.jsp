@@ -205,21 +205,21 @@
                                    <tbody>
                                         <tr>
                                             <td><div class="checkbox checkbox-info">
-                                                <input type="checkbox" value="SI" name="notificar" id="fallecimiento">
+                                                <input type="checkbox" value="SI" name="notificar" id="fallecimiento" onclick="return false">
                                                 <label>
                                                     Fallecimiento
                                                 </label>
                                             </div>  
                                             </td>
                                             <td><div class="checkbox checkbox-danger">
-                                                <input type="checkbox" value="SI" name="notificar" id="vida">
+                                                <input type="checkbox" value="SI" name="notificar" id="vida" onclick="return false">
                                                 <label>
                                                     Vida
                                                 </label>
                                             </div>  
                                             </td>
                                             <td><div class="checkbox checkbox-info">
-                                                    <input type="checkbox" value="SI" name="notificar" id="enfermedad">
+                                                    <input type="checkbox" value="SI" name="notificar" id="enfermedad" onclick="return false">
                                                     <label>
                                                         Enfermedad
                                                     </label>
@@ -228,21 +228,21 @@
                                          </tr>
                                          <tr>
                                             <td><div class="checkbox checkbox-success">
-                                                <input type="checkbox" value="SI" checked name="notificar" id="accidente">
+                                                <input type="checkbox" value="SI" checked name="notificar" id="accidente" onclick="return false">
                                                 <label>
                                                     Accidente
                                                 </label>
                                             </div>  
                                             </td>
                                             <td><div class="checkbox checkbox-info">
-                                                <input type="checkbox" value="SI" name="notificar" id="asalto">
+                                                <input type="checkbox" value="SI" name="notificar" id="asalto" onclick="return false">
                                                 <label>
                                                     Asalto
                                                 </label>
                                             </div>  
                                             </td>
                                             <td><div class="checkbox checkbox-danger">
-                                                <input type="checkbox" value="SI" name="notificar" id="robo">
+                                                <input type="checkbox" value="SI" name="notificar" id="robo" onclick="return false">
                                                 <label>
                                                     Robo
                                                 </label>
@@ -251,21 +251,21 @@
                                          </tr>
                                          <tr>
                                             <td><div class="checkbox checkbox-danger">
-                                                <input type="checkbox" value="SI" name="notificar" id="familiar">
+                                                <input type="checkbox" value="SI" name="notificar" id="familiar" onclick="return false">
                                                 <label>
                                                     Familiar
                                                 </label>
                                             </div>  
                                             </td>
                                             <td><div class="checkbox checkbox-danger">
-                                                    <input type="checkbox" value="SI" name="notificar" id="infarto">
+                                                    <input type="checkbox" value="SI" name="notificar" id="infarto" onclick="return false">
                                                     <label>
                                                         Infarto
                                                     </label>
                                                 </div>  
                                             </td>
                                             <td><div class="checkbox checkbox-success">
-                                                <input type="checkbox" value="SI" checked name="notificar" id="embarazo">
+                                                <input type="checkbox" value="SI" checked name="notificar" id="embarazo" onclick="return false">
                                                 <label>
                                                     Embarazo
                                                 </label>
