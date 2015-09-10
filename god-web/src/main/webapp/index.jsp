@@ -93,7 +93,7 @@
             });
             
             slider.noUiSlider.on('change', function ( values, handle ) {
-                    if ( values[handle] > 20 && values[handle] < 50) {
+                    if ( values[handle] < 50) {
                             $('input#valorBarra').val('familiar');
                             $('strong#tipoSeguro').text('Familiar');
                             $('strong#tipoSeguro').removeClass().addClass('btn btn-sm btn-success');
@@ -106,7 +106,7 @@
                             $('input#robo').attr('checked',false);
                             $('input#familiar').attr('checked',false);
                             $('input#infarto').attr('checked',false);
-                            
+                                                   
                     } else if ( values[handle] > 50 && values[handle] < 80) {
                             $('input#valorBarra').val('laboral');
                             $('strong#tipoSeguro').text('Laboral');
@@ -310,10 +310,10 @@
                     <div class="row col-sm-12 sub-header">
                      <br>
                         <div class="col-sm-4 col-xs-3" style="text-align: center;">
-                            <input data-step="1" data-min="1" data-max="10" data-width="40" data-height="40" data-fgColor="#66CC66" id="dialCantidad" type="text" value="1" class="dial">
+                            <input data-step="1" data-min="1" data-max="10" data-width="50" data-height="50" data-fgColor="#66CC66" id="dialCantidad" type="text" value="1" class="dial" data-angleOffset=90 data-linecap=round>
                         </div>
                         <div class="col-sm-4 col-xs-3" style="text-align: center;">
-                            <input data-step="1" data-min="18" data-max="45" data-width="40" data-height="40" data-fgColor="#66CC66" id="dialEdad" type="text" value="18" class="dial">
+                            <input data-step="1" data-min="18" data-max="45" data-width="50" data-height="50" data-fgColor="#66CC66" id="dialEdad" type="text" value="18" class="dial" data-angleOffset=90 data-linecap=round>
                         </div>
                         <div class="col-sm-4 col-xs-6" style="text-align: left;">
                             <span class="glyphicon glyphicon-user"></span>
@@ -342,7 +342,7 @@
                         <br>
                         <label class="control-label col-sm-6 col-xs-6" style="text-align: center;margin-top: 15px;">Integrantes:</label>
                         <div class="col-sm-6 col-xs-6" style="text-align: center;margin-top: 7px;">
-                            <input data-step="1" data-min="0" data-max="50" data-width="40" data-height="40" data-fgColor="#66CC66" id="dialIntegrantes" type="text" value="0" class="dial">
+                            <input data-step="1" data-min="0" data-max="50" data-width="50" data-height="50" data-fgColor="#66CC66" id="dialIntegrantes" type="text" value="0" class="dial" data-angleOffset=90 data-linecap=round>
                         </div>
                     </div>
                     
