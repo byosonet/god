@@ -2,6 +2,7 @@ package com.rest.services.controller;
 
 import com.rest.services.god.drools.DroolRuleAge;
 import com.rest.services.god.drools.vo.UserTemp;
+import com.rest.services.god.persistence.dto.ConsultaCoro;
 import com.rest.services.god.persistence.hbm.Changeset;
 import com.rest.services.god.persistence.hbm.Coro;
 import com.rest.services.god.persistence.hbm.PropiedadSistema;
@@ -140,6 +141,15 @@ public class LoginController {
                       TipoMovimientoEnum.CONSULTAR_HIMNARIO,
                       new Date(UtilService.getFechaTimeStamp().getTime()), 
                       usuario.getIdUsuario(), null);
+                  
+                  //RECUPERANDO INFORMACION DE CONSULTA DE COROS
+                  List<ConsultaCoro> cc = this.changesetService.getListaCoros(7);
+                  if(cc!=null && cc.size()==7){
+                      for(int i=0; i<cc.size();i++){
+                           model.addAttribute("fecha"+i, cc.get(i).getFecha());
+                           model.addAttribute("total"+i, cc.get(i).getTotal());
+                      }
+                  }   
               } catch (Exception ex) {
                   ex.printStackTrace();
               }

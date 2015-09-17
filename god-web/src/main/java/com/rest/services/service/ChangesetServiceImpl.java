@@ -1,6 +1,7 @@
 package com.rest.services.service;
 
 import com.rest.services.god.persistence.dao.ChangesetDao;
+import com.rest.services.god.persistence.dto.ConsultaCoro;
 import com.rest.services.god.persistence.hbm.Changeset;
 import com.rest.services.god.persistence.hbm.TipoMovimientoEnum;
 import java.util.Date;
@@ -49,6 +50,12 @@ public class ChangesetServiceImpl implements ChangesetService{
         int total = this.changesetDao.totalMovemente(tipo, idUser);
         this.log.info(" -- Recuperando total de movimientos para: "+tipo.name()+" Total encontrado: "+total);
         return total;
+    }
+
+    @Transactional
+    public List<ConsultaCoro> getListaCoros(int days) {
+        this.log.info(" -- Accediendo service chagenset: getListaCoros");
+        return this.changesetDao.getConsultaCoro(days);
     }
 
     @Autowired

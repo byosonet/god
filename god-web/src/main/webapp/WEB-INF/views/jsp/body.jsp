@@ -30,9 +30,8 @@
 		});
                 
                 //GRAFICANDO CONSULTA DE COROS
-                var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
                 var barChartDataCoros = {
-                        labels : ["Acceso a Sistema","Registro de Coros","Consulta de Perfil","Consulta de Coros","Email Contacto","Actualizar Usuario"],
+                        labels : ['${fecha0}','${fecha1}','${fecha2}','${fecha3}','${fecha4}','${fecha5}','${fecha6}'],
                         datasets : [
                                 {
                                         label: "My First dataset",
@@ -42,7 +41,7 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+					data : ['${total0}','${total1}','${total2}','${total3}','${total4}','${total5}','${total6}']
                                 }
                         ]
                 }

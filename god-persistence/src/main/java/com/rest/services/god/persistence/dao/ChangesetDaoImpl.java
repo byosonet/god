@@ -1,7 +1,9 @@
 package com.rest.services.god.persistence.dao;
 
+import com.rest.services.god.persistence.dto.ConsultaCoro;
 import com.rest.services.god.persistence.hbm.Changeset;
 import com.rest.services.god.persistence.hbm.TipoMovimientoEnum;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -46,6 +48,28 @@ public class ChangesetDaoImpl extends HibernateDaoSupport implements ChangesetDa
                     .setParameter("movement", movement.name().replace("_", " "))
                     .uniqueResult();
             return maximo.intValue();
+    }
+
+    public List<ConsultaCoro> getConsultaCoro(int days) {
+       List<ConsultaCoro> recuperado = new ArrayList<ConsultaCoro>();
+       List<Object[]> lista = (List<Object[]>)this.getSession().createSQLQuery("SELECT count(*) AS TOTAL, "
+                + "DATE_FORMAT(FECHA,'%d-%m-%Y') AS FECHA FROM CHANGESET "
+                + "WHERE MOVEMENT='CONSULTAR CORO' GROUP BY DATE(FECHA);"
+        )
+        .list();
+        if(lista!=null){
+            this.log.info(" -- Total Lista: "+lista.size());
+            for(int i=0; i<lista.size();i++){
+                if(i>days-1)
+                    break;
+                ConsultaCoro cc = new ConsultaCoro();
+                cc.setTotal(lista.get(i)[0].toString());
+                cc.setFecha(lista.get(i)[1].toString());
+                this.log.info(" Agregando Total: "+cc.getTotal()+" Fecha: "+cc.getFecha());
+                recuperado.add(cc);
+            }
+        }
+        return recuperado;
     }
     
     
