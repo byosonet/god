@@ -7,28 +7,7 @@
         <title>Sólo a Dios la Gloria</title>
         <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/model/ModelUser.js"></script>
         <script type="text/javascript">
-            $(document).ready(function() {
-                //GRAFICANDO SISTEMA
-                var barChartDataSistema = {
-                        labels : ["Acceso a Sistema","Registro de Coros","Consulta de Perfil","Consulta de Coros","Email Contacto","Actualizar Usuario"],
-                        datasets : [
-                                {
-                                        label: "My First dataset",
-					fillColor : "rgba(220,220,220,0.2)",
-					strokeColor : "rgba(220,220,220,1)",
-					pointColor : "rgba(220,220,220,1)",
-					pointStrokeColor : "#fff",
-					pointHighlightFill : "#fff",
-					pointHighlightStroke : "rgba(220,220,220,1)",
-                                        data : ['${accesoSistema}','${registroCoro}','${consultarPerfil}','${consultarCoro}','${emailContacto}','${actUsuario}']
-                                }
-                        ]
-                }
-		var ctxSistema = document.getElementById("canvasSistema").getContext("2d");
-		window.myBarSistema = new Chart(ctxSistema).Line(barChartDataSistema, {
-			responsive : true
-		});
-                
+            $(document).ready(function() {               
                 //GRAFICANDO CONSULTA DE COROS
                 var barChartDataCoros = {
                         labels : ['${fecha0}','${fecha1}','${fecha2}','${fecha3}','${fecha4}','${fecha5}','${fecha6}'],

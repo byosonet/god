@@ -49,7 +49,7 @@
           </div>
        
         <br>
-        <h4 class="sub-header" style="text-align: center;">Gráficos de Consulta Coros</h4>
+        <h4 class="" style="text-align: center;">Consulta de Coros de los últimos 7 días</h4>
     </div>
     
     <div>

@@ -90,15 +90,52 @@ $(function(){
             <div id="bitacora"><jsp:include page="bitacora.jsp"></jsp:include></div>
         </div>
         
-        <br>
-        <h4 class="sub-header" style="text-align: center;">Gráficos de Sistema</h4>
         
-    </div>
- 
-    <div>
-        <canvas id="canvasSistema" height="200" width="400" style="width: 400px; height: 200px;"></canvas>
-    </div>
+        <br>
+        <h4 class="sub-header" style="text-align: center;"></h4>
+        <div class="row col-sm-12">
             
-          
+            <div class="col-sm-2 col-xs-6" style="text-align: center">
+                <label>Accesos a Sistema</label>
+                <br>
+                <input disabled data-step="1" data-min="0" data-max="200" data-width="50" data-height="50" data-fgColor="#000000" id="acceso" type="text" value="${accesoSistema}" class="dial">
+            </div>
+            
+           
+            <div class="col-sm-2 col-xs-6" style="text-align: center">
+                 <label>Registros de Coros</label>
+                 <br>
+                <input disabled data-step="1" data-min="0" data-max="100" data-width="50" data-height="50" data-fgColor="#FF0000" id="acceso" type="text" value="${registroCoro}" class="dial">
+            </div>
+            
+            
+            <div class="col-sm-2 col-xs-6" style="text-align: center">
+                <label>Consulta de Perfil</label>
+                <br>
+                <input disabled data-step="1" data-min="0" data-max="100" data-width="50" data-height="50" data-fgColor="#FF00FF" id="acceso" type="text" value="${consultarPerfil}" class="dial">
+            </div>
+            
+            
+            <div class="col-sm-2 col-xs-6" style="text-align: center">
+                <label>Consulta de Coros</label>
+                <br>
+                <input disabled data-step="1" data-min="0" data-max="100" data-width="50" data-height="50" data-fgColor="#000000" id="acceso" type="text" value="${consultarCoro}" class="dial">
+            </div>
+            
+            
+            <div class="col-sm-2 col-xs-6" style="text-align: center">
+                <label>Email de Contacto</label>
+                <br>
+                <input disabled data-step="1" data-min="0" data-max="100" data-width="50" data-height="50" data-fgColor="#FF0000" id="acceso" type="text" value="${emailContacto}" class="dial">
+            </div>
+            
+            
+            <div class="col-sm-2 col-xs-6" style="text-align: center">
+                 <label>Actualizar Usuario</label>
+                 <br>
+                <input disabled data-step="1" data-min="0" data-max="100" data-width="50" data-height="50" data-fgColor="#FF00FF" id="acceso" type="text" value="${actUsuario}" class="dial">
+            </div>
+        </div>
+    </div>    
 </body>
 </html>
