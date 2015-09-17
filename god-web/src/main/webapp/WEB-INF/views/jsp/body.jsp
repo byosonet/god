@@ -8,6 +8,50 @@
         <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/model/ModelUser.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
+                //GRAFICANDO SISTEMA
+                var barChartDataSistema = {
+                        labels : ["Acceso a Sistema","Registro de Coros","Consulta de Perfil","Consulta de Coros","Email Contacto","Actualizar Usuario"],
+                        datasets : [
+                                {
+                                        label: "My First dataset",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+                                        data : ['${accesoSistema}','${registroCoro}','${consultarPerfil}','${consultarCoro}','${emailContacto}','${actUsuario}']
+                                }
+                        ]
+                }
+		var ctxSistema = document.getElementById("canvasSistema").getContext("2d");
+		window.myBarSistema = new Chart(ctxSistema).Line(barChartDataSistema, {
+			responsive : true
+		});
+                
+                //GRAFICANDO CONSULTA DE COROS
+                var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+                var barChartDataCoros = {
+                        labels : ["Acceso a Sistema","Registro de Coros","Consulta de Perfil","Consulta de Coros","Email Contacto","Actualizar Usuario"],
+                        datasets : [
+                                {
+                                        label: "My First dataset",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+                                }
+                        ]
+                }
+		var ctxCoros = document.getElementById("canvasCoros").getContext("2d");
+		window.myBarCoros = new Chart(ctxCoros).Line(barChartDataCoros, {
+			responsive : true
+		});
+                
+	
                 //OCULTANDO LOS DIVS DE LOS JSP
                 var status;
                 $('div#contactoJSP').hide();

@@ -47,6 +47,13 @@
               </tbody>
             </table>
           </div>
+       
+        <br>
+        <h4 class="sub-header" style="text-align: center;">Gráficos de Consulta Coros</h4>
+    </div>
+    
+    <div>
+        <canvas id="canvasCoros" height="200" width="400" style="width: 400px; height: 200px;"></canvas>
     </div>
 </body>
 </html>
