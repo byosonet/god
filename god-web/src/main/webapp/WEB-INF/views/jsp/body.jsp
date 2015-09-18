@@ -10,7 +10,7 @@
             $(document).ready(function() {               
                 //GRAFICANDO CONSULTA DE COROS
                 var barChartDataCoros = {
-                        labels : ['${fecha0}','${fecha1}','${fecha2}','${fecha3}','${fecha4}','${fecha5}','${fecha6}'],
+                        labels : ['${fecha0}','${fecha1}','${fecha2}','${fecha3}','${fecha4}','${fecha5}','${fecha6}','${fecha7}'],
                         datasets : [
                                 {
                                         label: "My First dataset",
@@ -20,7 +20,7 @@
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : ['${total0}','${total1}','${total2}','${total3}','${total4}','${total5}','${total6}']
+					data : ['${total0}','${total1}','${total2}','${total3}','${total4}','${total5}','${total6}','${total7}']
                                 }
                         ]
                 }

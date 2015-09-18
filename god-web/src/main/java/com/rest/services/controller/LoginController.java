@@ -143,8 +143,13 @@ public class LoginController {
                       usuario.getIdUsuario(), null);
                   
                   //RECUPERANDO INFORMACION DE CONSULTA DE COROS
-                  List<ConsultaCoro> cc = this.changesetService.getListaCoros(7);
-                  if(cc!=null && cc.size()==7){
+                  int rows=0;
+                  PropiedadSistema ps =
+                          this.propiedadSistemaService.obtenerValorPropiedad("rows.query.choir");
+                  if(ps!=null)
+                     rows = Integer.valueOf(ps.getValue());
+                  List<ConsultaCoro> cc = this.changesetService.getListaCoros(rows);
+                  if(cc!=null){
                       for(int i=0; i<cc.size();i++){
                            model.addAttribute("fecha"+i, cc.get(i).getFecha());
                            model.addAttribute("total"+i, cc.get(i).getTotal());

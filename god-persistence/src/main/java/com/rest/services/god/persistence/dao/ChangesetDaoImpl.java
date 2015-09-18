@@ -52,16 +52,24 @@ public class ChangesetDaoImpl extends HibernateDaoSupport implements ChangesetDa
 
     public List<ConsultaCoro> getConsultaCoro(int days) {
        List<ConsultaCoro> recuperado = new ArrayList<ConsultaCoro>();
+       this.log.info(" -- days Solicitados: "+days);
+       List<Object[]> listaTemp = (List<Object[]>)this.getSession().createSQLQuery("SELECT count(*) AS TOTAL, "
+                + "DATE_FORMAT(FECHA,'%d-%m-%Y') AS FECHA FROM CHANGESET "
+                + "WHERE MOVEMENT='CONSULTAR CORO' GROUP BY DATE(FECHA)"
+        ).list();
+       
+       this.log.info(" -- days Encontrados: "+listaTemp.size());
+       
        List<Object[]> lista = (List<Object[]>)this.getSession().createSQLQuery("SELECT count(*) AS TOTAL, "
                 + "DATE_FORMAT(FECHA,'%d-%m-%Y') AS FECHA FROM CHANGESET "
-                + "WHERE MOVEMENT='CONSULTAR CORO' GROUP BY DATE(FECHA);"
+                + "WHERE MOVEMENT='CONSULTAR CORO' GROUP BY DATE(FECHA) ORDER BY FECHA ASC"
         )
+        .setFirstResult((listaTemp!=null && listaTemp.size()>0 && listaTemp.size()>days)? listaTemp.size()-days: 0)
+        .setMaxResults(days)
         .list();
         if(lista!=null){
             this.log.info(" -- Total Lista: "+lista.size());
             for(int i=0; i<lista.size();i++){
-                if(i>days-1)
-                    break;
                 ConsultaCoro cc = new ConsultaCoro();
                 cc.setTotal(lista.get(i)[0].toString());
                 cc.setFecha(lista.get(i)[1].toString());
