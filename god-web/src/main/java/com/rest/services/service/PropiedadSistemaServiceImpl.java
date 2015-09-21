@@ -20,7 +20,14 @@ public class PropiedadSistemaServiceImpl implements PropiedadSistemaService{
         this.log.info(" -- Propiedad Sistema Devuelto: "+ps.toString());
         return ps;
     }
+
+    @Transactional
+    public void guardarPropiedad(String llave, String valor) {
+        this.log.info(" -- Guardando propiedad en BD: ");
+        this.propiedadSistemaDao.guardarPropiedad(llave, valor);
+    }
     
+
     @Autowired
     private PropiedadSistemaDao propiedadSistemaDao;
     

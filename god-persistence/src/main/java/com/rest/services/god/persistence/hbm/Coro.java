@@ -11,7 +11,7 @@ import javax.sql.rowset.serial.SerialClob;
  *
  * @author User
  */
-public class Coro {
+public class Coro implements java.io.Serializable{
     private int idCoro;
     private String nombre;
     private String autor;

@@ -10,7 +10,7 @@
         </id>
         
         <property name="key" type="string">
-            <column name="KEY" length="255" />
+            <column name="LLAVE" length="255" />
         </property>
         
         <property name="value" type="string">

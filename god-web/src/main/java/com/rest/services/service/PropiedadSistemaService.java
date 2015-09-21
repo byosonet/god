@@ -8,4 +8,5 @@ import com.rest.services.god.persistence.hbm.PropiedadSistema;
  */
 public interface PropiedadSistemaService {
     PropiedadSistema obtenerValorPropiedad (String key);
+    void guardarPropiedad(String llave, String valor);
 }

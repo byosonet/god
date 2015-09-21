@@ -6,7 +6,7 @@
 <title><tiles:insertAttribute name="title"/></title>
 <jsp:include page="staticResources.jsp"></jsp:include>
 </head>
-<body style="background: InactiveBorder">
+<body style="">
     <div id="cuerpo">
         <div id="header">
             <tiles:insertAttribute name="header" />

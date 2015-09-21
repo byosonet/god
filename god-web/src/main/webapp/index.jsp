@@ -104,7 +104,7 @@
              }
   </style>
 </head>
-<body style="background: InactiveBorder">
+<body style="">
      <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -139,8 +139,14 @@
 
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="email">Password:</label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-6">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Ingesa tu password">
+                    </div>
+                    <div class="col-sm-3 checkbox checkbox-primary">
+                        <input type="checkbox" value="SI" name="sysadmin" id="sysadmin">
+                        <label>
+                            SysAdmin
+                        </label>
                     </div>
                 </div>
 

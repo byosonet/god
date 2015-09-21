@@ -4,7 +4,7 @@
     <div class="container-fluid">
        <h4 style="text-align: center;" class="sub-header">Movimientos en Sistema</h4>
           <div class="table-responsive">
-            <table class="table table-striped" id="listaBitacora">
+            <table class="table" id="listaBitacora">
               <thead>
                 <tr>
                   <th style="text-align: center" class="alert alert-dismissible">#</th>

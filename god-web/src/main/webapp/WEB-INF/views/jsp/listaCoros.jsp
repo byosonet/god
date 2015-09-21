@@ -7,7 +7,7 @@
        <h4 style="text-align: center;" class="sub-header">Lista de Coros</h4>
 
           <div class="table-responsive">
-            <table class="table table-striped" id="listaCoroCompleta">
+            <table class="table" id="listaCoroCompleta">
               <thead>
                 <tr>
                   

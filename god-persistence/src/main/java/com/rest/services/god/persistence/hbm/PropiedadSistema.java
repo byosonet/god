@@ -4,7 +4,7 @@ package com.rest.services.god.persistence.hbm;
  *
  * @author User
  */
-public class PropiedadSistema {
+public class PropiedadSistema implements java.io.Serializable{
     private int id;
     private String key;
     private String value;

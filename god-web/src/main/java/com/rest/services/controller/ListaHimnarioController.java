@@ -115,7 +115,7 @@ public class ListaHimnarioController {
                 model.addAttribute("titulo", tituloAviso.getValue());
                 model.addAttribute("detalle", detalleAviso.getValue());
                }else{
-                    model.addAttribute("titulo", "<p class=\"alert alert-warning\">Por el momento no hay avisos disponibles.</p>");
+                    model.addAttribute("titulo", "<p class=\"alert alert-info\">Por el momento no hay avisos disponibles.</p>");
                     model.addAttribute("detalle", "");
                }
                
