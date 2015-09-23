@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Dec 27, 2012 8:58:30 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.rest.services.god.persistence.hbm.DeliveryFailed" table="DELIVERYFAILED" schema="goddev">
+    <class name="com.rest.services.god.persistence.hbm.DeliveryFailed" table="deliveryfailed" schema="goddev">
         <id name="idFailed" type="integer">
             <column name="ID_FAILED" precision="11" scale="0" />
             <generator class="increment" />
