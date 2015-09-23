@@ -54,14 +54,14 @@ public class ChangesetDaoImpl extends HibernateDaoSupport implements ChangesetDa
        List<ConsultaCoro> recuperado = new ArrayList<ConsultaCoro>();
        this.log.info(" -- days Solicitados: "+days);
        List<Object[]> listaTemp = (List<Object[]>)this.getSession().createSQLQuery("SELECT count(*) AS TOTAL, "
-                + "DATE_FORMAT(FECHA,'%d-%m-%Y') AS FECHA FROM CHANGESET "
+                + "DATE_FORMAT(FECHA,'%d-%m-%Y') AS FECHA FROM changeset "
                 + "WHERE MOVEMENT='CONSULTAR CORO' GROUP BY DATE(FECHA)"
         ).list();
        
        this.log.info(" -- days Encontrados: "+listaTemp.size());
        
        List<Object[]> lista = (List<Object[]>)this.getSession().createSQLQuery("SELECT count(*) AS TOTAL, "
-                + "DATE_FORMAT(FECHA,'%d-%m-%Y') AS FECHA FROM CHANGESET "
+                + "DATE_FORMAT(FECHA,'%d-%m-%Y') AS FECHA FROM changeset "
                 + "WHERE MOVEMENT='CONSULTAR CORO' GROUP BY DATE(FECHA) ORDER BY FECHA ASC"
         )
         .setFirstResult((listaTemp!=null && listaTemp.size()>0 && listaTemp.size()>days)? listaTemp.size()-days: 0)
