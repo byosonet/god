@@ -6,9 +6,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sólo a Dios la Gloria</title>
          <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/model/ModelNacimiento.js"></script>
-    <style>
-
-    </style>
   
   <script type="text/javascript">
       $(function(){
@@ -125,14 +122,8 @@
         
       });
   </script>
-    <style>
-             body{
-                font:  150% comic sans ms;
-                color: gray;
-             }
-    </style>
     </head>
-    <body style="background: InactiveBorder">
+    <body>
 
 <div class="container-fluid" style="margin-top: 30px;">
     <div class="row">

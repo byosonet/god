@@ -102,6 +102,37 @@
                                     }
                               }
                               });
+                      
+                     var listaUsuario = $('#listaUsuario')
+                          .dataTable(
+                              {
+                              "aoColumns": [ {"bSearchable": true}, {"bSearchable": false}, {"bSearchable": false},{"bSearchable": false},{"bSearchable": false}],
+                              "sPaginationType": "full_numbers",
+                              "bPaginate": true,
+                              "bLengthChange" : false,
+                              "pageLength": 10,
+                              "bSort" : false,
+                              "oLanguage" : {
+                                    "sProcessing":     "Procesando...",
+                                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                                    "sZeroRecords":    "No se encontraron resultados",
+                                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                                    "sInfo":           "",
+                                    "sInfoEmpty":      "",
+                                    "sInfoFiltered":   "",
+                                    "sInfoPostFix":    "",
+                                    "sSearch":         "<span class='glyphicon glyphicon-search'></span>",
+                                    "sUrl":            "",
+                                    "sInfoThousands":  ",",
+                                    "sLoadingRecords": "Cargando...",
+                                    "oPaginate": {
+                                        "sFirst":    "",
+                                        "sLast":     "",
+                                        "sNext":     "",
+                                        "sPrevious": ""
+                                    }
+                              }
+                              });            
                                                           
                     $('a#exit').click(function(){
                         $.blockUI();
@@ -244,7 +275,7 @@
                         var passwordUsuario = $('input#passwordUsuario');
                        
                         if(passwordUsuario.val() === ""){
-                            muestraMsjSistemaError('Escribe tu nuevo password para actualizar.');
+                            muestraMsjSistemaError('Escribe tu password para actualizar.');
                             return false;
                         }
                         
@@ -366,13 +397,6 @@
                 }          
             );
         </script>
-         <style>
-             body{
-                font:  150% comic sans ms;
-                color: gray;
-                font-size: 12.5px;
-             }
-         </style>
     </head>
     <body>
     <div class="container-fluid">

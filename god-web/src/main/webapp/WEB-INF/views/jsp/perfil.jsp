@@ -15,7 +15,7 @@ $(function(){
              <div class="form-group">
              <label class="control-label col-sm-2" for="nombreusuario">Nombre Completo:</label>
               <div class="col-sm-5">
-                <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Ingresa tu nombre" value="${nombreUsuario}" disabled>
+                <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Ingresa tu nombre" value="${nombreUsuario}">
                 <input type="hidden" id="nombreUsuario" name="nombreUsuario" value="${nombreUsuario}">
               </div>
              
@@ -61,7 +61,7 @@ $(function(){
                        <input type="hidden" id="sexo" name="sexo" value="${sexo}">
                     </div>
 
-                    <label class="control-label col-sm-2" for="passwordUsuario">Nuevo password:</label>
+                    <label class="control-label col-sm-2" for="passwordUsuario">Password:</label>
                     <div class="col-sm-3">
                        <input type="password" class="form-control" id="passwordUsuario" name="passwordUsuario" value="${passwordUsuario}">
                     </div>
@@ -88,6 +88,11 @@ $(function(){
             </center>
             
             <div id="bitacora"><jsp:include page="bitacora.jsp"></jsp:include></div>
+            
+            <c:if test="${show}">
+                <div id="usuario"><jsp:include page="usuario.jsp"></jsp:include></div>
+            </c:if>
+                
         </div>
         
         

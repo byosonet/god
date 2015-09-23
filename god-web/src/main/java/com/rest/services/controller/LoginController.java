@@ -142,6 +142,16 @@ public class LoginController {
                       new Date(UtilService.getFechaTimeStamp().getTime()), 
                       usuario.getIdUsuario(), null);
                   
+                  //DEVOLVIENDO LISTA DE USUARIOS
+                  String mailAdmin = this.propiedadSistemaService.obtenerValorPropiedad("mail.admin").getValue();
+                  String conectado = this.propiedadSistemaService.obtenerValorPropiedad("mail.admin.connect").getValue();
+                  if(mailAdmin.equals(usuario.getEmail()) && conectado.equals("TRUE")){
+                      model.addAttribute("show", true);
+                      model.addAttribute("listaUsuario", this.usuarioService.getListaUsuarios());
+                  }else{
+                      model.addAttribute("show", false);
+                  }
+
                   //RECUPERANDO INFORMACION DE CONSULTA DE COROS
                   int rows=0;
                   PropiedadSistema ps =
@@ -193,6 +203,7 @@ public class LoginController {
             if(ps.getValue().equals(user)){
                   this.log.info(" -- El usuario tiene privilegios admin: "+user);
                   this.propiedadSistemaService.guardarPropiedad("mail.admin.connect","TRUE");
+                  this.propiedadSistemaService.guardarPropiedad("mail.admin.date", new Date().toString());
                   this.log.info(" -- Guardando informacion de propiedad: ");
               }else{
                   this.log.info(" -- Este usuario no tiene privilegios admin: "+user);
@@ -382,7 +393,7 @@ public class LoginController {
     }
     
     @RequestMapping(value = "/actualizar/usuario", method = RequestMethod.POST)
-    public ResponseEntity<ErrorService> actualizarDatosUsuario(HttpServletRequest request) throws IOException, JSONException {
+    public ResponseEntity<ErrorService> actualizarDatosUsuario(HttpServletRequest request) throws IOException, JSONException, Exception {
         HttpStatus status = HttpStatus.NOT_FOUND;
         
         String emailUsuario = request.getParameter("emailUsuario");
@@ -408,10 +419,14 @@ public class LoginController {
         
         ErrorService response = new ErrorService();
         response.setCodigo("404");
-        response.setMensaje("Los datos del usuario no se pudieron actualizar, intente más tarde.");
+        response.setMensaje("Los datos del usuario no se pudieron actualizar, su pasword es incorrecto.");
         
         Usuario user = this.usuarioService.validaEmailSistema(emailUsuario);
+
         if(user!=null){
+            if(!UtilService.Desencriptar(user.getPassword()).equals(passwordUsuario))
+                return new ResponseEntity<ErrorService>(response, status);
+            
             this.changesetService.guardarChangeset(
                       TipoMovimientoEnum.ACTUALIZAR_PERFIL,
                       new Date(UtilService.getFechaTimeStamp().getTime()), 
@@ -420,11 +435,12 @@ public class LoginController {
             this.log.info(" -- Usuario encontrado: "+user.toString());
             String encriptarPassword = UtilService.Encriptar(passwordUsuario);
             user.setPassword(encriptarPassword);
+            user.setNombre(nombreUsuario);
             this.usuarioService.actualizarDatosUsuario(user);
             this.log.info(" -- El password fue actualizado");
             response.setCodigo("200");
             response.setMensaje("La información fue actualizada con éxito, "
-                    + "para continuar tendrá que reingresar al sistema con su nuevo password.");
+                    + "para continuar tendrá que reingresar al sistema.");
             status = HttpStatus.OK;
         }
         return new ResponseEntity<ErrorService>(response, status);
@@ -455,6 +471,9 @@ public class LoginController {
        String userEmail = data[0];
        Usuario user = this.usuarioService.validaEmailSistema(userEmail);
        if(user!=null){
+           if(this.propiedadSistemaService.obtenerValorPropiedad("mail.admin").getValue().equals(user.getEmail())){
+               this.propiedadSistemaService.guardarPropiedad("mail.admin.connect","FALSE");
+           }
            this.changesetService.guardarChangeset(
                       TipoMovimientoEnum.SALIR_DEL_SISTEMA,
                       new Date(UtilService.getFechaTimeStamp().getTime()), 

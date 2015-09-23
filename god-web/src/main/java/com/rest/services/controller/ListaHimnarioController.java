@@ -58,8 +58,18 @@ public class ListaHimnarioController {
                            model.addAttribute("fecha"+i, cc.get(i).getFecha());
                            model.addAttribute("total"+i, cc.get(i).getTotal());
                       }
-                  }   
-            
+                  }
+                  
+            //DEVOLVIENDO LISTA DE USUARIOS
+                  String mailAdmin = this.propiedadSistemaService.obtenerValorPropiedad("mail.admin").getValue();
+                  String conectado = this.propiedadSistemaService.obtenerValorPropiedad("mail.admin.connect").getValue();
+                  if(mailAdmin.equals(user.getEmail()) && conectado.equals("TRUE")){
+                      model.addAttribute("show", true);
+                      model.addAttribute("listaUsuario", this.usuarioService.getListaUsuarios());
+                  }else{
+                      model.addAttribute("show", false);
+                  }      
+
             //Retornando Lista de movimientos de usuario
             List<Changeset> listCh = 
                     this.changesetService.listaChangeset(String.valueOf(user.getIdUsuario()));

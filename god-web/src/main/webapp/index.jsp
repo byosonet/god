@@ -99,8 +99,7 @@
   </script>
   <style>
              body{
-                font:  150% comic sans ms;
-                color: gray;
+                font:  10.5px Verdana;
              }
   </style>
 </head>

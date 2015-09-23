@@ -90,12 +90,6 @@
         }
       });
   </script>
-  <style>
-             body{
-                font:  150% comic sans ms;
-                color: gray;
-             }
-  </style>
 </head>
 <body>  
     

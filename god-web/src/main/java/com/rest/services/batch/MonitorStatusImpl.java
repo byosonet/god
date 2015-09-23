@@ -1,6 +1,9 @@
 package com.rest.services.batch;
 
+import com.rest.services.service.PropiedadSistemaService;
+import java.util.Date;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -11,6 +14,9 @@ public class MonitorStatusImpl implements MonitorStatus{
     
     public void status() {
         this.log.info(" -- Status del servidor: OK");
+        String date = new Date().toString();
+        this.propiedadSistemaService.guardarPropiedad("date.system", date);
+        this.log.info(" -- DateSystem save: "+date);
     }
     
     public MonitorStatusImpl getInstance(){
@@ -23,5 +29,6 @@ public class MonitorStatusImpl implements MonitorStatus{
     
     private MonitorStatusImpl(){}
     
-   
+   @Autowired
+   private PropiedadSistemaService propiedadSistemaService;
 }
