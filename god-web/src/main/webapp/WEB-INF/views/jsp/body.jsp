@@ -7,7 +7,7 @@
         <title>Sólo a Dios la Gloria</title>
         <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/model/ModelUser.js"></script>
         <script type="text/javascript">
-            $(document).ready(function() {               
+            $(document).ready(function() {           
                 //GRAFICANDO CONSULTA DE COROS
                 var barChartDataCoros = {
                         labels : ['${fecha0}','${fecha1}','${fecha2}','${fecha3}','${fecha4}','${fecha5}','${fecha6}','${fecha7}'],
@@ -106,9 +106,9 @@
                      var listaUsuario = $('#listaUsuario')
                           .dataTable(
                               {
-                              "aoColumns": [ {"bSearchable": true}, {"bSearchable": false}, {"bSearchable": false},{"bSearchable": false},{"bSearchable": false}],
+                              "aoColumns": [ {"bSearchable": true}, {"bSearchable": false}, {"bSearchable": false},{"bSearchable": false},{"bSearchable": false},{"bSearchable": false}],
                               "sPaginationType": "full_numbers",
-                              "bPaginate": true,
+                              "bPaginate": false,
                               "bLengthChange" : false,
                               "pageLength": 10,
                               "bSort" : false,
@@ -394,6 +394,59 @@
                                $('div#menuPrincipal').css('display','block');
                             }
                          });
+                         
+                         //ELIMINAR USUARIO
+                        $('a#deleteUser').click(function(){
+                            var tr = $(this);
+                            var value = $(this).attr('href');
+                            value = value.split("#")[1];
+                            var idUser = value.split(";")[0];
+                            var nombre = value.split(";")[1];
+                            muestraMensajedeConfirmacion('¿Estas seguro de eliminar a:', idUser,nombre, tr);
+                        });
+                        
+                        function muestraMensajedeConfirmacion(msjStatus, idUser,nombre, tr){
+                            BootstrapDialog.show({
+                             size: BootstrapDialog.SIZE_SMALL,
+                             title: 'Mensaje del Sistema:',
+                             closable: false,
+                             message: msjStatus+" "+'<b>'+nombre+'</b>'+"?",
+                             type: BootstrapDialog.TYPE_DANGER,
+                             cssClass: 'login-dialog',
+                             buttons: [{
+                                 icon: 'glyphicon glyphicon-remove',
+                                 label: 'CANCELAR',
+                                 cssClass: 'btn-default',
+                                 action: function(dialog) {
+                                     dialog.close();
+                                 }
+                             },{
+                                 icon: 'glyphicon glyphicon-ok',
+                                 label: 'ACEPTAR',
+                                 cssClass: 'btn-primary',
+                                 action: function(dialog) {
+                                     dialog.close();
+                                     $('input#idUsuario').val(idUser);
+                                        $.blockUI();
+                                        $.ajax({
+                                                type: 'POST',
+                                                url:  '${contextpath}'+'/eliminar/usuario',
+                                                data: $('form#eliminarUsuario').serialize(),
+                                                    success: function (data) {
+                                                       $.unblockUI();
+                                                       tr.closest('tr').remove();
+                                                       muestraMsjSistemaSuccess(data.mensaje);
+                                                },
+                                                   error: function(msj){
+                                                       status = JSON.parse(msj.responseText);
+                                                       $.unblockUI();
+                                                       muestraMsjSistemaError(status.mensaje);
+                                                    }
+                                          });
+                                 }
+                             }]
+                         });
+                         }
                 }          
             );
         </script>
@@ -451,6 +504,10 @@
     
     <form id="regresar">
         <input type="hidden" id="cifrar" name="cifrar" value="${cifrar}">
+    </form>
+    
+    <form id="eliminarUsuario">
+        <input type="hidden" id="idUsuario" name="idUsuario" value="">
     </form>
     
     <form id="index">

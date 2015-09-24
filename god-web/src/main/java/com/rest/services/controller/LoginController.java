@@ -486,6 +486,28 @@ public class LoginController {
        return new ResponseEntity<ErrorService>(response, HttpStatus.OK);
     }
     
+    @RequestMapping(value = "/eliminar/usuario", method = RequestMethod.POST)
+    public ResponseEntity<ErrorService> eliminarDatosUsuario(HttpServletRequest request) throws IOException, JSONException, Exception {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        
+        String id = request.getParameter("idUsuario");
+        String nombre = request.getParameter("nombreUsuario");
+
+        ErrorService response = new ErrorService();
+        response.setCodigo("404");
+        response.setMensaje("Los datos del usuario no se pudieron eliminar.");
+        
+        Usuario user = this.usuarioService.byIdUser(Integer.valueOf(id));
+        if(user!=null){
+            this.usuarioService.deleteUser(user);
+            this.log.info(" -- El usuario fue eliminado");
+            response.setCodigo("200");
+            response.setMensaje("El usuario fue eliminado con exito.");
+            status = HttpStatus.OK;
+        }
+        return new ResponseEntity<ErrorService>(response, status);
+    }
+    
     @Autowired
     UsuarioService usuarioService;
     

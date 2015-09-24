@@ -19,4 +19,6 @@ public interface UsuarioDao {
     int agregarUsuario(Usuario usuario);
     Usuario validaEmailSistema(String email);
     void actualizarDatosUsuario(Usuario user);
+    void deleteUser(Usuario usuario);
+    Usuario byId(int idUser);
 }

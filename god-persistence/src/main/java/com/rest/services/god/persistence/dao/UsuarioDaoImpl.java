@@ -67,8 +67,8 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
         try {
             this.mysql.iniciarOperacion();
             Number maximo = (Number) this.getSession().createQuery(
-                    "SELECT COUNT(*) "
-                    + "FROM Usuario")
+                    "SELECT MAX(u.idUsuario) "
+                    + "FROM Usuario u")
                     .uniqueResult();
 
             long id = maximo == null ? 1 : maximo.longValue() + 1;
@@ -101,5 +101,32 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
             this.mysql.getSesion().close();
         }
     }
+
+    public void deleteUser(Usuario usuario) {
+        try {
+            this.mysql.iniciarOperacion();
+            if(usuario!=null){
+                this.mysql.getSesion().delete(usuario);
+                this.mysql.getSesion().flush();
+                this.mysql.getTx().commit();
+            }
+        } catch (HibernateException he) {
+            this.mysql.manejarException(he);
+            throw he;
+        } finally {
+            this.mysql.getSesion().close();
+        }
+    }
+
+    public Usuario byId(int idUser) {
+         this.log.info(" -- Buscando usuario by id:: "+idUser);
+        return (Usuario) this
+                .getSession()
+                .createQuery("FROM Usuario u WHERE u.idUsuario = :idUser")
+                .setParameter("idUser", idUser)
+                .uniqueResult();
+    }
+    
+    
     
 }

@@ -19,4 +19,6 @@ public interface UsuarioService {
     int agregaUsuarioNuevo(Usuario usuario);
     Usuario validaEmailSistema(String email);
     void actualizarDatosUsuario(Usuario usuario);
+    void deleteUser(Usuario user);
+    Usuario byIdUser(int idUser);
 }

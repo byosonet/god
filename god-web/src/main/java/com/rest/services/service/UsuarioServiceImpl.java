@@ -72,4 +72,18 @@ private UsuarioDao usuarioDao;
         this.log.info(" -- Datos Actualizados");
     }
 
+    @Transactional
+    public void deleteUser(Usuario user) {
+        this.usuarioDao.deleteUser(user);
+        this.log.info(" -- Usuario elimnado de la BD: "+user.toString());
+    }
+
+    public Usuario byIdUser(int idUser) {
+        this.log.info(" -- Buscando por id de usuario: "+idUser);
+        return this.usuarioDao.byId(idUser);
+    }
+    
+    
+    
+
 }

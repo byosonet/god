@@ -12,6 +12,7 @@
                   <th style="text-align: center" class="alert alert-dismissible">ULT. CONEXION</span></th>
                   <th style="text-align: center" class="alert alert-dismissible">CORREO</span></th>
                   <th style="text-align: center" class="alert alert-dismissible">PROFESI&Oacute;N</span></th>
+                  <th style="text-align: center" class="alert alert-dismissible">ELIMINAR</th>
                 </tr>
               </thead>
               <tbody>
@@ -26,6 +27,9 @@
                     </td>
                     <td style="text-align: left;width: 2%;">${user.email}</td>
                     <td style="text-align: left;width: 2%;">${user.actividad}</td>
+                    <td style="text-align: left;width: 2%;">
+                        <a href="#${user.idUsuario};${user.nombre}" id="deleteUser" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
                 </tr>
                 </c:forEach>
               </tbody>
