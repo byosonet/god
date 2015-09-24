@@ -8,10 +8,10 @@
               <thead>
                 <tr>
                   <th style="text-align: center" class="alert alert-dismissible">NOMBRE</th>
-                  <th style="text-align: center" class="alert alert-dismissible">FECHA ALTA</span></th>
-                  <th style="text-align: center" class="alert alert-dismissible">ULT. CONEXION</span></th>
-                  <th style="text-align: center" class="alert alert-dismissible">CORREO</span></th>
-                  <th style="text-align: center" class="alert alert-dismissible">PROFESI&Oacute;N</span></th>
+                  <th style="text-align: center" class="alert alert-dismissible">FECHA ALTA</th>
+                  <th style="text-align: center" class="alert alert-dismissible">ULT. CONEXION</th>
+                  <th style="text-align: center" class="alert alert-dismissible">CORREO</th>
+                  <th style="text-align: center" class="alert alert-dismissible">PROFESI&Oacute;N</th>
                   <th style="text-align: center" class="alert alert-dismissible">ELIMINAR</th>
                 </tr>
               </thead>
@@ -27,7 +27,7 @@
                     </td>
                     <td style="text-align: left;width: 2%;">${user.email}</td>
                     <td style="text-align: left;width: 2%;">${user.actividad}</td>
-                    <td style="text-align: left;width: 2%;">
+                    <td style="text-align: center;width: 2%;">
                         <a href="#${user.idUsuario};${user.nombre}" id="deleteUser" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                     </td>
                 </tr>

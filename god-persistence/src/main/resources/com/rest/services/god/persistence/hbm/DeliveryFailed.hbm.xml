@@ -32,6 +32,10 @@
         <property name="typeFailed" type="string">
             <column name="TYPE_FAILED" length="255"/>
         </property>
+        
+        <property name="dateSend" type="timestamp">
+            <column name="DATE_SEND"/>
+        </property>
 
     </class>
 </hibernate-mapping>

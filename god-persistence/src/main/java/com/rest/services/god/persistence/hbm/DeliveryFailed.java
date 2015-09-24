@@ -1,5 +1,7 @@
 package com.rest.services.god.persistence.hbm;
 
+import java.util.Date;
+
 /**
  *
  * @author User
@@ -13,12 +15,14 @@ public class DeliveryFailed implements java.io.Serializable{
     private String name;
     private String body;
     private String typeFailed;
+    private Date dateSend;
     
     public DeliveryFailed(){
         
     }
     
-    public DeliveryFailed(int idFailed, String mailTo, String mailFrom, String subject, String name, String body, String typeFailed){
+    public DeliveryFailed(int idFailed, String mailTo, String mailFrom, 
+            String subject, String name, String body, String typeFailed, Date dateSend){
         
         this.idFailed = idFailed;
         this.mailTo = mailTo;
@@ -27,6 +31,7 @@ public class DeliveryFailed implements java.io.Serializable{
         this.name = name;
         this.body = body;
         this.typeFailed = typeFailed;
+        this.dateSend = dateSend;
         
     }
 
@@ -86,9 +91,17 @@ public class DeliveryFailed implements java.io.Serializable{
         this.typeFailed = typeFailed;
     }
 
+    public Date getDateSend() {
+        return dateSend;
+    }
+
+    public void setDateSend(Date dateSend) {
+        this.dateSend = dateSend;
+    }
+
     @Override
     public String toString() {
-        return "DeliveryFailed{" + "idFailed=" + idFailed + ", mailTo=" + mailTo + ", mailFrom=" + mailFrom + ", subject=" + subject + ", name=" + name + ", body=" + body + ", typeFailed=" + typeFailed + '}';
+        return "DeliveryFailed{" + "idFailed=" + idFailed + ", mailTo=" + mailTo + ", mailFrom=" + mailFrom + ", subject=" + subject + ", name=" + name + ", body=" + body + ", typeFailed=" + typeFailed + ", dateSend=" + dateSend + '}';
     }
 
 }

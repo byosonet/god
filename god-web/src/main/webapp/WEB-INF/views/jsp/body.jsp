@@ -132,7 +132,40 @@
                                         "sPrevious": ""
                                     }
                               }
-                              });            
+                              });
+                              
+                    var listaMailFailed = $('#listaMailFailed')
+                          .dataTable(
+                              {
+                              "aoColumns": [ {"bSearchable": true}, {"bSearchable": false}, {"bSearchable": false},{"bSearchable": false},{"bSearchable": false},{"bSearchable": false}],
+                              "sPaginationType": "full_numbers",
+                              "bPaginate": false,
+                              "bLengthChange" : false,
+                              "pageLength": 10,
+                              "bSort" : false,
+                              "oLanguage" : {
+                                    "sProcessing":     "Procesando...",
+                                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                                    "sZeroRecords":    "No se encontraron resultados",
+                                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                                    "sInfo":           "",
+                                    "sInfoEmpty":      "",
+                                    "sInfoFiltered":   "",
+                                    "sInfoPostFix":    "",
+                                    "sSearch":         "<span class='glyphicon glyphicon-search'></span>",
+                                    "sUrl":            "",
+                                    "sInfoThousands":  ",",
+                                    "sLoadingRecords": "Cargando...",
+                                    "oPaginate": {
+                                        "sFirst":    "",
+                                        "sLast":     "",
+                                        "sNext":     "",
+                                        "sPrevious": ""
+                                    }
+                              }
+                              });          
+                           
+                              
                                                           
                     $('a#exit').click(function(){
                         $.blockUI();
@@ -447,6 +480,57 @@
                              }]
                          });
                          }
+                        
+                         //ELIMINAR MAIL FALLIDO
+                         $('a#deleteMailFailed').click(function(){
+                            var tr = $(this);
+                            var value = $(this).attr('href');
+                            value = value.split("#")[1];
+                            muestraMensajedeConfirmacionEliminarMailFallido('¿Estas seguro de eliminar este registro?',value, tr);
+                        });
+                        
+                        function muestraMensajedeConfirmacionEliminarMailFallido(msjStatus, value, tr){
+                            BootstrapDialog.show({
+                             size: BootstrapDialog.SIZE_SMALL,
+                             title: 'Mensaje del Sistema:',
+                             closable: false,
+                             message: msjStatus,
+                             type: BootstrapDialog.TYPE_DANGER,
+                             cssClass: 'login-dialog',
+                             buttons: [{
+                                 icon: 'glyphicon glyphicon-remove',
+                                 label: 'CANCELAR',
+                                 cssClass: 'btn-default',
+                                 action: function(dialog) {
+                                     dialog.close();
+                                 }
+                             },{
+                                 icon: 'glyphicon glyphicon-ok',
+                                 label: 'ACEPTAR',
+                                 cssClass: 'btn-primary',
+                                 action: function(dialog) {
+                                     dialog.close();
+                                     $('input#idMailFailed').val(value);
+                                        $.blockUI();
+                                        $.ajax({
+                                                type: 'POST',
+                                                url:  '${contextpath}'+'/eliminar/mail/failed',
+                                                data: $('form#eliminarEmail').serialize(),
+                                                    success: function (data) {
+                                                       $.unblockUI();
+                                                       tr.closest('tr').remove();
+                                                       muestraMsjSistemaSuccess(data.mensaje);
+                                                },
+                                                   error: function(msj){
+                                                       status = JSON.parse(msj.responseText);
+                                                       $.unblockUI();
+                                                       muestraMsjSistemaError(status.mensaje);
+                                                    }
+                                          });
+                                 }
+                             }]
+                         });
+                         }
                 }          
             );
         </script>
@@ -508,6 +592,10 @@
     
     <form id="eliminarUsuario">
         <input type="hidden" id="idUsuario" name="idUsuario" value="">
+    </form>
+    
+    <form id="eliminarEmail">
+        <input type="hidden" id="idMailFailed" name="idMailFailed" value="">
     </form>
     
     <form id="index">

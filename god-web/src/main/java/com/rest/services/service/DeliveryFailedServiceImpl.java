@@ -2,6 +2,7 @@ package com.rest.services.service;
 
 import com.rest.services.god.persistence.dao.DeliveryFailedDao;
 import com.rest.services.god.persistence.hbm.DeliveryFailed;
+import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,25 @@ public class DeliveryFailedServiceImpl implements DeliveryFailedService{
         this.deliveryFailedDao.guardarDeliveryFailed(deliveryFailed);
         this.log.info(" -- Guardando la información del mail no enviado."); 
     }
+
+    @Transactional
+    public List<DeliveryFailed> getListMailFailed() {
+        this.log.info(" -- Retornado lista de mail failed:");
+        return this.deliveryFailedDao.getListMailFailed();
+    }
+
+    @Transactional
+    public void deleteDeliveryDailed(DeliveryFailed df) {
+        this.log.info(" -- Borrar mail failed: "+df.toString());
+        this.deliveryFailedDao.deleteDeliveryFailed(df);
+    }
+
+    @Transactional
+    public DeliveryFailed getById(int id) {
+        this.log.info(" -- Buscando DeliveryFailed por id: "+ id);
+        return this.deliveryFailedDao.getById(id);
+    }
+
     
     @Autowired
     private DeliveryFailedDao deliveryFailedDao;

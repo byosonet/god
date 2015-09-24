@@ -7,6 +7,8 @@ package com.rest.services.service;
 import com.rest.services.god.persistence.hbm.DeliveryFailed;
 import com.rest.services.god.persistence.hbm.TipoEnvioEmail;
 import java.io.File;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Map;
 import javax.mail.internet.MimeMessage;
 import org.apache.log4j.Logger;
@@ -52,6 +54,11 @@ public class EmailSendServiceImpl implements EmailSendService
             failed.setName(user);
             failed.setBody("<html><h2><strong>Bienvenido: "+user+"</strong></h2></html>");
             failed.setTypeFailed(TipoEnvioEmail.MAIL_REGISTRO.name());
+            Timestamp stamp = new Timestamp(System.currentTimeMillis());
+                this.log.info("-- Datetime::: "+stamp);
+                Date date = new Date(stamp.getTime());
+                this.log.info("-- Date::: "+date);
+            failed.setDateSend(date);
             this.deliveryFailedService.guardarDeliveryFailed(failed);
             
             log.error(" -- Correo no pudo ser enviado: ", e);
@@ -82,6 +89,11 @@ public class EmailSendServiceImpl implements EmailSendService
             failed.setName(email);
             failed.setBody("<html><h2><strong>Hola tu password para ingresar al sistema es: "+password+"</strong></h2></html>");
             failed.setTypeFailed(TipoEnvioEmail.MAIL_PASSWORD.name());
+            Timestamp stamp = new Timestamp(System.currentTimeMillis());
+                this.log.info("-- Datetime::: "+stamp);
+                Date date = new Date(stamp.getTime());
+                this.log.info("-- Date::: "+date);
+            failed.setDateSend(date);
             this.deliveryFailedService.guardarDeliveryFailed(failed);
 
             log.error(" -- Correo no pudo ser enviado: ", e);
@@ -117,6 +129,11 @@ public class EmailSendServiceImpl implements EmailSendService
                         + "Asunto: "+boydAsunto+"<br>"
                         + "</strong></h2></html>");
             failed.setTypeFailed(TipoEnvioEmail.MAIL_CONTACTO.name());
+            Timestamp stamp = new Timestamp(System.currentTimeMillis());
+                this.log.info("-- Datetime::: "+stamp);
+                Date date = new Date(stamp.getTime());
+                this.log.info("-- Date::: "+date);
+            failed.setDateSend(date);
             this.deliveryFailedService.guardarDeliveryFailed(failed);
             
             log.error(" -- Correo no pudo ser enviado: ", e);

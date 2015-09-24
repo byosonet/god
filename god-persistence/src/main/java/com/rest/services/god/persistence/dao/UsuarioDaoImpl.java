@@ -119,7 +119,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
     }
 
     public Usuario byId(int idUser) {
-         this.log.info(" -- Buscando usuario by id:: "+idUser);
+        this.log.info(" -- Buscando usuario by id:: "+idUser);
         return (Usuario) this
                 .getSession()
                 .createQuery("FROM Usuario u WHERE u.idUsuario = :idUser")

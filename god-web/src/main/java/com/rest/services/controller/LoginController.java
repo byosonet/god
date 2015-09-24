@@ -5,12 +5,14 @@ import com.rest.services.god.drools.vo.UserTemp;
 import com.rest.services.god.persistence.dto.ConsultaCoro;
 import com.rest.services.god.persistence.hbm.Changeset;
 import com.rest.services.god.persistence.hbm.Coro;
+import com.rest.services.god.persistence.hbm.DeliveryFailed;
 import com.rest.services.god.persistence.hbm.PropiedadSistema;
 import com.rest.services.god.persistence.hbm.TipoMovimientoEnum;
 import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.model.ErrorService;
 import com.rest.services.service.ChangesetService;
 import com.rest.services.service.CoroService;
+import com.rest.services.service.DeliveryFailedService;
 import com.rest.services.service.EmailSendService;
 import com.rest.services.service.PropiedadSistemaService;
 import com.rest.services.service.UsuarioService;
@@ -148,6 +150,7 @@ public class LoginController {
                   if(mailAdmin.equals(usuario.getEmail()) && conectado.equals("TRUE")){
                       model.addAttribute("show", true);
                       model.addAttribute("listaUsuario", this.usuarioService.getListaUsuarios());
+                      model.addAttribute("listaMail", this.deliveryFailedService.getListMailFailed());
                   }else{
                       model.addAttribute("show", false);
                   }
@@ -491,7 +494,6 @@ public class LoginController {
         HttpStatus status = HttpStatus.NOT_FOUND;
         
         String id = request.getParameter("idUsuario");
-        String nombre = request.getParameter("nombreUsuario");
 
         ErrorService response = new ErrorService();
         response.setCodigo("404");
@@ -502,7 +504,28 @@ public class LoginController {
             this.usuarioService.deleteUser(user);
             this.log.info(" -- El usuario fue eliminado");
             response.setCodigo("200");
-            response.setMensaje("El usuario fue eliminado con exito.");
+            response.setMensaje("El usuario fue eliminado con éxito.");
+            status = HttpStatus.OK;
+        }
+        return new ResponseEntity<ErrorService>(response, status);
+    }
+    
+    @RequestMapping(value = "/eliminar/mail/failed", method = RequestMethod.POST)
+    public ResponseEntity<ErrorService> eliminarMailFailed(HttpServletRequest request) throws IOException, JSONException, Exception {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        
+        String idMailFailed = request.getParameter("idMailFailed");
+
+        ErrorService response = new ErrorService();
+        response.setCodigo("404");
+        response.setMensaje("Los datos no se pudieron eliminar.");
+        
+        DeliveryFailed df = this.deliveryFailedService.getById(Integer.valueOf(idMailFailed));
+        if(df!=null){
+            this.deliveryFailedService.deleteDeliveryDailed(df);
+            this.log.info(" -- El mailFailed fue eliminado");
+            response.setCodigo("200");
+            response.setMensaje("Los datos fueron eliminados con éxito.");
             status = HttpStatus.OK;
         }
         return new ResponseEntity<ErrorService>(response, status);
@@ -525,5 +548,8 @@ public class LoginController {
     
     @Autowired
     private ChangesetService changesetService;
+    
+    @Autowired
+    private DeliveryFailedService deliveryFailedService;
         
 }

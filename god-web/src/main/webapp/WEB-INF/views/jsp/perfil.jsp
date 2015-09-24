@@ -91,6 +91,7 @@ $(function(){
             
             <c:if test="${show}">
                 <div id="usuario"><jsp:include page="usuario.jsp"></jsp:include></div>
+                <div id="mailFailed"><jsp:include page="mailFailed.jsp"></jsp:include></div>
             </c:if>
                 
         </div>
