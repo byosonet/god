@@ -45,8 +45,8 @@ public class CoroDaoImpl extends HibernateDaoSupport implements CoroDao{
         try {
             this.mysql.iniciarOperacion();
             Number maximo = (Number) this.getSession().createQuery(
-                    "SELECT COUNT(*) "
-                    + "FROM Coro")
+                    "SELECT MAX(c.idCoro) "
+                    + "FROM Coro c")
                     .uniqueResult();
 
             long id = maximo == null ? 1 : maximo.longValue() + 1;

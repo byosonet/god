@@ -111,7 +111,7 @@ public class CoroController {
        String nombreCoro = request.getParameter("nombreCoro");
        String autor = request.getParameter("autor");
        String numCoro = request.getParameter("numCoro");
-       String desccoro = request.getParameter("desccoro");
+       String desccoro = request.getParameter("summernoteText");
        
        this.log.info(" -- Nombre del Coro: "+nombreCoro);
        this.log.info(" -- Autor del Coro: "+autor);

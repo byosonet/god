@@ -19,6 +19,9 @@
 <!-- footable css -->
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/footable/footable-0.1.css">
 
+<!-- summernote css -->
+<link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/summernote/summernote.css">
+
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knockout-3.2.0.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knockout.simpleGrid.3.0.js"></script>
@@ -32,6 +35,9 @@
 
 <!-- footable js -->
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/footable/footable.js"></script>
+
+<!-- summernote js -->
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/summernote/summernote.js"></script>
 
 <!-- knob && nouislider JS -->
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knob/knob.js"></script>

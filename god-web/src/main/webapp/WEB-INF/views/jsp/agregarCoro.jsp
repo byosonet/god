@@ -33,7 +33,8 @@
             
             <div class="form-group">
               <div class="col-sm-12">
-                  <textArea class="form-control" id="desccoro" name="desccoro" placeholder="Pega aquí el contenido del coro por favor..." style="height: 400px;"></textarea>
+                  <div id="summernote">Pega aquí el contenido del coro por favor...</div>
+                  <input type="hidden" id="summernoteText" name="summernoteText">
               </div>
             </div>
             

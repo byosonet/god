@@ -39,7 +39,9 @@
                        <a class="btn btn-danger" id="deleteCoro" href="#${pen.idCoro}"><span class="glyphicon glyphicon-trash"></span></a>
                        <a class="btn btn-success" id="activeCoro" href="#${pen.idCoro}"><span class="glyphicon glyphicon-ok"></span></a>
                     </td>
-                    <td style="text-align: justify;"><br><br><c:out value="${pen.descripcionString}" escapeXml="false"/></td>
+                    <td style="text-align: justify;"><br><br>
+                        <c:out value="${pen.descripcionString}" escapeXml="false"/>
+                    </td>
                 </tr>
                 </c:forEach>
               </tbody>

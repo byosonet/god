@@ -10,6 +10,9 @@
             $(document).ready(function() {
                 
                 $('#listaCoroPendiente').footable();
+                $('#summernote').summernote({
+                    height: 250             
+                  });
                 
                 //GRAFICANDO CONSULTA DE COROS
                 var barChartDataCoros = {
@@ -288,6 +291,8 @@
                         }
                         
                         $.blockUI();
+                        var texto = $('.note-editable').text();
+                        $('input#summernoteText').val(texto);
                         $.ajax({
                                 type: 'POST',
                                 url:  '${contextpath}'+'/agregar/coro',
