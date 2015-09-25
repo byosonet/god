@@ -19,4 +19,6 @@ public interface CoroService {
     int agregarCoro(Coro coro);
     boolean validarNumCoro(String numero);
     boolean validarNombreCoro(String nombre);
+    
+    List<Coro> getListaPendiente();
 }

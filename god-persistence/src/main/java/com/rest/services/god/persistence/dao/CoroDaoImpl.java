@@ -97,4 +97,13 @@ public class CoroDaoImpl extends HibernateDaoSupport implements CoroDao{
         statusNombreCoro = true;
         return statusNombreCoro;
     }
+
+    public List<Coro> getListaCorosPendientes() {
+        this.log.info(" -- Buscando por lista de coros pendientes::");
+        return (List<Coro>) this
+                .getSession()
+                .createQuery("FROM Coro c WHERE c.activo != 2 " + "ORDER BY c.fechaAct DESC")
+                .list();
+    }
+ 
 }

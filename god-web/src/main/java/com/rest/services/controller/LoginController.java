@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -84,6 +85,7 @@ public class LoginController {
               try {
                   List<Coro> corosActualizados = this.coroService.obtenerListaCoroActualizada();
                   List<Coro> corosCompletos = this.coroService.obtenerListaCoroCompleta();
+                  List<Coro> corosPendientes = this.coroService.getListaPendiente();
                   if (corosActualizados != null && corosActualizados.size() > 0) {
                         model.addAttribute("coros", corosActualizados);
                         model.addAttribute("corosCompletos", corosCompletos);
@@ -151,6 +153,14 @@ public class LoginController {
                       model.addAttribute("show", true);
                       model.addAttribute("listaUsuario", this.usuarioService.getListaUsuarios());
                       model.addAttribute("listaMail", this.deliveryFailedService.getListMailFailed());
+                      if(corosPendientes!=null){
+                          List<Coro> temp = new ArrayList<Coro>();
+                            for(Coro c: corosPendientes){
+                                c.setDescripcionString(c.getDataClob(c.getDescripcion()));
+                                temp.add(c);
+                            }
+                            model.addAttribute("listaCoroPendiente", temp);
+                        }
                   }else{
                       model.addAttribute("show", false);
                   }

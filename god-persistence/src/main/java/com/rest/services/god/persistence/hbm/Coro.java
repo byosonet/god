@@ -19,6 +19,7 @@ public class Coro implements java.io.Serializable{
     private Clob descripcion;
     private String numCoro;
     private int activo;
+    private String descripcionString;
     
     public Coro(){
         
@@ -109,6 +110,14 @@ public class Coro implements java.io.Serializable{
     public Clob covertirStringToClob(String des) throws SQLException{
         Clob myClobFile = new SerialClob(des.toCharArray());
         return myClobFile;
+    }
+
+    public String getDescripcionString() {
+        return descripcionString;
+    }
+
+    public void setDescripcionString(String descripcionString) {
+        this.descripcionString = descripcionString;
     }
 
     @Override

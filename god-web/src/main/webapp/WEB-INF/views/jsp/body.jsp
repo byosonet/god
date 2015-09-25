@@ -7,7 +7,10 @@
         <title>Sólo a Dios la Gloria</title>
         <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/model/ModelUser.js"></script>
         <script type="text/javascript">
-            $(document).ready(function() {           
+            $(document).ready(function() {
+                
+                $('#listaCoroPendiente').footable();
+                
                 //GRAFICANDO CONSULTA DE COROS
                 var barChartDataCoros = {
                         labels : ['${fecha0}','${fecha1}','${fecha2}','${fecha3}','${fecha4}','${fecha5}','${fecha6}','${fecha7}'],

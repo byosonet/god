@@ -14,4 +14,6 @@ public interface CoroDao {
     int agregarCoro(Coro coro);
     boolean validarNumeroCoro(String numCoro);
     boolean validarNombreCoro(String nombre);
+    
+    List<Coro> getListaCorosPendientes();
 }

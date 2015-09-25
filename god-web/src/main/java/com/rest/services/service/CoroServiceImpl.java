@@ -85,6 +85,12 @@ public class CoroServiceImpl implements CoroService{
         return this.coroDao.validarNombreCoro(nombre);
     }
 
+    @Transactional
+    public List<Coro> getListaPendiente() {
+       this.log.info(" -- Obteniendo la lista de coros pendientes: ");
+       return this.coroDao.getListaCorosPendientes();
+    }
+
     @Autowired
     private CoroDao coroDao;
 }

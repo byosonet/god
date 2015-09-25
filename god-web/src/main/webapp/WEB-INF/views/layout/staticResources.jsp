@@ -16,6 +16,9 @@
 <!-- Select2 css -->
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/select2/select2.min.css">
 
+<!-- footable css -->
+<link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/footable/footable-0.1.css">
+
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knockout-3.2.0.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knockout.simpleGrid.3.0.js"></script>
@@ -27,6 +30,9 @@
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/bootstrap/bootstrap.min.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/bootstrap/bootstrap-dialog.js"></script>
 
+<!-- footable js -->
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/footable/footable.js"></script>
+
 <!-- knob && nouislider JS -->
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knob/knob.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/noui/nouislider.js"></script>   
@@ -36,4 +42,4 @@
 
 
 <!-- chart js -->
-<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/chart/Chart.js"></script> 
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/chart/Chart.js"></script>
