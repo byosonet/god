@@ -16,4 +16,8 @@ public interface CoroDao {
     boolean validarNombreCoro(String nombre);
     
     List<Coro> getListaCorosPendientes();
+    
+    Coro getCoroById(int idCoro);
+    void deleteCoro(Coro coro);
+    void updateCoro(Coro coro);
 }

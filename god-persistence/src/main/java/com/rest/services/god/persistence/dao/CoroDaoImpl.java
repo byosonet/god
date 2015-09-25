@@ -105,5 +105,47 @@ public class CoroDaoImpl extends HibernateDaoSupport implements CoroDao{
                 .createQuery("FROM Coro c WHERE c.activo != 2 " + "ORDER BY c.fechaAct DESC")
                 .list();
     }
- 
+
+    public Coro getCoroById(int idCoro) {
+        this.log.info(" -- Buscando por idCoro ::" + idCoro);
+        return (Coro) this
+                .getSession()
+                .createQuery("FROM Coro c WHERE c.idCoro = :idCoro")
+                .setParameter("idCoro", idCoro)
+                .uniqueResult();
+        
+    }
+
+    public void deleteCoro(Coro coro) {
+        try {
+            this.mysql.iniciarOperacion();
+            if(coro!=null){
+                this.mysql.getSesion().delete(coro);
+                this.mysql.getSesion().flush();
+                this.mysql.getTx().commit();
+            }
+        } catch (HibernateException he) {
+            this.mysql.manejarException(he);
+            throw he;
+        } finally {
+            this.mysql.getSesion().close();
+        }
+    }
+
+    public void updateCoro(Coro coro) {
+       try {
+            this.mysql.iniciarOperacion();
+            if(coro!=null){
+                this.mysql.getSesion().update(coro);
+                this.mysql.getSesion().flush();
+                this.mysql.getTx().commit();
+            }
+        } catch (HibernateException he) {
+            this.mysql.manejarException(he);
+            throw he;
+        } finally {
+            this.mysql.getSesion().close();
+        }
+    }
+
 }

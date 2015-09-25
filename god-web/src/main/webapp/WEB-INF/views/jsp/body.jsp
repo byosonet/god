@@ -534,6 +534,74 @@
                              }]
                          });
                          }
+                         
+                         
+                         //ELIMINAR CORO PENDIENTE
+                         $('a#deleteCoro').click(function(){
+                            var tr = $(this);
+                            var value = $(this).attr('href');
+                            value = value.split("#")[1];
+                            muestraMensajedeConfirmacionEliminarActualizarCoro('¿Estas seguro de eliminar este coro?',value, tr, 'eliminar');
+                        });
+                        
+                         //ACTUALIZAR CORO PENDIENTE
+                         $('a#activeCoro').click(function(){
+                            var tr = $(this);
+                            var value = $(this).attr('href');
+                            value = value.split("#")[1];
+                            muestraMensajedeConfirmacionEliminarActualizarCoro('¿Deseas activar este coro?',value, tr, 'actualizar');
+                        });
+                        
+                        function muestraMensajedeConfirmacionEliminarActualizarCoro(msjStatus, value, tr, ruta){
+                            var dialogo;
+                            if(ruta === 'eliminar'){
+                                dialogo = BootstrapDialog.TYPE_DANGER;
+                            }else{
+                                dialogo = BootstrapDialog.TYPE_SUCCESS;
+                            }
+                            
+                            BootstrapDialog.show({
+                             size: BootstrapDialog.SIZE_SMALL,
+                             title: 'Mensaje del Sistema:',
+                             closable: false,
+                             message: msjStatus,
+                             type: dialogo,
+                             cssClass: 'login-dialog',
+                             buttons: [{
+                                 icon: 'glyphicon glyphicon-remove',
+                                 label: 'CANCELAR',
+                                 cssClass: 'btn-default',
+                                 action: function(dialog) {
+                                     dialog.close();
+                                 }
+                             },{
+                                 icon: 'glyphicon glyphicon-ok',
+                                 label: 'ACEPTAR',
+                                 cssClass: 'btn-primary',
+                                 action: function(dialog) {
+                                     dialog.close();
+                                     $('input#idCoroPendiente').val(value);
+                                        $.blockUI();
+                                        $.ajax({
+                                                type: 'POST',
+                                                url:  '${contextpath}'+'/'+ruta+'/coro/pendiente',
+                                                data: $('form#eliminarActualizarCoro').serialize(),
+                                                    success: function (data) {
+                                                       $.unblockUI();
+                                                       tr.closest('tr').remove();
+                                                       $('.footable-row-detail').remove();
+                                                       muestraMsjSistemaSuccess(data.mensaje);
+                                                },
+                                                   error: function(msj){
+                                                       status = JSON.parse(msj.responseText);
+                                                       $.unblockUI();
+                                                       muestraMsjSistemaError(status.mensaje);
+                                                    }
+                                          });
+                                 }
+                             }]
+                         });
+                         }
                 }          
             );
         </script>
@@ -599,6 +667,10 @@
     
     <form id="eliminarEmail">
         <input type="hidden" id="idMailFailed" name="idMailFailed" value="">
+    </form>
+    
+    <form id="eliminarActualizarCoro">
+        <input type="hidden" id="idCoroPendiente" name="idCoroPendiente" value="">
     </form>
     
     <form id="index">

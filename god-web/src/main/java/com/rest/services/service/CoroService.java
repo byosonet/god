@@ -21,4 +21,7 @@ public interface CoroService {
     boolean validarNombreCoro(String nombre);
     
     List<Coro> getListaPendiente();
+    Coro getCoroById(int idCoro);
+    void deleteCoro(Coro coro);
+    void updateCoro(Coro coro);
 }

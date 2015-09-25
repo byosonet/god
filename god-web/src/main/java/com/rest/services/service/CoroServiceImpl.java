@@ -91,6 +91,24 @@ public class CoroServiceImpl implements CoroService{
        return this.coroDao.getListaCorosPendientes();
     }
 
+    @Transactional
+    public Coro getCoroById(int idCoro) {
+        this.log.info(" -- Obteniendo coro por id: "+idCoro);
+        return this.coroDao.getCoroById(idCoro);
+    }
+
+    @Transactional
+    public void deleteCoro(Coro coro) {
+        this.log.info(" -- Eliminar coro: "+coro.toString());
+        this.coroDao.deleteCoro(coro);
+    }
+
+    @Transactional
+    public void updateCoro(Coro coro) {
+       this.log.info(" -- Actualizar coro: "+coro.toString());
+       this.coroDao.updateCoro(coro);
+    }
+
     @Autowired
     private CoroDao coroDao;
 }

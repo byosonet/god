@@ -172,6 +172,49 @@ public class CoroController {
     return new ResponseEntity<ErrorService>(response, status);
    }
    
+   @RequestMapping(value = "/eliminar/coro/pendiente", method = RequestMethod.POST)
+    public ResponseEntity<ErrorService> eliminarCoroPendiente(HttpServletRequest request) throws IOException, Exception {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        
+        String idCoroPendiente = request.getParameter("idCoroPendiente");
+
+        ErrorService response = new ErrorService();
+        response.setCodigo("404");
+        response.setMensaje("Los datos no se pudieron eliminar.");
+        
+        Coro coro = this.coroService.getCoroById(Integer.valueOf(idCoroPendiente));
+        if(coro!=null){
+            this.coroService.deleteCoro(coro);
+            this.log.info(" -- El coro fue eliminado");
+            response.setCodigo("200");
+            response.setMensaje("Los datos del coro fueron eliminados con éxito.");
+            status = HttpStatus.OK;
+        }
+        return new ResponseEntity<ErrorService>(response, status);
+    }
+    
+    @RequestMapping(value = "/actualizar/coro/pendiente", method = RequestMethod.POST)
+    public ResponseEntity<ErrorService> actualizarCoroPendiente(HttpServletRequest request) throws IOException, Exception {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        
+        String idCoroPendiente = request.getParameter("idCoroPendiente");
+
+        ErrorService response = new ErrorService();
+        response.setCodigo("404");
+        response.setMensaje("Los datos no se pudieron eliminar.");
+        
+        Coro coro = this.coroService.getCoroById(Integer.valueOf(idCoroPendiente));
+        if(coro!=null){
+            coro.setActivo(2);
+            this.coroService.updateCoro(coro);
+            this.log.info(" -- El coro fue actualizado");
+            response.setCodigo("200");
+            response.setMensaje("El coro fue activado con éxito.");
+            status = HttpStatus.OK;
+        }
+        return new ResponseEntity<ErrorService>(response, status);
+    }
+   
    @Autowired
    private CoroService coroService;
    
