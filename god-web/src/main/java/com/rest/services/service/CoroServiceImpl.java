@@ -109,6 +109,12 @@ public class CoroServiceImpl implements CoroService{
        this.coroDao.updateCoro(coro);
     }
 
+    @Transactional
+    public Coro getByNumCoro(String numCoro) {
+        this.log.info(" -- Buscando por numCoro: "+numCoro);
+        return this.coroDao.getByNumCoro(numCoro);
+    }
+
     @Autowired
     private CoroDao coroDao;
 }

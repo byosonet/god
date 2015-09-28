@@ -20,4 +20,6 @@ public interface CoroDao {
     Coro getCoroById(int idCoro);
     void deleteCoro(Coro coro);
     void updateCoro(Coro coro);
+    
+    Coro getByNumCoro(String numCoro);
 }

@@ -2,11 +2,13 @@ package com.rest.services.controller;
 
 
 import com.rest.services.god.persistence.hbm.Coro;
+import com.rest.services.god.persistence.hbm.PropiedadSistema;
 import com.rest.services.god.persistence.hbm.TipoMovimientoEnum;
 import com.rest.services.god.persistence.hbm.Usuario;
 import com.rest.services.model.ErrorService;
 import com.rest.services.service.ChangesetService;
 import com.rest.services.service.CoroService;
+import com.rest.services.service.PropiedadSistemaService;
 import com.rest.services.service.UsuarioService;
 import com.rest.services.util.UtilService;
 import java.io.IOException;
@@ -51,7 +53,14 @@ public class CoroController {
         Coro coro = this.coroService.obtenerCoro(id);
         if(coro!=null){
             Usuario user = this.usuarioService.validaEmailSistema(userEmail);
+            PropiedadSistema ps = this.propiedadSistemaService.obtenerValorPropiedad("mail.admin");
             if(user!=null){
+                if(ps!=null){
+                    if(user.getEmail().equals(ps.getValue())){
+                        model.addAttribute("show",true);
+                    }
+                }
+                
                 this.changesetService.guardarChangeset(
                            TipoMovimientoEnum.CONSULTAR_CORO,
                            new Date(UtilService.getFechaTimeStamp().getTime()), 
@@ -214,6 +223,32 @@ public class CoroController {
         }
         return new ResponseEntity<ErrorService>(response, status);
     }
+    
+    @RequestMapping(value = "/actualizar/coro/detalle", method = RequestMethod.POST)
+    public ResponseEntity<ErrorService> actualizarCoroDetalle(HttpServletRequest request) throws IOException, Exception {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        
+        String detalleCoroActualizar = request.getParameter("detalleCoroActualizar");
+        String numIdCoroActualizar = request.getParameter("numIdCoroActualizar");
+        
+        this.log.info(" -- numIdCoroActualizar: "+numIdCoroActualizar);
+        this.log.info(" -- detalleCoroActualizar: "+detalleCoroActualizar);
+
+        ErrorService response = new ErrorService();
+        response.setCodigo("404");
+        response.setMensaje("El coro no pudo ser actualizado.");
+        
+        Coro coro = this.coroService.getByNumCoro(numIdCoroActualizar);
+        if(coro!=null){
+            coro.setDescripcion(coro.covertirStringToClob(detalleCoroActualizar));
+            this.coroService.updateCoro(coro);
+            this.log.info(" -- El coro fue actualizado.");
+            response.setCodigo("200");
+            response.setMensaje("El coro fue actualizado con éxito.");
+            status = HttpStatus.OK;
+        }
+        return new ResponseEntity<ErrorService>(response, status);
+    }
    
    @Autowired
    private CoroService coroService;
@@ -223,5 +258,8 @@ public class CoroController {
    
    @Autowired
    private UsuarioService usuarioService;
+   
+   @Autowired
+   private PropiedadSistemaService propiedadSistemaService;
     
 }

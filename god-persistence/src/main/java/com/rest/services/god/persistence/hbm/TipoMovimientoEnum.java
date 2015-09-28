@@ -16,6 +16,9 @@ public enum TipoMovimientoEnum {
     VALIDAR_USUARIO("9"),
     VALIDAR_EMAIL("10"),
     ACTUALIZAR_PERFIL("11"),
+    ACTUALIZAR_CORO("13"),
+    ELIMINAR_CORO("14"),
+    ELIMINAR_USUARIO("15"),
     ENVIO_CORREO_CONTACTO("12");
 
     private String tipo;

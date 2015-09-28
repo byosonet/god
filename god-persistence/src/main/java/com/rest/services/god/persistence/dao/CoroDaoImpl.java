@@ -148,4 +148,13 @@ public class CoroDaoImpl extends HibernateDaoSupport implements CoroDao{
         }
     }
 
+    public Coro getByNumCoro(String numCoro) {
+        this.log.info(" -- Buscando por numCoro ::" + numCoro);
+        return (Coro) this
+                .getSession()
+                .createQuery("FROM Coro c WHERE c.numCoro = :numCoro")
+                .setParameter("numCoro", numCoro)
+                .uniqueResult();
+    }
+
 }

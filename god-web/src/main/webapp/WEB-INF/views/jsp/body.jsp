@@ -291,7 +291,7 @@
                         }
                         
                         $.blockUI();
-                        var texto = $('.note-editable').text();
+                        var texto = $('.note-editable').html();
                         $('input#summernoteText').val(texto);
                         $.ajax({
                                 type: 'POST',
