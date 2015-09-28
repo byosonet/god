@@ -38,6 +38,7 @@
 
 <!-- summernote js -->
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/summernote/summernote.js"></script>
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/summernote/summernote-es-ES.js"></script>
 
 <!-- knob && nouislider JS -->
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knob/knob.js"></script>

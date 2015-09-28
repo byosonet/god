@@ -13,7 +13,8 @@
                 $('button#editarCoro').hide();
                 $('button#guardarCoro').show();
                 $('#summernote').summernote({
-                    height: 300             
+                    height: 300
+                    //lang: 'es-ES' // default: 'en-US'
                   });
           });
           
@@ -41,6 +42,7 @@
                                  label: 'OK',
                                  cssClass: 'btn-primary',
                                  action: function(dialog) {
+                                     $('#summernote').destroy();
                                      dialog.close();
                                  }
                              }]
@@ -62,6 +64,7 @@
                                  cssClass: 'btn-default',
                                  action: function(dialog) {
                                      dialog.close();
+                                     $('#summernote').destroy();
                                      $('button#guardarCoro').hide();
                                      $('button#editarCoro').show();
                                  }
@@ -74,7 +77,8 @@
                                     $('button#guardarCoro').hide();
                                     $('button#editarCoro').show();
                                     $.blockUI();
-                                    var texto = $('.note-editable').html();
+                                    //var texto = $('.note-editable').html();
+                                    var texto = $('#summernote').code();
                                     $('input#detalleCoroActualizar').val(texto);
                                     $.ajax({
                                             type: 'POST',
