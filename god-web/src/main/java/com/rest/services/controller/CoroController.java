@@ -54,9 +54,10 @@ public class CoroController {
         if(coro!=null){
             Usuario user = this.usuarioService.validaEmailSistema(userEmail);
             PropiedadSistema ps = this.propiedadSistemaService.obtenerValorPropiedad("mail.admin");
+            PropiedadSistema conectado = this.propiedadSistemaService.obtenerValorPropiedad("mail.admin.connect");
             if(user!=null){
                 if(ps!=null){
-                    if(user.getEmail().equals(ps.getValue())){
+                    if(user.getEmail().equals(ps.getValue()) && conectado.getValue().equals("TRUE")){
                         model.addAttribute("show",true);
                     }
                 }

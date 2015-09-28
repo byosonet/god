@@ -13,8 +13,8 @@
                 $('button#editarCoro').hide();
                 $('button#guardarCoro').show();
                 $('#summernote').summernote({
-                    height: 300
-                    //lang: 'es-ES' // default: 'en-US'
+                    height: 300,
+                    lang: 'es-ES' // default: 'en-US'
                   });
           });
           

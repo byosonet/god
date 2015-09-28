@@ -11,7 +11,8 @@
                 
                 $('#listaCoroPendiente').footable();
                 $('#summernote').summernote({
-                    height: 250             
+                    height: 300,
+                    lang: 'es-ES' // default: 'en-US'
                   });
                 
                 //GRAFICANDO CONSULTA DE COROS

@@ -28,7 +28,7 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-sm-12" for="desc" style="text-align: left;">Pega el contenido del coro aquí:</label>
+                <label class="control-label col-sm-12" for="desc" style="text-align: left;">Descripci&oacute;n del Coro:</label>
             </div>
             
             <div class="form-group">
