@@ -205,7 +205,8 @@
     </dependencies>
 
         <build>
-            <finalName>${project.artifactId}##${project.version}</finalName>
+            <!--<finalName>${project.artifactId}##${project.version}</finalName>-->
+            <finalName>ROOT</finalName>
             <plugins>
                     <plugin>
                         <artifactId>maven-war-plugin</artifactId>

@@ -113,7 +113,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/god-web/" style="color:white;">Himnario Presbiteriano</a>
+            <a class="navbar-brand" href="/" style="color:white;">Himnario Presbiteriano</a>
           </div>
           <div style="height: 1px;" aria-expanded="false" class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">

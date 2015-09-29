@@ -4,6 +4,6 @@
   <h3><strong style="color: red">Mensaje del sistema:</strong> <br>Sitio no disponible por el momento.</h3>
 </div>
 <div style="text-align: center">
-  <img src="/god-web/static/resources/img/503.png" alt="">
+  <img src="/static/resources/img/503.png" alt="">
 </div>
 </html>

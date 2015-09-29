@@ -135,7 +135,7 @@
                      action: function(dialog) {
                          dialog.close();
                         $.blockUI();
-                        var urlAction = '${contextpath}';
+                        var urlAction = '/';
                         document.getElementById('index').action = urlAction;
                         document.getElementById('index').method = 'GET';
                         document.getElementById('index').submit();
