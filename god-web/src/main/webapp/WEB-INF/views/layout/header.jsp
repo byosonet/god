@@ -12,12 +12,15 @@
     </div>
     <div style="height: 1px;" aria-expanded="false" class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-user" style="color: white"> Perfil</span></a></li>
-        <li><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-edit" style="color: white"> Registrar</span></a></li>
-        <li><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-search" style="color: white"> Consultar</span></a></li>
-        <li><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-envelope" style="color: white"> Contacto</span></a></li>
+        
+        <c:if test="${menu}">
+            <li><a id="perfil" href="#" class="btn btn-primary"><span class="glyphicon glyphicon-user" style="color: white"> Perfil</span></a></li>
+            <li><a id="registrar" href="#" class="btn btn-primary"><span class="glyphicon glyphicon-pencil" style="color: white"> Registrar</span></a></li>
+            <li><a id="consultar" href="#" class="btn btn-primary"><span class="glyphicon glyphicon-search" style="color: white"> Consultar</span></a></li>
+            <li><a id="contacto" href="#" class="btn btn-primary"><span class="glyphicon glyphicon-envelope" style="color: white"> Contacto</span></a></li>
+        </c:if>
         <li class="dropdown">
-          <a style="color:white;" aria-expanded="true" aria-haspopup="true" role="button" data-toggle="dropdown" class="navbar-brand dropdown-toggle" href="#">Menú </a>
+          <a style="color:white;" aria-expanded="true" aria-haspopup="true" role="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" href="#"><span class="glyphicon glyphicon-arrow-down" style="color: white"> Opciones</span></a>
 
         <ul class="dropdown-menu">
                 <c:choose>
@@ -30,7 +33,7 @@
                             <li><a href="#" id="contacto"><span class="glyphicon glyphicon-envelope"></span> Contacto</a></li>
                         </c:when>
                         <c:when test="${menu eq 'smenu'}">
-                            <li><a href="/" id="exit">Regresar <span class="glyphicon glyphicon-arrow-right"></span></a></li>
+                            <li><a href="/" id="exit">Regresar <span class="glyphicon glyphicon-arrow-left"></span></a></li>
                         </c:when>
                         <c:otherwise>
                            <li><a href="#" id="exit">Salir <span class="glyphicon glyphicon-arrow-right"></span></a></li>

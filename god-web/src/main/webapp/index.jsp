@@ -118,7 +118,7 @@
           <div style="height: 1px;" aria-expanded="false" class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                  <a style="color:white;" aria-expanded="true" aria-haspopup="true" role="button" data-toggle="dropdown" class="navbar-brand dropdown-toggle" href="#">Menú </a>
+                  <a style="color:white;" aria-expanded="true" aria-haspopup="true" role="button" data-toggle="dropdown" class="navbar-brand dropdown-toggle" href="#"></a>
                 </li>
               </ul>
           </div>
@@ -166,8 +166,8 @@
 
   <nav class="navbar navbar-inverse navbar-fixed-bottom">
           <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="https://www.linkedin.com/pub/gustavo-ulises-trejo-armenta/94/aa6/262" style="font-size: 0.75em;color:white;">by Ulysses M@c</a>
+            <div class="navbar-header navbar-right">
+              <a class="navbar-brand" href="https://www.linkedin.com/pub/gustavo-ulises-trejo-armenta/94/aa6/262" style="font-size: 1em;color:white;">by Ulysses M@c</a>
             </div>
           </div>
 </nav>

@@ -616,44 +616,6 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1 main">
-          <center><h4 class="page-header" style="text-align: center;">Hola, <c:out value="${usuario}"/></h4></center>
-          <div style="text-align:center"><a href="#" class="glyphicon glyphicon-th-large" style="font-size: 2.5em;" id="menuSpan"></a></div>
-          <br>
-          <div class="row placeholders" id="menuPrincipal">
-            <div class="col-xs-3 col-sm-1">
-                <a id="perfil" href="#"><img src="${contextpath}/static/resources/img/user.png" data-src="holder.js/50x50/auto/sky" class="img-responsive"></a>
-              <h5>Perfil</h5>
-              
-            </div>
-            <div class="col-xs-3 col-sm-1">
-              <a id="registrar" href="#"><img src="${contextpath}/static/resources/img/add.png" data-src="holder.js/50x50/auto/vine" class="img-responsive"></a>
-            <h5>Registrar</h5>
-              
-            </div>
-            <div class="col-xs-3 col-sm-1">
-                <a id="consultar" href="#"><img src="${contextpath}/static/resources/img/consultar.png" data-src="holder.js/50x50/auto/sky" class="img-responsive"></a>
-              <h5>Consultar</h5>
-              
-            </div>
-            
-            <div class="col-xs-3 col-sm-1">
-                <a id="contacto" href="#"><img src="${contextpath}/static/resources/img/mail.png" data-src="holder.js/50x50/auto/vine" class="img-responsive"></a>
-              <h5>Contacto</h5>
-              
-            </div>
-              
-            <div class="col-xs-12 col-sm-8">
-                <h4>Avisos</h4>  
-                <c:choose>
-                       <c:when test="${detalle == ''}">
-                         <h5 style="text-align: center"><c:out value="${titulo}" escapeXml="false"/></h5> 
-                       </c:when>
-                       <c:otherwise>
-                         <h5 style="text-align: justify"><c:out value="${titulo}" escapeXml="false"/></h5>
-                       </c:otherwise>
-                </c:choose> 
-            </div>
-          </div>
           <div id="contactoJSP"><jsp:include page="contacto.jsp"></jsp:include></div>
           <div id="agregarCoroJSP"><jsp:include page="agregarCoro.jsp"></jsp:include></div>
           <div id="perfilJSP"><jsp:include page="perfil.jsp"></jsp:include></div>
