@@ -182,7 +182,7 @@
         </center>
         <center>
             <h4 class="page-header">
-                <c:if test="${show}">
+                <c:if test="${show && statusDescripcion}">
                     <button id="guardarCoro" style="display: none;" class="btn btn-default"><span class="glyphicon glyphicon-floppy-disk"></span> GUARDAR</button>
                     <button id="editarCoro" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> EDITAR</button>
                 </c:if>

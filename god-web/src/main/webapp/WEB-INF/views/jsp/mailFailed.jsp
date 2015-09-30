@@ -4,7 +4,7 @@
     <div class="container-fluid">
        <h4 style="text-align: center;" class="sub-header">Mails fallidos</h4>
           <div class="table-responsive">
-            <table class="table" id="listaMailFailed">
+            <table class="table table-hover" id="listaMailFailed">
               <thead>
                 <tr>
                   <th style="text-align: center" class="alert alert-dismissible">DE</th>

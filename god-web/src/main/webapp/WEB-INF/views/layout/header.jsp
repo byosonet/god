@@ -12,6 +12,10 @@
     </div>
     <div style="height: 1px;" aria-expanded="false" class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-user" style="color: white"> Perfil</span></a></li>
+        <li><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-edit" style="color: white"> Registrar</span></a></li>
+        <li><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-search" style="color: white"> Consultar</span></a></li>
+        <li><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-envelope" style="color: white"> Contacto</span></a></li>
         <li class="dropdown">
           <a style="color:white;" aria-expanded="true" aria-haspopup="true" role="button" data-toggle="dropdown" class="navbar-brand dropdown-toggle" href="#">Menú </a>
 

@@ -4,7 +4,7 @@
     <div class="container-fluid">
        <h4 style="text-align: center;" class="sub-header">Usuarios Registrados</h4>
           <div class="table-responsive">
-            <table class="table" id="listaUsuario">
+            <table class="table table-hover" id="listaUsuario">
               <thead>
                 <tr>
                   <th style="text-align: center" class="alert alert-dismissible">NOMBRE</th>

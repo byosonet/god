@@ -7,13 +7,13 @@
        <h4 style="text-align: center;" class="sub-header">Lista de Coros</h4>
 
           <div class="table-responsive">
-            <table class="table" id="listaCoroCompleta">
+            <table class="table table-hover" id="listaCoroCompleta">
               <thead>
                 <tr>
                   
-                  <th style="text-align: center" class="alert alert-dismissible">#</th>
-                  <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-music"></span></th>
-                  <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-tasks"></span></th>
+                  <th style="text-align: center" class="alert alert-dismissible">N°</th>
+                  <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-music"> NOMBRE DEL CORO</span></th>
+                  <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-tasks"> ESTATUS</span></th>
                   
                 </tr>
               </thead>
@@ -53,7 +53,7 @@
     </div>
     
     <div>
-        <canvas id="canvasCoros" height="200" width="400" style="width: 400px; height: 200px;"></canvas>
+        <canvas id="canvasCoros" height="150" width="400" style="width: 400px; height: 150px;"></canvas>
     </div>
 </body>
 </html>

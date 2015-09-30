@@ -51,7 +51,7 @@
                               "sPaginationType": "full_numbers",
                               "bPaginate": true,
                               "bLengthChange" : false,
-                              "pageLength": 5,
+                              "pageLength": 10,
                               "oLanguage" : {
                                     "sProcessing":     "Procesando...",
                                     "sLengthMenu":     "Mostrar _MENU_ registros",
