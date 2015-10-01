@@ -47,7 +47,7 @@
                       var listaCoroCompleta = $('#listaCoroCompleta')
                           .dataTable(
                               {
-                              "aoColumns": [ {"bSearchable": true}, {"bSearchable": false}, {"bSearchable": false}],
+                              "aoColumns": [ {"bSearchable": true}, {"bSearchable": false},{"bSearchable": false}, {"bSearchable": false}],
                               "sPaginationType": "full_numbers",
                               "bPaginate": true,
                               "bLengthChange" : false,

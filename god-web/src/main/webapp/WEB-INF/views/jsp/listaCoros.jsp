@@ -13,6 +13,7 @@
                   
                   <th style="text-align: center" class="alert alert-dismissible">N°</th>
                   <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-music"> NOMBRE DEL CORO</span></th>
+                  <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-user"> AUTOR</span></th>
                   <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-tasks"> ESTATUS</span></th>
                   
                 </tr>
@@ -24,6 +25,7 @@
                 
                 <td style="text-align: center;width: 2%;"><a id="ref" href="${contextpath}/coro/${cifrar}/${corocomp.idCoro}">${corocomp.numCoro}</a></td>
                 <td><a id="ref" href="${contextpath}/coro/${cifrar}/${corocomp.idCoro}">${corocomp.nombre}</a></td>
+                <td><a id="ref" href="${contextpath}/coro/${cifrar}/${corocomp.idCoro}">${corocomp.autor}</a></td>
                     <c:choose>
                        <c:when test="${corocomp.activo == 2}">
                            <td style="text-align:center;">
