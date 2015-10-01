@@ -7,7 +7,15 @@ body {
   padding-top: 50px;
 }
 
+li:hover {
+     background-color: #c9302c;
+     border-color: #d43f3a;
+}
 
+th:hover {
+     background-color: #c9302c;
+     border-color: #d43f3a;
+}
 /*
  * Global add-ons
  */
