@@ -2,6 +2,7 @@
 <c:set var="contextpath" value="<%=request.getContextPath()%>"/>
 
 <link rel="shortcut icon" type="image/x-icon" href="${contextpath}/static/resources/img/inp.png"/>
+<link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/font-awesome.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/bootstrap-checkbox.css">
