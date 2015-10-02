@@ -26,11 +26,13 @@
                 <c:choose>
                         <c:when test="${menu}">
                             <li><a href="#" id="exit">Salir <span class="glyphicon glyphicon-arrow-right"></span></a></li>
+                            <!--
                             <li role="separator" class="divider"></li>
                             <li><a href="#" id="perfil"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
                             <li><a href="#" id="registrar"><span class="glyphicon glyphicon-pencil"></span> Registrar</a></li>
                             <li><a href="#" id="consultar"><span class="glyphicon glyphicon-search"></span> Consultar</a></li>
                             <li><a href="#" id="contacto"><span class="glyphicon glyphicon-envelope"></span> Contacto</a></li>
+                            -->
                         </c:when>
                         <c:when test="${menu eq 'smenu'}">
                             <li><a href="/" id="exit">Regresar <span class="glyphicon glyphicon-arrow-left"></span></a></li>
