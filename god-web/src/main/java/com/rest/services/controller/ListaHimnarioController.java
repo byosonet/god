@@ -41,10 +41,7 @@ public class ListaHimnarioController {
        Usuario user = this.usuarioService.validaUsuario(email, encriptarPassword);
        
        if(user!=null){
-            this.changesetService.guardarChangeset(
-                TipoMovimientoEnum.CONSULTAR_HIMNARIO,
-                new Date(UtilService.getFechaTimeStamp().getTime()), 
-                user.getIdUsuario(), null);
+           this.guardarChangeset(TipoMovimientoEnum.CONSULTAR_HIMNARIO.getTipo(), user);
             
             //RECUPERANDO INFORMACION DE CONSULTA DE COROS
              int rows=0;
@@ -140,6 +137,18 @@ public class ListaHimnarioController {
    public String ingresarGET(Model model, HttpServletRequest request) {
       return "forbidden";
    }
+   
+  private void guardarChangeset(String movement, Usuario user){
+        for(TipoMovimientoEnum tipos: TipoMovimientoEnum.values()){
+            if(tipos.getTipo().equals(movement)){
+                this.changesetService.guardarChangeset(
+                tipos.name(),
+                new Date(UtilService.getFechaTimeStamp().getTime()), 
+                user.getIdUsuario(), null);
+                break;
+            }
+        }
+    }
    
    @Autowired
    private CoroService coroService;

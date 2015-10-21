@@ -18,13 +18,14 @@ public class ChangesetServiceImpl implements ChangesetService{
     private final Logger log = Logger.getLogger(ChangesetServiceImpl.class);
     
     @Transactional
-    public void guardarChangeset(TipoMovimientoEnum tipo, Date date, int idUsuario, String idCoro) {
+    public void guardarChangeset(String tipo, Date date, int idUsuario, String idCoro) {
+        this.log.info(" -- ValorTipo: "+tipo);
         try {
               Changeset changeset = new Changeset();
               changeset.setFechaMov(date);
               changeset.setIdCoro(idCoro!=null?idCoro:"NA");
               changeset.setIdUsuario(String.valueOf(idUsuario));
-              changeset.setMovement(tipo.name().replace("_", " "));
+              changeset.setMovement(tipo.replace("_", " "));
 
             this.log.info(" -- Service Guardando Changeset en BD: "+changeset.toString());
             this.changesetDao.guardarChangeset(changeset);

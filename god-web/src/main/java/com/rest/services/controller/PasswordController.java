@@ -45,10 +45,7 @@ public class PasswordController {
         ErrorService response = new ErrorService();
         Usuario user = this.usuarioService.validaEmailSistema(email);
         if(user!=null){
-            this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.RECUPERAR_TU_PASSWORD,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      user.getIdUsuario(), null);
+            this.guardarChangeset(TipoMovimientoEnum.RECUPERAR_TU_PASSWORD.getTipo(), user);
             
             this.log.info(" -- Enviar email de password a usuario: "+user.getNombre());
             response.setCodigo("202");
@@ -72,6 +69,18 @@ public class PasswordController {
             response.setMensaje("Este email "+email+" no ha sido registrado en el sistema.");
         }
         return new ResponseEntity<ErrorService>(response,status);
+    }
+    
+    private void guardarChangeset(String movement, Usuario user){
+        for(TipoMovimientoEnum tipos: TipoMovimientoEnum.values()){
+            if(tipos.getTipo().equals(movement)){
+                this.changesetService.guardarChangeset(
+                tipos.name(),
+                new Date(UtilService.getFechaTimeStamp().getTime()), 
+                user.getIdUsuario(), null);
+                break;
+            }
+        }
     }
     
     @Autowired

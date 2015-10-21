@@ -11,7 +11,7 @@ import java.util.List;
  * @author User
  */
 public interface ChangesetService {
-    void guardarChangeset(TipoMovimientoEnum tipo, Date date, int idUsuario, String idCoro);
+    void guardarChangeset(String tipo, Date date, int idUsuario, String idCoro);
     List<Changeset> listaChangeset (String idUser);
     int totalMovement(TipoMovimientoEnum tipo, String idUser);
     List<ConsultaCoro> getListaCoros(int days);

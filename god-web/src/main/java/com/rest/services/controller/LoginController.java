@@ -77,10 +77,7 @@ public class LoginController {
           if(usuario!=null){
               this.log.info(" -- Ingresando al sistema como: "+usuario.getNombre());
               
-              this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.ACCESO_AL_SISTEMA,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      usuario.getIdUsuario(), null);
+              this.guardarChangeset(TipoMovimientoEnum.ACCESO_AL_SISTEMA.getTipo(), usuario);
               
               try {
                   List<Coro> corosActualizados = this.coroService.obtenerListaCoroActualizada();
@@ -141,10 +138,7 @@ public class LoginController {
                             model.addAttribute("changesetUser", listCh);
                         } 
                   }
-                  this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.CONSULTAR_HIMNARIO,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      usuario.getIdUsuario(), null);
+                  this.guardarChangeset(TipoMovimientoEnum.CONSULTAR_HIMNARIO.getTipo(), usuario);
                   
                   //DEVOLVIENDO LISTA DE USUARIOS
                   String mailAdmin = this.propiedadSistemaService.obtenerValorPropiedad("mail.admin").getValue();
@@ -228,10 +222,7 @@ public class LoginController {
           }
           
           if(usuario!=null){
-              this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.VALIDAR_USUARIO,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      usuario.getIdUsuario(), null);
+              this.guardarChangeset(TipoMovimientoEnum.VALIDAR_USUARIO.getTipo(), usuario);
               
               this.log.info(" -- Usuario correcto");
               ErrorService data = new ErrorService();
@@ -349,10 +340,7 @@ public class LoginController {
             int id = this.usuarioService.agregaUsuarioNuevo(usuario);
             this.log.info(" -- El usuario se agrego correctamente con el id: "+id);
             
-            this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.REGISTRO_DE_USUARIO,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      id, null);
+           this.guardarChangeset(TipoMovimientoEnum.VALIDAR_USUARIO.getTipo(), user);
            try {
                this.emailSendService.sendEmailRegister(usuario.getEmail(), "gtrejo.armenta@gmail.com", usuario.getNombre(), null);
                this.log.info(" -- Enviado");
@@ -392,10 +380,7 @@ public class LoginController {
         Usuario user = this.usuarioService.validaEmailSistema(email);
         if(user!=null){
             
-            this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.VALIDAR_EMAIL,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      user.getIdUsuario(), null);
+           this.guardarChangeset(TipoMovimientoEnum.VALIDAR_EMAIL.getTipo(), user);
             
             this.log.info(" -- Usuario encontrado: "+user.getEmail());
             response.setMensaje(user.getNombre());
@@ -440,10 +425,7 @@ public class LoginController {
             if(!UtilService.Desencriptar(user.getPassword()).equals(passwordUsuario))
                 return new ResponseEntity<ErrorService>(response, status);
             
-            this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.ACTUALIZAR_PERFIL,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      user.getIdUsuario(), null);
+            this.guardarChangeset(TipoMovimientoEnum.ACTUALIZAR_PERFIL.getTipo(), user);
             
             this.log.info(" -- Usuario encontrado: "+user.toString());
             String encriptarPassword = UtilService.Encriptar(passwordUsuario);
@@ -487,10 +469,7 @@ public class LoginController {
            if(this.propiedadSistemaService.obtenerValorPropiedad("mail.admin").getValue().equals(user.getEmail())){
                this.propiedadSistemaService.guardarPropiedad("mail.admin.connect","FALSE");
            }
-           this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.SALIR_DEL_SISTEMA,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      user.getIdUsuario(), null);
+           this.guardarChangeset(TipoMovimientoEnum.SALIR_DEL_SISTEMA.getTipo(), user);
        }
        ErrorService response = new ErrorService();
        response.setCodigo("200");
@@ -511,10 +490,7 @@ public class LoginController {
         
         Usuario user = this.usuarioService.byIdUser(Integer.valueOf(id));
         if(user!=null){
-            this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.ELIMINAR_USUARIO,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      user.getIdUsuario(), null);
+            this.guardarChangeset(TipoMovimientoEnum.ELIMINAR_USUARIO.getTipo(), user);
             this.usuarioService.deleteUser(user);
             this.log.info(" -- El usuario fue eliminado");
             response.setCodigo("200");
@@ -537,10 +513,8 @@ public class LoginController {
         
         DeliveryFailed df = this.deliveryFailedService.getById(Integer.valueOf(idMailFailed));
         if(df!=null){
-             this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.ELIMINAR_MAILS_FALLIDOS,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      this.usuarioService.validaEmailSistema(mailUser).getIdUsuario(), null);
+             this.guardarChangeset(TipoMovimientoEnum.ELIMINAR_MAILS_FALLIDOS.getTipo(), 
+                     this.usuarioService.validaEmailSistema(mailUser));
             this.deliveryFailedService.deleteDeliveryDailed(df);
             this.log.info(" -- El mailFailed fue eliminado");
             response.setCodigo("200");
@@ -548,6 +522,18 @@ public class LoginController {
             status = HttpStatus.OK;
         }
         return new ResponseEntity<ErrorService>(response, status);
+    }
+    
+    private void guardarChangeset(String movement, Usuario user){
+        for(TipoMovimientoEnum tipos: TipoMovimientoEnum.values()){
+            if(tipos.getTipo().equals(movement)){
+                this.changesetService.guardarChangeset(
+                tipos.name(),
+                new Date(UtilService.getFechaTimeStamp().getTime()), 
+                user.getIdUsuario(), null);
+                break;
+            }
+        }
     }
     
     @Autowired

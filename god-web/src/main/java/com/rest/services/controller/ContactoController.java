@@ -37,10 +37,7 @@ public class ContactoController {
        String userEmail = data[0];
        Usuario user = this.usuarioService.validaEmailSistema(userEmail);
        if(user!=null){
-           this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.ENVIO_CORREO_CONTACTO,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      user.getIdUsuario(), null);
+           this.guardarChangeset(TipoMovimientoEnum.ENVIO_CORREO_CONTACTO.getTipo(), user);
        }
 
        String asunto = request.getParameter("asunto");
@@ -68,6 +65,19 @@ public class ContactoController {
        
       return new ResponseEntity<ErrorService>(response, status);
    }
+   
+   private void guardarChangeset(String movement, Usuario user){
+        for(TipoMovimientoEnum tipos: TipoMovimientoEnum.values()){
+            if(tipos.getTipo().equals(movement)){
+                this.changesetService.guardarChangeset(
+                tipos.name(),
+                new Date(UtilService.getFechaTimeStamp().getTime()), 
+                user.getIdUsuario(), null);
+                break;
+            }
+        }
+    }
+   
    
    @Autowired
    EmailSendService emailSendService;

@@ -61,11 +61,7 @@ public class CoroController {
                         model.addAttribute("show",true);
                     }
                 }
-                
-                this.changesetService.guardarChangeset(
-                           TipoMovimientoEnum.CONSULTAR_CORO,
-                           new Date(UtilService.getFechaTimeStamp().getTime()), 
-                           user.getIdUsuario(), String.valueOf(coro.getNumCoro()));
+                this.guardarChangeset(TipoMovimientoEnum.CONSULTAR_CORO.getTipo(), user, coro);
             }
             if(String.valueOf(coro.getIdCoro()).equals(id)){
                 model.addAttribute("idCoro", id);
@@ -164,10 +160,7 @@ public class CoroController {
                response.setMensaje("El coro ha sido agregado exitosamente al sistema.");
                status = HttpStatus.OK;
                if(user!=null){
-                    this.changesetService.guardarChangeset(
-                        TipoMovimientoEnum.REGISTRO_DE_CORO,
-                        new Date(UtilService.getFechaTimeStamp().getTime()), 
-                        user.getIdUsuario(), String.valueOf(coro.getNumCoro()));
+                    this.guardarChangeset(TipoMovimientoEnum.REGISTRO_DE_CORO.getTipo(), user, coro);
                 }
            } catch (Exception ex) {
                this.log.error(" -- No se pudo agregar el coro al sistema: " + ex.getMessage());
@@ -196,12 +189,8 @@ public class CoroController {
         
         Coro coro = this.coroService.getCoroById(Integer.valueOf(idCoroPendiente));
         if(coro!=null){
-            this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.ELIMINAR_CORO_PENDIENTE,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      this.usuarioService.validaEmailSistema(mailUser).getIdUsuario(), null);
-            
-            
+            this.guardarChangeset(TipoMovimientoEnum.ELIMINAR_CORO_PENDIENTE.getTipo(), 
+                    this.usuarioService.validaEmailSistema(mailUser), coro);
             this.coroService.deleteCoro(coro);
             this.log.info(" -- El coro fue eliminado");
             response.setCodigo("200");
@@ -225,10 +214,8 @@ public class CoroController {
         
         Coro coro = this.coroService.getCoroById(Integer.valueOf(idCoroPendiente));
         if(coro!=null){
-            this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.ACTIVAR_CORO_PENDIENTE,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      this.usuarioService.validaEmailSistema(mailUser).getIdUsuario(), null);
+            this.guardarChangeset(TipoMovimientoEnum.ACTIVAR_CORO_PENDIENTE.getTipo(), 
+                    this.usuarioService.validaEmailSistema(mailUser), coro);
             coro.setActivo(2);
             this.coroService.updateCoro(coro);
             this.log.info(" -- El coro fue actualizado");
@@ -263,10 +250,8 @@ public class CoroController {
         
         Coro coro = this.coroService.getByNumCoro(numIdCoroActualizar);
         if(coro!=null){
-            this.changesetService.guardarChangeset(
-                      TipoMovimientoEnum.ACTUALIZAR_CORO,
-                      new Date(UtilService.getFechaTimeStamp().getTime()), 
-                      this.usuarioService.validaEmailSistema(mail).getIdUsuario(), null);
+            this.guardarChangeset(TipoMovimientoEnum.ACTUALIZAR_CORO.getTipo(), 
+                    this.usuarioService.validaEmailSistema(mail), coro);
             coro.setDescripcion(coro.covertirStringToClob(detalleCoroActualizar));
             this.coroService.updateCoro(coro);
             this.log.info(" -- El coro fue actualizado.");
@@ -275,6 +260,18 @@ public class CoroController {
             status = HttpStatus.OK;
         }
         return new ResponseEntity<ErrorService>(response, status);
+    }
+
+   private void guardarChangeset(String movement, Usuario user, Coro coro){
+        for(TipoMovimientoEnum tipos: TipoMovimientoEnum.values()){
+            if(tipos.getTipo().equals(movement)){
+                this.changesetService.guardarChangeset(
+                tipos.name(),
+                new Date(UtilService.getFechaTimeStamp().getTime()), 
+                user.getIdUsuario(), String.valueOf(coro.getNumCoro()));
+                break;
+            }
+        }
     }
    
    @Autowired
