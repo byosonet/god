@@ -19,7 +19,7 @@ public class CoroServiceImpl implements CoroService{
        this.log.info(" -- Obteniendo Lista de Coros por fechas:::");
        
        List<Coro> coros = this.coroDao.obtenerListaCoroActualizada();
-       if(coros!=null && coros.size()>0){
+       /*if(coros!=null && coros.size()>0){
            for(Coro c : coros){
                try {
                    this.log.info(" -- idCoro: "+c.getIdCoro()+" Nombre: "+c.getNombre());
@@ -27,7 +27,7 @@ public class CoroServiceImpl implements CoroService{
                    ex.printStackTrace();
                }
            }
-       }
+       }*/
        return coros;
     }
 
@@ -36,7 +36,7 @@ public class CoroServiceImpl implements CoroService{
        this.log.info(" -- Obteniendo Lista de Coros completa :::");
        
        List<Coro> coros = this.coroDao.obtenerListacCompletaCoro();
-       if(coros!=null && coros.size()>0){
+       /*if(coros!=null && coros.size()>0){
            for(Coro c : coros){
                try {
                    this.log.info(" -- idCoro: "+c.getIdCoro()+" Nombre del Coro: "+c.getNombre());
@@ -44,7 +44,7 @@ public class CoroServiceImpl implements CoroService{
                    ex.printStackTrace();
                }
            }
-       }
+       }*/
        return coros;
     }
     

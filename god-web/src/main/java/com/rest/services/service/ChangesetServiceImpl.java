@@ -37,11 +37,11 @@ public class ChangesetServiceImpl implements ChangesetService{
     public List<Changeset> listaChangeset(String idUser) {
         this.log.info(" -- Obteniendo lista de Changeset de Usuario: "+idUser);
         List<Changeset> list = this.changesetDao.getChangesetUser(idUser);
-        if(list != null){
+        /*if(list != null){
             for(Changeset ch: list){
                 this.log.info(" -- idCh: "+ ch.getIdChangeset()+" Tipo Movimiento: "+ch.getMovement()+" Fecha: "+ch.getFechaMov());
             }
-        }
+        }*/
         return list;
     }
 
