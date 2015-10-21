@@ -511,6 +511,10 @@ public class LoginController {
         
         Usuario user = this.usuarioService.byIdUser(Integer.valueOf(id));
         if(user!=null){
+            this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.ELIMINAR_USUARIO,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      user.getIdUsuario(), null);
             this.usuarioService.deleteUser(user);
             this.log.info(" -- El usuario fue eliminado");
             response.setCodigo("200");
@@ -525,6 +529,7 @@ public class LoginController {
         HttpStatus status = HttpStatus.NOT_FOUND;
         
         String idMailFailed = request.getParameter("idMailFailed");
+        String mailUser = request.getParameter("idMailUsuarioTemp");
 
         ErrorService response = new ErrorService();
         response.setCodigo("404");
@@ -532,6 +537,10 @@ public class LoginController {
         
         DeliveryFailed df = this.deliveryFailedService.getById(Integer.valueOf(idMailFailed));
         if(df!=null){
+             this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.ELIMINAR_MAILS_FALLIDOS,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      this.usuarioService.validaEmailSistema(mailUser).getIdUsuario(), null);
             this.deliveryFailedService.deleteDeliveryDailed(df);
             this.log.info(" -- El mailFailed fue eliminado");
             response.setCodigo("200");

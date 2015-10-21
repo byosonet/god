@@ -635,10 +635,13 @@
     
     <form id="eliminarEmail">
         <input type="hidden" id="idMailFailed" name="idMailFailed" value="">
+        <input type="hidden" id="idMailUsuarioTemp" name="idMailUsuarioTemp" value="${emailUsuario}">
     </form>
     
     <form id="eliminarActualizarCoro">
         <input type="hidden" id="idCoroPendiente" name="idCoroPendiente" value="">
+        <input type="hidden" id="idMailUsuario" name="idMailUsuario" value="${emailUsuario}">
+        
     </form>
     
     <form id="index">

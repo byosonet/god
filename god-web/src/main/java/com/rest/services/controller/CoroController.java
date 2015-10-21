@@ -187,6 +187,8 @@ public class CoroController {
         HttpStatus status = HttpStatus.NOT_FOUND;
         
         String idCoroPendiente = request.getParameter("idCoroPendiente");
+        String mailUser = request.getParameter("idMailUsuario");
+        this.log.info(" -- Request de mail usuario: "+mailUser);
 
         ErrorService response = new ErrorService();
         response.setCodigo("404");
@@ -194,6 +196,12 @@ public class CoroController {
         
         Coro coro = this.coroService.getCoroById(Integer.valueOf(idCoroPendiente));
         if(coro!=null){
+            this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.ELIMINAR_CORO_PENDIENTE,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      this.usuarioService.validaEmailSistema(mailUser).getIdUsuario(), null);
+            
+            
             this.coroService.deleteCoro(coro);
             this.log.info(" -- El coro fue eliminado");
             response.setCodigo("200");
@@ -208,6 +216,8 @@ public class CoroController {
         HttpStatus status = HttpStatus.NOT_FOUND;
         
         String idCoroPendiente = request.getParameter("idCoroPendiente");
+        String mailUser = request.getParameter("idMailUsuario");
+        this.log.info(" -- Request de mail usuario: "+mailUser);
 
         ErrorService response = new ErrorService();
         response.setCodigo("404");
@@ -215,6 +225,10 @@ public class CoroController {
         
         Coro coro = this.coroService.getCoroById(Integer.valueOf(idCoroPendiente));
         if(coro!=null){
+            this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.ACTIVAR_CORO_PENDIENTE,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      this.usuarioService.validaEmailSistema(mailUser).getIdUsuario(), null);
             coro.setActivo(2);
             this.coroService.updateCoro(coro);
             this.log.info(" -- El coro fue actualizado");
@@ -231,6 +245,14 @@ public class CoroController {
         
         String detalleCoroActualizar = request.getParameter("detalleCoroActualizar");
         String numIdCoroActualizar = request.getParameter("numIdCoroActualizar");
+        String res = request.getParameter("cifrarTemp");
+        String mail = "";
+        if(res!=null){
+          this.log.info(" -- El cifrado es enviado: "+res);
+          String descifrar = UtilService.Desencriptar(res);
+          String[] dataEnviada = descifrar.split(";");
+          mail = dataEnviada[0];     
+      }
         
         this.log.info(" -- numIdCoroActualizar: "+numIdCoroActualizar);
         this.log.info(" -- detalleCoroActualizar: "+detalleCoroActualizar);
@@ -241,6 +263,10 @@ public class CoroController {
         
         Coro coro = this.coroService.getByNumCoro(numIdCoroActualizar);
         if(coro!=null){
+            this.changesetService.guardarChangeset(
+                      TipoMovimientoEnum.ACTUALIZAR_CORO,
+                      new Date(UtilService.getFechaTimeStamp().getTime()), 
+                      this.usuarioService.validaEmailSistema(mail).getIdUsuario(), null);
             coro.setDescripcion(coro.covertirStringToClob(detalleCoroActualizar));
             this.coroService.updateCoro(coro);
             this.log.info(" -- El coro fue actualizado.");

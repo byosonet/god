@@ -19,7 +19,10 @@ public enum TipoMovimientoEnum {
     ACTUALIZAR_CORO("13"),
     ELIMINAR_CORO("14"),
     ELIMINAR_USUARIO("15"),
-    ENVIO_CORREO_CONTACTO("12");
+    ENVIO_CORREO_CONTACTO("12"),
+    ELIMINAR_CORO_PENDIENTE("16"),
+    ACTIVAR_CORO_PENDIENTE("17"),
+    ELIMINAR_MAILS_FALLIDOS("18");
 
     private String tipo;
 

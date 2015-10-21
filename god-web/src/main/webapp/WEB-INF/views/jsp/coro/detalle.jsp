@@ -200,6 +200,7 @@
     <form id="actualizarCoro">
         <input type="hidden" id="detalleCoroActualizar" name="detalleCoroActualizar" value="">
         <input type="hidden" id="numCoroActualizar" name="numIdCoroActualizar" value="${numCoro}">
+        <input type="hidden" id="cifrarTemp" name="cifrarTemp" value="${cifrar}">
     </form>
     </body>
 </html>
