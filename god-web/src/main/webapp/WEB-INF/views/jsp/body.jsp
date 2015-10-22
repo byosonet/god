@@ -10,6 +10,8 @@
             $(document).ready(function() {
                 
                 $('#listaCoroPendiente').footable();
+                $('#listaMailFailed').footable();
+                
                 $('#summernote').summernote({
                     height: 300,
                     lang: 'es-ES' // default: 'en-US'
@@ -139,38 +141,7 @@
                                         "sPrevious": ""
                                     }
                               }
-                              });
-                              
-                    var listaMailFailed = $('#listaMailFailed')
-                          .dataTable(
-                              {
-                              "aoColumns": [ {"bSearchable": true}, {"bSearchable": false}, {"bSearchable": false},{"bSearchable": false},{"bSearchable": false},{"bSearchable": false}],
-                              "sPaginationType": "full_numbers",
-                              "bPaginate": false,
-                              "bLengthChange" : false,
-                              "pageLength": 10,
-                              "bSort" : false,
-                              "oLanguage" : {
-                                    "sProcessing":     "Procesando...",
-                                    "sLengthMenu":     "Mostrar _MENU_ registros",
-                                    "sZeroRecords":    "No se encontraron resultados",
-                                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                                    "sInfo":           "",
-                                    "sInfoEmpty":      "",
-                                    "sInfoFiltered":   "",
-                                    "sInfoPostFix":    "",
-                                    "sSearch":         "<span class='glyphicon glyphicon-search'></span>",
-                                    "sUrl":            "",
-                                    "sInfoThousands":  ",",
-                                    "sLoadingRecords": "Cargando...",
-                                    "oPaginate": {
-                                        "sFirst":    "",
-                                        "sLast":     "",
-                                        "sNext":     "",
-                                        "sPrevious": ""
-                                    }
-                              }
-                              });          
+                              });       
                            
                               
                                                           
@@ -528,6 +499,7 @@
                                                     success: function (data) {
                                                        $.unblockUI();
                                                        tr.closest('tr').remove();
+                                                       $('.footable-row-detail').remove();
                                                        muestraMsjSistemaSuccess(data.mensaje);
                                                 },
                                                    error: function(msj){
@@ -608,6 +580,7 @@
                              }]
                          });
                          }
+                         
                 }          
             );
         </script>
@@ -616,11 +589,12 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1 main">
+          <div id="contenidoDinamico"><jsp:include page="listaCoros.jsp"></jsp:include></div>
           <div id="contactoJSP"><jsp:include page="contacto.jsp"></jsp:include></div>
           <div id="agregarCoroJSP"><jsp:include page="agregarCoro.jsp"></jsp:include></div>
           <div id="perfilJSP"><jsp:include page="perfil.jsp"></jsp:include></div>
           <div id="avisoJSP"><jsp:include page="aviso.jsp"></jsp:include></div>
-          <div id="contenidoDinamico"><jsp:include page="listaCoros.jsp"></jsp:include></div>
+          
         </div>
       </div>
     </div>

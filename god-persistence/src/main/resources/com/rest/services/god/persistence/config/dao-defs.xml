@@ -28,5 +28,9 @@
      <bean id="deliveryFailedDao"
         class="com.rest.services.god.persistence.dao.DeliveryFailedDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
+     
+     <bean id="mailTemplateDao"
+        class="com.rest.services.god.persistence.dao.MailTemplateDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
 
 </beans>

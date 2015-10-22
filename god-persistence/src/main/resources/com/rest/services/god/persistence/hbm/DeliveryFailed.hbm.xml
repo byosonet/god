@@ -25,8 +25,8 @@
             <column name="NAME" length="255"/>
         </property>
         
-        <property name="body" type="string">
-            <column name="BODY" length="500"/>
+        <property name="body" type="clob">
+            <column name="BODY"/>
         </property>
         
         <property name="typeFailed" type="string">

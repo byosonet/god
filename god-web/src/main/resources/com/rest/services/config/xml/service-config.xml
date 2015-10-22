@@ -21,6 +21,9 @@
     <bean id="coroService" 
           class="com.rest.services.service.CoroServiceImpl"/>
     
+    <bean id="mailTemplateService" 
+          class="com.rest.services.service.MailTemplateServiceImpl"/>
+    
     <bean id="propiedadSistemaService" 
           class="com.rest.services.service.PropiedadSistemaServiceImpl"/>
     

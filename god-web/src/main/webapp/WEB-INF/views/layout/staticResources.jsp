@@ -51,3 +51,6 @@
 
 <!-- chart js -->
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/chart/Chart.js"></script>
+
+<!-- csi js -->
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/csi.js"></script>

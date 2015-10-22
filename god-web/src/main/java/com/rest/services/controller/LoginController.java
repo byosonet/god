@@ -146,7 +146,13 @@ public class LoginController {
                   if(mailAdmin.equals(usuario.getEmail()) && conectado.equals("TRUE")){
                       model.addAttribute("show", true);
                       model.addAttribute("listaUsuario", this.usuarioService.getListaUsuarios());
-                      model.addAttribute("listaMail", this.deliveryFailedService.getListMailFailed());
+                      
+                      List<DeliveryFailed> listTemp = new ArrayList<DeliveryFailed>();
+                      for(DeliveryFailed listDelivery: this.deliveryFailedService.getListMailFailed()){
+                          listDelivery.setDetalleClob(listDelivery.readClob(listDelivery.getBody()));
+                          listTemp.add(listDelivery);
+                      }
+                      model.addAttribute("listaMail", listTemp);
                       if(corosPendientes!=null){
                           List<Coro> temp = new ArrayList<Coro>();
                             for(Coro c: corosPendientes){
@@ -333,9 +339,12 @@ public class LoginController {
             
            this.guardarChangeset(TipoMovimientoEnum.VALIDAR_USUARIO.getTipo(), nuevo);
            try {
-               this.emailSendService.sendEmailRegister(usuario.getEmail(), "gtrejo.armenta@gmail.com", usuario.getNombre(), null);
-               this.log.info(" -- Enviado");
-               
+               try {
+                   this.emailSendService.sendEmailRegister(usuario.getEmail(), "gtrejo.armenta@gmail.com", usuario.getNombre(), null);
+                   this.log.info(" -- Enviado");
+               } catch (Exception ex) {
+                   this.log.error(" -- No se puedo enviar mail de registro: "+ex.getMessage());
+               }
                 this.log.info(" -- Usuario correcto");
                 ErrorService data = new ErrorService();
                 data.setCodigo("200");

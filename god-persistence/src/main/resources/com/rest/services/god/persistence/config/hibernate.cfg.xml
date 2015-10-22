@@ -45,5 +45,6 @@
     <mapping resource="com/rest/services/god/persistence/hbm/Property.hbm.xml"/>
     <mapping resource="com/rest/services/god/persistence/hbm/Changeset.hbm.xml"/>
     <mapping resource="com/rest/services/god/persistence/hbm/DeliveryFailed.hbm.xml"/>
+    <mapping resource="com/rest/services/god/persistence/hbm/MailTemplate.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -4,15 +4,16 @@
     <div class="container-fluid">
        <h4 style="text-align: center;" class="sub-header">Mails fallidos</h4>
           <div class="table-responsive">
-            <table class="table table-hover" id="listaMailFailed">
+            <table class="footable" id="listaMailFailed">
               <thead>
                 <tr>
-                  <th style="text-align: center" class="alert alert-dismissible">DE</th>
+                  <th data-class="expand" style="text-align: center" class="alert alert-dismissible">DE</th>
                   <th style="text-align: center" class="alert alert-dismissible">PARA</th>
                   <th style="text-align: center" class="alert alert-dismissible">QUIEN ENVIA</th>
                   <th style="text-align: center" class="alert alert-dismissible">TIPO FALLO</th>
                   <th style="text-align: center" class="alert alert-dismissible">FECHA DE ENVIO</th>
                   <th style="text-align: center" class="alert alert-dismissible">ELIMINAR</th>
+                  <th data-hide="all" style="text-align: center" class="alert alert-dismissible">CORREO</th>
                 </tr>
               </thead>
               <tbody>
@@ -27,6 +28,9 @@
                     </td>  
                     <td style="text-align: center;">
                         <a href="#${mail.idFailed}" id="deleteMailFailed" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                    <td style="text-align: justify;"><br><br>
+                        <c:out value="${mail.detalleClob}" escapeXml="true"/>
                     </td>
                 </tr>
                 </c:forEach>

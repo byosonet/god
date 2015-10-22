@@ -1,6 +1,11 @@
 package com.rest.services.god.persistence.hbm;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.sql.Clob;
+import java.sql.SQLException;
 import java.util.Date;
+import javax.sql.rowset.serial.SerialClob;
 
 /**
  *
@@ -13,16 +18,17 @@ public class DeliveryFailed implements java.io.Serializable{
     private String mailFrom;
     private String subject;
     private String name;
-    private String body;
+    private Clob body;
     private String typeFailed;
     private Date dateSend;
+    private String detalleClob;
     
     public DeliveryFailed(){
         
     }
     
     public DeliveryFailed(int idFailed, String mailTo, String mailFrom, 
-            String subject, String name, String body, String typeFailed, Date dateSend){
+            String subject, String name, Clob body, String typeFailed, Date dateSend, String detalleClob){
         
         this.idFailed = idFailed;
         this.mailTo = mailTo;
@@ -32,6 +38,7 @@ public class DeliveryFailed implements java.io.Serializable{
         this.body = body;
         this.typeFailed = typeFailed;
         this.dateSend = dateSend;
+        this.detalleClob = detalleClob;
         
     }
 
@@ -75,11 +82,11 @@ public class DeliveryFailed implements java.io.Serializable{
         this.name = name;
     }
 
-    public String getBody() {
+    public Clob getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Clob body) {
         this.body = body;
     }
 
@@ -99,9 +106,33 @@ public class DeliveryFailed implements java.io.Serializable{
         this.dateSend = dateSend;
     }
 
+    public String getDetalleClob() {
+        return detalleClob;
+    }
+
+    public void setDetalleClob(String detalleClob) {
+        this.detalleClob = detalleClob;
+    }
+    
+    public String readClob(Clob clob) throws SQLException, IOException {
+        StringBuilder sb = new StringBuilder((int) clob.length());
+        Reader r = clob.getCharacterStream();
+        char[] cbuf = new char[2048];
+        int n;
+        while ((n = r.read(cbuf, 0, cbuf.length)) != -1) {
+            sb.append(cbuf, 0, n);
+        }
+        return sb.toString();
+    }
+    
+     public Clob covertirStringToClob(String des) throws SQLException{
+        Clob myClobFile = new SerialClob(des.toCharArray());
+        return myClobFile;
+    }
+
     @Override
     public String toString() {
-        return "DeliveryFailed{" + "idFailed=" + idFailed + ", mailTo=" + mailTo + ", mailFrom=" + mailFrom + ", subject=" + subject + ", name=" + name + ", body=" + body + ", typeFailed=" + typeFailed + ", dateSend=" + dateSend + '}';
+        return "DeliveryFailed{" + "idFailed=" + idFailed + ", mailTo=" + mailTo + ", mailFrom=" + mailFrom + ", subject=" + subject + ", name=" + name + ", body=" + body + ", typeFailed=" + typeFailed + ", dateSend=" + dateSend + ", detalleClob=" + detalleClob + '}';
     }
 
 }
