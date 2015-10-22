@@ -193,34 +193,23 @@ public class LoginController {
       this.log.info(" -- Request: "+request.toString());
       this.log.info(" -- User: "+request.getParameter("user"));
       this.log.info(" -- Password: "+request.getParameter("password"));
-      this.log.info(" -- Sysadmin: "+request.getParameter("sysadmin"));
       
       if(request.getParameter("user")!=null && request.getParameter("password")!=null){
           String user = request.getParameter("user");
           String password = request.getParameter("password");
           
-          String sysadmin = request.getParameter("sysadmin")!=null?request.getParameter("sysadmin"):"";
-          
           String encriptarPassword = UtilService.Encriptar(password);
           Usuario usuario = this.usuarioService.validaUsuario(user, encriptarPassword);
           
           PropiedadSistema ps = this.propiedadSistemaService.obtenerValorPropiedad("mail.admin");
-          if(sysadmin.equals("SI")){
-              this.log.info(" -- El usuario indica que es admin: "+user);
+            this.log.info(" -- El usuario indica que es admin: "+user);
             if(ps.getValue().equals(user)){
                   this.log.info(" -- El usuario tiene privilegios admin: "+user);
                   this.propiedadSistemaService.guardarPropiedad("mail.admin.connect","TRUE");
                   this.propiedadSistemaService.guardarPropiedad("mail.admin.date", new Date().toString());
                   this.log.info(" -- Guardando informacion de propiedad: ");
-              }else{
-                  this.log.info(" -- Este usuario no tiene privilegios admin: "+user);
-                    ErrorService data = new ErrorService();
-                    data.setCodigo("404");
-                    data.setMensaje("Este usuario: "+user+" no tiene privilegios de Administrador.");
-                    return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
               }
-          }
-          
+            
           if(usuario!=null){
               this.guardarChangeset(TipoMovimientoEnum.VALIDAR_USUARIO.getTipo(), usuario);
               
