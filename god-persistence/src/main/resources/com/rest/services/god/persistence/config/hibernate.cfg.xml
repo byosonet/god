@@ -9,11 +9,15 @@
     <property name="hibernate.connection.url">jdbc:mysql://127.5.213.3:3306/goddev</property>
     <property name="hibernate.connection.username">adminSr28Vzr</property>
     <property name="hibernate.connection.password">uViMZt9ErT67</property>
-    -->
-    <!-- CONEXION A DESARROLLO LOCAL-->
+    
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/goddev</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
+    -->
+    <!-- CONEXION A DESARROLLO LOCAL-->
+    <property name="hibernate.connection.url">jdbc:mysql://127.5.213.3:3306/goddev</property>
+    <property name="hibernate.connection.username">adminSr28Vzr</property>
+    <property name="hibernate.connection.password">uViMZt9ErT67</property>
     <property name="connection.pool_size">5</property>
     <!--
     <property name="hibernate.connection.provider_class">

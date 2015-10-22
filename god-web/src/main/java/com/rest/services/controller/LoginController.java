@@ -338,9 +338,11 @@ public class LoginController {
             
 
             int id = this.usuarioService.agregaUsuarioNuevo(usuario);
+            Usuario nuevo = new Usuario();
+            nuevo.setIdUsuario(id);
             this.log.info(" -- El usuario se agrego correctamente con el id: "+id);
             
-           this.guardarChangeset(TipoMovimientoEnum.VALIDAR_USUARIO.getTipo(), user);
+           this.guardarChangeset(TipoMovimientoEnum.VALIDAR_USUARIO.getTipo(), nuevo);
            try {
                this.emailSendService.sendEmailRegister(usuario.getEmail(), "gtrejo.armenta@gmail.com", usuario.getNombre(), null);
                this.log.info(" -- Enviado");
