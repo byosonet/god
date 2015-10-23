@@ -28,5 +28,9 @@
         <definition name="notfoundCoro" extends="principal">
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/notfoundCoro.jsp"/>
 	</definition>
-             
+        
+        <definition name="detalleMailTemplateFailed" extends="principal">
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/temporal.jsp"/>
+	</definition>
+        
 </tiles-definitions>

@@ -37,6 +37,9 @@
                         <c:when test="${menu eq 'smenu'}">
                             <li><a href="/" id="exit">Regresar <span class="glyphicon glyphicon-arrow-left"></span></a></li>
                         </c:when>
+                        <c:when test="${menu eq 'detalleMenu'}">
+                            <li><a href="#" id="exit">Sin Opciones <span class="glyphicon glyphicon-remove"></span></a></li>
+                        </c:when>
                         <c:otherwise>
                            <li><a href="#" id="exit">Salir <span class="glyphicon glyphicon-arrow-right"></span></a></li>
                         </c:otherwise>

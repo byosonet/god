@@ -29,8 +29,18 @@
                     <td style="text-align: center;">
                         <a href="#${mail.idFailed}" id="deleteMailFailed" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                     </td>
-                    <td style="text-align: justify;"><br><br>
-                        <c:out value="${mail.detalleClob}" escapeXml="true"/>
+                    <td>
+                        <br>
+                        <br>
+                        <div style="text-align:center">
+                            <a href="/detalle/mail/${mail.idFailed}" class="btn btn-info" target="_blank">
+                                <span class="glyphicon glyphicon-envelope" ></span></a>
+                        </div>
+                        <br>
+                        <br>
+                        <div style="text-align: justify;">
+                            <c:out value="${mail.detalleClob}" escapeXml="true"/>
+                        </div>
                     </td>
                 </tr>
                 </c:forEach>
