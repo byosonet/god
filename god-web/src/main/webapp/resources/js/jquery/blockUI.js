@@ -112,7 +112,7 @@
 		// override these in your code to change the default behavior and style
 		$.blockUI.defaults = {
 			// message displayed when blocking (use null for no message)
-			message:  '<h5 style="text-align:center;margin-bottom:10px" class="alert alert-info"><label>Procesando/cargando... </label><img style="width: 50px" src="http://127.0.0.1:8080/static/resources/img/small-loader.gif"></h5>',
+			message:  '<h5 style="text-align:center;margin-bottom:10px" class="alert alert-info"><label>Procesando/cargando... </label><img style="width: 50px" src="http://goddev-byosonet.rhcloud.com/static/resources/img/small-loader.gif"></h5>',
 
 			title: '',		// title string; only used when theme == true
 			draggable: true,	// only used when theme == true (requires jquery-ui.js to be loaded)
