@@ -7,12 +7,18 @@ package com.rest.services.service;
 import com.rest.services.god.persistence.hbm.DeliveryFailed;
 import com.rest.services.god.persistence.hbm.MailTemplate;
 import com.rest.services.god.persistence.hbm.TipoEnvioEmail;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.StringWriter;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Map;
 import javax.mail.internet.MimeMessage;
 import org.apache.log4j.Logger;
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.Velocity;
+import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -30,6 +36,18 @@ public class EmailSendServiceImpl implements EmailSendService
     @Transactional
     public void sendEmailRegister(final String toEmail,final String bccEmail, final String user, final Map<String, File> attach) throws Exception {
         final MailTemplate mail = this.mailTemplateService.getEmail(1);
+        final StringWriter swRegistro = new StringWriter();
+
+        VelocityContext context = new VelocityContext();
+        context.put("nombre", user);
+        Velocity.evaluate(
+                context,
+                swRegistro,
+                "velocity-mail-registro",
+                new BufferedReader(mail.getMailTemplate().getCharacterStream()));
+        final String actualMessageRegistro = swRegistro.toString();
+        this.log.info(" -- Merge Template: " + actualMessageRegistro);
+
         try {
         final boolean multipart = attach != null && attach.size() > 0;
         MimeMessagePreparator preparator = new MimeMessagePreparator() {
@@ -39,7 +57,7 @@ public class EmailSendServiceImpl implements EmailSendService
                 messageHelper.setSubject(mail.getSubject());
                 messageHelper.setTo(toEmail);
                 messageHelper.setBcc(bccEmail);
-                messageHelper.setText(mail.readClob(mail.getMailTemplate()), true);
+                messageHelper.setText(actualMessageRegistro, true);
                 if (attach != null) {
                     for (Map.Entry<String, File> entry : attach.entrySet()) {
                         messageHelper.addAttachment(entry.getKey(), entry.getValue());
@@ -55,7 +73,7 @@ public class EmailSendServiceImpl implements EmailSendService
             failed.setMailFrom("godweb.mx@gmail.com");
             failed.setSubject(mail.getSubject());
             failed.setName(user);
-            failed.setBody(mail.getMailTemplate());
+            failed.setBody(failed.covertirStringToClob(actualMessageRegistro));
             failed.setTypeFailed(TipoEnvioEmail.MAIL_REGISTRO.name());
             Timestamp stamp = new Timestamp(System.currentTimeMillis());
                 this.log.info("-- Datetime::: "+stamp);
@@ -71,8 +89,20 @@ public class EmailSendServiceImpl implements EmailSendService
     }
 
     @Transactional
-    public void recuperarPassword(final String email, final String password, final String bccEmail) {
+    public void recuperarPassword(final String email, final String password, final String bccEmail) throws Exception {
         final MailTemplate mail = this.mailTemplateService.getEmail(2);
+        final StringWriter swPassword = new StringWriter();
+
+        VelocityContext context = new VelocityContext();
+        context.put("tuclave", password);
+        Velocity.evaluate(
+                context,
+                swPassword,
+                "velocity-mail-password",
+                new BufferedReader(mail.getMailTemplate().getCharacterStream()));
+        final String actualMessagePassword = swPassword.toString();
+        this.log.info(" -- Merge Template: " + actualMessagePassword);
+        
         try {
         MimeMessagePreparator preparator = new MimeMessagePreparator() {
             public void prepare(MimeMessage mimeMessage) throws Exception {
@@ -81,7 +111,7 @@ public class EmailSendServiceImpl implements EmailSendService
                 messageHelper.setSubject(mail.getSubject());
                 messageHelper.setTo(email);
                 messageHelper.setBcc(bccEmail);
-                messageHelper.setText(mail.readClob(mail.getMailTemplate()), true);
+                messageHelper.setText(actualMessagePassword, true);
             }
         };
             this.mailSender.send(preparator);
@@ -92,7 +122,7 @@ public class EmailSendServiceImpl implements EmailSendService
             failed.setMailFrom("godweb.mx@gmail.com");
             failed.setSubject(mail.getSubject());
             failed.setName(email);
-            failed.setBody(mail.getMailTemplate());
+            failed.setBody(failed.covertirStringToClob(actualMessagePassword));
             failed.setTypeFailed(TipoEnvioEmail.MAIL_PASSWORD.name());
             Timestamp stamp = new Timestamp(System.currentTimeMillis());
                 this.log.info("-- Datetime::: "+stamp);
@@ -108,8 +138,23 @@ public class EmailSendServiceImpl implements EmailSendService
     }
 
     @Transactional
-    public void contactoSistema(final String emailSistema, final String asunto, final String nombre, final String emailCliente, final String boydAsunto) {
+    public void contactoSistema(final String emailSistema, final String asunto, final String nombre, final String emailCliente, final String boydAsunto) throws Exception{
        final MailTemplate mail = this.mailTemplateService.getEmail(3);
+       final StringWriter swContacto = new StringWriter();
+
+        VelocityContext context = new VelocityContext();
+        context.put("nombre", nombre);
+        context.put("asunto", asunto);
+        context.put("emailUsuario", emailCliente);
+        context.put("body", boydAsunto);
+        Velocity.evaluate(
+                context,
+                swContacto,
+                "velocity-mail-password",
+                new BufferedReader(mail.getMailTemplate().getCharacterStream()));
+        final String actualMessageContacto = swContacto.toString();
+        this.log.info(" -- Merge Template: " + actualMessageContacto);
+        
         try {
         MimeMessagePreparator preparator = new MimeMessagePreparator() {
             public void prepare(MimeMessage mimeMessage) throws Exception {
@@ -117,7 +162,7 @@ public class EmailSendServiceImpl implements EmailSendService
                         mimeMessage, "UTF-8");
                 messageHelper.setSubject(asunto);
                 messageHelper.setTo(emailSistema);
-                messageHelper.setText(mail.readClob(mail.getMailTemplate()), true);
+                messageHelper.setText(actualMessageContacto, true);
             }
         };
             this.mailSender.send(preparator);
@@ -128,7 +173,7 @@ public class EmailSendServiceImpl implements EmailSendService
             failed.setMailFrom(emailCliente);
             failed.setSubject(asunto);
             failed.setName(nombre);
-            failed.setBody(mail.getMailTemplate());
+            failed.setBody(failed.covertirStringToClob(actualMessageContacto));
             failed.setTypeFailed(TipoEnvioEmail.MAIL_CONTACTO.name());
             Timestamp stamp = new Timestamp(System.currentTimeMillis());
                 this.log.info("-- Datetime::: "+stamp);

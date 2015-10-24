@@ -100,6 +100,12 @@
         </dependency>
         
         <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+        </dependency>
+        
+        <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.2</version>
@@ -288,7 +294,10 @@
                                 WEB-INF/lib/drools-compiler-5.4.0.Final.jar,
                                 WEB-INF/lib/antlr-runtime-3.3.jar,
                                 WEB-INF/lib/antlr-3.3.jar,
-                                WEB-INF/lib/antlr-2.7.7.jar
+                                WEB-INF/lib/antlr-2.7.7.jar,
+                                WEB-INF/lib/commons-collections-3.2.1.jar,
+                                WEB-INF/lib/commons-lang-2.4.jar,
+                                WEB-INF/lib/velocity-1.7.jar
                                 
                             </packagingExcludes>
                             
