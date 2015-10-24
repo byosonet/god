@@ -143,8 +143,8 @@ public class EmailSendServiceImpl implements EmailSendService
        final StringWriter swContacto = new StringWriter();
 
         VelocityContext context = new VelocityContext();
-        context.put("nombre", nombre);
-        context.put("asunto", asunto);
+        context.put("nombre", nombre.toUpperCase());
+        context.put("asunto", asunto.toUpperCase());
         context.put("emailUsuario", emailCliente);
         context.put("body", boydAsunto);
         Velocity.evaluate(
