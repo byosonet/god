@@ -30,7 +30,7 @@
             </init-param>
             <init-param>
                     <param-name>allowedResourcePaths</param-name>
-                    <param-value>/**/*.eot,/**/*.otf,/**/*.woff,/**/*.woff2,/**/*.jpeg,/**/*.css,/**/*.jpg,/**/*.gif,/**/*.png,/**/*.ttf,/**/*.svg,/**/*.js,/**/*.ico</param-value>
+                    <param-value>/**/*.eot,/**/*.otf,/**/*.woff,/**/*.woff2,/**/*.jpeg,/**/*.css,/**/*.jpg,/**/*.gif,/**/*.png,/**/*.ttf,/**/*.svg,/**/*.js,/**/*.ico,/**/*.apk</param-value>
             </init-param>
             <init-param>
                     <param-name>gzipEnabled</param-name>

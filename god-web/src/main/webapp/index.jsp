@@ -130,6 +130,13 @@
         <div class="col-sm-12 col-sm-offset-0 col-md-5 col-md-offset-3 main">
             <form id="ingresar" class="form-horizontal" method="POST" action="${contextpath}/ingresar">
                 <div class="form-group">
+                    <label class="control-label col-sm-3" for="nombre"></label>
+                    <div class="col-sm-9">
+                        <div style="text-align:center"><label>Descarga la aplicaci&oacute;n para tu m&oacute;vil.</label><br><img width="150px" height="150px" src="${contextpath}/static/resources/apk/QR.png">
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-sm-3" for="nombre">Email:</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="login" name="user" placeholder="Ingresa tu email">
