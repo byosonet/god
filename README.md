@@ -11,3 +11,6 @@ En fase de Final.
 
 ## Version Web 1.0
 <a href="http://goddev-byosonet.rhcloud.com/">Soló a Dios la Gloria</a>
+
+## Version App 1.0 para Android
+<a href="http://goddev-byosonet.rhcloud.com/static/resources/apk/god_v1.apk">Download Instalador APK</a>
