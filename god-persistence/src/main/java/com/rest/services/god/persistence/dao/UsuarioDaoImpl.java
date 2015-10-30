@@ -126,7 +126,13 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
                 .setParameter("idUser", idUser)
                 .uniqueResult();
     }
-    
+
+    public List<Usuario> getListaEmailNotificaciones(String notificar) {
+        return (List<Usuario>) this.getSession().createQuery
+        ("FROM Usuario u WHERE u.notificaciones = :tipo")
+                .setParameter("tipo", notificar)
+                .list();
+    }
     
     
 }

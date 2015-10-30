@@ -21,4 +21,5 @@ public interface UsuarioDao {
     void actualizarDatosUsuario(Usuario user);
     void deleteUser(Usuario usuario);
     Usuario byId(int idUser);
+    List<Usuario> getListaEmailNotificaciones(String notificar);
 }
