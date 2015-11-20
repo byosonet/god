@@ -7,7 +7,7 @@ Proyecto Himnario Presbiteriano, Sólo para la Gloria de Dios.
 
 ## Etapa del proyecto:
 
-En fase de Final.
+Terminado.
 
 ## Version Web 1.0
 <a href="http://goddev-byosonet.rhcloud.com/">Soló a Dios la Gloria</a>
